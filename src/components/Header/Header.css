@@ -1,0 +1,65 @@
+.Header {
+    position: fixed;
+    width: 100%;
+    padding: 25px 0;
+    z-index: 100;
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    background: rgba(255, 255, 255, 0.2);
+    vertical-align: baseline;
+    border-bottom: 0.5px solid #eee;
+}
+
+.HeaderScrolled {
+    background: rgba( 255, 255, 255, 0.9);
+    padding: 10px 0;
+    backdrop-filter: blur(20px);
+}
+
+.link {
+    display: inline-block;
+    position: relative;
+    color: black;
+    font-weight: 500;
+    font-size: 1.7em;
+    padding:  8px 20px;
+    border-radius: 10px;
+    transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    text-decoration:none;
+    font-family: "Avenir Next"
+  }
+
+.link::after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: linear-gradient(104deg, #FFD000 20%, #FF6565 50%, #60B3DB 100%);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.link1::after {
+    background: #FFD000;
+}
+
+.link2::after {
+    background: #FF6565;
+}
+
+.link3::after {
+    background: #60B3DB;
+}
+
+.link:hover::after {
+    width: 100%; 
+    left: 0; 
+}
+
+.Header .logo{
+    display: flex;
+    align-items: center;
+    justify-items: center; 
+}
