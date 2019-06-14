@@ -27,12 +27,12 @@ const DestinationInput = styled.input`
     border-radius: 3px;
     background-color : rgba( 0, 0, 0, 0.05);
     padding-left: 0.5em;
-    font-size: 25px;
+    font-size: 22px;
     outline: none;
 
     &::-webkit-input-placeholder {
         color: rgb(163, 163, 163);;
-        font-size: 25px;
+        font-size: 22px;
     }
 `
 
@@ -62,6 +62,7 @@ const SearchButton = styled.button`
     font-size: 2em;
     font-weight: 500;
     transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    outline: none;
 
     &:hover {
         /* transform: translateY(-3px); */
