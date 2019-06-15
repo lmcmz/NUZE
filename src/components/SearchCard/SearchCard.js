@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
-import styled from 'styled-components'
+import styled, { keyframes }from 'styled-components'
 import { isNumericLiteral } from '@babel/types';
 import 'react-dates/lib/css/_datepicker.css';
 import {Dropdown} from 'reactjs-dropdown-component';
@@ -36,6 +36,22 @@ const DestinationInput = styled.input`
     }
 `
 
+const anime = keyframes`
+  0% {
+    background-position: 0% 50%;
+    /* transform: rotate(0deg); */
+  }
+
+  50% {
+    background-position: 100% 50%;
+    /* transform: rotate(0deg); */
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
 const DateInput = styled.div`
     width: 100%;
     height: 50px;
@@ -57,7 +73,10 @@ const SearchButton = styled.button`
     height: 60px;
     border-radius: 8px;
     border: none;
-    background: linear-gradient(to right, #FF6565 0%, #FF6565 100%);;
+    /* background: linear-gradient(to right, #FF6565 0%, #FF6565 100%);; */
+    background: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5);
+    background-size: 600%;
+    animation: ${anime} 16s linear infinite;
     color: white;
     font-size: 2em;
     font-weight: 500;
@@ -65,8 +84,7 @@ const SearchButton = styled.button`
     outline: none;
 
     &:hover {
-        /* transform: translateY(-3px); */
-        background: linear-gradient(to right , #FFD000 20%, #FF6565 50%, #60B3DB 100%);
+        
     }
 `
 
