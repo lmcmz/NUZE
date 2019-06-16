@@ -1,0 +1,9 @@
+.scrollCotainer{
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.scrollCotainer::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}

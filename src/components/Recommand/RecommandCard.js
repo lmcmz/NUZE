@@ -3,6 +3,18 @@ import PropTypes from 'prop-types'
 import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
 
+
+const Recommand = styled(Flex)({
+    width: '200px',
+    height: '400px',
+})
+
+const RecommandImage = styled(Image)({
+    width: '200px',
+    height: '280px',
+    objectFit: 'cover'
+})
+
 export default class RecommandCard extends Component {
     constructor(props) {
         super(props)
@@ -14,13 +26,13 @@ export default class RecommandCard extends Component {
     render() {
         return (
             <div>
-                <Box width={200} px='20'>
+                <Recommand px='20'>
                     <Card
                         p={1}
                         borderRadius={2}
                         borderWidth={1}
                         borderColor='#444'>
-                        <Image src='https://source.unsplash.com/random/1280x720' />
+                        <RecommandImage borderRadius={3} src={this.props.image} />
                         <Box px={2}>
                         <Heading as='h3'>
                             Card
@@ -30,7 +42,7 @@ export default class RecommandCard extends Component {
                         </Text>
                         </Box>
                     </Card>
-                </Box>
+                </Recommand>
             </div>
         )
     }
