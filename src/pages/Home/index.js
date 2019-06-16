@@ -4,6 +4,7 @@ import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
 import HeroMask from '../../components/HeroMask/HeroMask'
 import SearchCard from '../../components/SearchCard/SearchCard';
+import Recommand from '../../components/Recommand';
 
 const LeftBox = styled(Box)({
   display: 'flex',
@@ -21,7 +22,6 @@ class Home extends Component {
           <LeftBox>
             <SearchCard />
           </LeftBox>
-
           <Box width={1/2}>
             <Flex>
               <video autoPlay loop playsInline muted>
@@ -30,6 +30,10 @@ class Home extends Component {
               <HeroMask />
             </Flex>
           </Box>
+        </Flex>
+
+        <Flex className="Section2" flexDirection='column'>
+          <Recommand />
         </Flex>
       </div>
     );

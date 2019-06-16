@@ -37,7 +37,7 @@ class Header extends React.Component {
           <div className={this.state.hasScrolled ? 'Header HeaderScrolled' : 'Header'}>
             <HeaderContainer px={300}>
               <Box width={1/2}>
-                <Link className='logo' to="/"><img src={require('../../resource/image/logo.svg')} width="110" /></Link> 
+                <Link className='logo' to="/"><img src={require('../../resource/image/logo.svg')} width="120" /></Link> 
               </Box>
               <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
                 <Link className='link link1' to="/">Become a Host</Link>
