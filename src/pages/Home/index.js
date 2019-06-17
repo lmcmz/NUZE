@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import HeroMask from '../../components/HeroMask/HeroMask'
 import SearchCard from '../../components/SearchCard/SearchCard';
 import Recommand from '../../components/Recommand';
+import PropertyList from '../../components/PropertyList';
 
 const LeftBox = styled(Box)({
   display: 'flex',
@@ -34,6 +35,7 @@ class Home extends Component {
 
         <Flex className="Section2" flexDirection='column'>
           <Recommand />
+          <PropertyList />
         </Flex>
       </div>
     );

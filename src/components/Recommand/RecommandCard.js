@@ -6,7 +6,8 @@ import './RecommandCard.css'
 
 const Recommand = styled(Flex)({
     width: '200px',
-    height: '330px',
+    height: '280px',
+    outline: 'none',
 })
 
 const RecommandImage = styled(Image)({
