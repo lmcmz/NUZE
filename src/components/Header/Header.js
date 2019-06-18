@@ -40,6 +40,7 @@ class Header extends React.Component {
                 <Link className='logo' to="/"><img src={require('../../resource/image/logo.svg')} width="120" /></Link> 
               </Box>
               <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
+                <Link className='link link0' to="/">Join us</Link>
                 <Link className='link link1' to="/">Become a Host</Link>
                 <Link className='link link2' to="/">Register</Link>
                 <Link className='link link3' to="/">Login</Link>

@@ -6,12 +6,13 @@ import PropertyCard from './PropertyCard'
 
 const GridBox = styled(Box)({
     display: 'grid',
-    gridGap: ' 60px 0px',
+    gridGap: ' 50px 10px',
     // grid-template-columns: auto auto auto;
-    gridTemplateColumns: 'auto auto auto',
+    gridTemplateColumns: 'auto auto auto auto',
     width: '80%',
     justifyItems: 'center',
     justifySelf: 'center',
+    paddingBottom: '100px',
 })
 
 export default class PropertyList extends Component {
@@ -27,14 +28,9 @@ export default class PropertyList extends Component {
                     Popular place to stay
                 </Text>
                 <GridBox w={4/5} m='0 auto'>
-                    <PropertyCard image={this.randomImage()} />
-                    <PropertyCard image={this.randomImage()} />
-                    <PropertyCard image={this.randomImage()} />
-                    <PropertyCard image={this.randomImage()} />
-                    <PropertyCard image={this.randomImage()} />
-                    <PropertyCard image={this.randomImage()} />
-                    <PropertyCard image={this.randomImage()} />
-                    <PropertyCard image={this.randomImage()} />
+                    {[...Array(20)].map((x, i) =>
+                        <PropertyCard image={this.randomImage()} />
+                    )}
                 </GridBox>
             </Box>
         )

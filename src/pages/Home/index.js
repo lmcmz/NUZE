@@ -6,6 +6,7 @@ import HeroMask from '../../components/HeroMask/HeroMask'
 import SearchCard from '../../components/SearchCard/SearchCard';
 import Recommand from '../../components/Recommand';
 import PropertyList from '../../components/PropertyList';
+import Footer from '../../components/Footer';
 
 const LeftBox = styled(Box)({
   display: 'flex',
@@ -18,7 +19,7 @@ const LeftBox = styled(Box)({
 class Home extends Component {
   render() {
     return (
-      <div className="App">
+      <Flex flexDirection='column' className="App">
         <Flex className="Section">
           <LeftBox>
             <SearchCard />
@@ -36,8 +37,10 @@ class Home extends Component {
         <Flex className="Section2" flexDirection='column'>
           <Recommand />
           <PropertyList />
+
+          <Footer />
         </Flex>
-      </div>
+      </Flex>
     );
   }
 }

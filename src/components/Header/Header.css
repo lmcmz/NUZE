@@ -41,6 +41,10 @@
     width: 0;
 }
 
+.link0::after{
+    background: linear-gradient(104deg, #FFD000 20%, #FF6565 50%, #60B3DB 100%);
+}
+
 .link1::after {
     background: #FFD000;
 }
