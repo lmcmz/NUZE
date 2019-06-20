@@ -31,7 +31,7 @@ export default class Footer extends Component {
                                 <Text fontSize='15px' fontFamily='' textAlign='left'> NUZE is not for profit. All property is sourced from the Internet. 
                                     It aims to practice our team programming skill. 
                                     If the content of this site has an impact on your rights, 
-                                    please send an email to <a href="">info@nuze.com </a> 
+                                    please send an email to <a href="">info@nuze.xyz </a> 
                                      and we will delete the copyrighted content as soon as possible.</Text>
                             </Flex>
                         </Flex>
