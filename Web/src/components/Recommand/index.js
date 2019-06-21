@@ -81,7 +81,7 @@ const randomImage = () => {
       <div
         className={className}
       >
-          <Text><FontAwesomeIcon icon={text=='>'? faChevronRight : faChevronLeft} size='s'/></Text>
+          <Text><FontAwesomeIcon icon={text=='>'? faChevronRight : faChevronLeft} size='xs'/></Text>
       </div>
     );
   };

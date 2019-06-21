@@ -1,0 +1,23 @@
+.map-toggle.react-toggle--checked .react-toggle-track {
+    background-color: #60B3DB;
+}
+
+.map-toggle.react-toggle--checked:hover .react-toggle-track {
+    background-color: #60B3DB;
+}
+
+.react-toggle-track {
+    background-color: #FF6565;
+}
+
+.map-toggle.react-toggle:hover .react-toggle-track {
+    background-color: #FF6565;
+}
+
+.react-toggle-thumb {
+    border: 1px solid #FF6565;
+}
+
+.react-toggle--checked .react-toggle-thumb {
+    border-color: #60B3DB;
+}

@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import './Home.css';
 import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
-import HeroMask from '../../components/HeroMask/HeroMask'
-import SearchCard from '../../components/SearchCard/SearchCard';
+import HeroMask from '../../components/HeroMask';
+import SearchCard from '../../components/SearchCard';
 import Recommand from '../../components/Recommand';
 import PropertyList from '../../components/PropertyList';
 import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 
 const LeftBox = styled(Box)({
   display: 'flex',
@@ -19,6 +20,8 @@ const LeftBox = styled(Box)({
 class Home extends Component {
   render() {
     return (
+      <div>
+      <Header />
       <Flex flexDirection='column' className="App">
         <Flex className="Section">
           <LeftBox>
@@ -41,6 +44,7 @@ class Home extends Component {
           <Footer />
         </Flex>
       </Flex>
+      </div>
     );
   }
 }

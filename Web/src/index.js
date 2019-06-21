@@ -2,20 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './pages/Home/index'
-import Header from './components/Header/Header';
+import Header from './components/Header';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Search from './pages/Search';
+import Footer from './components/Footer';
 
 
 ReactDOM.render(
     <BrowserRouter>
     <div>
-        <Header />
+        {/* <Header /> */}
         <Switch>
-            <Route path='/' component={Home}></Route>
+            <Route exact path='/' component={Home}></Route>
+            <Route path='/search' component={Search}></Route>
         </Switch>
+        {/* <Footer /> */}
     </div>
     </BrowserRouter>, 
     document.getElementById('root')

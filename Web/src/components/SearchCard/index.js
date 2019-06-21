@@ -82,6 +82,7 @@ const SearchButton = styled.button`
     font-weight: 500;
     transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     outline: none;
+    cursor: pointer;
 
     &:hover {
         
@@ -92,6 +93,7 @@ export class SearchCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            query: 'kiama',
             startDate: null,
             endDate:null,
             focusedInput: null,
@@ -171,6 +173,11 @@ export class SearchCard extends Component {
         });
       }
 
+      handleSearch = () => {
+        window.location.assign('/search');
+        // window.location.assign('/search?'+this.state.query);
+      }
+
     render() {
         return (
             <Box>
@@ -243,7 +250,7 @@ export class SearchCard extends Component {
                     <Box pt={4} pb={4} >
                         {/* <Box bg='red' height='50px'> Serach</Box>
                      */}
-                        <SearchButton> <FontAwesomeIcon icon={faSearch} size='s'/>  Search </SearchButton>
+                        <SearchButton onClick={this.handleSearch}> <FontAwesomeIcon icon={faSearch} size='xs'/>  Search </SearchButton>
                     </Box>
                     
                     </Box>
