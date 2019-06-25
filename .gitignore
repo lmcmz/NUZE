@@ -26,3 +26,7 @@ yarn-error.log*
 Web/node_modules/
 
 Server/\.idea/
+
+Server/GeneratorMapper\.xml
+
+Server/src/main/resources/application\.properties
