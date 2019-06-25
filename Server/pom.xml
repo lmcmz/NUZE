@@ -53,10 +53,10 @@
     </dependency>
 
     <!--=============================================JWT related=============================================-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-security</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt</artifactId>
@@ -103,24 +103,28 @@
       <artifactId>spring-context</artifactId>
       <version>5.1.5.RELEASE</version>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-redis</artifactId>
-      <version>2.1.5.RELEASE</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.data</groupId>-->
+<!--      <artifactId>spring-data-redis</artifactId>-->
+<!--      <version>2.1.5.RELEASE</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--    </dependency>-->
 
-    <!-- swagger -->
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-swagger2</artifactId>
-      <version>2.5.0</version>
-    </dependency>
-    <!-- swagger-ui -->
-    <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-swagger-ui</artifactId>
-      <version>2.5.0</version>
-    </dependency>
+<!--    &lt;!&ndash; swagger &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>io.springfox</groupId>-->
+<!--      <artifactId>springfox-swagger2</artifactId>-->
+<!--      <version>2.5.0</version>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; swagger-ui &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>io.springfox</groupId>-->
+<!--      <artifactId>springfox-swagger-ui</artifactId>-->
+<!--      <version>2.5.0</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>org.apache.poi</groupId>
@@ -179,6 +183,7 @@
           <version>3.0.0</version>
         </plugin>
       </plugins>
+    </pluginManagement>
 
       <plugins>
 
@@ -217,6 +222,5 @@
         </plugin>
       </plugins>
 
-    </pluginManagement>
   </build>
 </project>
