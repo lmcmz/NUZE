@@ -3,7 +3,10 @@
 [![Build Status](https://travis-ci.com/AlphaWallet/alpha-wallet-ios.svg?branch=master)](https://travis-ci.com/AlphaWallet/alpha-wallet-ios.svg?branch=master)
 [![License](https://img.shields.io/badge/license-GPL3-green.svg?style=flat)](https://github.com/fastlane/fastlane/blob/master/LICENSE)
 
+## 👻 Team Progress
 
+1. The [Trello Board](https://trello.com/b/GltF0JUS) can be found in this link.
+2. Our weekly report is updated under the dairy folder.
 
 ## 🍦 Getting Started
 
