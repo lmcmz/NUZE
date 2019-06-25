@@ -102,7 +102,7 @@ with open('database.sql','a') as sql:
         print("INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES ",file = sql)
         room_id_num = len(host_information[host_id]['room_ids'])
         if room_id_num == 1:
-            print("(\"{}\",\"{}\"),".format(host_id,host_information[host_id]['room_ids'][0]),file = sql)
+            print("(\"{}\",\"{}\");".format(host_id,host_information[host_id]['room_ids'][0]),file = sql)
         else:
             for index in range(room_id_num - 1):
                 print("(\"{}\",\"{}\"),".format(host_id,host_information[host_id]['room_ids'][index]),file = sql)

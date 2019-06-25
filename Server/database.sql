@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `host_to_room` (
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("47250720","Mia","https://a0.muscache.com/im/pictures/32dbd44e-50ca-4e47-a50c-99a3e9413e13.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.","Hi There! I’m an AirBnB host myself and have been using the platform as a super host for over a year. I’m looking forward to my first guest experience!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("47250720","21884828"),
+("47250720","21884828");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("26919489","Yukio","https://a0.muscache.com/im/pictures/user/56c443ef-fca9-4de9-b2ce-3c1494e4d544.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Español,Português.Work: Brianda Projects.Connected account.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -48,7 +48,7 @@ INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES
 I work in the health industry love to travel with an appreciation of art music &amp; culture . Have expansive knowledge of Sydney &amp; surrounds &amp; am happy to assist with any questions regarding the accomodation or your trip 
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("20039367","19912813"),
+("20039367","19912813");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("4421400","Scott","https://a0.muscache.com/im/users/4421400/profile_pic/1355706316/original.jpg?aki_policy=profile_small","Lives in Surry Hills, Australia.","I'm Scott, very active guy from Sydney who loves traveling and exploring different cultures. Look forward to meeting you!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -64,7 +64,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("5383558","Angus","https://a0.muscache.com/im/pictures/1969385f-a2c1-44f5-8e77-1ff97f0ae2fa.jpg?aki_policy=profile_small","Lives in Redfern, Australia.","Love nature and the outdoors");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("5383558","15424010"),
+("5383558","15424010");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("74564218","Andre","https://a0.muscache.com/im/pictures/6430b854-1d2f-46fd-a64c-4778f95ebffd.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks Português.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -80,7 +80,7 @@ I am aware a lot of people are looking for longer term accommodation, however, s
 I look forward to meeting you.
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("644516","130970"),
+("644516","130970");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("45902462","Kate","https://a0.muscache.com/im/pictures/user/528e199d-01cc-485a-afde-8f34a9a42065.jpg?aki_policy=profile_small","Lives in Ultimo, Australia.Speaks English.","Hi all,
 I'm Katie, a graphic designer based in Sydney. I'm an on-off Airbnb host who just love to use Airbnb for travel accommodation like you do. My Airbnb experience ( both host and guest) are incredibly amazing and memorable, I met so many amazing guests/hosts who came from all around the world and there have been always different stories to take away afterward. Regardless of a few bad reviews  that upset me, those good hosting experiences truly motivate me. Honestly, I'm not making a living on this, Airbnb apparently a thing set me free from paying the bills while I'm travelling and  I would never stop feeling grateful for this mutual share of benefit. Travelling is a part of learning process and lifestyle, I hope my Airbnb place could be a part of your beautiful journey as well. 
@@ -88,18 +88,18 @@ Please notice that most of the time you will checkin/out by yourself as I could 
 
 Ps: Tks for reading anyway, usually people roll past this part:-) ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("45902462","9051847"),
+("45902462","9051847");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("7531199","Daniel","https://a0.muscache.com/im/pictures/b3b8bec1-d22c-4a1e-895b-525bae0f9453.jpg?aki_policy=profile_small","Lives in Redfern, Australia.","I've travelled a bit in the past but of recent years been tided to a desk. Looking forward to getting out there again soon. 
 
 Enjoy being a host and showing people my city, which I love. 
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("7531199","4439559"),
+("7531199","4439559");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("57488052","Nicole","https://a0.muscache.com/im/pictures/fac74210-377c-4f59-84c5-cb0340c9b55a.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Work: NSW Department of Education .Connected account.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("57488052","31719385"),
+("57488052","31719385");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("8530753","Jared SSP","https://a0.muscache.com/im/pictures/user/c7020809-2d2d-4e64-a38b-3acc7924b1d6.jpg?aki_policy=profile_small","Lives in Melbourne, Australia.Speaks Bahasa Indonesia,Bahasa Malaysia,English,Tagalog,中文.Work: Systems Architect.","Your trusted international holiday rental host across major cities. Feel at home wherever you are! LIVE · LOVE · EXPLORE
 
@@ -151,7 +151,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("36928848","Jackie","https://a0.muscache.com/im/users/36928848/profile_pic/1435493891/original.jpg?aki_policy=profile_small","Lives in Centennial Park, Australia.","I love keeping fit and spending time with friends and family. My favourite destination is Paris. I love trying out new restaurants and cafes in Paddington and Woollahra. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("36928848","7042470"),
+("36928848","7042470");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("46909702","Fumi  &amp; Lucie","https://a0.muscache.com/im/pictures/1af0af9a-5447-44b0-9774-2231f6fbf8ea.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks English,Français,日本語.","We love traveling and have visited lots of different places in the world but we have decided to call Sydney nearly 4 years ago (Fumi has been in Australia for 10+ years).
 We both work in Sydney and like to stay outdoors on our days off, either at the beach or for a walk, Sydney has so much to offer..
@@ -163,7 +163,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("4519063","Margie","https://a0.muscache.com/im/users/4519063/profile_pic/1403432620/original.jpg?aki_policy=profile_small","Lives in Willoughby, Australia.Work: Channel 9.","We are from Sydney, Australia and have a busy lifestyle,  We enjoy cooking, golf, gardening and travelling. Both Wayne and I work full time. We enjoy meeting people from all walks of life!!  Our home is somewhere to stay in comfortable surroundings and a nice quiet neighbourhood. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("4519063","3265015"),
+("4519063","3265015");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("73407853","Zoltan","https://a0.muscache.com/im/pictures/user/5f5ef4ab-e185-492c-bc92-f2b0c8159d9e.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks Deutsch,English,Español,Magyar.Connected account.","I am an artist originally. I am an active person who loves traveling and cooking.  Besides English I speak German, Hungarian and Spanish . ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -196,7 +196,7 @@ As I will be away I would prefer guests who are seeking a longer term stay, 2-3 
 My dear friend Kathrin, who lives down the road will be acting as land lady, should you need any assistance she is just a phone call away.
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("14813306","2898295"),
+("14813306","2898295");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("1820335","Sherry","https://a0.muscache.com/im/pictures/user/373e56da-7158-455a-a3e2-1965f07e751e.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English.","Hello, my name is Sherry, and I am originally from the United States. My partner and I have taken over from the lovely Dave and Lisa to run this apartment. We look forward to giving you the same experience and friendly attention as they have given over the last few years.
 
@@ -204,11 +204,11 @@ We're very respectful and will take the greatest care and appreciation of your p
 
 We love traveling, cooking, and daily exercise. We are big dog lovers and are enjoying our new cavoodle, Ruby. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("1820335","658720"),
+("1820335","658720");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("2052335","Keith","https://a0.muscache.com/im/pictures/c20a2e92-d962-443f-b5b0-d7156cf00a99.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English.","I am a semi retired man who is happily running a small family accommodation business for you to enjoy!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("2052335","426398"),
+("2052335","426398");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("51507029","Toni","https://a0.muscache.com/im/pictures/user/96c199f0-aea6-42c0-9640-e1f969dc1f7d.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Connected account.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -217,7 +217,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("91754420","La","https://a0.muscache.com/im/pictures/3c9695c2-1fa8-4e24-8696-d4f7c2b498ea.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("91754420","17907575"),
+("91754420","17907575");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("688781","Lynn","https://a0.muscache.com/im/pictures/user/d1ac9124-7389-4476-8e0b-e217db48c148.jpg?aki_policy=profile_small","Lives in Newtown, Australia.Work: Graphic designer / model.","I'm am an artist, Silverfox model, Airbnb host, mother of four wonderful adult kids, proud grandmother of a baby girl born in the UK in November 2018, besotted dog owner and live in the top two level of a beautiful, light-filled three-level renovated church building.
 
@@ -244,7 +244,7 @@ As a host, I try to give our guests maximum privacy while still being available 
 
 I grew up in Sydney and have finally returned after many years living in various parts of the world - France, USA, UK, Singapore.  Airbnb has enabled us to keep the travel bug alive within us.  ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("6779186","1243792"),
+("6779186","1243792");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("131859707","Braith","https://a0.muscache.com/im/pictures/user/da11cb3b-be58-46b7-988f-0ea182210231.jpg?aki_policy=profile_small","Connected account.","I am a 35 year old male who works as a corporate professional. I live alone in my two bedroom apartment and spend very little time at home due to my demanding career. 
 
@@ -252,7 +252,7 @@ When I am home, I enjoy a very quiet lifestyle. A home cooked meal and an early 
 
 I take pride in my modest home by keeping it clean and tidy. I don’t host parties or rowdy groups. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("131859707","25468596"),
+("131859707","25468596");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("1943399","Paul And Raymond","https://a0.muscache.com/im/pictures/user/0e4bac21-2274-4e5e-a9a2-1900737df8c2.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English.Work: Academic (Paul) &amp; Media Analyst (Raymond).","I (Paul) am a psychotherapist and Senior Lecturer at the largest counselling and psychotherapy college in Australia. This work is fascinating both in terms of the wonderful clients, students, and staff with whom I work.  I spent 10 years conducting social research on sexual behaviour, gender and sexuality, having come to academia late after running a manufacturing business, driving trams in Melbourne (a job a STILL have great dreams about!) and a wasted year in a clothing factory after high school. 
 
@@ -309,13 +309,13 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("188997545","Kannika","https://a0.muscache.com/im/pictures/user/9360fb8c-2995-4af1-a92c-4f83d3b39d01.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,ภาษาไทย,中文,日本語.Work: Property Management.","Whether I am travelling or hosting  Airbnb is my passion, I am really excited to host Airbnb PLUS. I am a true blue born and bred city girl as I spent my whole life in Sydneys CBD it is my home and only way of living. I live and breathe the City Life!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("188997545","24999766"),
+("188997545","24999766");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("13791976","Bron","https://a0.muscache.com/im/pictures/user/89d6b8ac-bdce-4841-8fcc-4d301758e8cb.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Connected account.","Easy going person who loves my family, pets, friends &amp; gorgeous neighbourhood of Surry Hills. 
 
 I really look forward to sharing my home and enthusiasm for the beautiful city of Sydney with guests. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("13791976","2694793"),
+("13791976","2694793");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("140732328","Chris","https://a0.muscache.com/im/pictures/user/5ccefb43-6b66-43aa-a3cb-2ee16f76edba.jpg?aki_policy=profile_small","Lives in Surry Hills, Australia.Work: Handyman.","To start my day I usually go for a run. Sydney has steep hills, lots of parks, pathways along the harbour. If you aren't up for a morning run then join me for a coffee.
 
@@ -368,12 +368,12 @@ We're hopping to meet you soon!
 
 Tom Trevor and Thongfar");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("45620575","8688786"),
+("45620575","8688786");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("50707354","Marie","https://a0.muscache.com/im/pictures/324d7620-52c2-4e99-9100-332f5b4b3895.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks English.Work: Retired.","I am an Annandale local and I run a small business in the area. I love living in the inner-west of Sydney with all the cafes, restaurants, eclectic shops and green spaces. In my spare time, I like to paint and walk my poodle, Lulu, at the nearby dog-friendly park. During my travels abroad I have enjoyed staying in Airbnb apartments and I would love to return the favour to intrepid travellers visiting my beautiful city.
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("50707354","15257722"),
+("50707354","15257722");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("96106690","Dixon","https://a0.muscache.com/im/pictures/8b6e6ac5-8efc-4a00-8f9e-9c3cc1b0f490.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,中文.Connected account.","I'm an easy and outgoing character with a thirst for knowledge and exploration. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -385,7 +385,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("8247293","Ariana","https://a0.muscache.com/im/pictures/99e42ec1-ce63-4c81-b0f4-5bea23b5198e.jpg?aki_policy=profile_small","","I grew up in Sydney's inner city and still think it's a pretty magical place. I've spent one year in South America, one year in California and backpacked bits of Europe and New Zealand. I studied for a long time in the liberal arts, mostly theatre/gender/performance. Some of my favourite things are white balsamic vinegar, ocean swims, wandering open-air markets and dancing to Tom Waits' more tuneful numbers with my little girl.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("8247293","1547664"),
+("8247293","1547664");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("7028222","Kylie","https://a0.muscache.com/im/users/7028222/profile_pic/1372825205/original.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English.","Hi there
 My name is Kylie which, not many people know,  is actually an Australian aboriginal word for Boomerang. 
@@ -395,7 +395,7 @@ I moved out when we had our baby and wanted to be closer to family. We love doin
 
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("7028222","1292602"),
+("7028222","1292602");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("103561166","Sittichai","https://a0.muscache.com/im/pictures/0554bfb6-20aa-4558-8e7d-0780525e769b.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -417,7 +417,7 @@ INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES
 ("410489","Michal","https://a0.muscache.com/im/users/410489/profile_pic/1368598905/original.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Français,עברית.Work: Teacher, Artist, Art Therapist.Connected account.","Hi, I discovered Airb&amp;b when planning a trip last year. We had a great time and stayed in 8 listings in 2 continents. I took my time choosing places and it paid off. All the 8 listings were very good and a few were outstanding for different reasons. All the hosts were genuine, caring and interesting people.We took care of their places and have been invited back to all of them. What more can I say? As a guest traveling the world I know I was looking for a good sleep on a comfortable bed and a pleasant outlook that felt safe so I could enjoy being a tourist .The fact that we also met lovely interesting people and that I didn't break the bank with Hotel prices, well that was good too.I can confidently offer you this with my studio listing and its location is perfect for accessing the city, universities and beaches.
 I love nature and enjoy nurturing my garden and other creative activities. I can point you in the direction of art galleries and good live music.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("410489","1128749"),
+("410489","1128749");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("165767189","Naphassanan","https://a0.muscache.com/im/pictures/user/00eb524d-4204-4ab7-8dee-d7bfe7d07219.jpg?aki_policy=profile_small","Speaks English,ภาษาไทย.","I always smile and friendly ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -429,7 +429,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("54695275","Aj","https://a0.muscache.com/im/pictures/6a635244-b50a-4532-8d58-1733e89d9a27.jpg?aki_policy=profile_small","","Love hosting the space and love opening up what Paddington has to offer at an affordable price point");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("54695275","19390050"),
+("54695275","19390050");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("70736388","Joseph","https://a0.muscache.com/im/pictures/8f9eaf8e-b9fd-4c2c-9a6b-a285d588f501.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Work: Relationship Management.Connected account.","I'm a very easy going and down to earth person who loves life to the full. 
 My major passion is travel having been to over 80 countries. I am also passionate about food and wine, and love music mainly Jazz, funk and soul.
@@ -447,11 +447,11 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("105906077","Glen","https://a0.muscache.com/im/pictures/0c152db5-2af9-4f1a-b0ae-ca041d1a34d8.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Connected account.","Passionate traveler and love keeping healthy and exploring what life has to offer. I love being an Airbnb 'Superhost' and will do everything possible to make your stay an outstanding experience! Available at any time to assist you before or during your stay. Looking forward to meeting you.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("105906077","16445733"),
+("105906077","16445733");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("30075514","Lindsay And Minny","https://a0.muscache.com/im/users/30075514/profile_pic/1440721809/original.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks ภาษาไทย.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("30075514","5796898"),
+("30075514","5796898");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("144599946","Sohrab And Mari","https://a0.muscache.com/im/pictures/user/e92a1817-1160-4345-8d91-75c93eb1d70a.jpg?aki_policy=profile_small","Lives in Chippendale, Australia.Speaks Bengali,English,Hindi,Tagalog,日本語.Work: Sydney Lodges, Sydney Boutique Hotel, Posh Hotel.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -597,7 +597,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("28536857","Anthony","https://a0.muscache.com/im/pictures/5d45cef8-dd6c-4373-be72-8aa6f10e03f6.jpg?aki_policy=profile_small","","22 year old Australian. I am eager to travel as much as I can and experience and see new cultures, sites and cities.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("28536857","25305496"),
+("28536857","25305496");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("136111647","Minh","https://a0.muscache.com/im/pictures/user/f1b7e1bd-c6c2-44d6-8693-f35fb170ae26.jpg?aki_policy=profile_small","Lives in Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -615,7 +615,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("5967453","Ling","https://a0.muscache.com/im/users/5967453/profile_pic/1387268173/original.jpg?aki_policy=profile_small","","Happy family");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("5967453","4158645"),
+("5967453","4158645");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("152020347","Lily","https://a0.muscache.com/im/pictures/user/a9249909-5df3-47eb-8973-4a310f245cd5.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,한국어.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -639,7 +639,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("117984855","John","https://a0.muscache.com/im/pictures/59e090f8-5d22-46ba-8c2d-4153f38dc7ad.jpg?aki_policy=profile_small","Lives in Balmain, Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("117984855","17436906"),
+("117984855","17436906");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("41998987","Carly","https://a0.muscache.com/im/users/41998987/profile_pic/1440067226/original.jpg?aki_policy=profile_small","Lives in Dulwich Hill, Australia.Speaks English.","Hola! 
 I love seeing live bands.. the punk-rocknrollin variety. The area where I'm situated in (inner west of Sydney) is great location for live music. 
@@ -650,7 +650,7 @@ I'm pretty easy going and friendly and would hope to make you feel welcome durin
 Cheers. 
   ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("41998987","24720025"),
+("41998987","24720025");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("9359294","(Website hidden by Airbnb)","https://a0.muscache.com/im/users/9359294/profile_pic/1404456078/original.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.","We're about a family who loves to travel and have listed our Sydney and other apartments with Airbnb. We also enjoy staying at places with high standards and cleanliness of a 5 star apartment, the way we wish to live when we travel.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -678,15 +678,15 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("4424088","Sophie","https://a0.muscache.com/im/users/4424088/profile_pic/1355923005/original.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Norsk,Svenska.","I'm a Swedish viking enjoying life under the blue sky in the city of my dreams. I kickbox, hike, bike and run every chance I get. I'm a bit of a health nut, slightly addicted to greens. I consider a couple of cucumbers as perfect long haul flight-snack and if I got stuck on a deserted island with only avocado + coconuts I would be a happy girl. But don’t worry I also love to bake Swedish Cinnamon buns and ”Semla” and I make a mean Espresso Martini. Passionately love Sydney and try to visit a new restaurant, cafe, place every week to stay up to date. Happy to give you all our recommendation on everything from best bar, perfect pre-work run, must do´s etc. Beside from Sydney other favorite destinations are: Copenhagen, Palm Springs, anywhere in the Greek islands, Hawaii or why not a snowy ski slope finished with hot coca! Hope to meet you! ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("4424088","1253351"),
+("4424088","1253351");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("13423390","Troy","https://a0.muscache.com/im/pictures/user/d56e0577-1558-4480-90c1-2aa00d921a67.jpg?aki_policy=profile_small","Lives in Cherrybrook, Australia.Connected accounts.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("13423390","19555904"),
+("13423390","19555904");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("10010322","Helen","https://a0.muscache.com/im/pictures/user/beac8088-bf0d-4574-b95d-1f81afdbc583.jpg?aki_policy=profile_small","Lives in Forrest, Australia.Speaks Bahasa Indonesia,English,中文.","I am a well travelled adventurer and have lived overseas. Sydney is a fabulous city. I look forward to meeting you and sharing Sydney tips!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("10010322","22583838"),
+("10010322","22583838");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("152530023","Mina","https://a0.muscache.com/im/pictures/user/3e6fcbaf-feb3-48e8-a04b-6dd6ca43c468.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Русский.","We have been living in this lovely city of Sydney for more than half of our lives. 
 
@@ -856,7 +856,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("52357636","Matthew","https://a0.muscache.com/im/pictures/user/06a46ff1-9b0f-4e19-92ca-9c5acedf0d3c.jpg?aki_policy=profile_small","Lives in Sydenham, Australia.","I’m the father of 3 beautiful little girls and husband to one sexy wife. From the Inner West of Sydney. We have 1 listing which is a full time Air BnB property and live nearby. We use Air BnB both for traveling and hosting.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("52357636","16077913"),
+("52357636","16077913");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("5215877","Milan","https://a0.muscache.com/im/pictures/user/38a6f966-92d8-4191-a59f-0938c4178d59.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,中文.","Hi! I'am Milan. I would like to welcome you in Sydney. As a host I manage my own properties as well I manage many of the best properties in Sydney for others. Sydney is  truly beautiful place to stay and discover and I hope to see you soon. Please feel free to contact me anytime. Milan
 ");
@@ -898,15 +898,15 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("20953030","Dan","https://a0.muscache.com/im/pictures/ec3012bb-87ff-4464-94ad-ca4eafccc0e0.jpg?aki_policy=profile_small","","Sports producer from Sydney.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("20953030","4244433"),
+("20953030","4244433");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("8734842","Gerrit","https://a0.muscache.com/im/pictures/user/d587488f-196f-4f06-99f2-6d4d8281a13b.jpg?aki_policy=profile_small","Lives in Germany.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("8734842","19705310"),
+("8734842","19705310");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("11454671","Sn","https://a0.muscache.com/im/pictures/154414fb-1251-4609-a6e9-c751d77da581.jpg?aki_policy=profile_small","Work: Bank.","I'm a 30 year old professional who enjoys travelling and discovering new places, and meeting interesting people. I'm looking forward to my first trip around Asia later this year. This is why I'm letting my place out to people who want to discover beautiful Sydney to help save for the trip. I'm very easy going and laid back, so any questions, please feel free to ask.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("11454671","2285490"),
+("11454671","2285490");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("74096318","Ray","https://a0.muscache.com/im/pictures/ea6d8374-1b9a-4779-95c3-0bc70c6d0005.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks English,中文.","Hi Guests, 
 Thank you for considering staying in my place during your visit to Sydney. Whether you're coming for business, pleasure, or to visit family, I think you will enjoy my apartment and my neighborhood. 
@@ -917,11 +917,11 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("1281892","Dave","https://a0.muscache.com/im/users/1281892/profile_pic/1417678745/original.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks English.Connected accounts.","English born but now call Sydney Australia home. I love to travel, cook, ride my bike on the road or in the bush, go to music festivals, see bands, DJ's, performers, ski in the snow, eat out, take photos, spend time with my friends, and enjoy life. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("1281892","5935272"),
+("1281892","5935272");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("25870957","Lesley","https://a0.muscache.com/im/pictures/user/693426a3-450c-4a30-ad3e-0311a68df809.jpg?aki_policy=profile_small","Lives in Alexandria, Australia.Work: Volunteering with Oz Harvest Food Rescue..","Sharing good food and wine with my partner and friends, Sydney Summer Traveling the world");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("25870957","5015514"),
+("25870957","5015514");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("51206743","Annie","https://a0.muscache.com/im/pictures/4117e126-31e7-4fe7-9aaa-d2dfdfb7b4bc.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -934,7 +934,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("136868139","Adam","https://a0.muscache.com/im/pictures/user/2d7a45a6-5a89-4bb9-a663-aab0c525c0f4.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,中文.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("136868139","19495471"),
+("136868139","19495471");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("33150818","Miriam","https://a0.muscache.com/im/pictures/3218f466-d457-42d1-aabb-230926a07429.jpg?aki_policy=profile_small","Speaks Deutsch,English.","Hi, I’m Miriam! I have been a Super Host with Airbnb for quite some years now. Travelling, wether on holidays or business, can be such an exciting and fun experience. Choosing the right place for you is key to having a comfortable and great stay. I absolutely love hosting guests from all over the world and will do my best to make everyone feel welcome and right at home. I am looking forward to hosting you!
 ");
@@ -954,7 +954,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("166091307","Rhonda","https://a0.muscache.com/im/pictures/user/777a9882-631a-4e59-89f9-740152a93a97.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("166091307","22588988"),
+("166091307","22588988");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("95215056","Franky","https://a0.muscache.com/im/pictures/user/4e4dc6a1-1cd2-4b08-925b-e31ab2544b57.jpg?aki_policy=profile_small","Lives in Australia.Work: Bussiness owner.","Hi GUYS,
 I WILL DESCRIBE MYSELF WITH FEW WORDS &amp; MEANINGFUL....
@@ -973,7 +973,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("47822515","Konrad","https://a0.muscache.com/im/pictures/user/c7c1f8f1-b476-46dd-8008-6b033c05f346.jpg?aki_policy=profile_small","Lives in Manly, Australia.","Occasional Traveller ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("47822515","19791170"),
+("47822515","19791170");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("152911570","Cassa","https://a0.muscache.com/im/pictures/user/5cc14d66-70a4-49f3-ae2e-1c26e4547a71.jpg?aki_policy=profile_small","Speaks English,中文.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -987,11 +987,11 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("268525206","Van","https://a0.muscache.com/im/pictures/user/c68d6b72-4462-436b-b973-fbbd0c140994.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("268525206","35697834"),
+("268525206","35697834");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("122449858","Quan","https://a0.muscache.com/im/pictures/user/647614b8-2b04-48eb-9e26-aed1e9b97c0a.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("122449858","17881731"),
+("122449858","17881731");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("75043828","Joel","https://a0.muscache.com/im/pictures/f5617e35-8796-4472-bafd-5684139b7e75.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Español.Connected account.","Hi,
 
@@ -1004,11 +1004,11 @@ I am a friendly and respectful person and I am always up for a good conversation
 
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("75043828","24726161"),
+("75043828","24726161");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("28662970","Sue &amp; Gary","https://a0.muscache.com/im/pictures/d5866446-f53e-41cd-bcb7-684e30b81a6f.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("28662970","10711571"),
+("28662970","10711571");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("50565626","Sante Livia","https://a0.muscache.com/im/pictures/d5a09bb6-2680-4e71-b968-8845fba16e0e.jpg?aki_policy=profile_small","Speaks Italiano.","Sydney retirees who love the heart of the CBD, and sometimes our daughter gives us a hand as co-host.
 
@@ -1022,11 +1022,11 @@ Have travelled to Italy, Austria, Switzerland, Germany, Thailand, Myanmar,  Indo
 
 Be kind to everyone - Jim Henson");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("50565626","9816151"),
+("50565626","9816151");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("106208337","Thanh Binh","https://a0.muscache.com/im/pictures/3bef69fb-6b87-4091-acc8-49fb0eefc633.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.","I would love to share my experiences in Sydney with all my passionate travellers. Food from every culture is available in this multicultural city.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("106208337","16302658"),
+("106208337","16302658");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("35454201","Meredith","https://a0.muscache.com/im/users/35454201/profile_pic/1434020777/original.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.","Wife, mother, daughter. Love the ocean, nature, fine wine and food, exotic travel, good conversation and laughs with friends");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1039,13 +1039,13 @@ I am interested in Eastern religions and culture, but have also spent time in US
 These days I don't hitch but I love meeting fellow travellers and exploring new places. One of my favorite destinations in Luang Prabang in Laos, I lead a writers retreat there every November.
 My life motto is passed down from my mother to me  - Happiness through creativity. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("4367105","834913"),
+("4367105","834913");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("46813147","Truman","https://a0.muscache.com/im/pictures/8955ef6d-81ad-4131-848c-1a21ce7e0e18.jpg?aki_policy=profile_small","Speaks English,Français.Work: Lawyer.","I'm a young lawyer who loves learning new things.
 
 I'm the kind of guy who turns up for a year-long trip with a tiny backpack and no plan.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("46813147","17256885"),
+("46813147","17256885");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("183086309","Carlos","https://a0.muscache.com/im/pictures/user/4d585003-f0e1-4aa6-b6ad-694fc60a822c.jpg?aki_policy=profile_small","Lives in North Sydney, Australia.Speaks English,Español.","I'm Carlos. My wife and I love to travel. We've been to so many places around the world, and we found out that the most important thing is feeling at home even traveling. That's why we decided giving you the opportunity to enjoy a fresh and minimalist place where you will feel nice and comfortable. 
 
@@ -1054,7 +1054,7 @@ Our favourite thing about our home is the location. Being so close to shops, res
 We just would ask you one thing: enjoy and treat our lovely home as you would like us to enjoy and treat yours.
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("183086309","24275629"),
+("183086309","24275629");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("50183566","Petra","https://a0.muscache.com/im/pictures/350c2c96-7fa3-4328-83a8-6f1e69ba963f.jpg?aki_policy=profile_small","Speaks Deutsch,English.Work: Team Leader, Group Home.","Hi,
 
@@ -1100,7 +1100,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("53765359","Marija","https://a0.muscache.com/im/pictures/user/c439933b-85c7-40bd-b5da-97a050f97f25.jpg?aki_policy=profile_small","Lives in Ashfield, Australia.Work: Massage therapist .","Hi, Im Marija and I am a Massage therapist with a background in Early Childhood education also. I enjoy reading, yoga, meditation and cooking. I enjoy travelling and meeting new people. Hope to meet you soon! ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("53765359","22534785"),
+("53765359","22534785");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("21987782","Eva","https://a0.muscache.com/im/pictures/user/d09b6d9c-4cd5-4f2e-9cff-e644cbb993d2.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,中文.","Travel Lover! 18 countries so far.
 Published 2 travel books (Chinese).");
@@ -1132,7 +1132,8 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 ("104204096","34368994"),
 ("104204096","34369567");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
-("15354654","Ollie","https://a0.muscache.com/im/pictures/user/39d1099a-6d17-4f9b-8902-65b7c42b0a19.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Work: Community Health Promotions Officer Aids Council of NSW, Massage Therapist .","Love theatre, music, food and wine. Nothing better than catching up with old and new friends.
+("15354654","Ollie","https://a0.muscache.com/im/pictures/user/39d1099a-6d17-4f9b-8902-65b7c42b0a19.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Work: Community Health Promotions Officer Aids Council of NSW, Massage Therapist .","Love theatre, music, food and wine. Nothing better than catching up with old and new friends.
+
 Am a self-employed masssage therapist, so feel free to hit up for a relaxing massage to ease all your aches and pains after those long plane flights.
 
 Have been an Airbnb host since September 2014.... and is there is absolutely nothing i enjoy more than welcoming people to my city and meeting new people.
@@ -1173,7 +1174,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("25080358","Julie","https://a0.muscache.com/im/users/25080358/profile_pic/1419229220/original.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks English.Work: Dance teacher.","Hi, and welcome to our home. My husband Gary and I have lived in and around Leichhardt all of our lives. We have been in this home for over 30 years and built the cottage at the end of our yard many years ago as a home away from home for each of our 4 children as they grew and studied. Well, they've all grown and moved on now but we're still here! Working full time, we also love to travel and dine out. I am sure that you will find us easy going and friendly hosts! ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("25080358","4875082"),
+("25080358","4875082");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("1936434","Thais","https://a0.muscache.com/im/pictures/794cdf58-2ae5-4726-944b-c7e76698c9bc.jpg?aki_policy=profile_small","Lives in Chippendale, Australia.Speaks English,Português.Connected account.","Me and my husband Andrew love to travel and we go away a lot. We started by using Airbnb to rent our place out when we were away, and became really passionate about hosting and sharing our home. 
 I love to learn about people's stories and journeys whilst sharing my neighbourhood and its wonders.
@@ -1197,20 +1198,20 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("37183518","Kerrie","https://a0.muscache.com/im/users/37183518/profile_pic/1435712386/original.jpg?aki_policy=profile_small","Work: Freelance Art Director.","I am a wife, mother, Art Director / Designer and Airbnb accommodation manager. I live and work in the Redfern/Darlington area of Sydney and love it! I have lived in the area for about 15 years with my husband and we wouldn't live anywhere else. We love to travel, spend time with family and friends and are into great design, art, architecture and yoga. We love doing what we do and have a great time doing it ! ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("37183518","15794371"),
+("37183518","15794371");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("26709417","Silvia","https://a0.muscache.com/im/users/26709417/profile_pic/1423038950/original.jpg?aki_policy=profile_small","Lives in Rushcutters Bay, Australia.Speaks English,Italiano.Work: Real Estate Agent.","I am a Real Estate Agent who works locally and so I know the area extremely well and like to share my local knowledge. I enjoy keeping fit with Yoga, Dance and lots of Harbourside walking. I love meeting new people and airbnb gives me these opportunities. I hope you will enjoy my home as much as I do!
 
 For those of you travelling from Italy: Io parlo italiano.  Benvenuti a casa mia!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("26709417","5163979"),
+("26709417","5163979");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("10133067","Simone","https://a0.muscache.com/im/users/10133067/profile_pic/1419116046/original.jpg?aki_policy=profile_small","Speaks English,Español,Português.","I'm a busy friendly and smily person with a positive attitude towards life. 
 I emphasise a healthy lifestyle but it doesn't rule my life. I love traveling, camping, outdoor activities, live music, cooking, dinning out and getting to know new cultures and their cuisine.
 
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("10133067","17706238"),
+("10133067","17706238");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("71193770","Shuang","https://a0.muscache.com/im/pictures/0d696f26-a885-4f2f-a277-9cf0edee9533.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks English,中文.Connected account.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1229,7 +1230,7 @@ My life quote is:
 "It has been said that something as small as the flutter of a butterfly's wing can ultimately cause a typhoon halfway around the world" - Chaos Theory
 Small things can change the world ☺️");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("154157237","22270473"),
+("154157237","22270473");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("774358","Seli","https://a0.muscache.com/im/pictures/19f6da6a-7ace-4406-b933-a2175a6b9fb1.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Connected account.","Love life in the sunshine. Forever chasing summer, glorious moments and the perfect sunset.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1239,7 +1240,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("144757307","Jason","https://a0.muscache.com/im/pictures/f7bccdb1-a090-4f5e-979f-db87c7671387.jpg?aki_policy=profile_small","Lives in Parramatta, Australia.Speaks English.Work: Higher Education sector.Connected account.","Friendly working professional, enthusiastic snowboarder :)");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("144757307","20292971"),
+("144757307","20292971");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("15118978","Husan","https://a0.muscache.com/im/pictures/user/9c19e158-d942-45e0-a792-4891921f9b8b.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1278,11 +1279,11 @@ My life would be empty without my best mate &amp; sidekick Russo, he is 21kgs of
 
 Three things I'd find it hard to go without: Technology, Bacon &amp; Wine");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("127451501","18397158"),
+("127451501","18397158");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("22177197","Kathryn","https://a0.muscache.com/im/users/22177197/profile_pic/1440328575/original.jpg?aki_policy=profile_small","Work: Producer.","We are a semi-retired active couple living the dream of our lives. Ron is an elite athletics coach working with young gifted athletes (sprints and hurdles) after a very long a exhausting career as a newspaper editor. His hobby is now his career. After returning from the world of events (Sydney Olympics, APEC and World Youth Day) Kathryn turned to stand-up comedy and ran her own comedy room for the last 8 years (with Ron). Her passion is any live performance but with special bent toward storytelling. Most of our guests are young (around the same age as our adult children) so we figure that they want plenty of room, independence and self direction. We're just very happy to help if asked. The motto that means the most to me is "a life lived in fear is a life half lived".");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("22177197","4271380"),
+("22177197","4271380");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("135573101","Alba","https://a0.muscache.com/im/pictures/90e4b086-71c6-4af0-9f73-23bff2edd59a.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks Bahasa Indonesia,English,Español,Italiano,한국어.","Hi, my name is Alba. 
 I look forward to welcoming you to my beautiful home close to the Sydney`s main tourist attractions!
@@ -1302,7 +1303,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("48015860","Alex","https://a0.muscache.com/im/pictures/c870ad82-a014-4d41-8226-a82e25f30d9f.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Connected account.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("48015860","33502045"),
+("48015860","33502045");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("87388224","Chris","https://a0.muscache.com/im/pictures/86268ac9-ca10-4c43-8db0-6fe065247933.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1338,7 +1339,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("114934361","Tarek","https://a0.muscache.com/im/pictures/1cced785-c2ce-45a8-80d2-f2a2b9ecc181.jpg?aki_policy=profile_small","Lives in Pyrmont, Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("114934361","34547948"),
+("114934361","34547948");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("2351093","Mirko","https://a0.muscache.com/im/users/2351093/profile_pic/1336798320/original.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Italiano.Work: ESPRESSINO.Connected account.","Italian but been living in australia in the last 10 years 
 alway s worked in restaurant s and bars around the world
@@ -1356,7 +1357,7 @@ like cheese and wine with a nice chat with great company
 And will  make sure you enjoy your stay in sydney ....
 MIRKO");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("2351093","498008"),
+("2351093","498008");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("5169464","Spencer","https://a0.muscache.com/im/users/5169464/profile_pic/1365246877/original.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Work: Self Employed - Cafe Owner.Connected account.","Professional guy that loves to travel!  Enjoy discussing travel stories.  I have lived in Sydney for 15 years and love the city.
 
@@ -1366,7 +1367,7 @@ Went to school on the Gold Coast in Queensland and have family there, so may be 
 
 Have also lived in regional centers in New South Wales, Victoria and Queensland - happy to advise holiday spots.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("5169464","952331"),
+("5169464","952331");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("5314080","Claudia","https://a0.muscache.com/im/users/5314080/profile_pic/1423217843/original.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Français.","I am Australian and was born in Sydney. I have lived in France before and I adore French culture and language.I run a boutique French Class business. I enjoy reading, films, travelling and meeting people.
 When it comes to hosting people in our home, we are very reliable and always keen to offer a wonderful experience in our beautiful home and city!
@@ -1379,7 +1380,7 @@ INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES
 
 Loves basketball, snowboarding and scuba diving");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("25419716","4933784"),
+("25419716","4933784");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("14147903","Hannah","https://a0.muscache.com/im/pictures/user/b2d8c260-f314-4462-8cd5-f0d181f5de00.jpg?aki_policy=profile_small","Lives in Rose Bay, Australia.","Hi I'm Hannah. I love being an Airbnb host and sharing my apartment in Kirribilli with people from all over the world. I am a born and bred Sydney-sider. I have lived in the UK, Europe, the US and middle east. I now live back in Sydney in the Eastern suburbs with my lovely husband - Mark - and my two (super-cute) young daughters. I love travelling and experiencing different cultures and new adventures. Although with two young kids my travels are less frequent than they used to be. This year we will be visiting Hong Kong and Hawaii.
 
@@ -1387,7 +1388,7 @@ I pride myself on looking after my guests well with clean and comfortable accomm
 
 I'm always available to answer any questions you have about what its like to spend time in Sydney and where you may like to spend some time whilst you're here.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("14147903","2765971"),
+("14147903","2765971");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("13059157","Bert","https://a0.muscache.com/im/users/13059157/profile_pic/1398253553/original.jpg?aki_policy=profile_small","Speaks English,Nederlands.Work: Dealer in old wares and bric a brac..","I have lived in Sydney since 1969, after moving here from Holland.  I have lived in Queensland and Western Australia, but always came back to Sydney.  I love my inner city apartment, which I use as a bachelor pad to escape the boredom of living in the suburbs.  But when I'm not using it, I'd like to share it with visitors to the city,  so they can experience Sydney from the heart.  I'd be happy to talk to you about antique French cars; to point you to the real Sydney; or to share travel experiences.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1405,7 +1406,7 @@ I am based in New York City and run meditation business in Manhattan and Brookly
 
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("718063","8107268"),
+("718063","8107268");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("65825639","Thomas","https://a0.muscache.com/im/pictures/1f0c89c0-8fe1-4ba7-8380-cee2129493c8.jpg?aki_policy=profile_small","Connected account.","Sydney city local interested in Sailing, surfing, swimming and exploring the area.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1418,11 +1419,11 @@ INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES
 ("402292","Helen","https://a0.muscache.com/im/users/402292/profile_pic/1397168958/original.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Français.","We are from Ireland, but have lived in Sydney for over 30 years.  We enjoy travelling, theatre, movies, nature, walking, and meeting  people. We are happy to help in any way we can, but you can be assured of total privacy if you just want to relax and do your own thing.
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("402292","75702"),
+("402292","75702");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("96643264","Tracey","https://a0.muscache.com/im/pictures/user/b0ef47c4-3c79-4787-8e89-e9c0251c567b.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("96643264","22295354"),
+("96643264","22295354");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("5825159","David","https://a0.muscache.com/im/pictures/user/667c1245-179b-4c2c-a112-ea7d991ad67b.jpg?aki_policy=profile_small","Lives in Sydney, Australia.","Enjoy traveling and meeting new people. Love to try new places everywhere I go and enjoy a drink or two.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1431,11 +1432,11 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("105193068","Victoria","https://a0.muscache.com/im/pictures/436576b2-9d4a-4cbe-a73c-e7112884816d.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Work: Channel 7.Connected account.","Big heart, big hair, big adventure. Respectful traveller looking for new experiences, connections, and places. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("105193068","34373264"),
+("105193068","34373264");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("20343579","Larry","https://a0.muscache.com/im/users/20343579/profile_pic/1408611151/original.jpg?aki_policy=profile_small","Work: Accountant.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("20343579","4989322"),
+("20343579","4989322");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("8939894","Alastair","https://a0.muscache.com/im/pictures/5fec717a-23f7-4ded-861f-a87d4a275049.jpg?aki_policy=profile_small","","4 continents, 27 countries, 60+ cities and thousands of kilometres covered, I have accrued an endless supply of memories abroad that I wish to expand on through my active involvement within the dynamic and exciting Airbnb community. 
 
@@ -1466,7 +1467,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("30069789","Alex","https://a0.muscache.com/im/users/30069789/profile_pic/1427411468/original.jpg?aki_policy=profile_small","Speaks English,中文.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("30069789","16091446"),
+("30069789","16091446");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("15885982","Julian &amp; André","https://a0.muscache.com/im/pictures/28bb682b-1697-4337-a99e-0ffa99859a6f.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Español,Português,Svenska.","Hello, and thank you very much for having a look at our profile :) 
 
@@ -1537,15 +1538,15 @@ Hope you book and enjoy the Studio.
 Cheers,
 Paul");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("106463699","16975413"),
+("106463699","16975413");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("6972499","John","https://a0.muscache.com/im/pictures/93c59384-93cd-4392-852d-69ce138886b5.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English.","33 year old professional that works in the Sydney CBD Monday to Friday.  I enjoy books (invariably non-fiction), vintage movies, music, and am somewhat foodie (homemade and restaurant).  Travelling is also an obsession, and being an Airbnb host is a great alternative way to interact with people from around the world.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("6972499","20022944"),
+("6972499","20022944");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("45937207","Amy","https://a0.muscache.com/im/pictures/af91da9d-1bdc-4954-96f7-f6d6296b8b32.jpg?aki_policy=profile_small","Lives in Bondi Beach, Australia.Speaks English.","Love to travel!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("45937207","8759863"),
+("45937207","8759863");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("22269401","Sam And Janelle","https://a0.muscache.com/im/users/22269401/profile_pic/1443518362/original.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.","Hi there we are Sam and Janelle and we are excited by the sharing economy that sites like AirBnB provides. 
 
@@ -1565,11 +1566,11 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("371323","Andrew","https://a0.muscache.com/im/pictures/a61598e1-c2ac-45f1-a7cb-8fa94f96f11d.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Work: films.","Wandering filmmaker");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("371323","3046619"),
+("371323","3046619");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("115069485","Jim","https://a0.muscache.com/im/pictures/1d840035-a84f-4c3b-ba73-6ad6dad7ec4e.jpg?aki_policy=profile_small","Lives in Sydney, Australia.","I am a  film composer. My partner Gloria is a scientist. Its  a perfect match of opposites. We have a 14 year old son. We are unpretentious and easy going. We survived 25 years in Los Angeles where I wrote scores for horror and action movies and met some amazing creative people. We are active and love to get out and enjoy our great city so we can help you with your plans. We are well informed on history, politics , food and culture and we love to converse about them. We will make you welcome in our house. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("115069485","17124256"),
+("115069485","17124256");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("32928357","Mary","https://a0.muscache.com/im/users/32928357/profile_pic/1431160932/original.jpg?aki_policy=profile_small","Lives in The Rocks, Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1587,7 +1588,7 @@ I go to University of Technology Sydney, where I am studying law. My brother Mit
 We live in the house upstairs, and hope you enjoy your stay!
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("1347315","256569"),
+("1347315","256569");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("233182849","Mos","https://a0.muscache.com/im/pictures/user/06a49c31-3a3c-4110-89e3-bb25e93dc6ea.jpg?aki_policy=profile_small","Lives in Phayao, Thailand.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1648,7 +1649,7 @@ Eve and her partner Brian live in the main house and are friendly and welcoming.
 Eve and Brian do have two Maltese cross poodles (Ella and Willie). They're part of the family and are harmless, but they will seek you out and try to make friends with you
 ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("4234278","1349941"),
+("4234278","1349941");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("4706929","Sam","https://a0.muscache.com/im/pictures/5c974e2d-c2f4-489d-ac37-7ce4180d0fe1.jpg?aki_policy=profile_small","Lives in Tamarama, Australia.Speaks English.Work: LET US HOST PTY LTD.Connected account.","I'm from Sydney, Australia and Merike is from Tallinn, Estonia. 
 
@@ -1718,7 +1719,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("20655229","Amanda","https://a0.muscache.com/im/pictures/user/28cb716d-cb8e-4946-9421-36b8e77587bf.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Português.","We are young and passionate about traveling the world, camping in our van, meditation and good vibes. When we travel we always try to find a place to call home so we are opening our beautiful house to share with you ❤️");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("20655229","24337354"),
+("20655229","24337354");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("51685133","Brett","https://a0.muscache.com/im/pictures/user/b95690bf-7c24-4599-a2da-98e96fc800fb.jpg?aki_policy=profile_small","Lives in Australia.","The owner of Glengarry Castle Hotel since 2004");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1738,16 +1739,16 @@ In a nutshell.. I work in hotel industry and am into photography and Jonathan is
 
 Talk to us in English, German, Slovak, Czech or Spanish!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("188659639","24954388"),
+("188659639","24954388");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("183028242","Sophie &amp; Sonny","https://a0.muscache.com/im/pictures/user/f79886f5-c89a-4610-8cdd-58b88a4f2ee6.jpg?aki_policy=profile_small","Lives in Sefton, Australia.","We are parents of two cheeky little boys. We enjoy spending time with them and take them everywhere whenever possible. We love to see more of the world and discover new experiences. Our favourite food is street food.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("183028242","24287277"),
+("183028242","24287277");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("10305439","Monique","https://a0.muscache.com/im/pictures/220fca8e-7e7e-468a-97ae-9623b27f4cb6.jpg?aki_policy=profile_small","Speaks English.","Hi there, 
 I have traveled all over the world using airbnb and I think it's a great way to meet new people and cultures. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("10305439","24562378"),
+("10305439","24562378");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("20707547","George","https://a0.muscache.com/im/users/20707547/profile_pic/1411090954/original.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1772,7 +1773,7 @@ I've met so many awesome people through AirBnB, some of whom now live in Sydney 
   
 If you come stay, I hope you will feel as at home here as you would at your own place.  You're basically a house mate while you're here.  I would just ask you treat the place like you would your own, have respect for the neighbours in the building and take care of the owners investment in this beautiful property that we are so fortunate to stay in.  Nothing too stressful.  :)");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("6764823","6340333"),
+("6764823","6340333");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("6248691","Lorraine","https://a0.muscache.com/im/pictures/user/9a3a4a0d-57be-49cc-9883-c97d1d60ec22.jpg?aki_policy=profile_small","Lives in Paddington, Australia.","Hello and welcome! 
 
@@ -1835,7 +1836,7 @@ INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES
 ("161730392","Kiana And Family","https://a0.muscache.com/im/pictures/user/70a4a578-4792-4d03-a660-adc38abb835b.jpg?aki_policy=profile_small","Lives in Sydney, Australia.","Family living in Sydney. Love Sydney, love travelling, love our daughter, Kiki. 
 Our apartment was purchased recently for our daughter. We have popped this beautiful city pad on Air BnB for others to use and enjoy before she moves in!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("161730392","22482212"),
+("161730392","22482212");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("10217099","Jeremy","https://a0.muscache.com/im/users/10217099/profile_pic/1385257492/original.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Work: Teacher and Accommodation.","Hello
 
@@ -1854,7 +1855,7 @@ Outside of Airbnb, im a consultant in the IT and Finance space. But apart from a
 
 I have been in Sydney for a while now, so happy to have a chat and give you my opinion on what are the coolest places around.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("8169284","4597470"),
+("8169284","4597470");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("9951125","Sean","https://a0.muscache.com/im/pictures/user/53cc7866-7655-4f34-a3e9-7b3f01bec7fb.jpg?aki_policy=profile_small","Lives in New South Wales, Australia.Speaks English,Español,Русский.Work: University of Sydney.","I am a lecturer in Finance at the University of Sydney, and have travelled to 39 countries so far. I love to rock climb, cycle, go to music festivals and drink good red wine. I enjoy cooking, good friends and good times. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1863,7 +1864,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("3600856","Angus","https://a0.muscache.com/im/pictures/user/0102a3e9-f154-4e54-8e16-7393077b6a87.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks English,Français.Connected account.","I grew up in Sydney but have loved travelling around Australia and the world. Happy to give you some tips about fun places to hang out in our neighbourhood or anything else you want to know. I'm a relaxed kind of guy and hope to make your stay hassle-free and easy.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("3600856","4755217"),
+("3600856","4755217");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("27286333","Julie","https://a0.muscache.com/im/pictures/455cdf06-3fff-4938-8fb3-a5c4fb36ca58.jpg?aki_policy=profile_small","Lives in Darlinghurst, Australia.Speaks English,Español,中文.Work: Scientist.","I'm an AirBnB and a share economy enthusiast. I eat, breathe and sleep Airbnb! I am scientist (protein chemistry) and I work as a certified Airbnb community expert and manage several Airbnb listings in fantastic Sydney locations.  I enjoy the Sydney lifestyle and fine foods and wine. I have a natural talent for hospitality and would love to host you in the very near future! ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -1909,7 +1910,7 @@ We're super friendly and will bend over backwards to help you have the best stay
 Michael &amp; Cathy
 fell in love with airbnb when I first try it, then I thought I should do something to sightseers or businessmen, make them obtain their best during their stay, I try to make my cozy home as comfortable and user friendly as possible, let my guests feel comfortable and enjoyable.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("122624551","23772409"),
+("122624551","23772409");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("2784819","Eve","https://a0.muscache.com/im/users/2784819/profile_pic/1346332361/original.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks Deutsch.","My main interest is art, both its history and its practice, I am a painter and work from a studio in the back garden. My   other interests  include music, literature, walking etc.   My family background is Russian and I speak some Russian as well as German.
 I am a friendly and relaxed person, as is my husband Richard and our house reflects this and our interests in art and history. He speaks some Spanish though is not fluent, as does our 21-year-old daughter who also lives in the house.");
@@ -1958,7 +1959,7 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("61212872","Alex","https://a0.muscache.com/im/pictures/d0d2f675-363c-4884-a7ad-54ea30f26d34.jpg?aki_policy=profile_small","","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("61212872","30405038"),
+("61212872","30405038");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("43387943","Sandra","https://a0.muscache.com/im/pictures/user/4a83387a-6808-4045-9ba2-459b9949b8c0.jpg?aki_policy=profile_small","Lives in Surry Hills, Australia.Speaks English,Español.","Young professional working in online and retail fashion. Love dogs, cooking, singing and wine. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -2001,38 +2002,38 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("73505172","Nicholas","https://a0.muscache.com/im/pictures/7cb02a0e-b2e9-4a4b-ac60-2e7c5730305a.jpg?aki_policy=profile_small","Lives in London, United Kingdom.Speaks English.Connected account.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("73505172","13162019"),
+("73505172","13162019");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("91034448","Darren","https://a0.muscache.com/im/pictures/c147d7e9-7aa1-47a9-b6d2-bc8637086a2e.jpg?aki_policy=profile_small","Lives in Carlingford, Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("91034448","16999162"),
+("91034448","16999162");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("11026509","Edward","https://a0.muscache.com/im/users/11026509/profile_pic/1389561204/original.jpg?aki_policy=profile_small","Lives in Bondi Beach, Australia.Work: Furniture transport and installation.","Live and work in the Sydney area. Love the beach.
 
 As your host, I will leave you to it. If you need me, I won't be far away.");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("11026509","2160836"),
+("11026509","2160836");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("87005986","Norman","https://a0.muscache.com/im/pictures/91bd31d3-57d8-4ff6-b88a-a9af402727ae.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Speaks Deutsch,English.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("87005986","16442255"),
+("87005986","16442255");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("174052553","Kathleen","https://a0.muscache.com/im/pictures/user/226c4da3-d3c6-4725-ad6f-ac63d89594c8.jpg?aki_policy=profile_small","Lives in Woronora, Australia.","Hi! Teacher who occasionally travels. We have an Airbnb- too - so very busy!");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("174052553","23357643"),
+("174052553","23357643");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("9277614","Marlene","https://a0.muscache.com/im/pictures/user/50e935bd-04c9-4ce2-a8c2-5af1f08b64f1.jpg?aki_policy=profile_small","Lives in Sydney, Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("9277614","1765417"),
+("9277614","1765417");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("4945327","Stephanie And Julie","https://a0.muscache.com/im/pictures/user/f2ff1b14-d090-4adb-a631-3231a64bbdca.jpg?aki_policy=profile_small","Lives in Sydney, Australia.Connected account.","Stephanie from Sydney Australia. I love travelling, and love hosting people from around the world. On my travels I have encountered people who explain the area and give us great advice to get involved in the culture - which is exactly what I aim to do!
 My mum Julie also manages our property in Sydney, and (in my humble opinion) she is just the most lovely lady around! ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("4945327","4185909"),
+("4945327","4185909");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("14018952","Sarah","https://a0.muscache.com/im/pictures/1c27c88d-edc4-4f0c-a3a4-27b5914b9c9d.jpg?aki_policy=profile_small","Lives in Western Australia, Australia.","");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("14018952","5041030"),
+("14018952","5041030");
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("191127377","Shirene","https://a0.muscache.com/im/pictures/user/6258e490-f03c-4946-9a86-2224c7c4200c.jpg?aki_policy=profile_small","Lives in Cherrybrook, Australia.Speaks English,中文.","I love music, reading, travelling, enjoy good food and meeting new friends. I am not a particularly sporty person but enjoy walking, I find it therapeutic. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
@@ -2062,4 +2063,4 @@ INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES
 INSERT INTO `host` (`id`, `name`, `picUrl`,`details`,`self_intro`) VALUES 
 ("49736625","Rae","https://a0.muscache.com/im/pictures/user/f3cca7e0-da3a-4717-99b9-cb9870b0f9a2.jpg?aki_policy=profile_small","Speaks English.Work: Rug Wholesaler.","Friendly and outgoing. Native Canadian (Cree) decent, born in Australia.  Very sociable, enjoy hosting and making sure my guests are looked after. ");
 INSERT INTO `host_to_room` (`host_id`, `room_id`) VALUES 
-("49736625","9613095"),
+("49736625","9613095");
