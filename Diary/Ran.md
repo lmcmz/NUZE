@@ -22,3 +22,9 @@ week 3:
 
 - Finish the writing of proposal
 - Design the UI of property detail page and search result page
+
+---------------------------------------------------------------------------
+
+week 4:
+
+- Finish the UI, including pages for host to add new listings, reviewing stayed properties, and profile related pages.
