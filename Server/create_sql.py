@@ -139,7 +139,20 @@ def house_longest_length(information):
     return  longest_house_id ,longest_name ,longest_picUrls ,longest_bedroom_label,longest_bathroom_label ,longest_neighborhood ,longest_preview_amenities ,longest_space_type,longest_host_id ,longest_comment ,longest_user_id ,longest_user_name,longest_house_des
 
 
+def city_house_infro(data_dict):
+    
+    for city in city_querys:
+        file_name = city + '.json'
+        city_data = {}
+        city_data[city] = read_json_file(file_name)
+        mix_dict = {}
+        mix_dict.update(data_dict)
+        mix_dict.update(city_data)
+        data_dict = mix_dict
+    return data_dict
+
 def add_house_infro(data_dict):
+    
     for city in city_querys:
         file_name = city + '.json'
         city_data = read_json_file(file_name)
@@ -160,6 +173,14 @@ print(no_review)
 host_information = read_json_file("host.json")
 id_len,name_len,picUrl_len,detail_len,selfIntro_len,room_id_len = host_table_longest_length(host_information)
 longest_house_id ,longest_name ,longest_picUrls ,longest_bedroom_label,longest_bathroom_label ,longest_neighborhood ,longest_preview_amenities ,longest_space_type,longest_host_id ,longest_comment ,longest_user_id ,longest_user_name,longest_house_des = house_longest_length(house_information)
+
+longest_city_len = 0
+for nsw_city in city_querys:
+    len_city = len(nsw_city)
+    if len_city > longest_city_len:
+        longest_city_len = len_city
+
+
 
 print(len(host_information))
 with open('database.sql','w') as sql:
@@ -202,6 +223,7 @@ with open('database.sql','w') as sql:
 
     #create house table
     print("CREATE TABLE IF NOT EXISTS `house` (",file = sql)
+    print("  `city` varchar({}),".format(varchar_length(longest_city_len)),file = sql)
     print("  `house_id` INT NOT NULL KEY COMMENT 'unique ID for each house(set by airbnb)',",file = sql)
     print("  `host_id` INT COMMENT 'unique ID for the house host(set by airbnb)',".format(varchar_length(longest_host_id)),file = sql)
     print("  `lat` double COMMENT 'house latitude',",file = sql)
@@ -250,10 +272,18 @@ with open('database.sql','w') as sql:
     print(") DEFAULT CHARSET=utf8mb4;",file = sql)
     print('\n',file = sql)
 
+    #create city table
+    print("CREATE TABLE IF NOT EXISTS `city` (",file = sql)
+    print("  `id` INT UNSIGNED AUTO_INCREMENT KEY COMMENT 'unique ID for each row',",file = sql)
+    print("  `city` varchar({})".format(varchar_length(longest_city_len)),file = sql)
+    print(") DEFAULT CHARSET=utf8mb4;",file = sql)
+    print('\n',file = sql)
+
 sql.close()
 
 with open('database.sql','a') as sql:
-    i = 0
+    for nsw_city in city_querys:
+        print("INSERT IGNORE INTO `city` ( `city`) VALUES (\"{}\");".format(nsw_city),file = sql)
     #print(len(host_information))
     for host_id in host_information:
         name = host_information[host_id]['name']
@@ -276,7 +306,6 @@ with open('database.sql','a') as sql:
         print ("INSERT IGNORE INTO `user`() VALUES ();",file = sql) 
         print("INSERT IGNORE INTO `host` ( `host_id`,`user_id`,`name`,`details`,`pic_url`,`self_intro` ) VALUES ",file = sql)
         print("({},last_insert_id(),\"{}\",\"{}\",\"{}\",\"{}\");".format(int(host_id),name,details,picUrl,self_intro),file = sql)
-        i += 1
         room_id_num = len(host_information[host_id]['room_ids'])
         if room_id_num == 0:
             continue
@@ -292,83 +321,87 @@ with open('database.sql','a') as sql:
 
 sql.close()
 
+house_information = city_house_infro({})
 
 clients = set()
 with open('database.sql','a') as sql:
     print(len(house_information))
-    for house in house_information:
-        house_id = int(house)
-        host_id = house_information[house][17]
-        lat = house_information[house][0][0]
-        lng = house_information[house][0][1]
-        brife_infor = house_information[house][1]
-        if '&' in brife_infor:
-            brife_infor = re.sub(r'(&.*?) ','',brife_infor)
-            #print(self_intro)
-        if '\"' in brife_infor:
-            brife_infor = re.sub(r'\"','\'',brife_infor)
-            print(brife_infor)
-        description = house_information[house][18]
-        if '&' in description:
-            description = re.sub(r'(&.*?) ','',description)
-            #print(self_intro)
-        if '\"' in description:
-            description = re.sub(r'\"','\'',description)
-            #print(description)
-        bedrooms = int(house_information[house][4])
-        bathrooms = int(house_information[house][6])
-        beds = int(house_information[house][7])
-        guest_capacity = int(house_information[house][8])
-        neighborhood = house_information[house][9]
-        if neighborhood is None:
-            neighborhood = ""
-        preview_amenities = house_information[house][10]
-        if preview_amenities is None:
-            preview_amenities = ""
-        reviews_count = house_information[house][11]
-        star_rating = house_information[house][12]
-        if star_rating is None:
-            star_rating = -1
-        space_type = house_information[house][13]
-        price = house_information[house][14]
-        clean_fee = house_information[house][21]
-        print("INSERT IGNORE INTO `house` (`house_id`,`host_id` ,`lat` ,`lng` ,`brife_infor`,`description`,`bedrooms`,`bathrooms`,`beds`,`guest_capacity`,`neighborhood` ,`preview_amenities`,`reviews_count` ,`star_rating` ,`space_type` ,`price` ,`clean_fee` ) VALUES ",file = sql)
-        print("({},{},{},{},\"{}\",\"{}\",{},{},{},{},\"{}\",\"{}\",{},{},\"{}\",{},{});".format(house_id,host_id,lat,lng,brife_infor,description,bedrooms,bathrooms,beds,guest_capacity,neighborhood,preview_amenities,reviews_count,star_rating,space_type,price,clean_fee),file = sql)
-        print("INSERT IGNORE INTO `house_pic_urls` (`house_id`,`pic_url`) VALUES ",file = sql)
-        if len(house_information[house][2]) > 1:
-            for pic_index in range(len(house_information[house][2]) -1):
-                print("({},\"{}\"),".format(house_id,house_information[house][2][pic_index]),file = sql)
-            print("({},\"{}\");".format(house_id,house_information[house][2][pic_index + 1 ]),file = sql)
-        else:
-            print("({},\"{}\");".format(house_id,house_information[house][2][0]),file = sql)
 
-        if int(reviews_count) > 0:
-            #print("INSERT IGNORE INTO `house_review` (`house_id` ,`client_id` ,`comment`) VALUES ",file = sql)
-            for client in house_information[house][19]:
-                client_id = int(client)
-                comment = house_information[house][19][client][1]
-                if '&' in comment:
-                    comment = re.sub(r'(&.*?) ','',comment)
-                    #print(self_intro)
-                if '\"' in comment:
-                    comment = re.sub(r'\"','\'',comment)
-                    #print(description)
-                client_name = house_information[house][19][client][0]
-                print("INSERT IGNORE INTO `house_review` (`house_id` ,`client_id` ,`comment`) VALUES ",file = sql)
-                print("({},{},\"{}\");".format(house_id,client_id,comment),file = sql)
-                if client not in clients:                                
-                    print ("INSERT IGNORE INTO `user`() VALUES ();",file = sql) 
-                    print("INSERT IGNORE INTO `client` ( `user_id`,`client_id`,`client_name`) VALUES ",file = sql)
-                    print("(last_insert_id(),{},\"{}\");".format(client_id,client_name),file = sql)
-                    clients.add(client)
+    for city in house_information:
 
-        print("INSERT IGNORE INTO `house_calender` (`house_id` ,`date` ,`price`,`availablity`) VALUES ",file = sql)
-        for month in house_information[house][20]:
-            for date in house_information[house][20][month]:
-                if date != "2019-09-30":
-                    print("({},\"{}\",{},\"{}\"),".format(house_id,date,house_information[house][20][month][date][1],house_information[house][20][month][date][0]),file = sql)
-                else:
-                    print("({},\"{}\",{},\"{}\");".format(house_id,date,house_information[house][20][month]["2019-09-30"][1],house_information[house][20][month]["2019-09-30"][0]),file = sql)
+        for house in house_information[city]:
+            house_id = int(house)
+            host_id = house_information[city][house][17]
+            lat = house_information[city][house][0][0]
+            lng = house_information[city][house][0][1]
+            brife_infor = house_information[city][house][1]
+            if '&' in brife_infor:
+                brife_infor = re.sub(r'(&.*?) ','',brife_infor)
+                #print(self_intro)
+            if '\"' in brife_infor:
+                brife_infor = re.sub(r'\"','\'',brife_infor)
+                print(brife_infor)
+            description = house_information[city][house][18]
+            if '&' in description:
+                description = re.sub(r'(&.*?) ','',description)
+                #print(self_intro)
+            if '\"' in description:
+                description = re.sub(r'\"','\'',description)
+                #print(description)
+            bedrooms = int(house_information[city][house][4])
+            bathrooms = int(house_information[city][house][6])
+            beds = int(house_information[city][house][7])
+            guest_capacity = int(house_information[city][house][8])
+            neighborhood = house_information[city][house][9]
+            if neighborhood is None:
+                neighborhood = ""
+            preview_amenities = house_information[city][house][10]
+            if preview_amenities is None:
+                preview_amenities = ""
+            reviews_count = house_information[city][house][11]
+            star_rating = house_information[city][house][12]
+            if star_rating is None:
+                star_rating = -1
+            space_type = house_information[city][house][13]
+            price = house_information[city][house][14]
+            clean_fee = house_information[city][house][21]
+            print("INSERT IGNORE INTO `house` (`city`,`house_id`,`host_id` ,`lat` ,`lng` ,`brife_infor`,`description`,`bedrooms`,`bathrooms`,`beds`,`guest_capacity`,`neighborhood` ,`preview_amenities`,`reviews_count` ,`star_rating` ,`space_type` ,`price` ,`clean_fee` ) VALUES ",file = sql)
+            print("(\"{}\",{},{},{},{},\"{}\",\"{}\",{},{},{},{},\"{}\",\"{}\",{},{},\"{}\",{},{});".format(city,house_id,host_id,lat,lng,brife_infor,description,bedrooms,bathrooms,beds,guest_capacity,neighborhood,preview_amenities,reviews_count,star_rating,space_type,price,clean_fee),file = sql)
+            print("INSERT IGNORE INTO `house_pic_urls` (`house_id`,`pic_url`) VALUES ",file = sql)
+            if len(house_information[city][house][2]) > 1:
+                for pic_index in range(len(house_information[city][house][2]) -1):
+                    print("({},\"{}\"),".format(house_id,house_information[city][house][2][pic_index]),file = sql)
+                print("({},\"{}\");".format(house_id,house_information[city][house][2][pic_index + 1 ]),file = sql)
+            else:
+                print("({},\"{}\");".format(house_id,house_information[city][house][2][0]),file = sql)
+
+            if int(reviews_count) > 0:
+                #print("INSERT IGNORE INTO `house_review` (`house_id` ,`client_id` ,`comment`) VALUES ",file = sql)
+                for client in house_information[city][house][19]:
+                    client_id = int(client)
+                    comment = house_information[city][house][19][client][1]
+                    if '&' in comment:
+                        comment = re.sub(r'(&.*?) ','',comment)
+                        #print(self_intro)
+                    if '\"' in comment:
+                        comment = re.sub(r'\"','\'',comment)
+                        #print(description)
+                    client_name = house_information[city][house][19][client][0]
+                    print("INSERT IGNORE INTO `house_review` (`house_id` ,`client_id` ,`comment`) VALUES ",file = sql)
+                    print("({},{},\"{}\");".format(house_id,client_id,comment),file = sql)
+                    if client not in clients:                                
+                        print ("INSERT IGNORE INTO `user`() VALUES ();",file = sql) 
+                        print("INSERT IGNORE INTO `client` ( `user_id`,`client_id`,`client_name`) VALUES ",file = sql)
+                        print("(last_insert_id(),{},\"{}\");".format(client_id,client_name),file = sql)
+                        clients.add(client)
+
+            print("INSERT IGNORE INTO `house_calender` (`house_id` ,`date` ,`price`,`availablity`) VALUES ",file = sql)
+            for month in house_information[city][house][20]:
+                for date in house_information[city][house][20][month]:
+                    if date != "2019-09-30":
+                        print("({},\"{}\",{},\"{}\"),".format(house_id,date,house_information[city][house][20][month][date][1],house_information[city][house][20][month][date][0]),file = sql)
+                    else:
+                        print("({},\"{}\",{},\"{}\");".format(house_id,date,house_information[city][house][20][month]["2019-09-30"][1],house_information[city][house][20][month]["2019-09-30"][0]),file = sql)
 
 
 
