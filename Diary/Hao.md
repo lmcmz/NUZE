@@ -15,3 +15,9 @@
 - Modify design and add animation in Website
 - Organize team meeting
 - Implementing search page
+
+## Week4 🍕
+
+- Working with mapbox an redux
+- Try to support multiple layout in search page.
+- Planning add crypto payment in NUZE
