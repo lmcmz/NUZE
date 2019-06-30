@@ -34,10 +34,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.filter.GenericFilterBean;
+import xyz.nuze.error.BusinessException;
 import xyz.nuze.mapper.ClientMapper;
 import xyz.nuze.mapper.HostMapper;
 import xyz.nuze.mapper.UserMapper;
 import xyz.nuze.model.User;
+import xyz.nuze.services.ClientService;
+import xyz.nuze.services.HostService;
+import xyz.nuze.services.UserService;
 import xyz.nuze.utils.JWT.JWTUtil;
 
 import javax.servlet.FilterChain;
@@ -175,7 +179,7 @@ class TokenAuthenticationService {
 // 自定义身份认证验证组件
 class CustomAuthenticationProvider implements AuthenticationProvider {
 
-//    @Autowired
+    //    @Autowired
 //    private UserService userService;
 //
 //    @Autowired
@@ -185,14 +189,14 @@ class CustomAuthenticationProvider implements AuthenticationProvider {
 //    private ClientService clientService;
 //
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
 
     @Autowired
-    ClientMapper clientMapper;
+    private HostService hostService;
 
 
     @Autowired
-    HostMapper hostMapper;
+    private ClientService clientService;
 //
 //    @Autowired
 //    private RedisTemplate redisTemplate;
@@ -217,90 +221,43 @@ class CustomAuthenticationProvider implements AuthenticationProvider {
 //
         // Get userModel by username
         User userModel;
-//        try {
-//            userModel = userService.getUserByUsername(name);
-//        } catch (BusinessException ex) {
-//            throw new BadCredentialsException("Invalid username or password.");
-//        }
-//
-//        String identifier = "";
-//
-//        // driver handler
-//        if (userGroup == 2) {
-//            // username is not existed
-//            if (userModel == null) {
-//                throw new BadCredentialsException("Invalid username or password.");
-//            }
-//
-//            // generate encrypt password
-//            String salt = userModel.getSalt();
-//            password = password + salt;
-//            String userEncryptPassword = DigestUtils.md5DigestAsHex(password.getBytes());
-//
-//            // 认证逻辑
-//            if (StringUtils.equals(userEncryptPassword, userModel.getPassword())) {
-//
-//                identifier = userModel.getId().toString();
-//                Integer loginId = userModel.getId();
-//                try {
-//                    // generate driver based token
-//                    if (driverService.getDriverByLoginId(loginId) != null) {
-//                        identifier += "_driver";
-//                    } else {
-//                        throw new BadCredentialsException("Invalid username or password.");
-//                    }
-//                } catch (BusinessException ex) {
-//                    throw new BadCredentialsException("Invalid username or password.");
-//                }
-//            } else {
-//                // Invalid username or password
-//                throw new BadCredentialsException("Invalid username or password.");
-//            }
-//            // client handler
-//        } else {
-//
-////         reCaptchaToken validation
-////            if (!reCaptcha.verifyToken(JWTLoginFilter.reCaptchaToken)) {
-////                throw new BadCredentialsException("Invalid username or password.");
-////            }
-//
-//            // optCode verification
-//            if (!RandomVerifyCode.verifyOtpCode(name, password)) {
-//                throw new BadCredentialsException("otp code wrong");
-//            }
-//
-//            // User account is not existed create both user account and client account
-//            if (userModel == null) {
-//                UserModel clientUser = new UserModel();
-//                clientUser.generateDefaultUserModel(name, password);
-//                Integer userId;
-//                try {
-//                    userId = userService.userRegister(clientUser);
-//                    ClientModel clientModel = new ClientModel();
-//                    clientModel.setLoginId(userId);
-//                    clientService.insertClient(clientModel);
-//                    identifier = userId.toString() + "_client";
-//                } catch (BusinessException ex) {
-//                    throw new BadCredentialsException("Invalid username or password.");
-//                }
-//            } else {
-//                Integer loginId = userModel.getId();
-//                try {
-//                    // User account is existed but no client account
-//                    if (clientService.getClientByLoginId(loginId) == null) {
-//                        ClientModel clientModel = new ClientModel();
-//                        clientModel.setLoginId(loginId);
-//                        clientService.insertClient(clientModel);
-//                    }
-//                } catch (BusinessException ex) {
-//                    throw new BadCredentialsException("Invalid username or password.");
-//                }
-//                identifier = loginId.toString() + "_client";
-//            }
-//
-//        }
+        try {
+            userModel = userService.getUserByAccount(name, password);
+        } catch (BusinessException ex) {
+            throw new BadCredentialsException("Invalid username or password.");
+        }
+        if (userModel == null) {
+            throw new BadCredentialsException("Invalid username or password.");
+        }
+
+        String identifier = "";
+        Integer loginId = userModel.getUserId();
+        // host handler
+        if (userGroup == 1) {
+            // 认证逻辑
+            try {
+                // generate driver based token
+                if (hostService.getHostByLoginId(loginId) == null) {
+                    throw new BadCredentialsException("Invalid username or password.");
+                }
+            } catch (BusinessException ex) {
+                throw new BadCredentialsException("Invalid username or password.");
+            }
+            identifier = loginId.toString() + "_host";
+            // client handler
+        } else {
+            // 认证逻辑
+            try {
+                // generate driver based token
+                if (clientService.getClientByLoginId(loginId) == null) {
+                    throw new BadCredentialsException("Invalid username or password.");
+                }
+            } catch (BusinessException ex) {
+                throw new BadCredentialsException("Invalid username or password.");
+            }
+            identifier = loginId.toString() + "_client";
+        }
         // 这里设置权限和角色
-        String identifier = "user";
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new GrantedAuthorityImpl("ROLE_ADMIN"));
         authorities.add(new GrantedAuthorityImpl("AUTH_WRITE"));

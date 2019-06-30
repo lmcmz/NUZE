@@ -1,6 +1,7 @@
 package xyz.nuze.services;
 
 import org.apache.ibatis.annotations.Mapper;
+import xyz.nuze.error.BusinessException;
 import xyz.nuze.model.User;
 
 /**
@@ -10,5 +11,5 @@ import xyz.nuze.model.User;
 
 @Mapper
 public interface UserService {
-    User getUserByAccount(String username, String password);
+    User getUserByAccount(String username, String password) throws BusinessException;
 }
