@@ -34,6 +34,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.filter.GenericFilterBean;
+import xyz.nuze.mapper.ClientMapper;
+import xyz.nuze.mapper.HostMapper;
+import xyz.nuze.mapper.UserMapper;
+import xyz.nuze.model.User;
 import xyz.nuze.utils.JWT.JWTUtil;
 
 import javax.servlet.FilterChain;
@@ -45,6 +49,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -179,8 +184,15 @@ class CustomAuthenticationProvider implements AuthenticationProvider {
 //    @Autowired
 //    private ClientService clientService;
 //
-//    @Autowired
-//    private ReCaptcha reCaptcha;
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    ClientMapper clientMapper;
+
+
+    @Autowired
+    HostMapper hostMapper;
 //
 //    @Autowired
 //    private RedisTemplate redisTemplate;
@@ -191,18 +203,20 @@ class CustomAuthenticationProvider implements AuthenticationProvider {
         // 获取认证的用户名 & 密码
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
-//        Integer userGroup = JWTLoginFilter.userGroup;
-//        if (userGroup == null || (userGroup != 2 && userGroup != 3)) {
-//            throw new BadCredentialsException("Invalid username or password.");
-//        }
-//        // Username and password validation checking
-//        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(password)) {
-//            throw new BadCredentialsException("Invalid username or password.");
-//        }
+        Integer userGroup = JWTLoginFilter.userGroup;
+        System.out.println(name + "   " + password + "   " +  userGroup);
+
+        if (userGroup == null || (userGroup != 1 && userGroup != 0)) {
+            throw new BadCredentialsException("Invalid username or password.");
+        }
+        // Username and password validation checking
+        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(password)) {
+            throw new BadCredentialsException("Invalid username or password.");
+        }
 //
 //
-//        // Get userModel by username
-//        UserModel userModel;
+        // Get userModel by username
+        User userModel;
 //        try {
 //            userModel = userService.getUserByUsername(name);
 //        } catch (BusinessException ex) {
@@ -286,6 +300,7 @@ class CustomAuthenticationProvider implements AuthenticationProvider {
 //
 //        }
         // 这里设置权限和角色
+        String identifier = "user";
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new GrantedAuthorityImpl("ROLE_ADMIN"));
         authorities.add(new GrantedAuthorityImpl("AUTH_WRITE"));
@@ -333,11 +348,8 @@ class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
         // JSON反序列化成 AccountCredentials
         AccountCredentials creds = new ObjectMapper().readValue(req.getInputStream(), AccountCredentials.class);
 
-        // customize parameter
+//         customize parameter
         this.userGroup = creds.getUserGroup();
-
-        // reCaptchaToken
-        this.reCaptchaToken = creds.getReCaptchaToken();
 
         // 返回一个验证令牌
         return getAuthenticationManager().authenticate(
