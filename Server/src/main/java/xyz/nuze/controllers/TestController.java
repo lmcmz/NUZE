@@ -22,13 +22,18 @@ public class TestController {
 
     @Autowired
     ClientMapper clientMapper;
-    @GetMapping("")
-    public Object test(HttpServletRequest request) throws  Exception {
-        ClientExample clientExample = new ClientExample();
-        ClientExample.Criteria criteria = clientExample.createCriteria();
+//    @GetMapping("")
+//    public Object test(HttpServletRequest request) throws  Exception {
+//        ClientExample clientExample = new ClientExample();
+//        ClientExample.Criteria criteria = clientExample.createCriteria();
+//
+//        List<Client> clientList = clientMapper.selectByExample(clientExample);
+//        return clientList.subList(0,5);
+//    }
 
-        List<Client> clientList = clientMapper.selectByExample(clientExample);
-        return clientList;
+    @GetMapping("")
+    public String test(HttpServletRequest request) throws  Exception {
+        return "success";
     }
 
 }
