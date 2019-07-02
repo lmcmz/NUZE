@@ -21,3 +21,9 @@
 - Working with mapbox an redux
 - Try to support multiple layout in search page.
 - Planning add crypto payment in NUZE
+
+## Week5 👻
+
+- Add redux and build login page.
+- Develope the register page.
+- Layout the detail page.
