@@ -1,7 +1,10 @@
 package xyz.nuze.controllers;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,9 +39,16 @@ public class UserController extends BaseController {
     @Autowired
     ClientService clientService;
 
-
+    @ApiOperation(value = "User register" ,  notes="User register")
     @PostMapping("")
-    public CommonReturnType register(@RequestBody Map<String, String> body) throws BusinessException {
+    @Transactional(rollbackFor = BusinessException.class)
+    public CommonReturnType register(@RequestBody
+                                         @ApiParam(value = "{ <br/>" +
+                                                 "&nbsp&nbsp&nbsp&nbsp\"username\": 123,<br/>" +
+                                                 "&nbsp&nbsp&nbsp&nbsp\"password\": 123456, <br/>" +
+                                                 "&nbsp&nbsp&nbsp&nbsp\"type\": 0, <br/>" +
+                                                 "}")
+                                                 Map<String, String> body) throws BusinessException {
         String username = body.get("username");
         String password = body.get("password");
         String type = body.get("type");
