@@ -22,13 +22,13 @@ export default class Footer extends Component {
     render() {
         return (
             <Flex className='Footer' pt='20px' flexDirection='column' justifyContent='center'>
-                <Flex width={2/3} alignSelf='center'>
+                <Flex width={3/4} alignSelf='center'>
                     <Box width={1/2}>
                         <Flex flexDirection='column' mx='120px'>
                             <Image src={require('../../resource/image/logo-only.svg')} width='40px'/>
                             {/* <Text fontSize='20px' fontWeight='600' textAlign='left'>Contratc us</Text> */}
                             <Flex py='20px'>
-                                <Text fontSize='15px' fontFamily='' textAlign='left'> NUZE is not for profit. All property is sourced from the Internet. 
+                                <Text fontSize='15px' fontFamily='' color="#858585" textAlign='left'> NUZE is not for profit. All property is sourced from the Internet. 
                                     It aims to practice our team programming skill. 
                                     If the content of this site has an impact on your rights, 
                                     please send an email to <a href="">info@nuze.xyz </a> 
@@ -50,7 +50,7 @@ export default class Footer extends Component {
                         </Flex>
                     </Box>
                 </Flex>
-                <Box py='10px'>
+                <Box py='10px' alignSelf='center'>
                 <Text fontSize='12px'>Copyright © 2019 <ColorText>DoNotReply</ColorText>All rights reserved</Text>
                 </Box>
             </Flex>

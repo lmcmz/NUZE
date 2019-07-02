@@ -17,12 +17,15 @@
     "react-dom": "^16.8.6",
     "react-fontawesome": "^1.6.1",
     "react-horizontal-scrolling-menu": "^0.6.12",
+    "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-toggle": "^4.0.2",
     "reactjs-dropdown-component": "^1.0.6",
     "rebass": "^3.1.1",
+    "redux": "^4.0.1",
+    "redux-devtools": "^3.5.0",
     "styled-components": "^4.3.1"
   },
   "scripts": {

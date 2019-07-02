@@ -6,19 +6,23 @@ import Header from './components/Header';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Search from './pages/Search';
-import Footer from './components/Footer';
 
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './redux/reducers'
+
+const store = createStore(rootReducer)
 
 ReactDOM.render(
     <BrowserRouter>
-    <div>
+    <Provider store={store}>
         {/* <Header /> */}
         <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route path='/search' component={Search}></Route>
         </Switch>
         {/* <Footer /> */}
-    </div>
+    </Provider>
     </BrowserRouter>, 
     document.getElementById('root')
     );

@@ -50,6 +50,8 @@ class Search extends Component {
                         )}
                     </GridBox>
                 </Box>
+
+                <Text>AABBB</Text>
                 <Footer />
             </div>
         )

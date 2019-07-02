@@ -33,12 +33,18 @@ const FilterButton = styled(Button)({
 
 
 
+
 export default class FilterBar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: true
+            value: true,
+            defaultChecked: true,
         }
+    }
+
+    handleBaconChange = (e) => {
+        console.log('toggle: ', e.target.checked)
     }
 
     render() {
@@ -55,6 +61,7 @@ export default class FilterBar extends Component {
                     <label >
                         <Toggle
                             className='map-toggle'
+                            // checked={this.state.toggle}
                             defaultChecked={this.state.baconIsReady}
                             onChange={this.handleBaconChange} />
                     </label>
