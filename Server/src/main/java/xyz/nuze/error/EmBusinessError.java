@@ -13,7 +13,12 @@ public enum  EmBusinessError implements CommonError {
     UPLOAD_FILE_TYPE_ERROR(10005, "File type is invalided."),
     FILE_UPLOAD_ERROR(10006,"File upload error"),
     INVALID_RECAPTCHA_TOKEN(10007,"Invalid reCaptcha token."),
-    INVALID_JWT_TOKEN(10007,"Invalid JWT token.");
+    INVALID_JWT_TOKEN(10007,"Invalid JWT token."),
+
+    //User Error
+    USER_NOT_EXIST(20001, "User is not exist."),
+    INVALID_USERNAME_OR_PASSWORD(20002, "Invalid username or password."),
+    USERNAME_HAS_BEEN_REGISTED(20003, "Username has been registered");
 
 
     private EmBusinessError(int errCode, String errMsg) {

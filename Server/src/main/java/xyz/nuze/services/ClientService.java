@@ -12,4 +12,5 @@ import xyz.nuze.model.Client;
 @Mapper
 public interface ClientService {
     Client getClientByLoginId(Integer id) throws BusinessException;
+    void insertClient(Integer id) throws BusinessException;
 }

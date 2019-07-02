@@ -3,6 +3,7 @@ package xyz.nuze.services.ServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.nuze.error.BusinessException;
+import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.mapper.ClientMapper;
 import xyz.nuze.model.Client;
 import xyz.nuze.services.ClientService;
@@ -23,5 +24,16 @@ public class ClientServiceImp implements ClientService {
         Client client = clientMapper.selectByPrimaryKey(id);
 
         return client;
+    }
+
+    @Override
+    public void insertClient(Integer id) throws BusinessException {
+        Client client = new Client();
+        client.setClientId(id);
+        client.setUserId(id);
+        int result = clientMapper.insertSelective(client);
+        if (result != 1) {
+            throw new BusinessException(EmBusinessError.UNKNOWN_ERROR);
+        }
     }
 }

@@ -12,4 +12,5 @@ import xyz.nuze.model.Host;
 @Mapper
 public interface HostService {
     Host getHostByLoginId(Integer id) throws BusinessException;
+    void insertHost(Integer loginId) throws BusinessException;
 }

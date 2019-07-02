@@ -35,4 +35,25 @@ public class UserServiceImp implements UserService {
         }
         return result.get(0);
     }
+
+    @Override
+    public User getUserByUsername(String username) throws BusinessException {
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUserNameEqualTo(username);
+
+        List<User> result = userMapper.selectByExample(userExample);
+        if (result.size() != 1) {
+            return null;
+        }
+        return result.get(0);
+    }
+
+    @Override
+    public Integer userRegister(User user) throws BusinessException {
+
+        userMapper.insertSelective(user);
+
+        return user.getUserId();
+    }
 }

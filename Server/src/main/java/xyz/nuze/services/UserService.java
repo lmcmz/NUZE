@@ -12,4 +12,6 @@ import xyz.nuze.model.User;
 @Mapper
 public interface UserService {
     User getUserByAccount(String username, String password) throws BusinessException;
+    User getUserByUsername(String username) throws BusinessException;
+    Integer userRegister(User user) throws BusinessException;
 }
