@@ -13,3 +13,11 @@
 
 - Learn MySQL and linux commands
 
+## Week4 
+
+- Backend initialization(SpringBoot, swagger, mybatis, server)
+
+
+## Week5 
+
+- API design
