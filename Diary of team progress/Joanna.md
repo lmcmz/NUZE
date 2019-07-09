@@ -37,6 +37,15 @@ Week 4
   4. use python to write .sql file insert all data 
   
 ------------------------------------------------------------------------------------------------------------------------------
+
+Week 5
+
+  1. fix bugs of to grab all cities data from Airbnb in NSW
+  2. discuss with group member who work on API about database and change database design
+  3. finish build MySQL database
+  4. use python to write .sql file insert all data 
+  
+------------------------------------------------------------------------------------------------------------------------------
  
 
  
