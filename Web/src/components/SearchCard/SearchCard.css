@@ -69,7 +69,7 @@
  .dd-wrapper {
     user-select: none;
     position: relative;
-    width: 140px;
+    width: 30%;
     padding: 0 10px;
   }
 
@@ -107,7 +107,7 @@ span
 .dd-wrapper .dd-list {
     z-index: 10;
     position: absolute;
-    width: 140px;
+    width: 80%;
     border: none;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;

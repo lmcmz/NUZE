@@ -6,10 +6,12 @@ import Header from './components/Header';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Search from './pages/Search';
+import Detail from './pages/Detail';
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './redux/reducers'
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const store = createStore(rootReducer)
 
@@ -20,6 +22,7 @@ ReactDOM.render(
         <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route path='/search' component={Search}></Route>
+            <Route path='/detail' component={Detail}></Route>
         </Switch>
         {/* <Footer /> */}
     </Provider>

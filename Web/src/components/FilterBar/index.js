@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import Toggle from 'react-toggle'
 import "react-toggle/style.css"
 import './FilterBar.css'
+import {toggle} from '../../redux/actions';
+import { connect } from 'react-redux';
 
 const FilterBarDiv = styled.div`
     width: 100%;
@@ -31,10 +33,7 @@ const FilterButton = styled(Button)({
 // const MapToggle = styled(Flex)({
 // })
 
-
-
-
-export default class FilterBar extends Component {
+class FilterBar extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -44,7 +43,9 @@ export default class FilterBar extends Component {
     }
 
     handleBaconChange = (e) => {
-        console.log('toggle: ', e.target.checked)
+        console.log('toggle: ', e.target.checked);
+        console.log('PROPS: ', this.props)
+        this.props.dispatch(toggle(e.target.checked));
     }
 
     render() {
@@ -63,10 +64,18 @@ export default class FilterBar extends Component {
                             className='map-toggle'
                             // checked={this.state.toggle}
                             defaultChecked={this.state.baconIsReady}
-                            onChange={this.handleBaconChange} />
+                            onChange={this.props.mapCheck} />
                     </label>
                 </Flex>
             </FilterBarDiv>
         )
     }
 }
+  
+//   const mapDispatchToProps = (dispatch, ownProps) => ({
+//     onClick: () => dispatch(toggle(ownProps.filter))
+//   })
+
+// export default connect(mapDispatchToProps)(FilterBar)
+
+export default FilterBar
