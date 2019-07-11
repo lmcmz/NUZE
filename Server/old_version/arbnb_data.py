@@ -274,16 +274,22 @@ def get_houses_brife_infro__in_city(city):
                 '&query_understanding_enabled=true&refinement_paths%5B%5D=%2Fhomes&s_tag=NSN6ItKl&satori_version=1.1.9&screen_height=278&screen_size=large&screen_width=1200&search_type=PAGINATION&section_offset=8&selected_tab_id=home_tab&show_groupings=true&supports_for_you_v3=true&timezone_offset=600&toddlers=0&version=1.5.6'
     file_name = city + '.json'
     houses_information = read_json_file(file_name)
+    host_information = read_json_file('host.json')
+    if len(houses_information) >= 300:
+        return houses_information,host_information
     #houses_information = {}
     #for i in range(17):
     #host_information = read_json_file('host.json')
     host_information = read_json_file('host.json')
     #for i in range(17):
-    for i in range(1):
+    for i in range(1,17):
         #host_information = read_json_file('host.json')
+
         offset = 18 * i
         url = baseURL + str(offset) + cityURL
         response = requests.get(url)
+        if response.status_code != 200:
+            return houses_information
         j = response.json()
         houses_information,host_information = get_houses_brife_infro(j,houses_information,host_information)
         write_json_file('host.json',host_information)
@@ -660,35 +666,10 @@ def host_join_in_year():
     write_json_file('host.json',host_information)
 
 if __name__ == "__main__":
-    
-    host_information = read_json_file('host.json')
-    for host_id in host_information:
-        hostUrl = 'https://www.airbnb.com.au/users/show/'\
-                + str(host_id)
-        host_detail_infro = requests.get(hostUrl).text
-        soup = BeautifulSoup(host_detail_infro,'lxml')
-        join_in_date = '2019'
-        join_in_dates = soup.find_all('div',{'style':'margin-top:8px'})
-        #print(len(join_in_dates))
-        for dates in join_in_dates:
-            if "Joined" in str(dates):
-                #print(dates)
-                join_in_date = dates
-                join_in_date = re.sub(r'\<(.*?)\>','',str(join_in_date))
-                join_in_date =  re.sub(r'[a-zA-Z]','',join_in_date)
-                join_in_date =  re.sub(r'[\·]','',join_in_date)
-                join_in_date =  re.sub(r' ','',join_in_date)
-            
-        host_information[host_id]['join_in_date'] = join_in_date
-    write_json_file('host.json',host_information)
-
-
-
-    
-
-
-        # houses_information,host_information = get_houses_brife_infro__in_city(i)
-        # houses_information = house_detail_infro(i,houses_information)
+    for i in city_querys:
+        
+        houses_information,host_information = get_houses_brife_infro__in_city(i)
+        houses_information = house_detail_infro(i,houses_information)
 
 
 
