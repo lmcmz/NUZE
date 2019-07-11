@@ -24,21 +24,127 @@ city_querys = {
                         'Central%20Coast%2C%20New%20South%20Wales',
                         'ChIJTYgyH_PMcmsRcKgyFmh9AQM'
                     ],
-                
+                'Albury':
+                    [
+                        'Albury%2C%20New%20South%20Wales',
+                        'ChIJpz7zaXxfIWsRACdEkLQJBgU'
+                    ],
+                'Armidale':
+                    [
+                        'Armidale%2C%20New%20South%20Wales',
+                        'ChIJfVxG3dufn2sRwClEkLQJBgU'
+                    ],
+                'Bathurst':
+                    [
+                        'Bathurst%2C%20New%20South%20Wales',
+                        'ChIJ73m0BjPkEWsRYCJEkLQJBgU'
+                    ],
+                'BrokenHill':
+                    [
+                        'Broken%20Hill%2C%20New%20South%20Wales',
+                        'ChIJzcJS3mAz72oRcAFEkLQJBgQ'
+                    ],
+                'CityofLakeMacquarie':
+                    [
+                        'City%20of%20Lake%20Macquarie%2C%20NSW%2C%20Australia',
+                        'ChIJMV4wtJclc2sRgAwgxeIxwWQ'
+                    ],
+                'CoffsHarbour‎':
+                    [
+                        'Coffs%20Harbour%2C%20New%20South%20Wales',
+                        'ChIJHaTYiwkOnGsREC1EkLQJBgU'
+                    ],
+                'Dubbo':
+                    [
+                        'Dubbo%2C%20New%20South%20Wales',
+                        'ChIJO5GkTLBxD2sRMCVEkLQJBgU'
+                    ],
+                'Goulburn':
+                    [
+                        'Goulburn%2C%20New%20South%20Wales',
+                        'ChIJLagf6equFmsR0CdEkLQJBgU'
+                    ],
+                'Grafton':
+                    [
+                        'Grafton%2C%20New%20South%20Wales',
+                        'ChIJGURk4vnbm2sRoCxEkLQJBgU'
+                    ],
+                'Griffith':
+                    [
+                        'Griffith%2C%20New%20South%20Wales',
+                        'ChIJHeK38guuH2sRACVEkLQJBgU'
+                    ],
+                'Lithgow':
+                    [
+                        'Lithgow%2C%20New%20South%20Wales',
+                        'ChIJQcunL1sKEmsRoCFEkLQJBgU'
+                    ],
+                'Maitland':
+                    [
+                        'Maitland%2C%20New%20South%20Wales',
+                        'ChIJddSU9NZFc2sRAPAyFmh9AQU'
+                    ],
+                'Parramatta':
+                    [
+                        'Parramatta%2C%20New%20South%20Wales',
+                        'ChIJT69n4RijEmsRAMYyFmh9AQU'
+                    ],
+                'Penrith':
+                    [
+                        'Penrith%2C%20New%20South%20Wales',
+                        'ChIJe0LzS2KPEmsRQMYyFmh9AQU'
+                    ],
+                'BotanyBay':
+                    [
+                        'Botany%20Bay%2C%20Australia',
+                        'ChIJu5Kqkhi3EmsRkPK9RGh9ASo'
+                    ],
+                'Queanbeyan':
+                    [
+                        'Queanbeyan%2C%20New%20South%20Wales',
+                        'ChIJpyzMl-hOFmsRADFEkLQJBgU'
+                    ],
+                'CityofShoalhaven‎':
+                    [
+                        'City%20of%20Shoalhaven%2C%20NSW%2C%20Australia',
+                        'ChIJUVKXrVhdFGsR_Y4nOuM8dAk'
+                    ],
+                'Tamworth':
+                    [
+                        'Tamworth%2C%20New%20South%20Wales',
+                        'ChIJH9ZCOLaYCmsRcClEkLQJBgU'
+                    ],
+                'Taree':
+                    [
+                        'Taree%2C%20New%20South%20Wales',
+                        'ChIJJ5FSVh_IdWsRsC5EkLQJBgU'
+                    ],
+                'TweedHeads':
+                    [
+                        'Tweed%20Heads%2C%20New%20South%20Wales',
+                        'ChIJWd6vwdT_kGsRQDBEkLQJBgU'
+                    ],
+                'WaggaWagga':
+                    [
+                        'Wagga%20Wagga%2C%20New%20South%20Wales',
+                        'ChIJb5_giEeZGGsRUO9DkLQJBgQ'
+                    ]                
 }
 
 MonthToNumber = {   
                         'Jun' : 6,
                         'Jul' : 7,
                         'Aug' : 8,
-                        'Sep' : 9        
+                        'Sep' : 9,
+                        'Oct' :  10    
                 }
 
 MonthDays = {
                 '6' : 30,
                 '7' : 31,
                 '8' : 31,
-                '9' : 30     
+                '9' : 30,
+                '10': 31    
 
             }
 
@@ -99,14 +205,18 @@ def get_houses_brife_infro(j,houses_information,host_information):
                 house_id = listing.get('id')
                 neighborhood = listing.get('neighborhood')
                 preview_amenities = listing.get('preview_amenities')
+                
                 reviews_count = listing.get('reviews_count')
+                if int(reviews_count) > 20:
+                    reviews_count = int(random.uniform(1,22))
+
                 star_rating = listing.get('star_rating')
                 space_type = listing.get('space_type')
 
-                if 'user' not in listing.keys():
-                    print(listing)
-                elif 'id' not in listing['user'].keys():
-                    print(listing['user'])
+                # if 'user' not in listing.keys():
+                #     print(listing)
+                # elif 'id' not in listing['user'].keys():
+                #     print(listing['user'])
 
                 
 
@@ -135,11 +245,11 @@ def get_houses_brife_infro(j,houses_information,host_information):
                 else:
                     houses_information[house_id] = information
                     #print(house_id)
-                if str(host_id) in host_information.keys() and len(host_information[str(host_id)]['room_ids']) != 0:
+                if str(host_id) in host_information.keys() and 'Learn more' not in host_information[str(host_id)]['self_intro']:
                     pass
                 else:
                     host_information = host_infro(host_id,host_information,host_picture_url)
-                    print(host_information[str(host_id)])
+                    #print(host_information[str(host_id)])
     return houses_information,host_information
 
 
@@ -168,7 +278,8 @@ def get_houses_brife_infro__in_city(city):
     #for i in range(17):
     #host_information = read_json_file('host.json')
     host_information = read_json_file('host.json')
-    for i in range(17):
+    #for i in range(17):
+    for i in range(1):
         #host_information = read_json_file('host.json')
         offset = 18 * i
         url = baseURL + str(offset) + cityURL
@@ -181,8 +292,8 @@ def get_houses_brife_infro__in_city(city):
 
 def house_detail_infro(city,houses_information):
     for key in houses_information:
-        if len(houses_information[key]) > 20:
-            continue
+        if len(houses_information[key]) == 22:
+             continue
         house_id = key
         NoPlusUrl = 'https://www.airbnb.com.au/rooms/'
         PlusUrl = 'https://www.airbnb.com.au/rooms/plus/'
@@ -210,23 +321,15 @@ def house_detail_infro(city,houses_information):
                 description = re.sub(r'Contact host','',description)
         else:
             description = soup.find('span',class_ = '_11oyobo').get_text()
-
-        houses_information[key].append(description)
+        if len(houses_information[key]) == 18:
+            houses_information[key].append(description)
         reviews_count = houses_information[key][11]
         pages = int(reviews_count / 7 )
-        wrong_link = 0
+
         if reviews_count > 0:
             houses_information = house_reviews(city,house_id,houses_information,pages,key)
-            if len(houses_information[key]) == 18:
-                wrong_link = 1
-
         else:
             houses_information[key].append({})
-        if wrong_link:
-            houses_information[key].append(-1)
-            file_name = city + '.json'
-            write_json_file(file_name,houses_information)
-            continue
         clean,calenders = house_calenders(house_id,Plus)
         if clean == -1 and calenders == -1:
             houses_information[key].append(-1)
@@ -243,7 +346,11 @@ def house_reviews(city,house_id,houses_information,pages,key):
     reviewsUrlbase = 'https://www.airbnb.com.au/api/v2/homes_pdp_reviews?currency=AUD&key=d306zoyjsyarp7ifhu67rjxn52tv0t20&locale=en-AU&listing_id='\
             + str(house_id)+  \
             '&_format=for_p3&limit=7&offset='
+            
     comments = {}
+    review_count = int(houses_information[key][11])
+    review_cu = 0
+    guest_information = read_json_file('guest.json')
     for i in range(pages + 1):
         reviewsUrl = reviewsUrlbase  + str(i * 7) \
                         + '&order=language_country'
@@ -253,6 +360,9 @@ def house_reviews(city,house_id,houses_information,pages,key):
         j = response.json()
         reviews = j.get('reviews')
         for review in reviews:
+            review_cu += 1
+            if review_cu > review_count:
+                break
             commemt = review.get('comments')
             #commemt = review.get('comments').encode('utf-8')
             commemt = re.sub(r'\\(.*?) ','',str(commemt))
@@ -262,30 +372,33 @@ def house_reviews(city,house_id,houses_information,pages,key):
             guest = re.sub(r'^b\'','',str(guest))
             guest_id = review.get('reviewer').get('id')
             comments[str(guest_id)] = [guest,commemt]
-    houses_information[key].append(comments)
+            picUrl = review.get('reviewer').get('picture_url')
+            if str(guest_id) in guest_information:
+                pass
+            else:
+                guest_information = host_infro(guest_id,guest_information,picUrl)
+    
+    #print(guest_information)
+    
+    write_json_file('guest.json',guest_information)
+
+    if len(houses_information[key]) <= 19:
+        houses_information[key].append(comments)
+    else:
+        houses_information[key][19] = comments
     return houses_information
         
-
-# houses_information = get_houses_brife_infro__in_city('Sydney')
-# houses_infromation = house_detail_infro('Sydney',houses_information)
-# houses_information_json = json.dumps(houses_infromation)
-# f = open('dataSydneyreview.json','w')
-# f.write(houses_information_json)
-
-
-# with open("dataSydney.json",'r') as sydney_data:
-#     houses_information_sydney = json.load(sydney_data)
-
 
 
 def house_calenders(house_id,plus):
     clean = -1
-    canlenderUrl = 'https://www.airbnb.com.au/api/v2/calendar_months?_format=with_conditions&count=4&currency=AUD&key=d306zoyjsyarp7ifhu67rjxn52tv0t20' \
+    canlenderUrl = 'https://www.airbnb.com.au/api/v2/calendar_months?_format=with_conditions&count=3&currency=AUD&key=d306zoyjsyarp7ifhu67rjxn52tv0t20' \
                     + '&listing_id=' + str(house_id) \
-                    + '&locale=en-AU&month=6&year=2019'
+                    + '&locale=en-AU&month=7&year=2019'
     response = requests.get(canlenderUrl)
     if response.status_code != 200:
         return -1,-1
+        print(house_id)
     j = response.json()
     calender = j.get('calendar_months')
     calenders = {}
@@ -345,6 +458,8 @@ def host_infro(host_id,host_infromation,picUrl):
         self_intro = ''
     else:
         self_intro = re.sub(r'\<(.*?)\>','',str(self_intro[0]))
+        if 'Learn more' in self_intro:
+            self_intro = hide_self_intro(hostUrl)
 
     host_name = soup.find_all('div',{'class':'_1ekkhy94'})
     if len(host_name) == 0:
@@ -354,25 +469,45 @@ def host_infro(host_id,host_infromation,picUrl):
         host_name = re.sub(r'\<(.*?)\>','',str(host_name[0]))
         host_name = re.sub(r'Hi\, I\’m ','',host_name)
         #print(host_name)
+    try:
+        rooms = soup.find_all('div',{'class':'_v72lrv'})
+        if len(rooms) == 0:
+            rooms = soup.find_all('div',{'class':'_1u0tqew','aria-hidden':'false'})
+        #print(rooms)
+        room_ids = []
+        for room in rooms:
+            #print(room)
+            room_id = re.search('href="/rooms/(.*?)"',str(room))
+            room_id = room_id.group(1)
+            #print(room_id)
+            room_ids.append(room_id)
+    except:
+        room_ids = []
+    
+    join_in_date = '2019'
+    join_in_dates = soup.find_all('div',{'style':'margin-top:8px'})
+    #print(len(join_in_dates))
+    for dates in join_in_dates:
+        if "Joined" in str(dates):
+            #print(dates)
+            join_in_date = dates
+            join_in_date = re.sub(r'\<(.*?)\>','',str(join_in_date))
+            join_in_date =  re.sub(r'[a-zA-Z]','',join_in_date)
+            join_in_date =  re.sub(r'[\·]','',join_in_date)
+            join_in_date =  re.sub(r' ','',join_in_date)
 
-    rooms = soup.find_all('div',{'class':'_v72lrv'})
-    if len(rooms) == 0:
-        rooms = soup.find_all('div',{'class':'_1u0tqew','aria-hidden':'false'})
-    #print(rooms)
-    room_ids = []
-    for room in rooms:
-        #print(room)
-        room_id = re.search('href="/rooms/(.*?)"',str(room))
-        room_id = room_id.group(1)
-        #print(room_id)
-        room_ids.append(room_id)
+        
     #print(rooms)
 
-    button_name = soup.find_all('button',{'type':'button','class':'_1dv8bs9v'})
-    if len(button_name) != 0:
-        button_name = re.sub(r'\<(.*?)\>','',str(button_name[0]))
-        if button_name == 'Learn more':
-            self_intro = hide_self_intro(hostUrl)
+    #button_name = soup.find_all('button',{'type':'button','class':'_1dv8bs9v'})
+
+    #self_intro = soup.find_all('div',{'class' : '_czm8crp','dir':'ltr'})
+    # if 'Learn more' in self_intro:
+    #     self_intro = hide_self_intro(hostUrl)
+    # if len(button_name) != 0:
+    #     button_name = re.sub(r'\<(.*?)\>','',str(button_name[0]))
+    #     if button_name == 'Learn more':
+    #         self_intro = hide_self_intro(hostUrl)
     #print(self_intro)            
     #webdriver click "readmore" button got whole infromation
     host_detail = []
@@ -381,21 +516,39 @@ def host_infro(host_id,host_infromation,picUrl):
         #print(des)
         host_detail.append(des)
 
-    host_infromation[str(host_id)] = {}
-    host_infromation[str(host_id)]['detail'] = host_detail
-    host_infromation[str(host_id)]['self_intro'] = self_intro
-    host_infromation[str(host_id)]['name'] = host_name
-    host_infromation[str(host_id)]['picUrl'] = picUrl
-    host_infromation[str(host_id)]['room_ids'] = room_ids
-    #print(host_infro[str(host_id)])
-    print(host_infromation[str(host_id)])
+
+
+    if len(room_ids) != 0: 
+        host_infromation[str(host_id)] = {}
+        host_infromation[str(host_id)]['detail'] = host_detail
+        host_infromation[str(host_id)]['self_intro'] = self_intro
+        host_infromation[str(host_id)]['name'] = host_name
+        host_infromation[str(host_id)]['picUrl'] = picUrl
+        host_infromation[str(host_id)]['room_ids'] = room_ids
+        host_infromation[str(host_id)]['join_in_date'] = join_in_date
+        #print(host_infromation[str(host_id)])
+    else:
+        client_information = host_infromation
+        client_information[str(host_id)] = {}
+        client_information[str(host_id)]['detail'] = host_detail
+        client_information[str(host_id)]['self_intro'] = self_intro
+        client_information[str(host_id)]['name'] = host_name
+        client_information[str(host_id)]['picUrl'] = picUrl
+        client_information[str(host_id)]['join_in_date'] = join_in_date
+        #print(client_information[str(host_id)])
+    if join_in_date == '2019':
+        print(host_id)
     return host_infromation
 
 #webdriver click "readmore" button got whole infromation
 def hide_self_intro(hostUrl):
     driver = webdriver.Chrome()
     driver.get(hostUrl)
-    button = driver.find_element_by_class_name('_1dv8bs9v')
+    try:
+        button = driver.find_element_by_class_name('_1dv8bs9v')
+        print(button)
+    except:
+        button = driver.find_element_by_class_name('_b0ybw8s')
     button.click()        
     soup = BeautifulSoup(driver.page_source,'lxml')
     self_intro = soup.find_all('div',{'class' : '_czm8crp','dir':'ltr','tabindex':'-1'})
@@ -410,9 +563,9 @@ def read_json_file(file):
     try:
         with open(file,'r') as data:
             information = json.load(data)
+            data.close()
     except FileNotFoundError:
         information = {}
-    data.close()
     return information
 
 
@@ -423,37 +576,121 @@ def write_json_file(file,information):
     f.close()
 
 
-#house_clean_fee('7042470','2019-06-20','2019-06-21',1)
-#house_calenders('9051847',0)
+def check_self_intro():
+    host = read_json_file('host.json')
+    for key in host:
+        if 'Learn more' in host[key]['self_intro']:
+            hostUrl = 'https://www.airbnb.com.au/users/show/'\
+                + str(key)
+            self_intro = hide_self_intro(hostUrl)
+            host[key]['self_intro'] = self_intro
+            write_json_file('host.json',host)
 
 
-# houses_information,host_information = get_houses_brife_infro__in_city('Sydney')
-# houses_information = house_detail_infro('Sydney',houses_information)
+def update_comments(city):
+    house_information = read_json_file(i +'.json')
+    guest_information = read_json_file('guest.json')
+    house = 0
+    for house_id in house_information:
+        reviews_count = house_information[house_id][11]
+        reviews = house_information[house_id][19]
+        if reviews == -1 and reviews_count != 0:
+            #print(house_id)
+            reviews_count = int(random.uniform(1,22))
+            house_information[house_id][11] = reviews_count
+            pages = int(reviews_count / 7 )
 
-# host_information_json = json.dumps(host_information)
-# f = open('host.json','w')
-# f.write(host_information_json)
-# f.close()
+            if reviews_count > 0:
+                house_information = house_reviews(city,house_id,house_information,pages,house_id)
+        else:    
+            #print(house_id)
+            if int(reviews_count) > 20:
+                comments = {}
+                for guest_id in reviews:
+                    if guest_id in guest_information.keys():
+                        comments[guest_id] = reviews[guest_id]
+                if len(comments) > 0:
+                    house_information[house_id][19] = comments
+                    house_information[house_id][11] = len(comments)
+            else:
+                house += 1
+    print(house)
 
-# houses_information_json = json.dumps(houses_information)
-# f = open('Sydney.json','w')
-# f.write(houses_information_json)
-# f.close()
+    write_json_file(city+'.json',house_information)
 
+def client_profile_to_reviews():
+    for i in city_querys.keys():
+        
+        update_comments(i)
 
+        house_information = read_json_file(i + '.json')
+        for house_id in house_information:
+            reviews_count = house_information[house_id][11]
+            if int(reviews_count) <= 20:
+                continue
+            else:
+                reviews_count = int(random.uniform(1,22))
+                house_information[house_id][11] = reviews_count
+                pages = int(reviews_count / 7 )
 
-# with open("dataSydney.json",'r') as sydney_data:
-#     houses_information_sydney = json.load(sydney_data)
+                if reviews_count > 0:
+                    house_information = house_reviews(i,house_id,house_information,pages,house_id)
+        write_json_file(i+'.json',house_information)
+
+def host_join_in_year():
+    host_information = read_json_file('host.json')
+    for host_id in host_information:
+        hostUrl = 'https://www.airbnb.com.au/users/show/'\
+                + str(host_id)
+        host_detail_infro = requests.get(hostUrl).text
+        soup = BeautifulSoup(host_detail_infro,'lxml')
+        join_in_date = '2019'
+        join_in_dates = soup.find_all('div',{'style':'margin-top:8px'})
+        #print(len(join_in_dates))
+        for dates in join_in_dates:
+            if "Joined" in str(dates):
+                #print(dates)
+                join_in_date = dates
+                join_in_date = re.sub(r'\<(.*?)\>','',str(join_in_date))
+                join_in_date =  re.sub(r'[a-zA-Z]','',join_in_date)
+                join_in_date =  re.sub(r'[\·]','',join_in_date)
+                join_in_date =  re.sub(r' ','',join_in_date)
+            
+        host_information[host_id]['join_in_date'] = join_in_date
+    write_json_file('host.json',host_information)
 
 if __name__ == "__main__":
+    
+    host_information = read_json_file('host.json')
+    for host_id in host_information:
+        hostUrl = 'https://www.airbnb.com.au/users/show/'\
+                + str(host_id)
+        host_detail_infro = requests.get(hostUrl).text
+        soup = BeautifulSoup(host_detail_infro,'lxml')
+        join_in_date = '2019'
+        join_in_dates = soup.find_all('div',{'style':'margin-top:8px'})
+        #print(len(join_in_dates))
+        for dates in join_in_dates:
+            if "Joined" in str(dates):
+                #print(dates)
+                join_in_date = dates
+                join_in_date = re.sub(r'\<(.*?)\>','',str(join_in_date))
+                join_in_date =  re.sub(r'[a-zA-Z]','',join_in_date)
+                join_in_date =  re.sub(r'[\·]','',join_in_date)
+                join_in_date =  re.sub(r' ','',join_in_date)
+            
+        host_information[host_id]['join_in_date'] = join_in_date
+    write_json_file('host.json',host_information)
 
-    host = read_json_file('host.json')
-    hh = host_infro('30069789',{},'https://a0.muscache.com/im/users/30069789/profile_pic/1427411468/original.jpg?aki_policy=profile_small')
-    print(hh)
-    for h in hh:
-        host['30069789'] = hh[h]
-    print(host['30069789'])
-    write_json_file('host.json',host)
+
+
+    
+
+
+        # houses_information,host_information = get_houses_brife_infro__in_city(i)
+        # houses_information = house_detail_infro(i,houses_information)
+
+
 
     
     
