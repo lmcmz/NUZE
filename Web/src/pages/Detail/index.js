@@ -8,9 +8,14 @@ import 'react-image-lightbox/style.css';
 import PropertyCard from '../../components/PropertyList/PropertyCard'
 import { DateRangePicker, DayPickerRangeController } from 'react-dates';
 import {Dropdown} from 'reactjs-dropdown-component';
-// import moment from 'react-moment';
 import { faBed, faBath } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReviewCard from "../../components/Review";
+import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
+import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
+import Footer from '../../components/Footer';
+import ReactPaginate from 'react-paginate';
+import './Detail.css'
 
 const anime = keyframes`
   0% {
@@ -65,6 +70,11 @@ const GalleryImage = styled(Image)({
     }
 })
 
+const totalLabel = styled.span`
+    font-size: 20px;
+    font-weight: 200;
+`
+
 const SearchButton = styled.button`
     width: 100%;
     height: 80px;
@@ -75,7 +85,7 @@ const SearchButton = styled.button`
     background-size: 600%;
     animation: ${anime} 16s linear infinite;
     color: white;
-    font-size: 2em;
+    font-size: 30px;
     font-weight: 500;
     transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     outline: none;
@@ -101,6 +111,7 @@ export default class DetailPage extends Component {
     constructor(props){
         super(props);
         this.state = {
+            activePage: 5,
             images: this.props.images,
             photoIndex: 0,
             isOpen: false,
@@ -183,8 +194,15 @@ export default class DetailPage extends Component {
         // window.location.assign('/search?'+this.state.query);
       }
 
+    
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({activePage: pageNumber});
+    }
+
     render() {
 
+        var moment = require('moment');
         const { photoIndex, isOpen } = this.state;
 
         return (
@@ -265,21 +283,60 @@ export default class DetailPage extends Component {
                                 <Card my={2} border="1px solid #eee" width="90%"></Card>
                                 <Heading as='h3' py={3}>Availability</Heading>
                                 
-                                {/* <DayPickerRangeController
+                                <DayPickerRangeController
+                                    numberOfMonths={2}
                                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                                     endDate={this.state.endDate} // momentPropTypes.momentObj or null,
                                     onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                                     initialVisibleMonth={() => moment().add(2, "M")} // PropTypes.func or null,
-                                /> */}
+                                />
+                            </div>
 
+                            <div>
+                                <Card my={2} border="1px solid #eee" width="90%"></Card>
+                                {/* <Heading as='h3' py={3}> {this.props.reviewCounts} Reviews</Heading> */}
+                                <Heading as='h3' py={3}> 20 Reviews</Heading>
+                                <Box>
+                                        {[...Array(10)].map((x, i) =>
+                                            <ReviewCard time="3 days ago" name="Tom" avatar="https://a0.muscache.com/im/users/17061/profile_pic/1425534501/original.jpg?aki_policy=profile_x_medium" comment="test test test test test test test test test test test test " />
+                                        )}
+                                </Box>
+                            </div>
+
+                            <div>
+                                <ReactPaginate
+                                    previousLabel={'<'}
+                                    nextLabel={'>'}
+                                    breakLabel={'...'}
+                                    breakClassName={'break-me'}
+                                    pageCount={this.state.pageCount}
+                                    marginPagesDisplayed={2}
+                                    pageRangeDisplayed={5}
+                                    onPageChange={this.handlePageClick}
+                                    containerClassName={'pagination'}
+                                    subContainerClassName={'pages pagination'}
+                                    activeClassName={'active'}
+                                    />
                             </div>
                         </Box>
 
                         <Box width={0.4} >
                             <Card border="1px solid #eee" p={3} borderRadius={5}>
-                                <Heading>$78 <span fontSize="8px"> total</span> </Heading> 
+                                <Flex>
+                                    <Text fontSize="30px" fontWeight="500">$78 <span fontSize="5px" fontWeight="200"> total</span> </Text>  
+                                    <Flex alignItems="center">
+                                        <Text color="#FFD000">
+                                            <FontAwesomeIcon icon={faStar} size='2x'/>
+                                            <FontAwesomeIcon icon={faStar} size='2x'/>
+                                            <FontAwesomeIcon icon={faStar} size='2x'/>
+                                            <FontAwesomeIcon icon={faStarHalfAlt} size='2x'/>
+                                            <FontAwesomeIcon icon={emStar} size='2x'/>
+                                        </Text>
+                                        <Text alignSelf="center" pl="3px" fontSize="25px" color="#FFD000" fontWeight="500">4.5</Text>
+                                    </Flex>  
+                                </Flex>
                                 <Box pt={2} pb={2} >
                                 <Flex flexDirection='column' textAlign='left' alignItems='flex-start'>
                                     <Text fontSize={1} color='grey' lineHeight={3}>Date</Text>
@@ -328,6 +385,8 @@ export default class DetailPage extends Component {
                             </Card>
                         </Box>
                     </Flex>
+
+                    <Footer></Footer>
             </div>
         )
     }

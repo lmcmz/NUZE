@@ -22,7 +22,7 @@ ReactDOM.render(
         <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route path='/search' component={Search}></Route>
-            <Route path='/detail' component={Detail}></Route>
+            <Route path='/room' component={Detail}></Route>
         </Switch>
         {/* <Footer /> */}
     </Provider>
