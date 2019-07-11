@@ -67,3 +67,8 @@
     align-items: center;
     justify-items: center; 
 }
+
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
+}

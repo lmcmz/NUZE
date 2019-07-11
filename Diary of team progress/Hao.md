@@ -27,3 +27,11 @@
 - Add redux and build login page.
 - Develope the register page.
 - Layout the detail page.
+
+
+
+# Week6 🎩
+
+- Complete detail page
+- Rewrite server data grab part
+- Learning Redux

@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 import './Header.css'
 import { Box, Flex, Card, Image, Heading, Text} from 'rebass';
 import styled from 'styled-components'
+import LoginAlert from '../../pages/Login';
+import Modal from 'react-modal';
 
 const HeaderContainer = styled(Flex)({
   
@@ -13,8 +15,20 @@ class Header extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-          hasScrolled: false
+          hasScrolled: false,
+          showModal: false,
         }
+
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    handleOpenModal () {
+      this.setState({ showModal: true });
+    }
+    
+    handleCloseModal () {
+      this.setState({ showModal: false });
     }
 
     componentDidMount() {
@@ -40,13 +54,42 @@ class Header extends React.Component {
                 <Link className='logo' to="/"><img src={require('../../resource/image/logo.svg')} width="120" /></Link> 
               </Box>
               <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
-                <Link className='link link0' to="/">Join us</Link>
+                {/* <Link className='link link0' to="/">Join us</Link> */}
                 <Link className='link link1' to="/">Become a Host</Link>
                 <Link className='link link2' to="/">Register</Link>
-                <Link className='link link3' to="/">Login</Link>
+                <Link className='link link3' onClick={this.handleOpenModal}>Login</Link>
                 {/* <button onClick={this.loginHandle}>Login</button> */}
               </Flex>
             </HeaderContainer>
+            <Modal 
+              isOpen={this.state.showModal}
+              contentLabel="Minimal Modal Example"
+              style={{
+                overlay: {
+                  // position: 'fixed',
+                  // top: 0,
+                  // left: 0,
+                  // right: 0,
+                  // bottom: 0,
+                  // backgroundColor: 'rgba(255, 255, 255, 0.75)',
+                  zIndex: 10000,
+                },
+                content: {
+                  alignItems: 'center',
+                  position: 'absolute',
+                  border: 'none',
+                  background: 'none',
+                  overflow: 'auto',
+                  WebkitOverflowScrolling: 'touch',
+                  display: 'flex'
+                  // outline: 'none',
+                  // padding: '20px'
+                }
+              }}
+            >
+              {/* <button onClick={this.handleCloseModal}>Close Modal</button> */}
+              <LoginAlert></LoginAlert>
+            </Modal>
           </div>
         )
       }
