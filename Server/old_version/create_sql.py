@@ -151,6 +151,18 @@ def city_house_infro(data_dict):
         data_dict = mix_dict
     return data_dict
 
+def house_infro(data_dict):
+    
+    for city in city_querys:
+        file_name = city + '.json'
+        city_data = {}
+        city_data = read_json_file(file_name)
+        mix_dict = {}
+        mix_dict.update(data_dict)
+        mix_dict.update(city_data)
+        data_dict = mix_dict
+    return data_dict
+
 def add_house_infro(data_dict):
     
     for city in city_querys:
@@ -183,31 +195,41 @@ for nsw_city in city_querys:
 
 
 print(len(host_information))
-with open('database.sql','w') as sql:
+with open('create_tables.sql','w') as sql:
 
     #create user table
     print("CREATE TABLE IF NOT EXISTS `user` (",file = sql)
     print("  `user_id` INT UNSIGNED AUTO_INCREMENT KEY COMMENT 'unique ID for each user',",file = sql)
-    print("  `password` varchar(8) DEFAULT '12345678' COMMENT 'default password  12345678 for each user' ",file = sql)
+    print("  `user_email` varchar(200) COMMENT 'unique email ( default : user_id@airbnb.com ) for each user',",file = sql)
+    print("  `creat_time` timestamp default current_timestamp(),",file = sql)
+    print("  `update_time` timestamp default current_timestamp() on update current_timestamp(),",file = sql)
+    print("  `password` varchar(20) DEFAULT '12345678' COMMENT 'default password  12345678 for each user' ",file = sql)
     print(") DEFAULT CHARSET=utf8mb4;",file = sql)
     print('\n',file = sql)
 
     #create client table
     print("CREATE TABLE IF NOT EXISTS `client` (",file = sql)
+    print("  `id` INT UNSIGNED AUTO_INCREMENT KEY COMMENT 'unique ID for each row',",file = sql)
     print("  `user_id` INT UNSIGNED  COMMENT 'unique ID for each user',",file = sql)
-    print("  `client_id` INT KEY COMMENT 'unique ID for each client(set by airbnb)',",file = sql)
-    print("  `client_name` varchar({})".format(varchar_length(longest_user_name)),file = sql)
+    print("  `client_id` INT  COMMENT 'unique ID for each client(set by airbnb)',",file = sql)
+    print("  `client_name` varchar({}),".format(varchar_length(longest_user_name)),file = sql)
+    print("  `details` varchar({}) COMMENT 'brife detail for each client eg.job,lanuages,living place',".format(varchar_length(detail_len)),file = sql)
+    print("  `pic_url` varchar({}) COMMENT 'client head portrait picture url',".format(varchar_length(picUrl_len)),file = sql)
+    print("  `self_intro` varchar({}) COMMENT 'Self introduction of the host',".format(varchar_length(selfIntro_len)),file = sql)
+    print("  `join_in_year` INT UNSIGNED COMMENT 'join in year of the client'",file = sql)
     print(") DEFAULT CHARSET=utf8mb4;",file = sql)
     print('\n',file = sql)
 
     #create host table
     print("CREATE TABLE IF NOT EXISTS `host` (",file = sql)
-    print("  `host_id` INT NOT NULL KEY COMMENT 'unique ID for each host(set by airbnb)',",file = sql)
+    print("  `id` INT UNSIGNED AUTO_INCREMENT KEY COMMENT 'unique ID for each row',",file = sql)
+    print("  `host_id` INT NOT NULL  COMMENT 'unique ID for each host(set by airbnb)',",file = sql)
     print("  `user_id` INT COMMENT 'unique ID for each user',",file = sql)
-    print("  `name` varchar({}) ,".format(varchar_length(name_len)),file = sql)
+    print("  `host_name` varchar({}) ,".format(varchar_length(name_len)),file = sql)
     print("  `details` varchar({}) COMMENT 'brife detail for each host eg.job,lanuages,living place',".format(varchar_length(detail_len)),file = sql)
     print("  `pic_url` varchar({}) COMMENT 'host head portrait picture url',".format(varchar_length(picUrl_len)),file = sql)
-    print("  `self_intro` varchar({}) COMMENT 'Self introduction of the host'".format(varchar_length(selfIntro_len)),file = sql)
+    print("  `self_intro` varchar({}) COMMENT 'Self introduction of the host',".format(varchar_length(selfIntro_len)),file = sql)
+    print("  `join_in_year` INT UNSIGNED COMMENT 'join in year of the host'",file = sql)
     print(") DEFAULT CHARSET=utf8mb4;",file = sql)
     print('\n',file = sql)
 
@@ -258,6 +280,7 @@ with open('database.sql','w') as sql:
     print("  `id` INT UNSIGNED AUTO_INCREMENT KEY COMMENT 'unique ID for each row',",file = sql)
     print("  `house_id` INT NOT NULL COMMENT 'unique ID for each house(set by airbnb)',",file = sql)
     print("  `client_id` INT COMMENT 'unique ID for client(set by airbnb) who write the comment',",file = sql)
+    print("  `host_id` INT NOT NULL COMMENT 'unique ID for host who owe the house',",file = sql)
     print("  `comment` varchar({})".format(varchar_length(longest_comment)),file = sql)
     print(") DEFAULT CHARSET=utf8mb4;",file = sql)
     print('\n',file = sql)
@@ -281,7 +304,10 @@ with open('database.sql','w') as sql:
 
 sql.close()
 
-with open('database.sql','a') as sql:
+houses_information = house_infro({})
+
+house_ids = houses_information.keys()
+with open('database.sql','w') as sql:
     for nsw_city in city_querys:
         print("INSERT IGNORE INTO `city` ( `city`) VALUES (\"{}\");".format(nsw_city),file = sql)
     #print(len(host_information))
@@ -303,21 +329,42 @@ with open('database.sql','a') as sql:
             self_intro = re.sub(r'\"','\'',self_intro)
             #print(self_intro)
         self_intro = self_intro
+        join_in_year = int(host_information[host_id]['join_in_date'])
         print ("INSERT IGNORE INTO `user`() VALUES ();",file = sql) 
-        print("INSERT IGNORE INTO `host` ( `host_id`,`user_id`,`name`,`details`,`pic_url`,`self_intro` ) VALUES ",file = sql)
-        print("({},last_insert_id(),\"{}\",\"{}\",\"{}\",\"{}\");".format(int(host_id),name,details,picUrl,self_intro),file = sql)
-        room_id_num = len(host_information[host_id]['room_ids'])
-        if room_id_num == 0:
-            continue
-        print("INSERT INTO `host_to_houses` (`host_id`, `house_id`) VALUES ",file = sql)
-        room_id_num = len(host_information[host_id]['room_ids'])
-        if room_id_num == 1:
-            print("({},{});".format(int(host_id),int(host_information[host_id]['room_ids'][0])),file = sql)
-        else:
-            for index in range(room_id_num - 1):
-                print("({},{}),".format(int(host_id),int(host_information[host_id]['room_ids'][index])),file = sql)
-            #print(host_id)
-            print("({},{});".format(int(host_id),int(host_information[host_id]['room_ids'][-1])),file = sql)
+
+        print ("UPDATE `user` SET `user_email` = concat(last_insert_id() ,'@airbnb.com') WHERE `user_id`= last_insert_id();",file = sql) 
+        
+        print("INSERT IGNORE INTO `host` ( `host_id`,`user_id`,`host_name`,`details`,`pic_url`,`self_intro`,`join_in_year` ) VALUES ",file = sql)
+        print("({},last_insert_id(),\"{}\",\"{}\",\"{}\",\"{}\",{});".format(int(host_id),name,details,picUrl,self_intro,join_in_year),file = sql)
+
+        # room_id_num = len(host_information[host_id]['room_ids'])
+        # if room_id_num == 0:
+        #     continue
+
+        # print(host_information[host_id]['room_ids'])
+        # rooms = host_information[host_id]['room_ids']
+        # #print(nsw_city,rooms)
+        
+        # for room_id in rooms:
+        #     if room_id not in house_ids:
+        #         #print(host_id,room_id)
+        #         host_information[host_id]['room_ids'].remove(room_id)
+
+        # print(host_information[host_id]['room_ids'])
+        # #print(len(host_information[host_id]['room_ids']))
+        # room_id_num = len(host_information[host_id]['room_ids'])
+        # #print(host_information[host_id]['room_ids'])
+        # if room_id_num == 1:
+        #     print("INSERT INTO `host_to_houses` (`host_id`, `house_id`) VALUES ",file = sql)
+        #     print("({},{});".format(int(host_id),int(host_information[host_id]['room_ids'][0])),file = sql)
+        # elif room_id_num == 0:
+        #     pass
+        # else:
+        #     print("INSERT INTO `host_to_houses` (`host_id`, `house_id`) VALUES ",file = sql)
+        #     for index in range(room_id_num - 1):
+        #         print("({},{}),".format(int(host_id),int(host_information[host_id]['room_ids'][index])),file = sql)
+        #     #print(host_id)
+        #     print("({},{});".format(int(host_id),int(host_information[host_id]['room_ids'][-1])),file = sql)
 
 sql.close()
 
@@ -325,7 +372,7 @@ house_information = city_house_infro({})
 
 clients = set()
 with open('database.sql','a') as sql:
-    print(len(house_information))
+    #print(len(house_information))
 
     for city in house_information:
 
@@ -340,7 +387,7 @@ with open('database.sql','a') as sql:
                 #print(self_intro)
             if '\"' in brife_infor:
                 brife_infor = re.sub(r'\"','\'',brife_infor)
-                print(brife_infor)
+                #print(brife_infor)
             description = house_information[city][house][18]
             if '&' in description:
                 description = re.sub(r'(&.*?) ','',description)
@@ -349,8 +396,15 @@ with open('database.sql','a') as sql:
                 description = re.sub(r'\"','\'',description)
                 #print(description)
             bedrooms = int(house_information[city][house][4])
-            bathrooms = int(house_information[city][house][6])
-            beds = int(house_information[city][house][7])
+            #print(city,house_id)
+            if house_information[city][house][6] is None:
+                bathrooms = 0
+            else:
+                bathrooms = int(house_information[city][house][6])
+            if house_information[city][house][7] is None:
+                beds = 0
+            else:
+                beds = int(house_information[city][house][7])
             guest_capacity = int(house_information[city][house][8])
             neighborhood = house_information[city][house][9]
             if neighborhood is None:
@@ -364,9 +418,18 @@ with open('database.sql','a') as sql:
                 star_rating = -1
             space_type = house_information[city][house][13]
             price = house_information[city][house][14]
-            clean_fee = house_information[city][house][21]
+            if len(house_information[city][house]) == 21:
+                clean_fee = 0
+            else:
+                clean_fee = house_information[city][house][-1]
+                if clean_fee == -1:
+                    clean_fee = 0
             print("INSERT IGNORE INTO `house` (`city`,`house_id`,`host_id` ,`lat` ,`lng` ,`brife_infor`,`description`,`bedrooms`,`bathrooms`,`beds`,`guest_capacity`,`neighborhood` ,`preview_amenities`,`reviews_count` ,`star_rating` ,`space_type` ,`price` ,`clean_fee` ) VALUES ",file = sql)
             print("(\"{}\",{},{},{},{},\"{}\",\"{}\",{},{},{},{},\"{}\",\"{}\",{},{},\"{}\",{},{});".format(city,house_id,host_id,lat,lng,brife_infor,description,bedrooms,bathrooms,beds,guest_capacity,neighborhood,preview_amenities,reviews_count,star_rating,space_type,price,clean_fee),file = sql)
+
+            print("INSERT INTO `host_to_houses` (`host_id`, `house_id`) VALUES ",file = sql)
+            print("({},{});".format(int(host_id),int(house_id)),file = sql)
+
             print("INSERT IGNORE INTO `house_pic_urls` (`house_id`,`pic_url`) VALUES ",file = sql)
             if len(house_information[city][house][2]) > 1:
                 for pic_index in range(len(house_information[city][house][2]) -1):
@@ -374,38 +437,87 @@ with open('database.sql','a') as sql:
                 print("({},\"{}\");".format(house_id,house_information[city][house][2][pic_index + 1 ]),file = sql)
             else:
                 print("({},\"{}\");".format(house_id,house_information[city][house][2][0]),file = sql)
-
+                
+            
             if int(reviews_count) > 0:
-                #print("INSERT IGNORE INTO `house_review` (`house_id` ,`client_id` ,`comment`) VALUES ",file = sql)
-                for client in house_information[city][house][19]:
-                    client_id = int(client)
-                    comment = house_information[city][house][19][client][1]
-                    if '&' in comment:
-                        comment = re.sub(r'(&.*?) ','',comment)
-                        #print(self_intro)
-                    if '\"' in comment:
-                        comment = re.sub(r'\"','\'',comment)
-                        #print(description)
-                    client_name = house_information[city][house][19][client][0]
-                    print("INSERT IGNORE INTO `house_review` (`house_id` ,`client_id` ,`comment`) VALUES ",file = sql)
-                    print("({},{},\"{}\");".format(house_id,client_id,comment),file = sql)
-                    if client not in clients:                                
-                        print ("INSERT IGNORE INTO `user`() VALUES ();",file = sql) 
-                        print("INSERT IGNORE INTO `client` ( `user_id`,`client_id`,`client_name`) VALUES ",file = sql)
-                        print("(last_insert_id(),{},\"{}\");".format(client_id,client_name),file = sql)
-                        clients.add(client)
+                if house_information[city][house][19] != -1:
 
-            print("INSERT IGNORE INTO `house_calender` (`house_id` ,`date` ,`price`,`availablity`) VALUES ",file = sql)
-            for month in house_information[city][house][20]:
-                for date in house_information[city][house][20][month]:
-                    if date != "2019-09-30":
-                        print("({},\"{}\",{},\"{}\"),".format(house_id,date,house_information[city][house][20][month][date][1],house_information[city][house][20][month][date][0]),file = sql)
-                    else:
-                        print("({},\"{}\",{},\"{}\");".format(house_id,date,house_information[city][house][20][month]["2019-09-30"][1],house_information[city][house][20][month]["2019-09-30"][0]),file = sql)
+                #print("INSERT IGNORE INTO `house_review` (`house_id` ,`client_id` ,`comment`) VALUES ",file = sql)
+                    for client in house_information[city][house][19]:
+                        client_id = int(client)
+                        comment = house_information[city][house][19][client][1]
+                        if '&' in comment:
+                            comment = re.sub(r'(&.*?) ','',comment)
+                            #print(self_intro)
+                        if '\"' in comment:
+                            comment = re.sub(r'\"','\'',comment)
+                            #print(description)
+                        client_name = house_information[city][house][19][client][0]
+                        print("INSERT IGNORE INTO `house_review` (`house_id` ,`client_id` ,`comment`,`host_id`) VALUES ",file = sql)
+                        print("({},{},\"{}\",{});".format(house_id,client_id,comment,host_id),file = sql)
+                    # if client not in clients:                                
+                    #     print ("INSERT IGNORE INTO `user`() VALUES ();",file = sql) 
+                    #     print("INSERT IGNORE INTO `client` ( `user_id`,`client_id`,`client_name`) VALUES ",file = sql)
+                    #     print("(last_insert_id(),{},\"{}\");".format(client_id,client_name),file = sql)
+                    #     clients.add(client)
+            #if house == "27438223":
+                #print(house_information[city][house][-2])
+            if house_information[city][house][-2]!= -1 and len(house_information[city][house][-2]) != 0:
+                print("INSERT IGNORE INTO `house_calender` (`house_id` ,`date` ,`price`,`availablity`) VALUES ",file = sql)
+                #print(house_information[city][house][20])
+                for month in house_information[city][house][-2]:
+                    #print(month)
+                    for date in house_information[city][house][-2][month]:
+                        if date != "2019-09-30":
+                            print("({},\"{}\",{},\"{}\"),".format(house_id,date,house_information[city][house][-2][month][date][1],house_information[city][house][-2][month][date][0]),file = sql)
+                        else:
+                            print("({},\"{}\",{},\"{}\");".format(house_id,date,house_information[city][house][-2][month]["2019-09-30"][1],house_information[city][house][-2][month]["2019-09-30"][0]),file = sql)
 
 
 
         
 
 
+sql.close()
+
+clients = set()
+with open('database.sql','a') as sql:
+    clients_information = read_json_file('guest.json')
+    for client_id in clients_information:
+        client_name = clients_information[client_id]['name']
+        picUrl = clients_information[client_id]['picUrl']
+        details = ''
+        for detail in clients_information[client_id]['detail']:
+            detail += '.'
+            details += detail
+        if '&' in details:
+            details = re.sub(r'(&.*?) ','',details)
+            
+        self_intro = clients_information[client_id]['self_intro']
+        if '&' in self_intro:
+            self_intro = re.sub(r'(&.*?) ','',self_intro)
+            #print(self_intro)
+        if '\"' in self_intro:
+            self_intro = re.sub(r'\"','\'',self_intro)
+            #print(self_intro)
+        self_intro = self_intro
+        join_in_year = clients_information[client_id]['join_in_date']
+
+        if client_id not in clients:                                
+            
+            print ("INSERT IGNORE INTO `user`() VALUES ();",file = sql) 
+            print ("UPDATE `user` SET `user_email` = concat(last_insert_id() ,'@airbnb.com') WHERE `user_id`= last_insert_id();",file = sql) 
+
+            print("INSERT IGNORE INTO `client` ( `client_id`,`user_id`,`client_name`,`details`,`pic_url`,`self_intro`,`join_in_year` ) VALUES ",file = sql)
+            print("({},last_insert_id(),\"{}\",\"{}\",\"{}\",\"{}\",{});".format(int(client_id),client_name,details,picUrl,self_intro,int(join_in_year)),file = sql)
+            clients.add(client_id)
+
+sql.close()
+
+with open('checkdata.sql','a') as sql:
+    for nsw_city in city_querys:
+        print ("select count(*) from `house` where city=\"{}\";".format(nsw_city),file = sql) 
+    print ("select count(*) from `user`;",file = sql) 
+    print ("select count(*) from `client`;",file = sql) 
+    print ("select count(*) from `host`;",file = sql) 
 sql.close()
