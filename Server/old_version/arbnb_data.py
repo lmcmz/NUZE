@@ -665,12 +665,53 @@ def host_join_in_year():
         host_information[host_id]['join_in_date'] = join_in_date
     write_json_file('host.json',host_information)
 
-if __name__ == "__main__":
+
+def update_section():
+    for city in city_querys:
+        query_city = city_querys[city][0]
+        query_id = city_querys[city][1]
+        cityURL = '&items_per_grid=300&key=d306zoyjsyarp7ifhu67rjxn52tv0t20&locale=en-AU&luxury_pre_launch=false&metadata_only=false&place_id='\
+                + str(query_id) + \
+                    '&query='\
+                    + str(query_city) +\
+                    '&query_understanding_enabled=true&refinement_paths%5B%5D=%2Fhomes&s_tag=NSN6ItKl&satori_version=1.1.9&screen_height=278&screen_size=large&screen_width=1200&search_type=PAGINATION&section_offset=8&selected_tab_id=home_tab&show_groupings=true&supports_for_you_v3=true&timezone_offset=600&toddlers=0&version=1.5.6'
+        file_name = city + '.json'
+        houses_information = read_json_file(file_name)
+        
+        
+        url = baseURL + str(0) + cityURL
+        response = requests.get(url)
+        if response.status_code != 200:
+            return houses_information
+        j = response.json()
+        explore_tabs = j.get('explore_tabs')[0]
+        sections = explore_tabs.get("sections")
+        for i in sections:
+            if i.get('section_type_uid') == 'PAGINATED_HOMES':
+                houses = i.get('listings') 
+                for house in houses:
+                    listing = house.get('listing')
+                    house_id = listing.get('id')
+                    neighborhood = listing.get('city')
+                    if str(house_id) in houses_information:
+                        houses_information[str(house_id)][9] = neighborhood
+                        print(neighborhood)
+    write_json_file(file_name,houses_information)
+               
+            
+               
+                    
+def crab_data():
     for i in city_querys:
         
         houses_information,host_information = get_houses_brife_infro__in_city(i)
         houses_information = house_detail_infro(i,houses_information)
 
+
+
+
+if __name__ == "__main__":
+    update_section()
 
 
     
