@@ -72,3 +72,17 @@
 .ReactModal__Html--open {
   overflow: hidden;
 }
+
+.ReactModal__Overlay {
+    opacity: 0;
+    /* transition: opacity 00ms ease-in-out; */
+    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}

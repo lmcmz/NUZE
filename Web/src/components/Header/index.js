@@ -43,7 +43,11 @@ class Header extends React.Component {
         } else {
           this.setState({ hasScrolled: false})
         }
-      }
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener('scroll')
+    }
     
 
     render() {
@@ -62,6 +66,7 @@ class Header extends React.Component {
               </Flex>
             </HeaderContainer>
             <Modal 
+              closeTimeoutMS={200}
               isOpen={this.state.showModal}
               contentLabel="Minimal Modal Example"
               style={{
@@ -88,7 +93,7 @@ class Header extends React.Component {
               }}
             >
               {/* <button onClick={this.handleCloseModal}>Close Modal</button> */}
-              <LoginAlert></LoginAlert>
+              <LoginAlert close={this.handleCloseModal}></LoginAlert>
             </Modal>
           </div>
         )

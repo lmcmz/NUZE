@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import './PropertyCard.css'
+import {Link, withRouter} from 'react-router-dom'
+// import { browserHistory } from 'react-router'
 // import Image from 'react-graceful-image'
 
 
@@ -24,6 +26,7 @@ const PropertyImage = styled(Image)({
     objectFit: 'cover',
     borderRadius: '3px',
     backgroundColor: '#eee',
+    cursor: 'pointer',
 })
 
 
@@ -31,14 +34,23 @@ const PropertyLocationText = styled(Text)({
     textTransform: 'uppercase',
 })
 
-export default class PropertyCard extends Component {
+class PropertyCard extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-          show: true
+          show: true,
+          redirect: false,
         }
     }
+
+    // handlePushRoom = () => {
+    //     // this.props.history.push('/room')
+    //     if (this.state.redirect) {
+    //         this.props.history.push('/room')
+    //     }
+    //     // this.setState({redirect: true})
+    // }
 
     render() {
         return (
@@ -48,9 +60,10 @@ export default class PropertyCard extends Component {
                     borderRadius={2}
                     borderWidth={1}
                     borderColor='#444'>
-
                     <Box>
-                        <PropertyImage borderRadius={3} src={this.props.image} />
+                        <Link to="/room">
+                            <PropertyImage borderRadius={3} src={this.props.image}/>
+                        </Link>
                     </Box>
                     
                     <Box py={2}>
@@ -74,3 +87,6 @@ export default class PropertyCard extends Component {
         )
     }
 }
+
+
+export default withRouter(PropertyCard);

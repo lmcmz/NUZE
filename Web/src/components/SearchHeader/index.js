@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom'
 import './SearchHeader.css'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from 'react-modal';
+import LoginAlert from '../../pages/Login';
 
 const SearchHeaderDiv = styled.div`
     position: fixed;
@@ -75,8 +77,23 @@ const SearchButton = styled.button`
 `
 
 export default class SearchHeader extends Component {
-    static propTypes = {
-        prop: PropTypes
+    constructor(props) {
+        super(props)
+        this.state = {
+          hasScrolled: false,
+          showModal: false,
+        }
+
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    handleOpenModal () {
+      this.setState({ showModal: true });
+    }
+    
+    handleCloseModal () {
+      this.setState({ showModal: false });
     }
 
     render() {
@@ -92,9 +109,39 @@ export default class SearchHeader extends Component {
                     {/* <Link className='link link0' to="/">Join us</Link> */}
                     <Link className='link link1' to="/">Become a Host</Link>
                     <Link className='link link2' to="/">Register</Link>
-                    <Link className='link link3' to="/">Login</Link>
+                    <Link className='link link3' onClick={this.handleOpenModal}>Login</Link>
                 </Flex>
                 </Flex>
+                <Modal 
+                 closeTimeoutMS={200}
+              isOpen={this.state.showModal}
+              contentLabel="Minimal Modal Example"
+              style={{
+                overlay: {
+                  // position: 'fixed',
+                  // top: 0,
+                  // left: 0,
+                  // right: 0,
+                  // bottom: 0,
+                  // backgroundColor: 'rgba(255, 255, 255, 0.75)',
+                  zIndex: 10000,
+                },
+                content: {
+                  alignItems: 'center',
+                  position: 'absolute',
+                  border: 'none',
+                  background: 'none',
+                  overflow: 'auto',
+                  WebkitOverflowScrolling: 'touch',
+                  display: 'flex'
+                  // outline: 'none',
+                  // padding: '20px'
+                }
+              }}
+            >
+              {/* <button onClick={this.handleCloseModal}>Close Modal</button> */}
+              <LoginAlert close={this.handleCloseModal}></LoginAlert>
+            </Modal>
             </SearchHeaderDiv>
         )
     }

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt, faArrowRight, faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
+import {Link, withRouter} from 'react-router-dom'
 
 const PropertyImage = styled(Image)({
     width: '250px',
@@ -37,7 +38,9 @@ export default class ListCard extends Component {
             my={3}>
 
             <Box>
-                <PropertyImage borderRadius={3} src={this.props.image} />
+                <Link to="/room">
+                    <PropertyImage borderRadius={3} src={this.props.image} />
+                </Link>
             </Box>
             
             <Flex px={3} flexDirection="column">
