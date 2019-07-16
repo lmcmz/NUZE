@@ -6,7 +6,10 @@ import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.mapper.ClientMapper;
 import xyz.nuze.model.Client;
+import xyz.nuze.model.ClientExample;
 import xyz.nuze.services.ClientService;
+
+import java.util.List;
 
 /**
  * @CreatyBy Michael
@@ -21,9 +24,15 @@ public class ClientServiceImp implements ClientService {
 
     @Override
     public Client getClientByLoginId(Integer id) throws BusinessException {
-        Client client = clientMapper.selectByPrimaryKey(id);
+        ClientExample clientExample = new ClientExample();
+        ClientExample.Criteria criteria = clientExample.createCriteria();
+        criteria.andUserIdEqualTo(id);
+        List<Client> client = clientMapper.selectByExample(clientExample);
+        if (client.size() != 1) {
+            return null;
+        }
 
-        return client;
+        return client.get(0);
     }
 
     @Override

@@ -7,6 +7,9 @@ import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.mapper.HostMapper;
 import xyz.nuze.model.Host;
+import xyz.nuze.model.HostExample;
+
+import java.util.List;
 
 /**
  * @CreatyBy Michael
@@ -21,9 +24,15 @@ public class HostServiceImp implements xyz.nuze.services.HostService {
 
     @Override
     public Host getHostByLoginId(Integer id) throws BusinessException {
-        Host host = hostMapper.selectByPrimaryKey(id);
+        HostExample hostExample = new HostExample();
+        HostExample.Criteria criteria = hostExample.createCriteria();
+        criteria.andUserIdEqualTo(id);
+        List<Host> host = hostMapper.selectByExample(hostExample);
+        if (host.size() != 1) {
+            return null;
+        }
 
-        return host;
+        return host.get(0);
     }
 
     @Override
