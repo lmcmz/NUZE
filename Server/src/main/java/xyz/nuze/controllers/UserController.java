@@ -5,10 +5,7 @@ import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.model.Host;
@@ -27,6 +24,7 @@ import java.util.Map;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/users")
 public class UserController extends BaseController {
 
