@@ -93,4 +93,6 @@ public interface HouseMapper {
      * @mbg.generated Tue Jul 16 22:06:49 AEST 2019
      */
     int updateByPrimaryKey(House record);
+
+    List<House> getHouseList(@Param("limit") Integer limit,@Param("offset") Integer offset);
 }
