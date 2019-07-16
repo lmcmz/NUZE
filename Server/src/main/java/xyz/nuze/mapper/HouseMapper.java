@@ -94,5 +94,5 @@ public interface HouseMapper {
      */
     int updateByPrimaryKey(House record);
 
-    List<House> getHouseList(@Param("limit") Integer limit,@Param("offset") Integer offset);
+    List<House> getHouseList(@Param("limit") Integer limit,@Param("offset") Integer offset, @Param("city") String city);
 }

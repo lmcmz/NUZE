@@ -12,5 +12,5 @@ import java.util.List;
 
 @Mapper
 public interface HouseService {
-    List<House> listHouseList(Integer limit, Integer offset);
+    List<House> listHouseList(Integer limit, Integer offset, String city);
 }

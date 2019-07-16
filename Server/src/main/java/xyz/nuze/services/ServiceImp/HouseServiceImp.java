@@ -20,8 +20,8 @@ public class HouseServiceImp implements HouseService {
     HouseMapper houseMapper;
 
     @Override
-    public List<House> listHouseList(Integer limit, Integer offset) {
-        List<House> houses = houseMapper.getHouseList(limit, offset);
+    public List<House> listHouseList(Integer limit, Integer offset, String city) {
+        List<House> houses = houseMapper.getHouseList(limit, offset, city);
         return houses;
     }
 }
