@@ -1,5 +1,6 @@
 package xyz.nuze.controllers;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class HouseController extends BaseController {
     HouseService houseService;
 
     @GetMapping("")
+    @ApiOperation(value = "get house info" ,  notes="get house info")
     public CommonReturnType getHouseInfo(
         @ApiParam @RequestParam(value = "city", defaultValue = "Sydney") String city,
         @ApiParam @RequestParam(value = "offset", defaultValue = "0") Integer offset,

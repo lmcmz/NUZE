@@ -8,13 +8,16 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
+import xyz.nuze.model.Client;
 import xyz.nuze.model.Host;
 import xyz.nuze.model.User;
 import xyz.nuze.response.CommonReturnType;
 import xyz.nuze.services.ClientService;
 import xyz.nuze.services.HostService;
 import xyz.nuze.services.UserService;
+import xyz.nuze.utils.JWT.SecurityUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -98,5 +101,22 @@ public class UserController extends BaseController {
         }
 
         return CommonReturnType.create("create success");
+    }
+
+
+    @ApiOperation(value = "User register" ,  notes="User register")
+    @GetMapping("")
+    public CommonReturnType getUserInfo(HttpServletRequest request) throws BusinessException {
+        Integer clientId = SecurityUtils.getUserIdFromToken(request, "client");
+        Integer hostId = SecurityUtils.getUserIdFromToken(request, "host");
+        if (clientId == null && hostId == null) {
+            throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
+        }
+        if (clientId != null) {
+            Client client = clientService.getClientByLoginId(clientId);
+            return CommonReturnType.create(clientId, "Get client info successful");
+        }
+        Host host = hostService.getHostByLoginId(hostId);
+        return CommonReturnType.create(host, "Get client info successful");
     }
 }
