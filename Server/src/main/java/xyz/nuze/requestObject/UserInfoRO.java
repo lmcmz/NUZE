@@ -1,6 +1,7 @@
 package xyz.nuze.requestObject;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @CreatyBy Michael
@@ -8,4 +9,8 @@ import lombok.Data;
  */
 @Data
 public class UserInfoRO {
+    String name;
+    String details;
+    String selfInfo;
+    MultipartFile picture;
 }

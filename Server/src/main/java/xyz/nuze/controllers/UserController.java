@@ -11,6 +11,7 @@ import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.model.Client;
 import xyz.nuze.model.Host;
 import xyz.nuze.model.User;
+import xyz.nuze.requestObject.UserInfoRO;
 import xyz.nuze.response.CommonReturnType;
 import xyz.nuze.services.ClientService;
 import xyz.nuze.services.HostService;
@@ -151,11 +152,7 @@ public class UserController extends BaseController {
     @ApiOperation(value = "User info update" ,  notes="User info update")
     @PostMapping("/info")
     public CommonReturnType updateUserInfo(HttpServletRequest request,
-                                           @RequestBody
-                                           @ApiParam(value = "{ <br/>" +
-                                                   "&nbsp&nbsp&nbsp&nbsp\"password\": 123456, <br/>" +
-                                                   "}")
-                                                   Map<String, String> body) throws BusinessException {
+                                           @ModelAttribute UserInfoRO userInfoRO) throws BusinessException {
         Integer clientId = SecurityUtils.getUserIdFromToken(request, "client");
         Integer hostId = SecurityUtils.getUserIdFromToken(request, "host");
         if (clientId == null && hostId == null) {
