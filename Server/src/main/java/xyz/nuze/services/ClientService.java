@@ -13,4 +13,5 @@ import xyz.nuze.model.Client;
 public interface ClientService {
     Client getClientByLoginId(Integer id) throws BusinessException;
     void insertClient(Integer id) throws BusinessException;
+    void updateClint(Client client) throws BusinessException;
 }

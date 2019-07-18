@@ -14,4 +14,5 @@ public interface UserService {
     User getUserByAccount(String username, String password) throws BusinessException;
     User getUserByUsername(String username) throws BusinessException;
     Integer userRegister(User user) throws BusinessException;
+    void updateUserPassword(User user) throws BusinessException;
 }

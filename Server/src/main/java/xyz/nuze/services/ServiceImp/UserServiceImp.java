@@ -56,4 +56,12 @@ public class UserServiceImp implements UserService {
 
         return user.getUserId();
     }
+
+    @Override
+    public void updateUserPassword(User user) throws BusinessException {
+        int result = userMapper.updateByPrimaryKey(user);
+        if (result != 0) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+    }
 }

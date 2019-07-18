@@ -13,4 +13,5 @@ import xyz.nuze.model.Host;
 public interface HostService {
     Host getHostByLoginId(Integer id) throws BusinessException;
     void insertHost(Integer loginId) throws BusinessException;
+    void updateHost(Host host) throws BusinessException;
 }

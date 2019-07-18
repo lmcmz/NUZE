@@ -45,4 +45,12 @@ public class ClientServiceImp implements ClientService {
             throw new BusinessException(EmBusinessError.UNKNOWN_ERROR);
         }
     }
+
+    @Override
+    public void updateClint(Client client) throws BusinessException {
+        int result = clientMapper.updateByPrimaryKeySelective(client);
+        if (result != 1) {
+            throw new BusinessException(EmBusinessError.UNKNOWN_ERROR);
+        }
+    }
 }
