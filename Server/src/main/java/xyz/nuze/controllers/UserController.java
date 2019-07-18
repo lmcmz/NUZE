@@ -123,7 +123,7 @@ public class UserController extends BaseController {
 
     @ApiOperation(value = "User password update" ,  notes="User password update")
     @PostMapping("/password")
-    public CommonReturnType updateUserInfo(HttpServletRequest request,
+    public CommonReturnType updateUserPass(HttpServletRequest request,
             @RequestBody
             @ApiParam(value = "{ <br/>" +
                     "&nbsp&nbsp&nbsp&nbsp\"password\": 123456, <br/>" +
@@ -145,6 +145,26 @@ public class UserController extends BaseController {
         String password = body.get("password");
         user.setPassword(password);
         userService.updateUserPassword(user);
+        return CommonReturnType.create("Update successfully");
+    }
+
+    @ApiOperation(value = "User info update" ,  notes="User info update")
+    @PostMapping("/info")
+    public CommonReturnType updateUserInfo(HttpServletRequest request,
+                                           @RequestBody
+                                           @ApiParam(value = "{ <br/>" +
+                                                   "&nbsp&nbsp&nbsp&nbsp\"password\": 123456, <br/>" +
+                                                   "}")
+                                                   Map<String, String> body) throws BusinessException {
+        Integer clientId = SecurityUtils.getUserIdFromToken(request, "client");
+        Integer hostId = SecurityUtils.getUserIdFromToken(request, "host");
+        if (clientId == null && hostId == null) {
+            throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
+        }
+        Integer userId;
+        if (clientId != null) {
+        } else {
+        }
         return CommonReturnType.create("Update successfully");
     }
 }
