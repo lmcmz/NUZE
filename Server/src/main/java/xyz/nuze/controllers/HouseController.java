@@ -36,5 +36,16 @@ public class HouseController extends BaseController {
         return CommonReturnType.create(houseList, "get success");
     }
 
+    @GetMapping("{houseId}/review")
+    @ApiOperation(value = "get house info" ,  notes="get house info")
+    public CommonReturnType getHouseReview(
+            @PathVariable("houseId") String houseId,
+            @ApiParam @RequestParam(value = "offset", defaultValue = "0") Integer offset,
+            @ApiParam @RequestParam(value = "limit", defaultValue = "10") Integer limit) throws BusinessException {
+
+        List<House> houseList = houseService.listHouseList(limit, offset, houseId);
+        return CommonReturnType.create(houseList, "get success");
+    }
+
 }
 
