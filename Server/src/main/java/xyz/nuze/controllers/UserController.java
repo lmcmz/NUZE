@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.model.Client;
@@ -13,7 +14,6 @@ import xyz.nuze.model.Host;
 import xyz.nuze.model.User;
 import xyz.nuze.requestObject.UserInfoRO;
 import xyz.nuze.response.CommonReturnType;
-import xyz.nuze.services.AmazonS3ClientService;
 import xyz.nuze.services.ClientService;
 import xyz.nuze.services.HostService;
 import xyz.nuze.services.UserService;
@@ -164,9 +164,28 @@ public class UserController extends BaseController {
             throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
         }
         Integer userId;
-        simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true);
         if (clientId != null) {
+            String path = "comp9900/public/client/" + clientId + "/";
+            simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true, path);
+            String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path;
+            Client client = new Client();
+            client.setUserId(clientId);
+            client.setClientName(userInfoRO.getName());
+            client.setDetails(userInfoRO.getDetails());
+            client.setSelfIntro(userInfoRO.getSelfInfo());
+            client.setPicUrl(fullPath);
+            clientService.updateClint(client);
         } else {
+            String path = "comp9900/public/host/" + hostId + "/";
+            simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true, path);
+            String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path;
+            Host host = new Host();
+            host.setUserId(hostId);
+            host.setName(userInfoRO.getName());
+            host.setDetails(userInfoRO.getDetails());
+            host.setSelfIntro(userInfoRO.getSelfInfo());
+            host.setPicUrl(fullPath);
+            hostService.updateHost(host);
         }
         return CommonReturnType.create("Update successfully");
     }

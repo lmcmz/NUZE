@@ -36,7 +36,7 @@ public class SimpleAwsS3Service {
     }
 
     @Async
-    public void uploadFileToS3Bucket(MultipartFile multipartFile, boolean enablePublicReadAccess)
+    public void uploadFileToS3Bucket(MultipartFile multipartFile, boolean enablePublicReadAccess, String path)
     {
         String fileName = multipartFile.getOriginalFilename();
 
@@ -46,7 +46,7 @@ public class SimpleAwsS3Service {
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(multipartFile.getBytes());
             fos.close();
-
+            fileName = path + fileName;
             PutObjectRequest putObjectRequest = new PutObjectRequest(this.awsS3AudioBucket, fileName, file);
 
             if (enablePublicReadAccess) {

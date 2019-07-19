@@ -48,7 +48,10 @@ public class HostServiceImp implements xyz.nuze.services.HostService {
 
     @Override
     public void updateHost(Host host) throws BusinessException {
-        int result = hostMapper.updateByPrimaryKeySelective(host);
+        HostExample hostExample = new HostExample();
+        HostExample.Criteria criteria = hostExample.createCriteria();
+        criteria.andUserIdEqualTo(host.getUserId());
+        int result = hostMapper.updateByExampleSelective(host, hostExample);
         if (result != 1) {
             throw new BusinessException(EmBusinessError.UNKNOWN_ERROR);
         }

@@ -48,7 +48,10 @@ public class ClientServiceImp implements ClientService {
 
     @Override
     public void updateClint(Client client) throws BusinessException {
-        int result = clientMapper.updateByPrimaryKeySelective(client);
+        ClientExample clientExample = new ClientExample();
+        ClientExample.Criteria criteria = clientExample.createCriteria();
+        criteria.andUserIdEqualTo(client.getUserId());
+        int result = clientMapper.updateByExampleSelective(client, clientExample);
         if (result != 1) {
             throw new BusinessException(EmBusinessError.UNKNOWN_ERROR);
         }
