@@ -54,6 +54,17 @@ public class HouseReview {
      *
      * @mbg.generated Fri Jul 19 11:57:50 AEST 2019
      */
+
+    private Client client;
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public Integer getId() {
         return id;
     }

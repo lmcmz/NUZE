@@ -167,7 +167,7 @@ public class UserController extends BaseController {
         if (clientId != null) {
             String path = "comp9900/public/client/" + clientId + "/";
             simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true, path);
-            String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path;
+            String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path + userInfoRO.getPicture().getOriginalFilename();
             Client client = new Client();
             client.setUserId(clientId);
             client.setClientName(userInfoRO.getName());
@@ -178,7 +178,7 @@ public class UserController extends BaseController {
         } else {
             String path = "comp9900/public/host/" + hostId + "/";
             simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true, path);
-            String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path;
+            String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path + userInfoRO.getPicture().getOriginalFilename();
             Host host = new Host();
             host.setUserId(hostId);
             host.setName(userInfoRO.getName());
