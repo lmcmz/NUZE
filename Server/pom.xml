@@ -98,6 +98,13 @@
       <optional>true</optional>
     </dependency>
 
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk</artifactId>
+      <version>1.11.486</version>
+    </dependency>
+
+
     <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
     <dependency>
       <groupId>javax.xml.bind</groupId>

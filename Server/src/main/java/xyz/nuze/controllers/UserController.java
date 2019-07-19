@@ -13,10 +13,12 @@ import xyz.nuze.model.Host;
 import xyz.nuze.model.User;
 import xyz.nuze.requestObject.UserInfoRO;
 import xyz.nuze.response.CommonReturnType;
+import xyz.nuze.services.AmazonS3ClientService;
 import xyz.nuze.services.ClientService;
 import xyz.nuze.services.HostService;
 import xyz.nuze.services.UserService;
 import xyz.nuze.utils.JWT.SecurityUtils;
+import xyz.nuze.utils.JWT.SimpleAwsS3Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -40,6 +42,9 @@ public class UserController extends BaseController {
 
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    SimpleAwsS3Service simpleAwsS3Service;
 
     @ApiOperation(value = "User register" ,  notes="User register")
     @PostMapping("")
@@ -159,6 +164,7 @@ public class UserController extends BaseController {
             throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
         }
         Integer userId;
+        simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true);
         if (clientId != null) {
         } else {
         }
