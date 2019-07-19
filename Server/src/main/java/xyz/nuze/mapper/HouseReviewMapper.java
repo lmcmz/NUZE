@@ -93,4 +93,7 @@ public interface HouseReviewMapper {
      * @mbg.generated Fri Jul 19 11:57:50 AEST 2019
      */
     int updateByPrimaryKey(HouseReview record);
+
+    List<HouseReview> getHouseReviews(@Param("limit") Integer limit,@Param("offset") Integer offset, @Param("houseId") Integer houseId);
+
 }

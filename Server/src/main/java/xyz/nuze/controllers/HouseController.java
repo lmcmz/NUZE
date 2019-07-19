@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.model.House;
+import xyz.nuze.model.HouseReview;
 import xyz.nuze.response.CommonReturnType;
 import xyz.nuze.services.HouseService;
 
@@ -37,14 +38,14 @@ public class HouseController extends BaseController {
     }
 
     @GetMapping("{houseId}/review")
-    @ApiOperation(value = "get house info" ,  notes="get house info")
+    @ApiOperation(value = "get house review" ,  notes="get house review")
     public CommonReturnType getHouseReview(
-            @PathVariable("houseId") String houseId,
+            @PathVariable("houseId") Integer houseId,
             @ApiParam @RequestParam(value = "offset", defaultValue = "0") Integer offset,
             @ApiParam @RequestParam(value = "limit", defaultValue = "10") Integer limit) throws BusinessException {
 
-        List<House> houseList = houseService.listHouseList(limit, offset, houseId);
-        return CommonReturnType.create(houseList, "get success");
+        List<HouseReview> houseReviews = houseService.listHouseReviews(limit, offset, houseId);
+        return CommonReturnType.create(houseReviews, "get success");
     }
 
 }
