@@ -34,6 +34,14 @@ const PropertyLocationText = styled(Text)({
     textTransform: 'uppercase',
 })
 
+const PropertyTitleText = styled(Text)({
+    height: "60px",
+})
+
+const ReviewCountText = styled.span`
+    padding-left: 5px;
+`
+
 class PropertyCard extends Component {
 
     constructor(props) {
@@ -44,15 +52,47 @@ class PropertyCard extends Component {
         }
     }
 
-    // handlePushRoom = () => {
-    //     // this.props.history.push('/room')
-    //     if (this.state.redirect) {
-    //         this.props.history.push('/room')
-    //     }
-    //     // this.setState({redirect: true})
-    // }
+    countStar(rate) {
+        console.log("---------")
+        let fullStar = Math.floor(rate)
+        let halfStar = rate > fullStar ? 1 : 0
+        let emptyStar = 5 - fullStar - halfStar
+        return (
+            Array(fullStar).fill().map((_, ) => 
+                <FontAwesomeIcon icon={faStar} size='s'/>
+            )
+            // ,
+            // Array(halfStar).fill().map((_, ) => 
+            //     <FontAwesomeIcon icon={faStarHalfAlt} size='s'/>
+            // ),
+            // Array(emptyStar).fill().map((_, ) => 
+            //     <FontAwesomeIcon icon={emStar} size='s'/>
+            // )
+        )
+    }
 
     render() {
+
+        const items = []
+
+        let rate = this.props.data.starRating
+        let fullStar = Math.floor(rate)
+        let halfStar = rate > fullStar ? 1 : 0
+        let emptyStar = 5 - fullStar - halfStar
+
+        Array(fullStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={faStar} size='s'/>)
+        )
+
+        Array(halfStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={faStarHalfAlt} size='s'/>)
+        )
+
+        Array(emptyStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={emStar} size='s'/>)
+        )
+
+
         return (
             <Property>
                 <Card
@@ -67,19 +107,22 @@ class PropertyCard extends Component {
                     </Box>
                     
                     <Box py={2}>
-                        <PropertyLocationText color='grey' fontSize='15px' fontWeight='800' textAlign='left'> Location </PropertyLocationText>
+                        <PropertyLocationText color='grey' fontSize='15px' fontWeight='500' textAlign='left'> 
+                            {this.props.data.neighborhood}, {this.props.data.city} 
+                        </PropertyLocationText>
                     <Heading className='PropertyH3' as='h3' color='#000' textAlign='left'>
-                        Card
+                        
                     </Heading>
-                    <Text fontSize={0} color='#000' textAlign='left'>
-                        Small meta text
-                    </Text>
-                    <Text fontSize={0} color='#FFD000' textAlign='left'>
-                        <FontAwesomeIcon icon={faStar} size='s'/>
-                        <FontAwesomeIcon icon={faStar} size='s'/>
-                        <FontAwesomeIcon icon={faStar} size='s'/>
-                        <FontAwesomeIcon icon={faStarHalfAlt} size='s'/>
-                        <FontAwesomeIcon icon={emStar} size='s'/>
+                    <PropertyTitleText py={1} fontSize={18} fontWeight="600" color='#000' textAlign='left'>
+                        {this.props.data.brifeInfor}
+                    </PropertyTitleText>
+
+                    <Text fontSize={15} color='#FFD000' textAlign='left'>
+                        {/* {this.countStar(this.props.data.starRating)} */}
+                        {items}
+                        <ReviewCountText>
+                            {this.props.data.reviewsCount} reviews
+                        </ReviewCountText>
                     </Text>
                     </Box>
                 </Card>

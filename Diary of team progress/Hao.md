@@ -35,3 +35,13 @@
 - Complete detail page
 - Rewrite server data grab part
 - Learning Redux
+
+
+
+# Week7 ⛽
+
+- Start connecting API to NUZE
+- And building user profile pages
+
+
+

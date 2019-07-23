@@ -22,7 +22,7 @@ export default class Footer extends Component {
     render() {
         return (
             <Flex className='Footer' pt='20px' flexDirection='column' justifyContent='center'>
-                <Flex width={3/4} alignSelf='center'>
+                <Flex width={4/5} alignSelf='center'>
                     <Box width={1/2}>
                         <Flex flexDirection='column' mx='120px'>
                             <Image src={require('../../resource/image/logo-only.svg')} width='40px'/>

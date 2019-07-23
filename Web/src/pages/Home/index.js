@@ -28,8 +28,7 @@ class Home extends Component {
 
     componentDidMount() {
         console.log("mount")
-        this.getHouseInfo(5,0)
-
+        this.getHouseInfo(16,0)
     }
 
     getHouseInfo(limit, offset) {
