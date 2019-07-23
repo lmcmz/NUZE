@@ -10,10 +10,10 @@ import Detail from './pages/Detail';
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from './redux/reducers'
+import store from './redux'
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const store = createStore(rootReducer)
+// const store = createStore(rootReducer)
 
 ReactDOM.render(
     <BrowserRouter>

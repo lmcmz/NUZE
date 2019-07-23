@@ -120,7 +120,7 @@ public class UserController extends BaseController {
         }
         if (clientId != null) {
             Client client = clientService.getClientByLoginId(clientId);
-            return CommonReturnType.create(clientId, "Get client info successful");
+            return CommonReturnType.create(client, "Get client info successful");
         }
         Host host = hostService.getHostByLoginId(hostId);
         return CommonReturnType.create(host, "Get client info successful");

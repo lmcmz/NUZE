@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {userLogin} from '../../redux/user/actions'
 
 const BackgroundBox = styled(Card)({
     height:"460px",
@@ -60,9 +62,33 @@ const CloseButton = styled(Button)({
     cursor: "pointer",
 })
 
-export default class LoginAlert extends Component {
+class LoginAlert extends Component {
     static propTypes = {
         prop: PropTypes
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            username:'',
+            password:''
+        }
+    }
+
+
+
+    Login() {
+        console.log("login")
+        let username = this.state.username
+        let password = this.state.password
+
+        this.props.userLogin(username, password, 0)
+    }
+
+    handleChange(key, e) {
+        this.setState({
+            [key]: e.target.value
+        })
     }
 
     render() {
@@ -78,14 +104,18 @@ export default class LoginAlert extends Component {
                 
                 <Box width={0.8} py={1} m="0 auto">
                     <Text py={2} fontSize="15px">Email</Text>
-                    <DestinationInput type="text" name="destination" placeholder="username or email address"></DestinationInput>
+                    <DestinationInput
+                        onChange={v=>this.handleChange('username',v)}
+                        type="text" name="destination" placeholder="username or email address"></DestinationInput>
                 </Box>
                 <Box width={0.8} py={1}  m="0 auto">
                     <Text py={2} fontSize="15px">Password</Text>
-                    <DestinationInput type="text" name="destination" placeholder="password"></DestinationInput>
+                    <DestinationInput
+                        onChange={v=>this.handleChange('password',v)}
+                        type="text" name="destination" placeholder="password"></DestinationInput>
                 </Box>
                 <Box width={0.8} pt={4} m="0 auto">
-                    <LoginButton onClick={this.props.close} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign in</LoginButton>
+                    <LoginButton onClick={() => this.Login()} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign in</LoginButton>
                 </Box>
                 <Box width={0.8} pt={4} m="0 auto">
                     <Link to="/">
@@ -96,3 +126,9 @@ export default class LoginAlert extends Component {
         )
     }
 }
+
+const mapStateToProps = (state)=>({
+    user:state.user
+})
+const actionCreators = { userLogin };
+export default connect(mapStateToProps, actionCreators)(LoginAlert)

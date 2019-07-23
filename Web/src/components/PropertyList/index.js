@@ -27,9 +27,12 @@ export default class PropertyList extends Component {
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='500' color='#555555'> 
                     Popular place to stay
                 </Text>
+                {this.props.data.map((val, key) => (
+                    <div key={key}>{JSON.stringify(val)}</div>
+                ))}
                 <GridBox w={4/5} m='0 auto'>
-                    {[...Array(20)].map((x, i) =>
-                        <PropertyCard image={this.randomImage()} />
+                    {this.props.data.map((x, i) =>
+                        <PropertyCard data={x} image={this.randomImage()} />
                     )}
                 </GridBox>
             </Box>
