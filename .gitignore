@@ -32,3 +32,5 @@ Server/GeneratorMapper\.xml
 Server/src/main/resources/application\.properties
 
 Server/target/
+
+Web/\.idea/
