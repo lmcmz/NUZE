@@ -4,6 +4,7 @@ import { Box, Card, Button, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Link} from 'react-router-dom'
 
 const BackgroundBox = styled(Card)({
     height:"460px",
@@ -12,6 +13,10 @@ const BackgroundBox = styled(Card)({
     borderRadius: "10px",
     padding: "20px",
     // alignItems:"center",
+})
+
+const LogoBox = styled(Box)({
+    textAlign: "center"
 })
 
 const LoginButton = styled(Button)({
@@ -66,10 +71,10 @@ export default class LoginAlert extends Component {
                 <Flex justifyContent="flex-end">
                     <CloseButton onClick={this.props.close} ><FontAwesomeIcon icon={faTimes} size='2x'/></CloseButton>
                 </Flex>
-                <Flex m="0 auto" justifyContent="center">
+                <LogoBox m="0 auto" justifyContent="center">
                     <img src={require('../../resource/image/logo-only.svg')} width="50" />
                     {/* <Text pl={3} textAlign="center" fontSize="40px" fontWeight="400" fontFamily="Avenir Next">Sign in</Text> */}
-                </Flex> 
+                </LogoBox> 
                 
                 <Box width={0.8} py={1} m="0 auto">
                     <Text py={2} fontSize="15px">Email</Text>
@@ -83,7 +88,9 @@ export default class LoginAlert extends Component {
                     <LoginButton onClick={this.props.close} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign in</LoginButton>
                 </Box>
                 <Box width={0.8} pt={4} m="0 auto">
+                    <Link to="/">
                     <Text textAlign="center" color="#FF6565" fontSize="15px" fontFamily="Avenir Next" >Not a member? Sign up</Text>
+                    </Link>
                 </Box>
             </BackgroundBox>
         )
