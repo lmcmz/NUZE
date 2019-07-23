@@ -16,4 +16,5 @@ import java.util.List;
 public interface HouseService {
     List<House> listHouseList(Integer limit, Integer offset, String city) throws BusinessException;
     List<HouseReview> listHouseReviews(Integer limit, Integer offset, Integer houseId) throws BusinessException;
+    void createHouseReview(Integer clientId, Integer houseId, String review)
 }
