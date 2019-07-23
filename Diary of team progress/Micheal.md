@@ -21,3 +21,11 @@
 ## Week5 
 
 - API design
+
+## Week6 
+
+- user API
+
+## Week7 
+
+- house design
