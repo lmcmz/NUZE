@@ -64,9 +64,12 @@ public class HouseController extends BaseController {
         if (StringUtils.isBlank(review)) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
-
-
-        return CommonReturnType.create(null, "get success");
+        House house = houseService.getHouseById(houseId);
+        if (house == null) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+        houseService.createHouseReview(clientId, house.getHouseId(), houseId, review);
+        return CommonReturnType.create("Create successful");
     }
 
 }
