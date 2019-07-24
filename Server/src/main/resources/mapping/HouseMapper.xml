@@ -162,6 +162,17 @@
     group by h.house_id
     limit #{offset}, #{limit}
   </select>
+  <select id="getHouseInfoById" resultMap="houseListMap">
+    select
+    *
+    from house h
+    join
+    house_pic_urls p
+    on
+    h.house_id = p.house_id
+    where
+    h.house_id = #{houseId, jdbcType=INTEGER}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

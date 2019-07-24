@@ -78,7 +78,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // register related requests
                 .antMatchers("/users").permitAll()
                 .antMatchers("/users/password").permitAll()
-                .antMatchers("/house").permitAll()
+                .antMatchers(HttpMethod.GET,"/house/**").permitAll()
                 .antMatchers("/test/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // 添加权限检测

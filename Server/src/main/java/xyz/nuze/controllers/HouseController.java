@@ -12,6 +12,7 @@ import xyz.nuze.model.HouseReview;
 import xyz.nuze.requestObject.BookingRO;
 import xyz.nuze.response.CommonReturnType;
 import xyz.nuze.services.HouseService;
+import xyz.nuze.services.model.HouseInfo;
 import xyz.nuze.utils.JWT.SecurityUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,13 +33,21 @@ public class HouseController extends BaseController {
 
     @GetMapping("")
     @ApiOperation(value = "get house info" ,  notes="get house info")
-    public CommonReturnType getHouseInfo(
+    public CommonReturnType getHouseInfoList(
         @ApiParam @RequestParam(value = "city", defaultValue = "Sydney") String city,
         @ApiParam @RequestParam(value = "offset", defaultValue = "0") Integer offset,
         @ApiParam @RequestParam(value = "limit", defaultValue = "10") Integer limit) throws BusinessException {
 
         List<House> houseList = houseService.listHouseList(limit, offset, city);
         return CommonReturnType.create(houseList, "get success");
+    }
+
+    @GetMapping("{houseId}")
+    @ApiOperation(value = "get house review" ,  notes="get house review")
+    public CommonReturnType getHouseInfo(
+            @PathVariable("houseId") Integer houseId) throws BusinessException {
+        HouseInfo houseInfo = houseService.getHouseInfoById(houseId);
+        return CommonReturnType.create(houseInfo, "get success");
     }
 
     @GetMapping("{houseId}/review")

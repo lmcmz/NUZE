@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.model.House;
 import xyz.nuze.model.HouseReview;
+import xyz.nuze.services.model.HouseInfo;
 
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface HouseService {
     List<HouseReview> listHouseReviews(Integer limit, Integer offset, Integer houseId) throws BusinessException;
     void createHouseReview(Integer clientId, Integer hostId, Integer houseId, String review) throws BusinessException;
     House getHouseById(Integer houseId) throws BusinessException;
+    HouseInfo getHouseInfoById(Integer houseId) throws BusinessException;
 }

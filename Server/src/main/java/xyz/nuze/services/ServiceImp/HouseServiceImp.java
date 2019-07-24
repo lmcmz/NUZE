@@ -1,6 +1,7 @@
 package xyz.nuze.services.ServiceImp;
 
 import com.amazonaws.services.dynamodbv2.xspec.B;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.nuze.error.BusinessException;
@@ -11,7 +12,9 @@ import xyz.nuze.model.House;
 import xyz.nuze.model.HouseReview;
 import xyz.nuze.model.HouseReviewExample;
 import xyz.nuze.services.HouseService;
+import xyz.nuze.services.model.HouseInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,5 +60,21 @@ public class HouseServiceImp implements HouseService {
     public House getHouseById(Integer houseId) throws BusinessException {
         House house = houseMapper.selectByPrimaryKey(houseId);
         return house;
+    }
+
+    @Override
+    public HouseInfo getHouseInfoById(Integer houseId) throws BusinessException {
+        List<House> houses = houseMapper.getHouseInfoById(houseId);
+        if (houses.size() == 0) {
+            return null;
+        }
+        HouseInfo houseInfo = new HouseInfo();
+        BeanUtils.copyProperties(houses.get(0), houseInfo);
+        List<String> images = new ArrayList<String>();
+        for (House house: houses) {
+            images.add(house.getPicUrl());
+        }
+        houseInfo.setImageList(images);
+        return houseInfo;
     }
 }
