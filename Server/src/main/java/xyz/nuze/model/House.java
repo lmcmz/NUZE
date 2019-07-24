@@ -173,6 +173,17 @@ public class House {
      *
      * @mbg.generated Tue Jul 16 22:06:49 AEST 2019
      */
+
+    private String picUrl;
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
     public Integer getHouseId() {
         return houseId;
     }
