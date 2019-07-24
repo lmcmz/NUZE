@@ -126,7 +126,7 @@ export class Recommand extends Component {
                     selected={this.selected}
                     onSelect={this.onSelect}
                     // dragging={false}
-                    // wheel={false}
+                    wheel={false}
                     />
                 </Box>
             </Box>

@@ -243,7 +243,12 @@ class DetailPage extends Component {
 
     starRendering = () => {
 
-        const items = []
+        const items = [];
+        
+        if (this.state.info.starRating == null) {
+            return
+        }
+
         let rate = this.state.info.starRating < 0 ? 0 : this.state.info.starRating 
         let fullStar = Math.floor(rate)
         let halfStar = rate > fullStar ? 1 : 0
@@ -404,16 +409,9 @@ class DetailPage extends Component {
                                     <Text fontSize="30px" fontWeight="500">${this.state.info.price} <span fontSize="5px" fontWeight="200"> total</span> </Text>  
                                     <Flex alignItems="center">
                                         <Text color="#FFD000">
-
-                                            <FontAwesomeIcon icon={faStar} size='2x'/>
-                                            <FontAwesomeIcon icon={faStar} size='2x'/>
-                                            <FontAwesomeIcon icon={faStar} size='2x'/>
-                                            <FontAwesomeIcon icon={faStarHalfAlt} size='2x'/>
-                                            <FontAwesomeIcon icon={emStar} size='2x'/>
-
-                                            {/* {items} */}
+                                            {this.starRendering()}
                                         </Text>
-                                        <Text alignSelf="center" pl="3px" fontSize="25px" color="#FFD000" fontWeight="500">4.5</Text>
+                                        {/* <Text alignSelf="center" pl="3px" fontSize="25px" color="#FFD000" fontWeight="500">{this.state.info.starRating}</Text> */}
                                     </Flex>  
                                 </Flex>
                                 <Box pt={2} pb={2} >
