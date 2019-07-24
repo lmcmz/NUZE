@@ -24,7 +24,7 @@ export function userLogin(username, password, userGroup) {
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
-                    // console.log('login')
+                    console.log('----------------')
                     console.log(res.data)
                     dispatch(loginSuccess(res.data))
 

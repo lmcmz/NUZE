@@ -16,6 +16,7 @@ import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import Footer from '../../components/Footer';
 import ReactPaginate from 'react-paginate';
 import './Detail.css'
+import axios from 'axios'
 
 const anime = keyframes`
   0% {
@@ -98,21 +99,65 @@ const SearchButton = styled.button`
     }
 `
 
-const images = [
-    'http://placekitten.com/1500/500',
-    'http://placekitten.com/4000/3000',
-    '//placekitten.com/800/1200',
-    '//placekitten.com/1500/1500',
-  ];
-  
+// const images = [
+//     'http://placekitten.com/1500/500',
+//     'http://placekitten.com/4000/3000',
+//     '//placekitten.com/800/1200',
+//     '//placekitten.com/1500/1500',
+//   ];
 
-export default class DetailPage extends Component {
+
+class DetailPage extends Component {
+    componentDidMount() {
+        this.getHouseInfo()
+        this.getReviewInfo()
+    }
+
+    getHouseInfo() {
+        //TODO get user info
+
+        const { id } = this.props.match.params
+        axios.get(`http://13.238.201.29/comp9900/house/${id}`)
+            .then(res=>{
+                if (res.status === 200 && res.data.code === 1) {
+                    // success
+                    console.log("----------------")
+                    console.log(res.data.data)
+
+                    this.setState({
+                        info: res.data.data,
+                        images: res.data.data.imageList
+                    })
+                } else {
+                    console.log('error')
+                }
+            })
+    }
+
+    getReviewInfo() {
+        //TODO get user info
+
+        const { id } = this.props.match.params
+        axios.get(`http://13.238.201.29/comp9900/house/${id}/review`)
+            .then(res=>{
+                if (res.status === 200 && res.data.code === 1) {
+                    // success
+                    this.setState({
+                        review: res.data.data
+                    })
+                } else {
+                    console.log('error')
+                }
+            })
+    }
 
     constructor(props){
         super(props);
         this.state = {
+            info: {},
+            review:[],
             activePage: 5,
-            images: this.props.images,
+            images: [],
             photoIndex: 0,
             isOpen: false,
             startDate: null,
@@ -185,10 +230,6 @@ export default class DetailPage extends Component {
         };
     }
 
-    randomImage = () => {
-        return "https://source.unsplash.com/random?sig="+ Math.floor(Math.random() * Math.floor(1000)) +"/720x1280";
-    };
-
     handleBook = () => {
         window.location.assign('/search');
         // window.location.assign('/search?'+this.state.query);
@@ -198,6 +239,28 @@ export default class DetailPage extends Component {
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
+    }
+
+    starRendering = () => {
+
+        const items = []
+        let rate = this.state.info.starRating < 0 ? 0 : this.state.info.starRating 
+        let fullStar = Math.floor(rate)
+        let halfStar = rate > fullStar ? 1 : 0
+        let emptyStar = 5 - fullStar - halfStar
+        console.log(rate, fullStar, emptyStar)
+        Array(fullStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={faStar} size='2x'/>)
+        )
+
+        Array(halfStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={faStarHalfAlt} size='2x'/>)
+        )
+
+        Array(emptyStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={emStar} size='2x'/>)
+        )
+        return items
     }
 
     render() {
@@ -211,39 +274,54 @@ export default class DetailPage extends Component {
                     <GalleryBox pt="90px">
                         <GalleryGrid>
                             <GalleryContainer width={1/2} mr="2px">
-                                <GalleryImage onClick={() => this.setState({ isOpen: true })} src={this.randomImage()}/>
+                                <GalleryImage 
+                                onClick={() => this.setState({ isOpen: true })} 
+                                src={this.state.info.imageList ? this.state.info.imageList[0] : null}
+                            />
                             </GalleryContainer>
                             <GalleryContainer width={1/4} mr="2px">
                                 <GalleryContainerS mb="2px">
-                                    <GalleryImage src={this.randomImage()} />
+                                    <GalleryImage 
+                                    onClick={() => this.setState({ isOpen: true })}
+                                    src={this.state.info.imageList ? this.state.info.imageList[1] : null}
+                                    />
                                 </GalleryContainerS>
                                 <GalleryContainerS>
-                                    <GalleryImage src={this.randomImage()} />
+                                    <GalleryImage 
+                                    onClick={() => this.setState({ isOpen: true })}
+                                    src={this.state.info.imageList ? this.state.info.imageList[2] : null}
+                                    />
                                 </GalleryContainerS>
                             </GalleryContainer>
                             <GalleryContainer width={1/4}>
                                 <GalleryContainerS mb="2px">
-                                    <GalleryImage src={this.randomImage()} />
+                                    <GalleryImage 
+                                    onClick={() => this.setState({ isOpen: true })}
+                                    src={this.state.info.imageList ? this.state.info.imageList[3] : null}
+                                    />
                                 </GalleryContainerS>
                                 <GalleryContainerS>
-                                    <GalleryImage src={this.randomImage()} />
+                                    <GalleryImage 
+                                    onClick={() => this.setState({ isOpen: true })}
+                                    src={this.state.info.imageList ? this.state.info.imageList[3] : null}
+                                    />
                                 </GalleryContainerS>
                             </GalleryContainer>
                         </GalleryGrid>
                         {isOpen && (
                             <Lightbox
-                                mainSrc={images[photoIndex]}
-                                nextSrc={images[(photoIndex + 1) % images.length]}
-                                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                                mainSrc={this.state.images[photoIndex]}
+                                nextSrc={this.state.images[(photoIndex + 1) % this.state.images.length]}
+                                prevSrc={this.state.images[(photoIndex + this.state.images.length - 1) % this.state.images.length]}
                                 onCloseRequest={() => this.setState({ isOpen: false })}
                                 onMovePrevRequest={() =>
                                 this.setState({
-                                    photoIndex: (photoIndex + images.length - 1) % images.length,
+                                    photoIndex: (photoIndex + this.state.images.length - 1) % this.state.images.length,
                                 })
                                 }
                                 onMoveNextRequest={() =>
                                 this.setState({
-                                    photoIndex: (photoIndex + 1) % images.length,
+                                    photoIndex: (photoIndex + 1) % this.state.images.length,
                                 })
                                 }
                             />
@@ -254,15 +332,13 @@ export default class DetailPage extends Component {
                         <Box width={0.6} >
                             <Flex>
                                 <Box>
-                                    <Text fontSize="18px" color="#60B3DB"> Text Text </Text>
-                                    <Heading as='h1' fontSize="40px"> Text Text Text Text Text Text </Heading>
+                                    <Text fontSize="18px" color="#60B3DB"> {this.state.info.neighborhood} ,{this.state.info.city} </Text>
+                                    <Heading as='h1' fontSize="40px"> {this.state.info.brifeInfor} </Heading>
                                 </Box>
                             </Flex>
 
                             <Text py={2} fontSize="20px">
-                                    Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text 
-                                    Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text 
-                                    Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text 
+                                {this.state.info.description}
                             </Text>
                             <div>
                                 <Card my={2} border="1px solid #eee" width="90%"></Card>
@@ -297,11 +373,11 @@ export default class DetailPage extends Component {
                             <div>
                                 <Card my={2} border="1px solid #eee" width="90%"></Card>
                                 {/* <Heading as='h3' py={3}> {this.props.reviewCounts} Reviews</Heading> */}
-                                <Heading as='h3' py={3}> 20 Reviews</Heading>
+                                <Heading as='h3' py={3}> {this.state.info.reviewsCount} Reviews</Heading>
                                 <Box>
-                                        {[...Array(10)].map((x, i) =>
-                                            <ReviewCard time="3 days ago" name="Tom" avatar="https://a0.muscache.com/im/users/17061/profile_pic/1425534501/original.jpg?aki_policy=profile_x_medium" comment="test test test test test test test test test test test test " />
-                                        )}
+                                    {this.state.review.map((x, i) =>
+                                        <ReviewCard data={x} />
+                                    )}
                                 </Box>
                             </div>
 
@@ -325,14 +401,17 @@ export default class DetailPage extends Component {
                         <Box width={0.4} >
                             <Card border="1px solid #eee" p={3} borderRadius={5}>
                                 <Flex>
-                                    <Text fontSize="30px" fontWeight="500">$78 <span fontSize="5px" fontWeight="200"> total</span> </Text>  
+                                    <Text fontSize="30px" fontWeight="500">${this.state.info.price} <span fontSize="5px" fontWeight="200"> total</span> </Text>  
                                     <Flex alignItems="center">
                                         <Text color="#FFD000">
+
                                             <FontAwesomeIcon icon={faStar} size='2x'/>
                                             <FontAwesomeIcon icon={faStar} size='2x'/>
                                             <FontAwesomeIcon icon={faStar} size='2x'/>
                                             <FontAwesomeIcon icon={faStarHalfAlt} size='2x'/>
                                             <FontAwesomeIcon icon={emStar} size='2x'/>
+
+                                            {/* {items} */}
                                         </Text>
                                         <Text alignSelf="center" pl="3px" fontSize="25px" color="#FFD000" fontWeight="500">4.5</Text>
                                     </Flex>  
@@ -392,3 +471,5 @@ export default class DetailPage extends Component {
     }
 }
 
+
+export default  DetailPage;

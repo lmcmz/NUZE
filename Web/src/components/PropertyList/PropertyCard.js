@@ -52,34 +52,15 @@ class PropertyCard extends Component {
         }
     }
 
-    countStar(rate) {
-        console.log("---------")
-        let fullStar = Math.floor(rate)
-        let halfStar = rate > fullStar ? 1 : 0
-        let emptyStar = 5 - fullStar - halfStar
-        return (
-            Array(fullStar).fill().map((_, ) => 
-                <FontAwesomeIcon icon={faStar} size='s'/>
-            )
-            // ,
-            // Array(halfStar).fill().map((_, ) => 
-            //     <FontAwesomeIcon icon={faStarHalfAlt} size='s'/>
-            // ),
-            // Array(emptyStar).fill().map((_, ) => 
-            //     <FontAwesomeIcon icon={emStar} size='s'/>
-            // )
-        )
-    }
-
     render() {
 
         const items = []
 
-        let rate = this.props.data.starRating
+        let rate = this.props.data.starRating < 0 ? 0 : this.props.data.starRating
         let fullStar = Math.floor(rate)
         let halfStar = rate > fullStar ? 1 : 0
         let emptyStar = 5 - fullStar - halfStar
-
+        // console.log(rate, fullStar, emptyStar)
         Array(fullStar).fill().map((_, ) => 
             items.push(<FontAwesomeIcon icon={faStar} size='s'/>)
         )
@@ -101,8 +82,8 @@ class PropertyCard extends Component {
                     borderWidth={1}
                     borderColor='#444'>
                     <Box>
-                        <Link to="/room">
-                            <PropertyImage borderRadius={3} src={this.props.image}/>
+                        <Link to={`house/${this.props.data.houseId}`}>
+                            <PropertyImage borderRadius={3} src={this.props.data.picUrl}/>
                         </Link>
                     </Box>
                     

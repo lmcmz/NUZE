@@ -38,7 +38,7 @@ export default class ListCard extends Component {
             my={3}>
 
             <Box>
-                <Link to="/room">
+                <Link to="/house">
                     <PropertyImage borderRadius={3} src={this.props.image} />
                 </Link>
             </Box>

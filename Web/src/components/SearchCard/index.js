@@ -89,6 +89,34 @@ const SearchButton = styled.button`
     }
 `
 
+const cityList = [
+    "Sydney",
+    "Newcastle",
+    "Wollongong",
+    "CentralCoast",
+    "Albury",
+    "Armidale",
+    "Bathurst",
+    "BrokenHill",
+    "CityofLakeMacquarie",
+    "CoffsHarbour‎",
+    "Dubbo",
+    "Goulburn",
+    "Grafton",
+    "Griffith",
+    "Lithgow",
+    "Maitland",
+    "Parramatta",
+    "Penrith",
+    "BotanyBay",
+    "Queanbeyan",
+    "CityofShoalhaven‎",
+    "Tamworth",
+    "Taree",
+    "TweedHeads",
+    "WaggaWagga"
+    ]
+
 export class SearchCard extends Component {
     constructor(props) {
         super(props)
@@ -178,6 +206,10 @@ export class SearchCard extends Component {
         // window.location.assign('/search?'+this.state.query);
       }
 
+      handleTextChange = () => {
+
+      }
+
     render() {
         return (
             <Box>
@@ -199,7 +231,7 @@ export class SearchCard extends Component {
                     <Flex flexDirection='column' textAlign='left' alignItems='flex-start'>
                         <Text fontSize={1} color='grey' lineHeight={3}>Destination</Text>
                         <Box width={1}>
-                            <DestinationInput type="text" name="destination" placeholder="Kiama"></DestinationInput>
+                            <DestinationInput onChange={this.handleTextChange.bind(this)} type="text" name="destination" placeholder="Kiama"></DestinationInput>
                         </Box>
                     </Flex>
 

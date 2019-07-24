@@ -6,9 +6,9 @@ import PropertyCard from './PropertyCard'
 
 const GridBox = styled(Box)({
     display: 'grid',
-    gridGap: ' 50px 10px',
+    gridGap: ' 40px 10px',
     // grid-template-columns: auto auto auto;
-    gridTemplateColumns: 'auto auto auto auto',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
     width: '80%',
     justifyItems: 'center',
     justifySelf: 'center',
@@ -32,7 +32,7 @@ export default class PropertyList extends Component {
                 ))} */}
                 <GridBox w={4/5} m='0 auto'>
                     {this.props.data.map((x, i) =>
-                        <PropertyCard data={x} image={this.randomImage()} />
+                        <PropertyCard data={x} />
                     )}
                 </GridBox>
             </Box>

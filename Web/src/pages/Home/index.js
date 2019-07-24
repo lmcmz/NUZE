@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
-import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
+import { Box, Button, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
 import HeroMask from '../../components/HeroMask';
 import SearchCard from '../../components/SearchCard';
@@ -9,6 +9,7 @@ import PropertyList from '../../components/PropertyList';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import axios from 'axios'
+import InfiniteScroll from 'react-infinite-scroller';
 
 const LeftBox = styled(Box)({
     display: 'flex',
@@ -22,29 +23,31 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            houseList: []
+            houseList: [],
+            limit: 16,
+            offset: 0,
         }
     }
 
     componentDidMount() {
         console.log("mount")
-        this.getHouseInfo(16,0)
+        this.getHouseInfo()
     }
 
-    getHouseInfo(limit, offset) {
+    getHouseInfo() {
         //TODO get user info
+        const offset = this.state.offset + this.state.limit
+        const limit = this.state.limit
         axios.get(`http://13.238.201.29/comp9900/house?limit=${limit}&offset=${offset}`)
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
-                    // console.log('login')
-                    console.log(res.data)
-                    // this.setState({
-                    //     houseList:res.data
-                    // })
-                    console.log(this)
+                    
+                    let propertyList = this.state.houseList.concat(res.data.data)
                     this.setState({
-                        houseList:res.data.data
+                        houseList: propertyList,
+                        limit: limit,
+                        offset: offset
                     })
                 } else {
                     console.log('error')
@@ -79,9 +82,18 @@ class Home extends Component {
 
                     <Flex className="Section2" flexDirection='column'>
                         <Recommand />
-                        <PropertyList data={this.state.houseList} />
 
+                        <InfiniteScroll
+                                pageStart={0}
+                                loadMore={this.getHouseInfo.bind(this)}
+                                hasMore={true || false}
+                                loader={<div className="loader" key={0}>Loading ...</div>}
+                            >
+                                <PropertyList data={this.state.houseList} />
+                            </InfiniteScroll>
                         <Footer />
+
+                        {/* <Button onClick={this.getHouseInfo.bind(this)}> AAAAA </Button> */}
                     </Flex>
                 </Flex>
             </div>
