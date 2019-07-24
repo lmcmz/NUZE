@@ -7,7 +7,6 @@ import LoginAlert from '../../pages/Login';
 import Modal from 'react-modal';
 
 const HeaderContainer = styled(Flex)({
-  
 })
 
 class Header extends React.Component {
@@ -53,7 +52,7 @@ class Header extends React.Component {
     render() {
         return (
           <div className={this.state.hasScrolled ? 'Header HeaderScrolled' : 'Header'}>
-            <HeaderContainer px={300}>
+            <HeaderContainer width={0.75} m="0 auto">
               <Box width={1/2}>
                 <Link className='logo' to="/"><img src={require('../../resource/image/logo.svg')} width="120" /></Link> 
               </Box>

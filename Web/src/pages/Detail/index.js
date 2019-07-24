@@ -342,7 +342,7 @@ class DetailPage extends Component {
                                 </Box>
                             </Flex>
 
-                            <Text py={2} fontSize="20px">
+                            <Text py={2} fontSize="17px">
                                 {this.state.info.description}
                             </Text>
                             <div>

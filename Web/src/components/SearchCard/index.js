@@ -7,7 +7,6 @@ import { isNumericLiteral } from '@babel/types';
 import 'react-dates/lib/css/_datepicker.css';
 import {Dropdown} from 'reactjs-dropdown-component';
 import './SearchCard.css'
-
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -88,6 +87,10 @@ const SearchButton = styled.button`
         
     }
 `
+
+const SearchBox = styled(Box)({
+    width: "550px",
+})
 
 const cityList = [
     "Sydney",
@@ -212,7 +215,7 @@ export class SearchCard extends Component {
 
     render() {
         return (
-            <Box>
+            <SearchBox>
                 <Card
                     p={20}
                     borderRadius={8}
@@ -287,7 +290,7 @@ export class SearchCard extends Component {
                     
                     </Box>
                 </Card>
-            </Box>
+            </SearchBox>
         )
     }
 }

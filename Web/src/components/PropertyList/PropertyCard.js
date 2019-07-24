@@ -8,9 +8,6 @@ import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import './PropertyCard.css'
 import {Link, withRouter} from 'react-router-dom'
-// import { browserHistory } from 'react-router'
-// import Image from 'react-graceful-image'
-
 
 const Property = styled(Flex)({
     width: '100%',
