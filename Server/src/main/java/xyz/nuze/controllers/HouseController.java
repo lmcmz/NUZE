@@ -81,24 +81,23 @@ public class HouseController extends BaseController {
         houseService.createHouseReview(clientId, house.getHouseId(), houseId, review);
         return CommonReturnType.create("Create successful");
     }
-//TODO booking
-//    @PostMapping("{houseId}/book")
-//    @ApiOperation(value = "house review" ,  notes="house review")
-//    public CommonReturnType HouseBooking(HttpServletRequest request,
-//                                         @PathVariable("houseId") Integer houseId,
-//                                         @ModelAttribute BookingRO bookingRO) throws BusinessException{
-//
-//        Integer clientId = SecurityUtils.getUserIdFromToken(request, "client");
-//        if (clientId == null) {
-//            throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
-//        }
-//        House house = houseService.getHouseById(houseId);
-//        if (house == null) {
-//            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
-//        }
+    @PostMapping("{houseId}/book")
+    @ApiOperation(value = "house booking" ,  notes="house booking")
+    public CommonReturnType HouseBooking(HttpServletRequest request,
+                                         @PathVariable("houseId") Integer houseId,
+                                         @ModelAttribute BookingRO bookingRO) throws BusinessException{
+
+        Integer clientId = SecurityUtils.getUserIdFromToken(request, "client");
+        if (clientId == null) {
+            throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
+        }
+        House house = houseService.getHouseById(houseId);
+        if (house == null) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
 //        houseService.createHouseReview(clientId, house.getHouseId(), houseId, review);
-//        return CommonReturnType.create("Create successful");
-//    }
+        return CommonReturnType.create("Create successful");
+    }
 
 }
 
