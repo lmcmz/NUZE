@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
@@ -62,6 +63,7 @@ public class HouseController extends BaseController {
     }
 
     @PostMapping("{houseId}/review")
+    @Transactional(rollbackFor = BusinessException.class)
     @ApiOperation(value = "house review" ,  notes="house review")
     public CommonReturnType HouseReview(HttpServletRequest request,
             @PathVariable("houseId") Integer houseId,
@@ -75,6 +77,8 @@ public class HouseController extends BaseController {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
         House house = houseService.getHouseById(houseId);
+        house.setReviewsCount(house.getReviewsCount() + 1);
+        houseService.updateHouseInfo(house);
         if (house == null) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }

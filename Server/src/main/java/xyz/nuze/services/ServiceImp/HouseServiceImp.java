@@ -77,4 +77,12 @@ public class HouseServiceImp implements HouseService {
         houseInfo.setImageList(images);
         return houseInfo;
     }
+
+    @Override
+    public void updateHouseInfo(House house) throws BusinessException {
+        int result = houseMapper.updateByPrimaryKey(house);
+        if (result != 1) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+    }
 }

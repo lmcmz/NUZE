@@ -20,4 +20,5 @@ public interface HouseService {
     void createHouseReview(Integer clientId, Integer hostId, Integer houseId, String review) throws BusinessException;
     House getHouseById(Integer houseId) throws BusinessException;
     HouseInfo getHouseInfoById(Integer houseId) throws BusinessException;
+    void updateHouseInfo(House house) throws BusinessException;
 }
