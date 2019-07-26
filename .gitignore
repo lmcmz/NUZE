@@ -34,3 +34,5 @@ Server/src/main/resources/application\.properties
 Server/target/
 
 Web/\.idea/
+/Web/build
+/Web/build.zip
