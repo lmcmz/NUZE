@@ -117,7 +117,7 @@ class DetailPage extends Component {
         //TODO get user info
 
         const { id } = this.props.match.params
-        axios.get(`http://13.238.201.29/comp9900/house/${id}`)
+        axios.get(`http://13.211.203.224/comp9900/house/${id}`)
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
@@ -138,7 +138,7 @@ class DetailPage extends Component {
         //TODO get user info
 
         const { id } = this.props.match.params
-        axios.get(`http://13.238.201.29/comp9900/house/${id}/review`)
+        axios.get(`http://13.211.203.224/comp9900/house/${id}/review`)
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success

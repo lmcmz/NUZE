@@ -63,7 +63,7 @@ class FilterBar extends Component {
                         <Toggle
                             className='map-toggle'
                             // checked={this.state.toggle}
-                            defaultChecked={this.state.baconIsReady}
+                            defaultChecked={this.state.defaultChecked}
                             onChange={this.props.mapCheck} />
                     </label>
                 </Flex>

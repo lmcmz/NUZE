@@ -20,7 +20,7 @@ export function userLogin(username, password, userGroup) {
         return dispatch=>dispatch(errorMsg('Password should not be empty'))
     }
     return dispatch=>{
-        axios.post('http://13.238.201.29/comp9900/login', {username, password, userGroup})
+        axios.post('http://13.211.203.224/comp9900/login', {username, password, userGroup})
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
@@ -40,7 +40,7 @@ export function userLogin(username, password, userGroup) {
 export function getUserInfo(JWT) {
     //TODO get user info
     return dispatch=>{
-        axios.post('http://13.238.201.29/comp9900/users', {}, {})
+        axios.post('http://13.211.203.224/comp9900/users', {}, {})
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success

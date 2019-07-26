@@ -23,6 +23,10 @@ const PropertyLocationText = styled(Text)({
     textTransform: 'uppercase',
 })
 
+const ReviewCountText = styled.span`
+    padding-left: 5px;
+`
+
 export default class ListCard extends Component {
 
     constructor(props) {
@@ -32,36 +36,56 @@ export default class ListCard extends Component {
     }
 
     render() {
+        const items = []
+
+        let rate = this.props.data.starRating < 0 ? 0 : this.props.data.starRating
+        let fullStar = Math.floor(rate)
+        let halfStar = rate > fullStar ? 1 : 0
+        let emptyStar = 5 - fullStar - halfStar
+        // console.log(rate, fullStar, emptyStar)
+        Array(fullStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={faStar} size='s'/>)
+        )
+
+        Array(halfStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={faStarHalfAlt} size='s'/>)
+        )
+
+        Array(emptyStar).fill().map((_, ) => 
+            items.push(<FontAwesomeIcon icon={emStar} size='s'/>)
+        )
+
         return (
             <Container
             p={1}
             my={3}>
 
             <Box>
-                <Link to="/house">
-                    <PropertyImage borderRadius={3} src={this.props.image} />
+                <Link to={`house/${this.props.data.houseId}`}>
+                    <PropertyImage borderRadius={3} src={this.props.data.picUrl} />
                 </Link>
             </Box>
             
             <Flex px={3} flexDirection="column">
-                <Heading className='PropertyH3' as='h3' color='#000' textAlign='left'>
-                    Card
-                </Heading>
-                <PropertyLocationText color='grey' fontSize='15px' fontWeight='800' textAlign='left'> Location </PropertyLocationText>
-                <Text fontSize={0} color='#000' textAlign='left'>
-                    Small meta text
+                <Text className='PropertyH3' pt="5px" fontSize="20px" fontWeight="600" color='#000' textAlign='left'>
+                    {this.props.data.brifeInfor}
+                </Text>
+                <PropertyLocationText py={1} color='grey' fontSize='15px' fontWeight='800' textAlign='left'> 
+                    {this.props.data.neighborhood}, {this.props.data.city} 
+                </PropertyLocationText>
+                <Text fontSize={0} py={1} color='#000' textAlign='left'>
+                    {this.props.data.spaceType}
                 </Text>
                 <Text mt="auto" fontSize={0} color='#FFD000' textAlign='left'>
-                    <FontAwesomeIcon icon={faStar} size='s'/>
-                    <FontAwesomeIcon icon={faStar} size='s'/>
-                    <FontAwesomeIcon icon={faStar} size='s'/>
-                    <FontAwesomeIcon icon={faStarHalfAlt} size='s'/>
-                    <FontAwesomeIcon icon={emStar} size='s'/>
+                {items}
+                <ReviewCountText>
+                            {this.props.data.reviewsCount} reviews
+                        </ReviewCountText>
                 </Text>
             </Flex>
             
             <Flex ml="auto" alignItems='center'>
-                <Text fontSize="25px" fontWeight="500" pr="10px">$98</Text>
+                <Text fontSize="25px" fontWeight="500" pr="10px">${this.props.data.price}</Text>
                 {/* <FontAwesomeIcon icon={faArrowRight} size='2x'/> */}
             </Flex>
         </Container>

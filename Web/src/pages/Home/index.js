@@ -38,7 +38,7 @@ class Home extends Component {
         //TODO get user info
         const offset = this.state.offset + this.state.limit
         const limit = this.state.limit
-        axios.get(`http://13.238.201.29/comp9900/house?limit=${limit}&offset=${offset}`)
+        axios.get(`http://13.211.203.224/comp9900/house?limit=${limit}&offset=${offset}`)
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
