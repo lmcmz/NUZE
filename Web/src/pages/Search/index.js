@@ -9,13 +9,12 @@ import FilterBar from '../../components/FilterBar'
 import PropertyCard from '../../components/PropertyList/PropertyCard'
 import ListCard from '../../components/ListCard'
 import Footer from '../../components/Footer';
-// import ReactMapGL from 'react-map-gl';
 import {connect} from 'react-redux';
 import toggle from '../../redux/reducers'
 import { throwStatement } from '@babel/types';
 import axios from 'axios'
-
-import ReactMapboxGl, { Marker, Layer, Feature } from 'react-mapbox-gl';
+import GoogleMapReact from 'google-map-react';
+import MapDot from '../../components/MapDot';
 
 const GridBox = styled(Box)({
     display: 'grid',
@@ -43,12 +42,6 @@ const MapWrapper = styled(Box)({
     height: '100%',
 })
 
-const Map = ReactMapboxGl({
-    accessToken:
-      'pk.eyJ1IjoiYmItZGV2ZWxvcGVyIiwiYSI6ImNqdWRld252MTBoNng0NHJ5eTV1dzBuemgifQ.f8j9fIzonqYRMHG44o1OlQ'
-  });
-
-
 
 class Search extends Component {
     constructor(props) {
@@ -58,15 +51,11 @@ class Search extends Component {
             houseList:[],
             limit: 20,
             offset: 0,
-            viewport: {
-                // width: 800,
-                // height: 400,
-                bearing: 0,
-                pitch: 0,
-                latitude: 37.7577,
-                longitude: -122.4376,
-                zoom: 12
-              }
+            center: {
+                lat: -33.86515,
+                lng: 151.1919
+              },
+            zoom: 14
         }
     }
 
@@ -80,23 +69,23 @@ class Search extends Component {
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
-                    
-                    let propertyList = this.state.houseList.concat(res.data.data)
+
+                    let propertyList = res.data.data.map((x,i) =>
+                        ({...x, isShow: false})
+                    )
+
+                    let firstProperty = res.data.data[0]
                     this.setState({
                         houseList: propertyList,
                         limit: limit,
-                        offset: offset
+                        offset: offset,
+                        center: {lat: firstProperty.lat, lng: firstProperty.lng}
                     })
                 } else {
                     console.log('error')
                 }
         })
       }
-
-
-    randomImage = () => {
-        return "https://source.unsplash.com/random?sig="+ Math.floor(Math.random() * Math.floor(1000)) +"/720x1280";
-    };
 
     mapToggled = (e) => {
         console.log('toggle: ', this.state.toggle );
@@ -106,6 +95,17 @@ class Search extends Component {
     // shouldComponentUpdate() {
     //     return true;
     // }
+
+    onChildClickCallback = (key) => {
+        this.setState((state) => {
+          const index = state.houseList.findIndex(e => e.houseId == key);
+          {state.houseList.map((x, i) =>
+            x.isShow = false
+          )}
+          state.houseList[index].isShow = !state.houseList[index].isShow;
+          return { houseList: state.houseList };
+        });
+    };
 
     render() {
         // console.log('PROPS: ', this.props);
@@ -130,17 +130,25 @@ class Search extends Component {
                 )}
             </List>
                 <MapWrapper width={1/2}>
-                    <Map
-                        style="mapbox://styles/mapbox/streets-v9"
-                        containerStyle={{
-                            height: '100%',
-                            width: '100%'
-                        }}
+                    <GoogleMapReact
+                            options={{
+                                styles: customMapStyle,
+                            }}
+                        bootstrapURLKeys={{ key: "AIzaSyDLeo51fXjH1cJmOtmNjfDR29mxKOMMsKk"}}
+                        defaultCenter={this.state.center}
+                        defaultZoom={this.state.zoom}
+                        onChildClick={this.onChildClickCallback}
                         >
-                        <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-                            <Feature coordinates={[-33.86515, 151.1919]} />
-                        </Layer>
-                    </Map>;
+                            {this.state.houseList.map((x, i) =>
+                            <MapDot
+                                key={x.houseId}
+                                lat={x.lat}
+                                lng={x.lng}
+                                text="My Marker"
+                                data={x}
+                            />
+                        )}
+                    </GoogleMapReact>
                 </MapWrapper>
             </Container>)} 
             <Footer />
@@ -155,3 +163,180 @@ class Search extends Component {
 
 
 export default connect(mapStateToProps, null)(Search);
+
+const customMapStyle = [
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#e9e9e9"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#333333"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            },
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    }
+];

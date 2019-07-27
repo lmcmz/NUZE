@@ -11,7 +11,6 @@ import Detail from './pages/Detail';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import store from './redux'
-import 'mapbox-gl/dist/mapbox-gl.css';
 
 // const store = createStore(rootReducer)
 
