@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.model.Client;
@@ -21,6 +20,7 @@ import xyz.nuze.utils.JWT.SecurityUtils;
 import xyz.nuze.utils.JWT.SimpleAwsS3Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -106,7 +106,13 @@ public class UserController extends BaseController {
             clientService.insertClient(userId);
         }
 
-        return CommonReturnType.create("create success");
+        if (userGroup == 0) {
+            Client client = clientService.getClientByLoginId(userId);
+            return CommonReturnType.create(client, "Get client info successful");
+        }
+        Host host = hostService.getHostByLoginId(userId);
+
+        return CommonReturnType.create(host,"Get client info successfu");
     }
 
 
