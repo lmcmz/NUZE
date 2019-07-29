@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Search from './pages/Search';
 import Detail from './pages/Detail';
 import Profile from './pages/Profile';
+import BecameHost from './pages/BecameHost';
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -18,14 +19,13 @@ import store from './redux'
 ReactDOM.render(
     <BrowserRouter>
     <Provider store={store}>
-        {/* <Header /> */}
         <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route path='/search' component={Search}></Route>
             <Route path='/house/:id' component={Detail}></Route>
             <Route path='/profile' component={Profile}></Route>
+            <Route path='/becomeHost' component={BecameHost}></Route>
         </Switch>
-        {/* <Footer /> */}
     </Provider>
     </BrowserRouter>, 
     document.getElementById('root')

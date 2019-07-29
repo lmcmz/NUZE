@@ -8,6 +8,7 @@ import TripList from '../../components/Trips';
 import EditProfile from '../../components/EditProfile';
 import FavouriteList from '../../components/Favourite';
 import ReviewList from '../../components/ReviewList';
+import Footer from '../../components/Footer';
 
 const randomImage = () => {
     return "https://source.unsplash.com/random?sig="+ Math.floor(Math.random() * Math.floor(1000)) +"/720x1280";
@@ -118,6 +119,7 @@ export default class Profile extends Component {
                     <Box width={0.8}>
                         {this.renderSwitch(this.state.selectedId)}
                     </Box>
+                <Footer />
                 </Container>
             </div>
         )
