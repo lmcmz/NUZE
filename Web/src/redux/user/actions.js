@@ -50,8 +50,6 @@ export function userLogin(username, password, userGroup) {
     }
 }
 
-
-
 export function getUserInfo(JWT) {
     console.log(JWT)
     //TODO get user info
@@ -73,13 +71,34 @@ export function getUserInfo(JWT) {
 
 export function userRegister(username, password) {
     return dispatch=>{
-        axios.get('http://13.211.203.224/comp9900/users', {username, password})
+        axios.post('http://13.211.203.224/comp9900/users', {username, password, type: 0})
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
-                    // console.log('login')
-                    return res.data
-                    // dispatch(loginSuccess(res.data))
+                    axios.post('http://13.211.203.224/comp9900/login', {username, password, userGroup: 0})
+                        .then(res=>{
+                            if (res.status === 200 && res.data.code === 1) {
+                                // success
+                                // dispatch(loginSuccess(res.data))
+                                let jwt = res.data.data
+                                axios.get('http://13.211.203.224/comp9900/users', { headers: { Authorization: jwt } })
+                                    .then(res=>{
+                                        if (res.status === 200 && res.data.code === 1) {
+                                            // success
+                                            // return res.data
+                                            let userInfo = res.data.data
+                                            userInfo.jwt = jwt
+                                            dispatch(loginSuccess(userInfo))
+
+                                        } else {
+                                            // dispatch(errorMsg(res.data.error))
+                                        }
+                                    })
+
+                            } else {
+                                dispatch(errorMsg(res.data.error))
+                            }
+                        })
 
                 } else {
                     // dispatch(errorMsg(res.data.error))

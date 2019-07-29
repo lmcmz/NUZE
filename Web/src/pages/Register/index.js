@@ -6,7 +6,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {userLogin} from '../../redux/user/actions'
+import {userRegister} from '../../redux/user/actions'
 
 const BackgroundBox = styled(Card)({
     height:"550px",
@@ -81,8 +81,8 @@ class RegisterAlert extends Component {
         console.log("login")
         let username = this.state.username
         let password = this.state.password
-
-        this.props.userLogin(username, password, 0)
+        console.log(username, password)
+        this.props.userRegister(username, password, 0)
     }
 
     handleChange(key, e) {
@@ -122,7 +122,7 @@ class RegisterAlert extends Component {
                         type="text" name="destination" placeholder="password"></DestinationInput>
                 </Box>
                 <Box width={0.8} pt={4} m="0 auto">
-                    <LoginButton onClick={() => this.Login()} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign up</LoginButton>
+                    <LoginButton onClick={() => this.Register()} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign up</LoginButton>
                 </Box>
                 <Box width={0.8} pt={4} m="0 auto">
                     <Link to="/">
@@ -137,5 +137,5 @@ class RegisterAlert extends Component {
 const mapStateToProps = (state)=>({
     user:state.user
 })
-const actionCreators = { userLogin };
+const actionCreators = { userRegister };
 export default connect(mapStateToProps, actionCreators)(RegisterAlert)
