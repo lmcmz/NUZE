@@ -13,7 +13,7 @@ const defaultState = {
     userId:'',
     clientName:'',
     details:'',
-    picUrl:'',
+    picUrl:'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png',
     selfIntro:'',
     joinInyear:''
 }
