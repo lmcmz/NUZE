@@ -25,7 +25,7 @@ export default class PropertyList extends Component {
         return (
             <Box>
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='500' color='#555555'> 
-                    Popular place to stay
+                    {this.props.title}
                 </Text>
                 {/* {this.props.data.map((val, key) => (
                     <div key={key}>{JSON.stringify(val)}</div>

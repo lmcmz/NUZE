@@ -76,7 +76,6 @@ class Search extends Component {
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
-
                     let propertyList = res.data.data.map((x,i) =>
                         ({...x, isShow: false})
                     )

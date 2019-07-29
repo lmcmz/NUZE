@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Search from './pages/Search';
 import Detail from './pages/Detail';
+import Profile from './pages/Profile';
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -22,6 +23,7 @@ ReactDOM.render(
             <Route exact path='/' component={Home}></Route>
             <Route path='/search' component={Search}></Route>
             <Route path='/house/:id' component={Detail}></Route>
+            <Route path='/profile' component={Profile}></Route>
         </Switch>
         {/* <Footer /> */}
     </Provider>

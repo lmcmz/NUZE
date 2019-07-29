@@ -89,7 +89,7 @@ class Home extends Component {
                                 hasMore={true || false}
                                 loader={<div className="loader" key={0}>Loading ...</div>}
                             >
-                                <PropertyList data={this.state.houseList} />
+                                <PropertyList title="Popular place to stay" data={this.state.houseList} />
                             </InfiniteScroll>
                         <Footer />
 
