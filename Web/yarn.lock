@@ -2567,7 +2567,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
+classnames@^2.2.3, classnames@^2.2.5:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -8262,6 +8262,13 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
+react-dropdown@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/react-dropdown/-/react-dropdown-1.6.4.tgz#8dce141bb26fb6b3c3696d16e06f4517728c57f4"
+  integrity sha512-zTlNRZ6vzjEPsodBNgh6Xjp9IempEx9sReH3crT2Jw4S6KW2wS/BRIH3d/grYf/iXARadDRD91//uUCs9yjoLg==
+  dependencies:
+    classnames "^2.2.3"
+
 react-error-overlay@^5.1.6:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.6.tgz#0cd73407c5d141f9638ae1e0c63e7b2bf7e9929d"
@@ -8495,11 +8502,6 @@ react@^16.8.6:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.6"
-
-reactjs-dropdown-component@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/reactjs-dropdown-component/-/reactjs-dropdown-component-1.0.6.tgz#aa0640a37eac9d54a0b9d3e2cdbe569eb06703e1"
-  integrity sha512-tu3+8KiMwa3DYqpzzaQ68Ay9E46Vo5Xy+XyowUSLCaWzK1SBrP2GLzCDh4PlPg2IIEyuYo6UQmfGUvwWJmd14w==
 
 read-pkg-up@^2.0.0:
   version "2.0.0"

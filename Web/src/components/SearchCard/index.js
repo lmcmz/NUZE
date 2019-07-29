@@ -3,12 +3,12 @@ import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import styled, { keyframes }from 'styled-components'
-import { isNumericLiteral } from '@babel/types';
 import 'react-dates/lib/css/_datepicker.css';
-import {Dropdown} from 'reactjs-dropdown-component';
 import './SearchCard.css'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 
 const ColorText = styled.span`
@@ -23,7 +23,7 @@ const DestinationInput = styled.input`
     width: 100%;
     height: 50px;
     border:none;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color : rgba( 0, 0, 0, 0.05);
     padding-left: 0.5em;
     font-size: 22px;
@@ -128,70 +128,6 @@ export class SearchCard extends Component {
             startDate: null,
             endDate:null,
             focusedInput: null,
-            adultNumber: [
-                {
-                    id: 0,
-                    title: '0',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 1,
-                    title: '1',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 2,
-                    title: '2',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 3,
-                    title: '3',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 4,
-                    title: '4',
-                    selected: false,
-                    key: 'number'
-                }
-              ],
-            number: [
-                {
-                    id: 0,
-                    title: '0',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 1,
-                    title: '1',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 2,
-                    title: '2',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 3,
-                    title: '3',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 4,
-                    title: '4',
-                    selected: false,
-                    key: 'number'
-                }
-              ]
         }
       }
 
@@ -214,6 +150,11 @@ export class SearchCard extends Component {
       }
 
     render() {
+
+        const options = [1,2,3,4]
+        // Array(5).fill();
+        const defaultOption = 1;
+
         return (
             <SearchBox>
                 <Card
@@ -241,43 +182,44 @@ export class SearchCard extends Component {
                     <Box pt={2} pb={2} >
                         <Flex flexDirection='column' textAlign='left' alignItems='flex-start'>
                             <Text fontSize={1} color='grey' lineHeight={3}>Date</Text>
-                            <DateRangePicker
-                                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                showClearDates='true'
-                                showDefaultInputIcon='true'
-                                reopenPickerOnClearDates='true'
-                                noBorder='true'
-                                backgroundColor='black'
+                            <Flex width={1} style={{overflow:"hiden"}}>
+                                <DateRangePicker
+                                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                                    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                                    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                                    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                                    showClearDates='true'
+                                    showDefaultInputIcon='true'
+                                    reopenPickerOnClearDates='true'
+                                    noBorder='true'
+                                    backgroundColor='black'
 
-                                />
+                                    />
+                            </Flex>
                         </Flex>
                     </Box>
                     
                     <Box pt={2} pb={2} >
                         <Flex flexDirection='column' textAlign='left' alignItems='flex-start'>
                             <Text fontSize={1} color='grey' lineHeight={3}>Guest</Text>
-                            <Flex  justifyContent='space-between'>
-                                <Dropdown
-                                    title="Adults"
-                                    list={this.state.adultNumber}
-                                    resetThenSet={this.resetThenSet}
-                                />
-                                <Dropdown
-                                    title="Children"
-                                    list={this.state.number}
-                                    resetThenSet={this.resetThenSet}
-                                />
-                                <Dropdown
-                                    title="Room"
-                                    list={this.state.number}
-                                    resetThenSet={this.resetThenSet}
-                                />
+                            <Flex  justifyContent='space-between' width={1}>
+                                <Dropdown className="dropdownWrapper" 
+                                    controlClassName='dropdown'
+                                    arrowClassName='dropdownArrow'
+                                    menuClassName='dropdownMenu'
+                                    options={options} 
+                                    placeholder="Rooms" 
+                                     />
+                                <Dropdown className="dropdownWrapper" 
+                                    controlClassName='dropdown'
+                                    arrowClassName='dropdownArrow'
+                                    menuClassName='dropdownMenu'
+                                    
+                                    options={options}
+                                    placeholder="Guest" />
                             </Flex>
                         </Flex>
                     </Box>
