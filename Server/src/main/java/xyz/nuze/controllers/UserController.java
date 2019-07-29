@@ -3,9 +3,12 @@ package xyz.nuze.controllers;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.model.Client;
@@ -105,14 +108,7 @@ public class UserController extends BaseController {
         } else {
             clientService.insertClient(userId);
         }
-
-        if (userGroup == 0) {
-            Client client = clientService.getClientByLoginId(userId);
-            return CommonReturnType.create(client, "Get client info successful");
-        }
-        Host host = hostService.getHostByLoginId(userId);
-
-        return CommonReturnType.create(host,"Get client info successfu");
+        return CommonReturnType.create("create successfully");
     }
 
 

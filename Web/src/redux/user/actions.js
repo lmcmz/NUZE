@@ -70,3 +70,20 @@ export function getUserInfo(JWT) {
             })
     }
 }
+
+export function userRegister(username, password) {
+    return dispatch=>{
+        axios.get('http://13.211.203.224/comp9900/users', {username, password})
+            .then(res=>{
+                if (res.status === 200 && res.data.code === 1) {
+                    // success
+                    // console.log('login')
+                    return res.data
+                    // dispatch(loginSuccess(res.data))
+
+                } else {
+                    // dispatch(errorMsg(res.data.error))
+                }
+            })
+    }
+}
