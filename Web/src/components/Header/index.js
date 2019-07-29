@@ -4,6 +4,7 @@ import './Header.css'
 import { Box, Flex, Card, Image, Heading, Text} from 'rebass';
 import styled from 'styled-components'
 import LoginAlert from '../../pages/Login';
+import RegisterAlert from '../../pages/Register';
 import Modal from 'react-modal';
 
 const HeaderContainer = styled(Flex)({
@@ -16,14 +17,15 @@ class Header extends React.Component {
         this.state = {
           hasScrolled: false,
           showModal: false,
+          isLogin: true
         }
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
     }
 
-    handleOpenModal () {
-      this.setState({ showModal: true });
+    handleOpenModal (isLogin) {
+      this.setState({ showModal: true, isLogin: isLogin });
     }
     
     handleCloseModal () {
@@ -32,7 +34,7 @@ class Header extends React.Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll)
-      }
+    }
     
       handleScroll = (event) => {
         const scrollTop = window.pageYOffset
@@ -47,7 +49,6 @@ class Header extends React.Component {
     componentWillUnmount() {
       window.removeEventListener('scroll', () => {} )
     }
-    
 
     render() {
         return (
@@ -59,8 +60,8 @@ class Header extends React.Component {
               <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
                 {/* <Link className='link link0' to="/">Join us</Link> */}
                 <Link className='link link1' to="/">Become a Host</Link>
-                <Link className='link link2' to="/">Register</Link>
-                <Link className='link link3' onClick={this.handleOpenModal}>Login</Link>
+                <Link className='link link2' onClick={this.handleOpenModal.bind(this, false)}>Register</Link>
+                <Link className='link link3' onClick={this.handleOpenModal.bind(this, true)}>Login</Link>
                 {/* <button onClick={this.loginHandle}>Login</button> */}
               </Flex>
             </HeaderContainer>
@@ -91,8 +92,11 @@ class Header extends React.Component {
                 }
               }}
             >
-              {/* <button onClick={this.handleCloseModal}>Close Modal</button> */}
-              <LoginAlert close={this.handleCloseModal}></LoginAlert>
+
+              {this.state.isLogin ? 
+                <LoginAlert close={this.handleCloseModal}></LoginAlert> :
+                <RegisterAlert close={this.handleCloseModal}></RegisterAlert>
+              }
             </Modal>
           </div>
         )

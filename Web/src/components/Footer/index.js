@@ -38,7 +38,7 @@ export default class Footer extends Component {
                     </Box>
                     <Box width={1/2}>
                         <Flex flexDirection='column' mx='120px'>
-                            <Text fontSize='20px' fontWeight='600' textAlign='left'>Contratc us</Text>
+                            <Text fontSize='20px' fontWeight='600' textAlign='left'>Contact us</Text>
                             <Flex py='20px'>
                                 <Box>
                                     <a href="http://wwww.github.com"><FontAwesomeIcon icon={faGithub} color="black" size="4x"/></a>

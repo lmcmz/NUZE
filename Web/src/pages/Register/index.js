@@ -9,7 +9,7 @@ import {connect} from 'react-redux'
 import {userLogin} from '../../redux/user/actions'
 
 const BackgroundBox = styled(Card)({
-    height:"460px",
+    height:"550px",
     width:"600px",
     margin: "0 auto",
     borderRadius: "10px",
@@ -62,7 +62,7 @@ const CloseButton = styled(Button)({
     cursor: "pointer",
 })
 
-class LoginAlert extends Component {
+class RegisterAlert extends Component {
     static propTypes = {
         prop: PropTypes
     }
@@ -77,7 +77,7 @@ class LoginAlert extends Component {
 
 
 
-    Login() {
+    Register() {
         console.log("login")
         let username = this.state.username
         let password = this.state.password
@@ -103,23 +103,30 @@ class LoginAlert extends Component {
                 </LogoBox> 
                 
                 <Box width={0.8} py={1} m="0 auto">
-                    <Text py={2} fontSize="15px">Email</Text>
+                    <Text py={2} fontSize="15px">Username</Text>
                     <DestinationInput
                         onChange={v=>this.handleChange('username',v)}
-                        type="text" name="destination" placeholder="Email address"></DestinationInput>
+                        type="text" name="destination" placeholder="username"></DestinationInput>
+                </Box>
+
+                <Box width={0.8} py={1} m="0 auto">
+                    <Text py={2} fontSize="15px">Email</Text>
+                    <DestinationInput
+                        onChange={v=>this.handleChange('email',v)}
+                        type="text" name="destination" placeholder="email address"></DestinationInput>
                 </Box>
                 <Box width={0.8} py={1}  m="0 auto">
                     <Text py={2} fontSize="15px">Password</Text>
                     <DestinationInput
                         onChange={v=>this.handleChange('password',v)}
-                        type="text" name="destination" placeholder="Password"></DestinationInput>
+                        type="text" name="destination" placeholder="password"></DestinationInput>
                 </Box>
                 <Box width={0.8} pt={4} m="0 auto">
-                    <LoginButton onClick={() => this.Login()} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign in</LoginButton>
+                    <LoginButton onClick={() => this.Login()} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign up</LoginButton>
                 </Box>
                 <Box width={0.8} pt={4} m="0 auto">
                     <Link to="/">
-                    <Text textAlign="center" color="#FF6565" fontSize="15px" fontFamily="Avenir Next" >Not a member? Sign up</Text>
+                    <Text textAlign="center" color="#FF6565" fontSize="15px" fontFamily="Avenir Next" >Already have a member? Sign in</Text>
                     </Link>
                 </Box>
             </BackgroundBox>
@@ -131,4 +138,4 @@ const mapStateToProps = (state)=>({
     user:state.user
 })
 const actionCreators = { userLogin };
-export default connect(mapStateToProps, actionCreators)(LoginAlert)
+export default connect(mapStateToProps, actionCreators)(RegisterAlert)
