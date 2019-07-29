@@ -15,7 +15,7 @@ const randomImage = () => {
 };
 
 const Container = styled(Flex)({
-    height: "100vh",
+    minHeight:"100vh",
     width: "100vW"
 })
 
@@ -38,7 +38,7 @@ export default class Profile extends Component {
         super(props);
         this.state = {
             houseList: [],
-            selectedId: 2,
+            selectedId: 1,
             limit: 16,
             offset: 0,
             menuList:[
@@ -119,8 +119,8 @@ export default class Profile extends Component {
                     <Box width={0.8}>
                         {this.renderSwitch(this.state.selectedId)}
                     </Box>
-                <Footer />
                 </Container>
+                <Footer />
             </div>
         )
     }

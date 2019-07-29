@@ -25,7 +25,8 @@ const Container = styled.div`
     padding-top: 90px;
     height: 100vh;
     width: 100vw;
-    background-image: url("https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+    background-image: url("https://images.unsplash.com/photo-1448932284983-0c7b152eba33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+    /* url("https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"); */
     background-size: cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center 90px;
