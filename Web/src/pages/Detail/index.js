@@ -156,6 +156,7 @@ class DetailPage extends Component {
         this.state = {
             info: {},
             review:[],
+            pageCount: 2,
             activePage: 5,
             images: [],
             photoIndex: 0,
@@ -395,7 +396,7 @@ class DetailPage extends Component {
                                     pageCount={this.state.pageCount}
                                     marginPagesDisplayed={2}
                                     pageRangeDisplayed={5}
-                                    onPageChange={this.handlePageClick}
+                                    onPageChange={this.handlePageChange}
                                     containerClassName={'pagination'}
                                     subContainerClassName={'pages pagination'}
                                     activeClassName={'active'}

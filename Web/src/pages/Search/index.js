@@ -15,6 +15,7 @@ import { throwStatement } from '@babel/types';
 import axios from 'axios'
 import GoogleMapReact from 'google-map-react';
 import MapDot from '../../components/MapDot';
+import ReactPaginate from 'react-paginate';
 
 const GridBox = styled(Box)({
     display: 'grid',
@@ -48,7 +49,9 @@ class Search extends Component {
         super(props)
         this.state = {
             toggle: false,
+            pageCount: 10,
             houseList:[],
+            activePage: 1,
             limit: 20,
             offset: 0,
             center: {
@@ -60,6 +63,10 @@ class Search extends Component {
     }
 
     componentDidMount() {
+        this.loadDataFromServer();
+    }
+
+    loadDataFromServer() {
         const values = queryString.parse(this.props.location.search)
         console.log(values.query)
 
@@ -85,7 +92,7 @@ class Search extends Component {
                     console.log('error')
                 }
         })
-      }
+    }
 
     mapToggled = (e) => {
         console.log('toggle: ', this.state.toggle );
@@ -106,6 +113,15 @@ class Search extends Component {
           return { houseList: state.houseList };
         });
     };
+
+    handlePageClick = data => {
+        let selected = data.selected;
+        let offset = Math.ceil(selected * this.state.limit);
+        console.log(`active page is ${selected}`);
+        this.setState({activePage: selected, offset: offset}, ()=> {
+            this.loadDataFromServer();
+        });
+    }
 
     render() {
         // console.log('PROPS: ', this.props);
@@ -151,6 +167,22 @@ class Search extends Component {
                     </GoogleMapReact>
                 </MapWrapper>
             </Container>)} 
+
+            <Flex textAlign="center" m="0 auto" justifyContent="center">
+                <ReactPaginate
+                    previousLabel={'<'}
+                    nextLabel={'>'}
+                    breakLabel={'...'}
+                    breakClassName={'break-me'}
+                    pageCount={this.state.pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={this.handlePageClick}
+                    containerClassName={'pagination'}
+                    subContainerClassName={'pages pagination'}
+                    activeClassName={'active'}
+                    />
+                </Flex>
             <Footer />
         </div>
         )
