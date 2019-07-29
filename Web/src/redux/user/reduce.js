@@ -9,7 +9,13 @@ const defaultState = {
     role:'',
     email:'',
     address:'',
-    jwt:''
+    jwt:'',
+    userId:'',
+    clientName:'',
+    details:'',
+    picUrl:'',
+    selfIntro:'',
+    joinInyear:''
 }
 export default (state = defaultState, action) => {
     switch (action.type) {
@@ -17,7 +23,7 @@ export default (state = defaultState, action) => {
             return {
                 ...state,
                 // ...action.payload,
-                jwt: action.payload.data,
+                ...action.payload,
                 isAuth: true,
                 errorMsg: '',
             }

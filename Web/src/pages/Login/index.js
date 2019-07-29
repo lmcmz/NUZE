@@ -91,6 +91,9 @@ class LoginAlert extends Component {
         })
     }
 
+    componentDidUpdate() {
+    }
+
     render() {
         return (
             <BackgroundBox bg="#fff" boxShadow='0 0 16px rgba(96, 179, 219, .5)'>

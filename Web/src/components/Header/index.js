@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import './Header.css'
 import { Box, Flex, Card, Image, Heading, Text} from 'rebass';
 import styled from 'styled-components'
 import LoginAlert from '../../pages/Login';
 import RegisterAlert from '../../pages/Register';
 import Modal from 'react-modal';
+import {userLogin} from "../../redux/user/actions";
 
 const HeaderContainer = styled(Flex)({
 })
@@ -60,8 +62,13 @@ class Header extends React.Component {
               <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
                 {/* <Link className='link link0' to="/">Join us</Link> */}
                 <Link className='link link1' to="/">Become a Host</Link>
-                <Link className='link link2' onClick={this.handleOpenModal.bind(this, false)}>Register</Link>
-                <Link className='link link3' onClick={this.handleOpenModal.bind(this, true)}>Login</Link>
+                  {this.props.user.isAuth
+                  ? <img src={this.props.user.picUrl} style={{ width: '35px', borderRadius:'50%' }} alt=""/>
+                  : <div>
+                          <Link className='link link2' onClick={this.handleOpenModal.bind(this, false)}>Register</Link>
+                          <Link className='link link3' onClick={this.handleOpenModal.bind(this, true)}>Login</Link>
+                      </div>
+                  }
                 {/* <button onClick={this.loginHandle}>Login</button> */}
               </Flex>
             </HeaderContainer>
@@ -102,5 +109,8 @@ class Header extends React.Component {
         )
       }
 }
-
-export default Header
+const mapStateToProps = (state)=>({
+    user:state.user
+})
+const actionCreators = { userLogin };
+export default connect(mapStateToProps, actionCreators)(Header)
