@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios'
 import { Box, Button, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
+import {userLogin} from "../../redux/user/actions";
+import connect from "react-redux/es/connect/connect";
+
 
 const InfoCard = styled(Card)({
     width: "700px",
@@ -49,10 +53,51 @@ const DescInput = styled.textarea`
 `
 
 
-
-export default class EditProfile extends Component {
+class EditProfile extends Component {
     static propTypes = {
         prop: PropTypes
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName:'aaaa',
+            lastName:'bbbb',
+            detail:'deee',
+            selfInfo:'rerere'
+        }
+    }
+
+    updateUserInfo(){
+        let name = this.state.lastName + ' ' + this.state.firstName
+        let details = this.state.detail
+        let selfInfo = this.state.selfInfo
+        let bodyFormData = new FormData();
+        bodyFormData.set('name', name);
+        bodyFormData.set('details', details);
+        bodyFormData.set('selfInfo', selfInfo);
+
+
+        let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
+        axios.post('http://localhost:8080/comp9900/users/info', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
+            .then(res=>{
+                console.log(res.data)
+                if (res.status === 200 && res.data.code === 1) {
+                    // success
+                    console.log('login')
+                    console.log(res.data)
+                    // return res.data
+                } else {
+                    // dispatch(errorMsg(res.data.error))
+                }
+            })
+
+    }
+
+    handleChange(key, e) {
+        this.setState({
+            [key]: e.target.value
+        })
     }
 
     render() {
@@ -72,23 +117,31 @@ export default class EditProfile extends Component {
                         </Flex>
                         <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
                             <Title fontSize="17px"> First Name </Title>
-                            <Input type="text" name="firstName" placeholder="First Name"></Input>
+                            <Input
+                                onChange={v=>this.handleChange('firstName',v)}
+                                type="text" name="firstName" placeholder="First Name"></Input>
                         </Flex>
                         <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
                             <Title fontSize="17px"> Last Name </Title>
-                            <Input type="text" name="LastName" placeholder="Last Name"></Input>
+                            <Input
+                                onChange={v=>this.handleChange('lastName',v)}
+                                type="text" name="LastName" placeholder="Last Name"></Input>
                         </Flex>
                         <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
-                            <Title fontSize="17px"> Email Address </Title>
-                            <Input type="text" name="firstName" placeholder="Email"></Input>
+                            <Title fontSize="17px">Detail</Title>
+                            <Input
+                                onChange={v=>this.handleChange('detail',v)}
+                                type="text" name="firstName" placeholder="Detail"></Input>
                         </Flex>
-                        <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
-                            <Title fontSize="17px"> Where do you live </Title>
-                            <Input type="text" name="firstName" placeholder="Addess"></Input>
-                        </Flex>
+                        {/*<Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">*/}
+                            {/*<Title fontSize="17px"> Where do you live </Title>*/}
+                            {/*<Input type="text" name="firstName" placeholder="Addess"></Input>*/}
+                        {/*</Flex>*/}
                         <Flex py="15px" textAlign="center"  alignItems="flex-start" justifyContent="center">
-                            <Title fontSize="17px"> Description </Title>
-                            <DescInput type="text" name="firstName" placeholder="DescInput"></DescInput>
+                            <Title fontSize="17px"> SelfInfo </Title>
+                            <DescInput
+                                onChange={v=>this.handleChange('selfInfo',v)}
+                                type="text" name="firstName" placeholder="SelfInfo"></DescInput>
                         </Flex>
                     </InfoCard>
                     <InfoCard  
@@ -110,9 +163,16 @@ export default class EditProfile extends Component {
                             <Title fontSize="17px"> Work Email </Title>
                             <Input type="text" name="firstName" placeholder="Work Email"></Input>
                         </Flex>
+                        <button onClick={() => this.updateUserInfo()}>Submit</button>
                     </InfoCard>
                 </Box>
             </Box>
         )
     }
 }
+
+const mapStateToProps = (state)=>({
+    user:state.user
+})
+const actionCreators = { userLogin };
+export default connect(mapStateToProps, actionCreators)(EditProfile)

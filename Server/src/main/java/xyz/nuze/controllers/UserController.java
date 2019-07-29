@@ -167,26 +167,30 @@ public class UserController extends BaseController {
         }
         Integer userId;
         if (clientId != null) {
-            String path = "comp9900/public/client/" + clientId + "/";
-            simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true, path);
-            String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path + userInfoRO.getPicture().getOriginalFilename();
             Client client = new Client();
+            if (userInfoRO.getPicture() != null) {
+                String path = "comp9900/public/client/" + clientId + "/";
+                simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true, path);
+                String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path + userInfoRO.getPicture().getOriginalFilename();
+                client.setPicUrl(fullPath);
+            }
             client.setUserId(clientId);
             client.setClientName(userInfoRO.getName());
             client.setDetails(userInfoRO.getDetails());
             client.setSelfIntro(userInfoRO.getSelfInfo());
-            client.setPicUrl(fullPath);
             clientService.updateClint(client);
         } else {
-            String path = "comp9900/public/host/" + hostId + "/";
-            simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true, path);
-            String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path + userInfoRO.getPicture().getOriginalFilename();
             Host host = new Host();
+            if (userInfoRO.getPicture() != null) {
+                String path = "comp9900/public/host/" + hostId + "/";
+                simpleAwsS3Service.uploadFileToS3Bucket(userInfoRO.getPicture(), true, path);
+                String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path + userInfoRO.getPicture().getOriginalFilename();
+                host.setPicUrl(fullPath);
+            }
             host.setUserId(hostId);
             host.setName(userInfoRO.getName());
             host.setDetails(userInfoRO.getDetails());
             host.setSelfIntro(userInfoRO.getSelfInfo());
-            host.setPicUrl(fullPath);
             hostService.updateHost(host);
         }
         return CommonReturnType.create("Update successfully");
