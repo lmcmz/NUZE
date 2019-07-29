@@ -17,6 +17,8 @@ import Footer from '../../components/Footer';
 import ReactPaginate from 'react-paginate';
 import './Detail.css'
 import axios from 'axios'
+import GoogleMapReact from 'google-map-react';
+import MapDot from '../../components/MapDot';
 
 const anime = keyframes`
   0% {
@@ -106,6 +108,10 @@ const SearchButton = styled.button`
 //     '//placekitten.com/1500/1500',
 //   ];
 
+const MapWarpper=styled(Box)({
+    height: "500px"
+})
+
 
 class DetailPage extends Component {
     componentDidMount() {
@@ -122,11 +128,18 @@ class DetailPage extends Component {
                 if (res.status === 200 && res.data.code === 1) {
                     // success
                     console.log("----------------")
-                    console.log(res.data.data)
+                    // console.log(res.data.data)
+
+                    let location = this.state.center
+                    location.lat = res.data.data.lat
+                    location.lng = res.data.data.lng
+
+                    console.log(location)
 
                     this.setState({
                         info: res.data.data,
-                        images: res.data.data.imageList
+                        images: res.data.data.imageList,
+                        center: location
                     })
                 } else {
                     console.log('error')
@@ -164,6 +177,10 @@ class DetailPage extends Component {
             startDate: null,
             endDate:null,
             focusedInput: null,
+            center: {
+                lat: -33.86515,
+                lng: 151.1919
+            },
             adultNumber: [
                 {
                     id: 0,
@@ -378,6 +395,29 @@ class DetailPage extends Component {
 
                             <div>
                                 <Card my={2} border="1px solid #eee" width="90%"></Card>
+                                <Heading as='h3' py={3}>Location</Heading>
+                                <MapWarpper>
+                                    <GoogleMapReact
+                                            options={{
+                                                styles: customMapStyle,
+                                            }}
+                                        bootstrapURLKeys={{ key: "AIzaSyDLeo51fXjH1cJmOtmNjfDR29mxKOMMsKk", language:'en'}}
+                                        center={{
+                                            lat: this.state.info.lat,
+                                            lng: this.state.info.lng
+                                        }}
+                                        defaultZoom={14}
+                                        >
+                                            <MapDot
+                                                lat={this.state.info.lat}
+                                                lng={this.state.info.lng}
+                                                data={{isShow: false}}/>
+                                    </GoogleMapReact>
+                                </MapWarpper>
+                            </div>
+
+                            <div>
+                                <Card my={2} border="1px solid #eee" width="90%"></Card>
                                 {/* <Heading as='h3' py={3}> {this.props.reviewCounts} Reviews</Heading> */}
                                 <Heading as='h3' py={3}> {this.state.info.reviewsCount} Reviews</Heading>
                                 <Box>
@@ -472,3 +512,181 @@ class DetailPage extends Component {
 
 
 export default  DetailPage;
+
+
+const customMapStyle = [
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#e9e9e9"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f5f5f5"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#dedede"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#333333"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            },
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    }
+];
