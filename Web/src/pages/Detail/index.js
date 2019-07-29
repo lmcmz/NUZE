@@ -7,7 +7,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import PropertyCard from '../../components/PropertyList/PropertyCard'
 import { DateRangePicker, DayPickerRangeController } from 'react-dates';
-import {Dropdown} from 'reactjs-dropdown-component';
+import Dropdown from 'react-dropdown';
 import { faBed, faBath } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReviewCard from "../../components/Review";
@@ -180,71 +180,7 @@ class DetailPage extends Component {
             center: {
                 lat: -33.86515,
                 lng: 151.1919
-            },
-            adultNumber: [
-                {
-                    id: 0,
-                    title: '0',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 1,
-                    title: '1',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 2,
-                    title: '2',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 3,
-                    title: '3',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 4,
-                    title: '4',
-                    selected: false,
-                    key: 'number'
-                }
-                ],
-            number: [
-                {
-                    id: 0,
-                    title: '0',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 1,
-                    title: '1',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 2,
-                    title: '2',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 3,
-                    title: '3',
-                    selected: false,
-                    key: 'number'
-                },
-                {
-                    id: 4,
-                    title: '4',
-                    selected: false,
-                    key: 'number'
-                }
-                ]
+            }
         };
     }
 
@@ -290,6 +226,9 @@ class DetailPage extends Component {
 
         var moment = require('moment');
         const { photoIndex, isOpen } = this.state;
+
+        const options = [1,2,3,4]
+        const defaultOption = 1
 
         return (
             <div>
@@ -356,11 +295,11 @@ class DetailPage extends Component {
                             <Flex>
                                 <Box>
                                     <Text fontSize="18px" color="#60B3DB"> {this.state.info.neighborhood} ,{this.state.info.city} </Text>
-                                    <Heading as='h1' fontSize="40px"> {this.state.info.brifeInfor} </Heading>
+                                    <Heading as='h1' fontSize="40px" mr="50px"> {this.state.info.brifeInfor} </Heading>
                                 </Box>
                             </Flex>
 
-                            <Text py={2} fontSize="17px">
+                            <Text py={2} fontSize="18px" fontFamily="roboto" fontWeight="400" lineHeight="25px" mr="60px">
                                 {this.state.info.description}
                             </Text>
                             <div>
@@ -480,21 +419,14 @@ class DetailPage extends Component {
                                     <Flex flexDirection='column' width={1} textAlign='left' alignItems='flex-start'>
                                         <Text fontSize={1} color='grey' lineHeight={3}>Guest</Text>
                                         <Flex width={1}>
-                                            <Dropdown
-                                                title="Adults"
-                                                list={this.state.adultNumber}
-                                                resetThenSet={this.resetThenSet}
-                                            />
-                                            <Dropdown
-                                                title="Children"
-                                                list={this.state.number}
-                                                resetThenSet={this.resetThenSet}
-                                            />
-                                            <Dropdown
-                                                title="Room"
-                                                list={this.state.number}
-                                                resetThenSet={this.resetThenSet}
-                                            />
+                                        <Dropdown className="dropdownWrapper-deatil" 
+                                    controlClassName='dropdown'
+                                    arrowClassName='dropdownArrow'
+                                    menuClassName='dropdownMenu'
+                                    options={options} 
+                                    defaultOption={defaultOption}
+                                    placeholder="Guest" 
+                                     />
                                         </Flex>
                                     </Flex>
                                 </Box>

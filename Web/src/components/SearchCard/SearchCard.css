@@ -72,6 +72,9 @@
     padding: 0 10px;
   }
 
+  .dropdownWrapper-deatil {
+    width: 100%;
+  }
   .dropdown
   {
     border: none !important;
