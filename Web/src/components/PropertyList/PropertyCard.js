@@ -79,7 +79,7 @@ class PropertyCard extends Component {
                     borderWidth={1}
                     borderColor='#444'>
                     <Box>
-                        <Link to={`house/${this.props.data.houseId}`}>
+                        <Link to={`/house/${this.props.data.houseId}`}>
                             <PropertyImage borderRadius={3} src={this.props.data.picUrl}/>
                         </Link>
                     </Box>

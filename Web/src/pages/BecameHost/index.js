@@ -58,7 +58,7 @@ const SearchButton = styled.button`
     background-size: 600%;
     animation: ${anime} 16s linear infinite;
     color: white;
-    font-size: 2em;
+    font-size: 25px;
     font-weight: 500;
     transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     outline: none;
@@ -116,6 +116,12 @@ export default class BecameHost extends Component {
     static propTypes = {
         prop: PropTypes
     }
+
+    handleSearch = () => {
+        window.location.assign('/hostForm');
+        // window.location.assign('/search?'+this.state.query);
+    }
+
     render() {
         return (
             <div>
@@ -127,7 +133,7 @@ export default class BecameHost extends Component {
                         <Input type="text" name="location" placeholder="Where"></Input>
                         <Input type="text" name="capacity" placeholder="Number of bedrooms"></Input>
                         <Text pb="20px" fontSize="35px" fontWeight="600" color="#444444"> <PriceText>$ 1210</PriceText> per month</Text>
-                        <SearchButton> Get start </SearchButton>
+                        <SearchButton onClick={this.handleSearch} > Get start </SearchButton>
                     </HostCard>
                 </Container>
                 <Footer />

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
 import './RecommandCard.css'
+import {Link, withRouter} from 'react-router-dom'
 
 const Recommand = styled(Flex)({
     width: '200px',
@@ -31,8 +32,9 @@ export default class RecommandCard extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{userSelect:'none'}}>
                 <Recommand>
+                    <Link to={`/collection/${this.props.data.location}`}>
                     <Card
                         p={1}
                         borderRadius={8}
@@ -41,7 +43,6 @@ export default class RecommandCard extends Component {
                             <Box className="RecommandImage">
                             <RecommandImage borderRadius={5} src={this.props.data.url} />
                             </Box>
-                        
                         <RecommandText px={2}>
                         <Text fontSize="20px" fontWeight="650" color='#e5e5e5'>
                             {this.props.data.location}
@@ -51,6 +52,7 @@ export default class RecommandCard extends Component {
                         </Text>
                         </RecommandText>
                     </Card>
+                    </Link>
                 </Recommand>
             </div>
         )

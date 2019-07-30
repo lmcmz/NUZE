@@ -30,6 +30,11 @@
     outline: none;
 }
 
+.menu-wrapper--inner {
+    position: relative;
+    left: -100px;
+}
+
 .scroll-menu-arrow {
 padding: 20px;
 cursor: pointer;

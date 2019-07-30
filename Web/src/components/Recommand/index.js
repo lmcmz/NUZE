@@ -44,31 +44,9 @@ const RecommandScrollView = styled(Flex)({
     overflowX: 'scroll',
     overflowY: 'hidden'
 })
-
-
-const list = [
-    { name: 'item1' },
-    { name: 'item2' },
-    { name: 'item3' },
-    { name: 'item4' },
-    { name: 'item5' },
-    { name: 'item6' },
-    { name: 'item7' },
-    { name: 'item8' },
-    { name: 'item9' }
-  ];
-   
-const randomImage = () => {
-    return "https://source.unsplash.com/random?sig="+ Math.floor(Math.random() * Math.floor(1000)) +"/720x1280";
-};
    
   // All items component
   // Important! add unique key
-  export const Menu = (list, selected) =>
-    data.map(x => {
-      return <RecommandCard data={x} />;
-    });
-
    
   const Arrow = ({ text, className }) => {
     return (
@@ -88,8 +66,6 @@ const selected = 'item1';
 export class Recommand extends Component {
     constructor(props) {
         super(props);
-        // call it again if items count changes
-        this.menuItems = Menu(list, selected);
       }
      
       state = {
@@ -111,15 +87,13 @@ export class Recommand extends Component {
     //   //   this.setState({cityList: res})
     //   // })
     // }
-     
-    onSelect = key => {
-    this.setState({ selected: key });
-    }
 
+     
     render() {
-        const { selected } = this.state;
-        // Create menu from items
-        const menu = this.menuItems;
+        const menu = [];
+        data.map(x => {
+           menu.push(<RecommandCard data={x} />);
+        })
 
         return (
             <Box>
@@ -133,10 +107,11 @@ export class Recommand extends Component {
                     data={menu}
                     arrowLeft={ArrowLeft}
                     arrowRight={ArrowRight}
-                    selected={this.selected}
-                    onSelect={this.onSelect}
-                    // dragging={false}
-                    wheel={false}
+                    // selected={this.selected}
+                    // onSelect={this.onSelect}
+                    dragging={true}
+                    wheel={true}
+                    clickWhenDrag={true}
                     />
                 </Box>
             </Box>

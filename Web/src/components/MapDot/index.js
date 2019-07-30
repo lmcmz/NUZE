@@ -67,7 +67,7 @@ const InfoWindow = (props) => {
             $ {place.price}
         </Text>
 
-        <Link to={`house/${place.houseId}`}>
+        <Link to={`/house/${place.houseId}`}>
             <ImagePreview src={place.picUrl}/>
         </Link>
       </div>
