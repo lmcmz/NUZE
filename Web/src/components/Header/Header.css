@@ -20,7 +20,7 @@
     position: relative;
     color: black;
     font-weight: 500;
-    font-size: 1.7em;
+    font-size: 17px;
     padding:  8px 20px;
     border-radius: 10px;
     transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);

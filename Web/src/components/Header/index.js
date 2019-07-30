@@ -61,7 +61,7 @@ class Header extends React.Component {
               </Box>
               <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
                 {/* <Link className='link link0' to="/">Join us</Link> */}
-                <Link className='link link1' to="/">Become a Host</Link>
+                <Link className='link link1' to="/becomeHost">Become a Host</Link>
                   {this.props.user.isAuth
                   ? <img src={this.props.user.picUrl} style={{ width: '35px', borderRadius:'50%' }} alt=""/>
                   : <div>

@@ -77,7 +77,7 @@ const SearchButton = styled.button`
     background-size: 600%;
     animation: ${anime} 16s linear infinite;
     color: white;
-    font-size: 2em;
+    font-size: 22px;
     font-weight: 500;
     transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     outline: none;
