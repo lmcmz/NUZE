@@ -7,34 +7,16 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import PropertyCard from '../../components/PropertyList/PropertyCard'
 import { DateRangePicker, DayPickerRangeController } from 'react-dates';
-import Dropdown from 'react-dropdown';
 import { faBed, faBath } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReviewCard from "../../components/Review";
-import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
-import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import Footer from '../../components/Footer';
 import ReactPaginate from 'react-paginate';
 import './Detail.css'
 import axios from 'axios'
 import GoogleMapReact from 'google-map-react';
 import MapDot from '../../components/MapDot';
-
-const anime = keyframes`
-  0% {
-    background-position: 0% 50%;
-    /* transform: rotate(0deg); */
-  }
-
-  50% {
-    background-position: 100% 50%;
-    /* transform: rotate(0deg); */
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-`;
+import BookCard from '../../components/BookCard';
 
 const GalleryBox = styled(Box)({
     display: "block",
@@ -76,29 +58,6 @@ const GalleryImage = styled(Image)({
 const totalLabel = styled.span`
     font-size: 20px;
     font-weight: 200;
-`
-
-const SearchButton = styled.button`
-    width: 100%;
-    height: 80px;
-    border-radius: 8px;
-    border: none;
-    /* background: linear-gradient(to right, #FF6565 0%, #FF6565 100%);; */
-    background: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5);
-    background-size: 600%;
-    animation: ${anime} 16s linear infinite;
-    color: white;
-    font-size: 30px;
-    font-weight: 500;
-    transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-    outline: none;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 30px;
-
-    &:hover {
-        
-    }
 `
 
 // const images = [
@@ -184,51 +143,16 @@ class DetailPage extends Component {
         };
     }
 
-    handleBook = () => {
-        window.location.assign('/search');
-        // window.location.assign('/search?'+this.state.query);
-      }
-
     
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         this.setState({activePage: pageNumber});
     }
 
-    starRendering = () => {
-
-        const items = [];
-        
-        if (this.state.info.starRating == null) {
-            return
-        }
-
-        let rate = this.state.info.starRating < 0 ? 0 : this.state.info.starRating 
-        let fullStar = Math.floor(rate)
-        let halfStar = rate > fullStar ? 1 : 0
-        let emptyStar = 5 - fullStar - halfStar
-        console.log(rate, fullStar, emptyStar)
-        Array(fullStar).fill().map((_, ) => 
-            items.push(<FontAwesomeIcon icon={faStar} size='2x'/>)
-        )
-
-        Array(halfStar).fill().map((_, ) => 
-            items.push(<FontAwesomeIcon icon={faStarHalfAlt} size='2x'/>)
-        )
-
-        Array(emptyStar).fill().map((_, ) => 
-            items.push(<FontAwesomeIcon icon={emStar} size='2x'/>)
-        )
-        return items
-    }
-
     render() {
 
         var moment = require('moment');
         const { photoIndex, isOpen } = this.state;
-
-        const options = [1,2,3,4]
-        const defaultOption = 1
 
         return (
             <div>
@@ -384,55 +308,7 @@ class DetailPage extends Component {
                         </Box>
 
                         <Box width={0.4} >
-                            <Card border="1px solid #eee" p={3} borderRadius={5}>
-                                <Flex>
-                                    <Text fontSize="30px" fontWeight="500">${this.state.info.price} <span fontSize="5px" fontWeight="200"> total</span> </Text>  
-                                    <Flex alignItems="center">
-                                        <Text color="#FFD000">
-                                            {this.starRendering()}
-                                        </Text>
-                                        {/* <Text alignSelf="center" pl="3px" fontSize="25px" color="#FFD000" fontWeight="500">{this.state.info.starRating}</Text> */}
-                                    </Flex>  
-                                </Flex>
-                                <Box pt={2} pb={2} >
-                                <Flex flexDirection='column' textAlign='left' alignItems='flex-start'>
-                                    <Text fontSize={1} color='grey' lineHeight={3}>Date</Text>
-                                    <DateRangePicker
-                                        startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                                        startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                                        endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                                        endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                                        onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                                        focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                                        onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                        showClearDates='true'
-                                        showDefaultInputIcon='true'
-                                        reopenPickerOnClearDates='true'
-                                        noBorder='true'
-                                        backgroundColor='black'
-
-                                        />
-                                    </Flex>
-                                </Box>
-                    
-                                <Box pt={2} pb ={4}>
-                                    <Flex flexDirection='column' width={1} textAlign='left' alignItems='flex-start'>
-                                        <Text fontSize={1} color='grey' lineHeight={3}>Guest</Text>
-                                        <Flex width={1}>
-                                        <Dropdown className="dropdownWrapper-deatil" 
-                                    controlClassName='dropdown'
-                                    arrowClassName='dropdownArrow'
-                                    menuClassName='dropdownMenu'
-                                    options={options} 
-                                    defaultOption={defaultOption}
-                                    placeholder="Guest" 
-                                     />
-                                        </Flex>
-                                    </Flex>
-                                </Box>
-
-                                <SearchButton onClick={this.handleBook}> Book </SearchButton>
-                            </Card>
+                            <BookCard data={this.state.info} />
                         </Box>
                     </Flex>
 
