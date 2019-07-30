@@ -35,19 +35,19 @@ export default class RecommandCard extends Component {
                 <Recommand>
                     <Card
                         p={1}
-                        borderRadius={2}
+                        borderRadius={8}
                         borderWidth={1}
                         borderColor='#444'>
                             <Box className="RecommandImage">
-                            <RecommandImage borderRadius={3} src={this.props.image} />
+                            <RecommandImage borderRadius={5} src={this.props.data.url} />
                             </Box>
                         
                         <RecommandText px={2}>
-                        <Heading as='h3' color='#fff'>
-                            Card
-                        </Heading>
-                        <Text fontSize={0} color='#fff'>
-                            Small meta text
+                        <Text fontSize="20px" fontWeight="650" color='#e5e5e5'>
+                            {this.props.data.location}
+                        </Text>
+                        <Text fontSize={0} color='#e0e0e0'>
+                            {this.props.data.count} Properties
                         </Text>
                         </RecommandText>
                     </Card>

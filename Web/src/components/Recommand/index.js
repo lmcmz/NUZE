@@ -6,6 +6,8 @@ import ScrollMenu from "react-horizontal-scrolling-menu";
 import './Recommand.css'
 import { faChevronRight,faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import data from "../../resource/json/city.json";
+import axios from 'axios'
 
 const ColorTextBlue = styled.span`
     align-self: flex-end;
@@ -59,20 +61,12 @@ const list = [
 const randomImage = () => {
     return "https://source.unsplash.com/random?sig="+ Math.floor(Math.random() * Math.floor(1000)) +"/720x1280";
 };
-
-  // One item component
-  // selected prop will be passed
-  const MenuItem = ({text, selected}) => {
-    return <RecommandCard image= {randomImage()}></RecommandCard>;
-  };
    
   // All items component
   // Important! add unique key
   export const Menu = (list, selected) =>
-    list.map(el => {
-      const {name} = el;
-   
-      return <MenuItem text={name} key={name} selected={selected} />;
+    data.map(x => {
+      return <RecommandCard data={x} />;
     });
 
    
@@ -99,8 +93,24 @@ export class Recommand extends Component {
       }
      
       state = {
-        selected
+        selected,
+        cityList: data
     };
+
+    // componentDidMount() {
+    //   this.loadCity()
+    // }
+
+    // loadCity() {
+    //   console.log(data)
+
+    //   // axios.get('../../resource/json/city.json')
+    //   // fetch('../../resource/json/city.json')
+    //   // .then(res=>{
+    //   //   console.log(res)
+    //   //   this.setState({cityList: res})
+    //   // })
+    // }
      
     onSelect = key => {
     this.setState({ selected: key });

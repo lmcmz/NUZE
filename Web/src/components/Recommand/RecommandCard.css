@@ -1,3 +1,7 @@
+.RecommandImage {
+    outline: none;
+}
+
 .RecommandImage::after {
     display: block;
     position: relative;
@@ -7,4 +11,5 @@
     width: 100%;
     content: '';
     border-radius: 3px;
+    outline: none;
 }
