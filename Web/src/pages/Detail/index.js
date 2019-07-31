@@ -7,7 +7,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import PropertyCard from '../../components/PropertyList/PropertyCard'
 import { DateRangePicker, DayPickerRangeController } from 'react-dates';
-import { faBed, faBath } from "@fortawesome/free-solid-svg-icons";
+import { faBed, faBath, faWifi, faParking, faUtensils, faTshirt} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReviewCard from "../../components/Review";
 import Footer from '../../components/Footer';
@@ -154,6 +154,32 @@ class DetailPage extends Component {
         var moment = require('moment');
         const { photoIndex, isOpen } = this.state;
 
+        var amenities = []
+        var amenitiesText = []
+        if (this.state.info.previewAmenities) {
+            amenities = this.state.info.previewAmenities.split(',')
+            amenities.map( x => {
+                let icon = ""
+                switch (x) {
+                    case "Wireless Internet":
+                        icon = <FontAwesomeIcon style={{marginRight:"5px"}} icon={faWifi} size='1x'/>
+                        break;
+                    case "Free parking on premises":
+                        icon = <FontAwesomeIcon style={{marginRight:"5px"}} icon={faParking} size='1x'/>
+                        break;
+                    case "Kitchen":
+                        icon = <FontAwesomeIcon style={{marginRight:"5px"}} icon={faUtensils} size='1x'/>
+                        break;
+                    case "Washer":
+                        icon = <FontAwesomeIcon style={{marginRight:"5px"}} icon={faTshirt} size='1x'/>
+                        break;
+                }
+                console.log(icon)
+                amenitiesText.push(<Text py="5px" color="#444">{icon}<span style={{paddingLeft:"5px"}}> {x}</span></Text>)
+            })
+        }
+        console.log(amenities)
+
         return (
             <div>
                 <SearchHeader />
@@ -226,20 +252,30 @@ class DetailPage extends Component {
                             <Text py={2} fontSize="18px" fontFamily="roboto" fontWeight="400" lineHeight="25px" mr="60px">
                                 {this.state.info.description}
                             </Text>
+
                             <div>
                                 <Card my={2} border="1px solid #eee" width="90%"></Card>
                                 <Heading as='h3' py={3}>Facilities</Heading>
                                 <Flex >
                                     <Card py="20px" px="3px" mr={3} border="1px solid #eee" borderRadius={8} width={200} justifyContent="center">
                                         <Text textAlign="center" py="5px"><FontAwesomeIcon icon={faBed} size='4x'/></Text>
-                                        <Text textAlign="center" fontSize="20px">1 Double Bed</Text>
+                                        <Text textAlign="center" fontSize="20px">{this.state.info.beds} Bed</Text>
                                     </Card>
                                     <Card py="20px" px="3px" border="1px solid #eee" borderRadius={8} width={200} justifyContent="center">
                                         <Text textAlign="center" py="5px"><FontAwesomeIcon icon={faBath} size='4x'/></Text>
-                                        <Text textAlign="center" fontSize="20px">2 Bathroom</Text>
+                                        <Text textAlign="center" fontSize="20px">{this.state.info.bathrooms} Bathroom</Text>
                                     </Card>
                                 </Flex>
                             </div>
+
+                            <div>
+                                <Card my={2} border="1px solid #eee" width="90%"></Card>
+                                <Heading as='h3' py={3}>Amenities</Heading>
+                                <Box>
+                                    {amenitiesText}
+                                </Box>
+                            </div>
+
 
                             <div>
                                 <Card my={2} border="1px solid #eee" width="90%"></Card>
