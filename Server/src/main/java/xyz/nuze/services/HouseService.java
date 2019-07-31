@@ -23,4 +23,5 @@ public interface HouseService {
     HouseInfo getHouseInfoById(Integer houseId) throws BusinessException;
     void updateHouseInfo(House house) throws BusinessException;
     void booking(Booking booking) throws BusinessException;
+    List<Booking> getAllBookings(Integer clientId) throws BusinessException;
 }

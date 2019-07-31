@@ -9,10 +9,7 @@ import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.mapper.BookingMapper;
 import xyz.nuze.mapper.HouseMapper;
 import xyz.nuze.mapper.HouseReviewMapper;
-import xyz.nuze.model.Booking;
-import xyz.nuze.model.House;
-import xyz.nuze.model.HouseReview;
-import xyz.nuze.model.HouseReviewExample;
+import xyz.nuze.model.*;
 import xyz.nuze.services.HouseService;
 import xyz.nuze.services.model.HouseInfo;
 
@@ -98,5 +95,14 @@ public class HouseServiceImp implements HouseService {
             throw new BusinessException(EmBusinessError.UNKNOWN_ERROR);
         }
 
+    }
+
+    @Override
+    public List<Booking> getAllBookings(Integer clientId) throws BusinessException {
+        BookingExample bookingExample = new BookingExample();
+        BookingExample.Criteria criteria = bookingExample.createCriteria();
+        criteria.andClientIdEqualTo(clientId);
+        List<Booking> bookings = bookingMapper.selectByExample(bookingExample);
+        return bookings;
     }
 }
