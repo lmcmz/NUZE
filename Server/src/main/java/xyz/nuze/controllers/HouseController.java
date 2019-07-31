@@ -14,10 +14,13 @@ import xyz.nuze.model.Booking;
 import xyz.nuze.model.House;
 import xyz.nuze.model.HouseReview;
 import xyz.nuze.requestObject.BookingRO;
+import xyz.nuze.requestObject.HouseRO;
+import xyz.nuze.requestObject.UserInfoRO;
 import xyz.nuze.response.CommonReturnType;
 import xyz.nuze.services.HouseService;
 import xyz.nuze.services.model.HouseInfo;
 import xyz.nuze.utils.JWT.SecurityUtils;
+import xyz.nuze.utils.JWT.SimpleAwsS3Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -35,6 +38,9 @@ public class HouseController extends BaseController {
 
     @Autowired
     HouseService houseService;
+
+    @Autowired
+    SimpleAwsS3Service simpleAwsS3Service;
 
     @GetMapping("")
     @ApiOperation(value = "get house info" ,  notes="get house info")
@@ -113,6 +119,30 @@ public class HouseController extends BaseController {
         houseService.booking(booking);
         return CommonReturnType.create("Create successful");
     }
+    @PostMapping("")
+    @ApiOperation(value = "post gethouse info" ,  notes="post house info")
+    public CommonReturnType postHouse(HttpServletRequest request,
+                                      @ModelAttribute HouseRO houseRO) throws BusinessException {
 
+
+        Integer hostId = SecurityUtils.getUserIdFromToken(request, "host");
+        if ( hostId == null) {
+            throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
+        }
+        House house = new House();
+        BeanUtils.copyProperties(houseRO, house);
+        house.setHostId(hostId);
+        Integer houseId = houseService.insertHouse(house);
+        String path = "comp9900/public/host/" + hostId + "/" + houseId + "/";
+        simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage1(), true, path);
+        simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage2(), true, path);
+        simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage3(), true, path);
+        simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage4(), true, path);
+        simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage5(), true, path);
+//        String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path + userInfoRO.getPicture().getOriginalFilename();
+//        client.setPicUrl(fullPath);
+//        List<House> houseList = houseService.listHouseList(limit, offset, city);
+        return CommonReturnType.create(null, "get success");
+    }
 }
 

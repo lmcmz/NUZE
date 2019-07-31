@@ -105,4 +105,13 @@ public class HouseServiceImp implements HouseService {
         List<Booking> bookings = bookingMapper.selectByExample(bookingExample);
         return bookings;
     }
+
+    @Override
+    public Integer insertHouse(House house) throws BusinessException {
+        int result = houseMapper.insertSelective(house);
+        if (result != 1) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+        return house.getHostId();
+    }
 }
