@@ -29,7 +29,7 @@ public class BookingController extends BaseController {
     HouseService houseService;
 
     @GetMapping("")
-    @ApiOperation(value = "get house info" ,  notes="get house info")
+    @ApiOperation(value = "get booking info" ,  notes="get booking info")
     public CommonReturnType getHouseInfoList(HttpServletRequest request,
             @ApiParam @RequestParam(value = "offset", defaultValue = "0") Integer offset,
             @ApiParam @RequestParam(value = "limit", defaultValue = "10") Integer limit) throws BusinessException {
