@@ -2,6 +2,7 @@ package xyz.nuze.services;
 
 import org.apache.ibatis.annotations.Mapper;
 import xyz.nuze.error.BusinessException;
+import xyz.nuze.model.Booking;
 import xyz.nuze.model.House;
 import xyz.nuze.model.HouseReview;
 import xyz.nuze.services.model.HouseInfo;
@@ -21,4 +22,5 @@ public interface HouseService {
     House getHouseById(Integer houseId) throws BusinessException;
     HouseInfo getHouseInfoById(Integer houseId) throws BusinessException;
     void updateHouseInfo(House house) throws BusinessException;
+    void booking(Booking booking) throws BusinessException;
 }

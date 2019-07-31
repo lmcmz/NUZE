@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
+import xyz.nuze.mapper.BookingMapper;
 import xyz.nuze.mapper.HouseMapper;
 import xyz.nuze.mapper.HouseReviewMapper;
+import xyz.nuze.model.Booking;
 import xyz.nuze.model.House;
 import xyz.nuze.model.HouseReview;
 import xyz.nuze.model.HouseReviewExample;
@@ -30,6 +32,9 @@ public class HouseServiceImp implements HouseService {
 
     @Autowired
     HouseReviewMapper houseReviewMapper;
+
+    @Autowired
+    BookingMapper bookingMapper;
 
     @Override
     public List<House> listHouseList(Integer limit, Integer offset, String city) throws BusinessException {
@@ -84,5 +89,14 @@ public class HouseServiceImp implements HouseService {
         if (result != 1) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
+    }
+
+    @Override
+    public void booking(Booking booking) throws BusinessException {
+        int result = bookingMapper.insertSelective(booking);
+        if (result != 1) {
+            throw new BusinessException(EmBusinessError.UNKNOWN_ERROR);
+        }
+
     }
 }
