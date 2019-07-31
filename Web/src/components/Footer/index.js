@@ -40,11 +40,11 @@ export default class Footer extends Component {
                         <Flex flexDirection='column' mx='120px'>
                             <Text fontSize='20px' fontWeight='600' textAlign='left'>Contact us</Text>
                             <Flex py='20px'>
-                                <Box>
-                                    <a href="http://wwww.github.com"><FontAwesomeIcon icon={faGithub} color="black" size="4x"/></a>
+                                <Box color="#444">
+                                    <a href="https://github.com/orgs/unsw-cse-comp3900-9900/teams/donotreply"><FontAwesomeIcon icon={faGithub} color="#444" size="3x"/></a>
                                 </Box>
-                                <Box pl='10px'>
-                                    <a href="http://wwww.github.com"><FontAwesomeIcon icon={faAt} color="black" size="4x"/></a>
+                                <Box pl='10px' color="#444">
+                                    <a href="http://wwww.github.com"><FontAwesomeIcon icon={faAt} color="#444" size="3x"/></a>
                                 </Box>
                             </Flex>
                         </Flex>
