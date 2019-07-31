@@ -16,6 +16,7 @@ import axios from 'axios'
 import GoogleMapReact from 'google-map-react';
 import MapDot from '../../components/MapDot';
 import ReactPaginate from 'react-paginate';
+import cityData from "../../resource/json/city.json";
 
 const GridBox = styled(Box)({
     display: 'grid',
@@ -49,11 +50,12 @@ class Search extends Component {
         super(props)
         this.state = {
             toggle: false,
-            pageCount: 10,
+            pageCount: 0,
             houseList:[],
             activePage: 1,
             limit: 20,
             offset: 0,
+            cityCount: 0,
             center: {
                 lat: -33.86515,
                 lng: 151.1919
@@ -64,28 +66,50 @@ class Search extends Component {
 
     componentDidMount() {
         this.loadDataFromServer();
+        this.getCityInfo();
+    }
+
+    getCityInfo() {
+        cityData.map(x => {
+            const values = queryString.parse(this.props.location.search)
+            const query = values.query
+            if (x.location == query) {
+                var count = Math.ceil(x.count/20)
+                console.log('-------------')
+                console.log(count)
+                this.setState({
+                    cityInfo: x.count, 
+                    pageCount: count})
+            }
+        })
     }
 
     loadDataFromServer() {
+        console.log(this.props.location.search)
         const values = queryString.parse(this.props.location.search)
-        console.log(values.query)
-
-        const offset = this.state.offset + this.state.limit
+        const query = values.query
+        
         const limit = this.state.limit
-        axios.get(`http://13.211.203.224/comp9900/house?city=Sydney&limit=${limit}&offset=${offset}`)
+        var offset = this.state.offset
+        console.log(query, offset, limit)
+        axios.get(`http://13.211.203.224/comp9900/house?city=${query}&limit=${limit}&offset=${offset}`)
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
                     let propertyList = res.data.data.map((x,i) =>
                         ({...x, isShow: false})
                     )
-
                     let firstProperty = res.data.data[0]
+                    // if (!firstProperty) {
+                    //     return
+                    // }
+                    offset = this.state.offset + this.state.limit
+                    console.log(res.data.data)
                     this.setState({
                         houseList: propertyList,
-                        limit: limit,
                         offset: offset,
-                        center: {lat: firstProperty.lat, lng: firstProperty.lng}
+                        center: {lat: firstProperty.lat, 
+                            lng: firstProperty.lng}
                     })
                 } else {
                     console.log('error')
@@ -150,7 +174,7 @@ class Search extends Component {
                                 styles: customMapStyle,
                             }}
                         bootstrapURLKeys={{ key: "AIzaSyDLeo51fXjH1cJmOtmNjfDR29mxKOMMsKk"}}
-                        defaultCenter={this.state.center}
+                        center={this.state.center}
                         defaultZoom={this.state.zoom}
                         onChildClick={this.onChildClickCallback}
                         >

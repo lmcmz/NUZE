@@ -124,7 +124,7 @@ export class SearchCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            query: 'kiama',
+            query: 'Sydney',
             startDate: null,
             endDate:null,
             focusedInput: null,
@@ -141,12 +141,15 @@ export class SearchCard extends Component {
       }
 
       handleSearch = () => {
-        window.location.assign('/search');
-        // window.location.assign('/search?'+this.state.query);
+        // window.location.assign('/search');
+        window.location.assign('/search?query='+this.state.query);
       }
 
-      handleTextChange = () => {
-
+      handleTextChange = (e) => {
+          console.log(e.target.value)
+          this.setState({
+              query: e.target.value
+          })
       }
 
     render() {
@@ -175,7 +178,7 @@ export class SearchCard extends Component {
                     <Flex flexDirection='column' textAlign='left' alignItems='flex-start'>
                         <Text fontSize={1} color='grey' lineHeight={3}>Destination</Text>
                         <Box width={1}>
-                            <DestinationInput onChange={this.handleTextChange.bind(this)} type="text" name="destination" placeholder="Kiama"></DestinationInput>
+                            <DestinationInput onChange={this.handleTextChange.bind(this)} type="text" name="destination" placeholder="Sydney"></DestinationInput>
                         </Box>
                     </Flex>
 

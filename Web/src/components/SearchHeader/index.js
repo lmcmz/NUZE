@@ -8,6 +8,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from 'react-modal';
 import LoginAlert from '../../pages/Login';
+import {userLogin} from "../../redux/user/actions";
+import RegisterAlert from '../../pages/Register';
+import {connect} from 'react-redux'
 
 const SearchHeaderDiv = styled.div`
     position: fixed;
@@ -76,20 +79,21 @@ const SearchButton = styled.button`
     }
 `
 
-export default class SearchHeader extends Component {
+class SearchHeader extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
           hasScrolled: false,
           showModal: false,
+          isLogin: true
         }
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
     }
 
-    handleOpenModal () {
-      this.setState({ showModal: true });
+    handleOpenModal (isLogin) {
+      this.setState({ showModal: true, isLogin: isLogin });
     }
     
     handleCloseModal () {
@@ -102,14 +106,21 @@ export default class SearchHeader extends Component {
                 <Flex px={50}>
                 <Flex width={1/2}>
                     <Link className='logo' to="/"><img src={require('../../resource/image/logo-only.svg')} width="35" /></Link> 
-                    <DestinationInput type="text" name="destination" placeholder="Kiama"></DestinationInput>
+                    <DestinationInput type="text" name="destination" placeholder="Sydney"></DestinationInput>
                     <SearchButton><FontAwesomeIcon icon={faSearch} size='xs'/></SearchButton>
                 </Flex>
                 <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
                     {/* <Link className='link link0' to="/">Join us</Link> */}
-                    <Link className='link link1' to="/">Become a Host</Link>
-                    <Link className='link link2' to="/">Register</Link>
-                    <Link className='link link3' onClick={this.handleOpenModal}>Login</Link>
+                    <Link className='link link1' to="/becomeHost">Become a Host</Link>
+                    {this.props.user.isAuth
+                  ? <Link to="/profile">
+                    <img src={this.props.user.picUrl} style={{ width: '35px', borderRadius:'50%' }} alt=""/>
+                  </Link>
+                  : <div>
+                          <Link className='link link2' onClick={this.handleOpenModal.bind(this, false)}>Register</Link>
+                          <Link className='link link3' onClick={this.handleOpenModal.bind(this, true)}>Login</Link>
+                      </div>
+                  }
                 </Flex>
                 </Flex>
                 <Modal 
@@ -139,10 +150,19 @@ export default class SearchHeader extends Component {
                 }
               }}
             >
-              {/* <button onClick={this.handleCloseModal}>Close Modal</button> */}
-              <LoginAlert close={this.handleCloseModal}></LoginAlert>
+              {this.state.isLogin ? 
+                <LoginAlert close={this.handleCloseModal} ></LoginAlert> :
+                <RegisterAlert close={this.handleCloseModal}></RegisterAlert>
+              }
             </Modal>
             </SearchHeaderDiv>
         )
+        
     }
 }
+
+const mapStateToProps = (state)=>({
+  user:state.user
+})
+const actionCreators = { userLogin };
+export default connect(mapStateToProps, actionCreators)(SearchHeader)

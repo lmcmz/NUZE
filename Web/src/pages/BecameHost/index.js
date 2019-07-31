@@ -4,6 +4,7 @@ import { Box, Card, Button, Image, Heading, Text, Flex } from 'rebass';
 import styled, {keyframes} from 'styled-components'
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Dropdown from 'react-dropdown';
 
 const anime = keyframes`
   0% {
@@ -113,26 +114,82 @@ const Input = styled.input`
 `
 
 export default class BecameHost extends Component {
-    static propTypes = {
-        prop: PropTypes
+    constructor(props){
+        super(props);
+        this.state = {
+            city: "Sydney",
+            guest: "1"
+        }
     }
 
     handleSearch = () => {
         window.location.assign('/hostForm');
-        // window.location.assign('/search?'+this.state.query);
+    }
+
+    handleChange = (key, e) => {
+        this.setState({
+            [key]: e.value
+        })
     }
 
     render() {
+        const guest = ["1","2","3","4"]
+        const cityList = [
+            "Sydney",
+            "Newcastle",
+            "Wollongong",
+            "CentralCoast",
+            "Albury",
+            "Armidale",
+            "Bathurst",
+            "BrokenHill",
+            "CityofLakeMacquarie",
+            "CoffsHarbour‎",
+            "Dubbo",
+            "Goulburn",
+            "Grafton",
+            "Griffith",
+            "Lithgow",
+            "Maitland",
+            "Parramatta",
+            "Penrith",
+            "BotanyBay",
+            "Queanbeyan",
+            "CityofShoalhaven‎",
+            "Tamworth",
+            "Taree",
+            "TweedHeads",
+            "WaggaWagga"
+            ]
+
         return (
             <div>
                 <Header />
                 <Container>
                     <HostCard boxShadow='0 0 16px rgba(0, 0, 0, .25)' p="30px">
                         <Text fontSize="35px" fontWeight="650" color="#444444" > Become A <ColorText>Host</ColorText> </Text>
-                        <Text pt="10px" fontSize="20px" fontWeight="400" color="#444444" > Find out your future income </Text>
-                        <Input type="text" name="location" placeholder="Where"></Input>
-                        <Input type="text" name="capacity" placeholder="Number of bedrooms"></Input>
-                        <Text pb="20px" fontSize="35px" fontWeight="600" color="#444444"> <PriceText>$ 1210</PriceText> per month</Text>
+                        <Text pt="10px" pb="10px" fontSize="20px" fontWeight="400" color="#444444" > Find out your future income </Text>
+                        {/* <Input type="text" name="location" placeholder="Where"></Input> */}
+                        <Dropdown className="dropdownWrapper-detail" 
+                                    controlClassName='dropdown'
+                                    arrowClassName='dropdownArrow'
+                                    menuClassName='dropdownMenu'
+                                    options={cityList}
+                                    placeholder="Where is your place?"
+                                    value={this.state.city}
+                                    onChange={v=>this.handleChange('city',v)}
+                        />
+                        <Text pt="20px" pb="10px" fontSize="20px" fontWeight="400" color="#444444" > Guest Capacity </Text>
+                        <Dropdown className="dropdownWrapper-detail" 
+                                    controlClassName='dropdown'
+                                    arrowClassName='dropdownArrow'
+                                    menuClassName='dropdownMenu'
+                                    options={guest}
+                                    placeholder="Guests"
+                                    value={this.state.guest}
+                                    onChange={v=>this.handleChange('guest',v)}
+                        />
+                        <Text pt="10px" pb="20px" fontSize="35px" fontWeight="600" color="#444444"> <PriceText>$1210</PriceText> per month</Text>
                         <SearchButton onClick={this.handleSearch} > Get start </SearchButton>
                     </HostCard>
                 </Container>

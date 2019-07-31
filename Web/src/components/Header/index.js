@@ -38,7 +38,7 @@ class Header extends React.Component {
         window.addEventListener('scroll', this.handleScroll)
     }
     
-      handleScroll = (event) => {
+    handleScroll = (event) => {
         const scrollTop = window.pageYOffset
     
         if (scrollTop > 50) {
@@ -52,6 +52,11 @@ class Header extends React.Component {
       window.removeEventListener('scroll', () => {} )
     }
 
+    // componentDidUpdate() {
+    //   if (this.props.user.isAuth)
+    //   this.setState({ showModal: false });
+    // }
+
     render() {
         return (
           <div className={this.state.hasScrolled ? 'Header HeaderScrolled' : 'Header'}>
@@ -63,13 +68,15 @@ class Header extends React.Component {
                 {/* <Link className='link link0' to="/">Join us</Link> */}
                 <Link className='link link1' to="/becomeHost">Become a Host</Link>
                   {this.props.user.isAuth
-                  ? <img src={this.props.user.picUrl} style={{ width: '35px', borderRadius:'50%' }} alt=""/>
+                  ? <Link to="/profile">
+                    <img src={this.props.user.picUrl} style={{ width: '35px', borderRadius:'50%' }} alt=""/>
+                  </Link>
                   : <div>
                           <Link className='link link2' onClick={this.handleOpenModal.bind(this, false)}>Register</Link>
                           <Link className='link link3' onClick={this.handleOpenModal.bind(this, true)}>Login</Link>
                       </div>
                   }
-                {/* <button onClick={this.loginHandle}>Login</button> */}
+                  
               </Flex>
             </HeaderContainer>
             <Modal 
@@ -101,7 +108,7 @@ class Header extends React.Component {
             >
 
               {this.state.isLogin ? 
-                <LoginAlert close={this.handleCloseModal}></LoginAlert> :
+                <LoginAlert close={this.handleCloseModal} ></LoginAlert> :
                 <RegisterAlert close={this.handleCloseModal}></RegisterAlert>
               }
             </Modal>

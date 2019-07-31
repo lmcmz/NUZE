@@ -92,6 +92,7 @@ class LoginAlert extends Component {
     }
 
     componentDidUpdate() {
+
     }
 
     render() {
@@ -115,7 +116,7 @@ class LoginAlert extends Component {
                     <Text py={2} fontSize="15px">Password</Text>
                     <DestinationInput
                         onChange={v=>this.handleChange('password',v)}
-                        type="text" name="destination" placeholder="Password"></DestinationInput>
+                        type="password" name="destination" placeholder="Password"></DestinationInput>
                 </Box>
                 <Box width={0.8} pt={4} m="0 auto">
                     <LoginButton onClick={() => this.Login()} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign in</LoginButton>

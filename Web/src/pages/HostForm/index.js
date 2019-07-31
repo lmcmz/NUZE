@@ -188,12 +188,13 @@ class HostForm extends Component {
                             What kind of place are you listing?
                         </Text>
 
-                        <Box py={30}>
+                        <Box pt={30} pb={10}>
                             <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> Where is you place ? </Text>
                             <DestinationInput
                                 onChange={v=>this.handleChange('city',v)}
-                                type="text" name="firstName" placeholder="Introduction"></DestinationInput>
-                            <DestinationInput onChange={this.handleTextChange.bind(this)} type="text" name="destination" placeholder="Sydney"></DestinationInput>
+                                type="text" name="firstName" placeholder="City"></DestinationInput>
+
+                            <DestinationInput style={{marginTop: "25px"}} onChange={this.handleTextChange.bind(this)} type="text" name="destination" placeholder="Street"></DestinationInput>
                         </Box>.
 
 
