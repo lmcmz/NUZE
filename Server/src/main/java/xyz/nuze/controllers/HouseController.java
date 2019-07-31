@@ -144,23 +144,24 @@ public class HouseController extends BaseController {
         BeanUtils.copyProperties(houseRO, house);
         house.setHostId(hostId);
         Integer houseId = houseService.insertHouse(house);
+        String buckPrefix = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/"
         String path = "comp9900/public/host/" + hostId + "/" + houseId + "/";
         HousePicUrls housePicUrls = new HousePicUrls();
         housePicUrls.setHouseId(houseId);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage1(), true, path);
-        housePicUrls.setPicUrl(path + houseRO.getImage1().getOriginalFilename());
+        housePicUrls.setPicUrl(buckPrefix + path + houseRO.getImage1().getOriginalFilename());
         houseService.insertHouseImage(housePicUrls);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage2(), true, path);
-        housePicUrls.setPicUrl(path + houseRO.getImage2().getOriginalFilename());
+        housePicUrls.setPicUrl(buckPrefix + path + houseRO.getImage2().getOriginalFilename());
         houseService.insertHouseImage(housePicUrls);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage3(), true, path);
-        housePicUrls.setPicUrl(path + houseRO.getImage3().getOriginalFilename());
+        housePicUrls.setPicUrl(buckPrefix + path + houseRO.getImage3().getOriginalFilename());
         houseService.insertHouseImage(housePicUrls);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage4(), true, path);
-        housePicUrls.setPicUrl(path + houseRO.getImage4().getOriginalFilename());
+        housePicUrls.setPicUrl(buckPrefix + path + houseRO.getImage4().getOriginalFilename());
         houseService.insertHouseImage(housePicUrls);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage5(), true, path);
-        housePicUrls.setPicUrl(path + houseRO.getImage5().getOriginalFilename());
+        housePicUrls.setPicUrl(buckPrefix + path + houseRO.getImage5().getOriginalFilename());
         houseService.insertHouseImage(housePicUrls);
         return CommonReturnType.create(null, "get success");
     }
