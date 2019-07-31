@@ -8,6 +8,7 @@ import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.mapper.BookingMapper;
 import xyz.nuze.mapper.HouseMapper;
+import xyz.nuze.mapper.HousePicUrlsMapper;
 import xyz.nuze.mapper.HouseReviewMapper;
 import xyz.nuze.model.*;
 import xyz.nuze.services.HouseService;
@@ -32,6 +33,9 @@ public class HouseServiceImp implements HouseService {
 
     @Autowired
     BookingMapper bookingMapper;
+
+    @Autowired
+    HousePicUrlsMapper housePicUrlsMapper;
 
     @Override
     public List<House> listHouseList(Integer limit, Integer offset, String city) throws BusinessException {
@@ -113,5 +117,13 @@ public class HouseServiceImp implements HouseService {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
         return house.getHostId();
+    }
+
+    @Override
+    public void insertHouseImage(HousePicUrls housePicUrls) throws BusinessException {
+        int result = housePicUrlsMapper.insertSelective(housePicUrls);
+        if (result != 1) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
     }
 }
