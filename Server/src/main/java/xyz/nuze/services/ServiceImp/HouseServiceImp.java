@@ -116,7 +116,7 @@ public class HouseServiceImp implements HouseService {
         if (result != 1) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
-        return house.getHostId();
+        return house.getHouseId();
     }
 
     @Override

@@ -12,6 +12,7 @@ import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.model.Booking;
 import xyz.nuze.model.House;
+import xyz.nuze.model.HousePicUrls;
 import xyz.nuze.model.HouseReview;
 import xyz.nuze.requestObject.BookingRO;
 import xyz.nuze.requestObject.HouseRO;
@@ -120,6 +121,7 @@ public class HouseController extends BaseController {
         return CommonReturnType.create("Create successful");
     }
     @PostMapping("")
+    @Transactional(rollbackFor = BusinessException.class)
     @ApiOperation(value = "post gethouse info" ,  notes="post house info")
     public CommonReturnType postHouse(HttpServletRequest request,
                                       @ModelAttribute HouseRO houseRO) throws BusinessException {
@@ -129,19 +131,37 @@ public class HouseController extends BaseController {
         if ( hostId == null) {
             throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
         }
+        if (
+                houseRO.getImage1() == null
+                || houseRO.getImage2() == null
+                || houseRO.getImage3() == null
+                || houseRO.getImage4() == null
+                || houseRO.getImage5() == null
+        ) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
         House house = new House();
         BeanUtils.copyProperties(houseRO, house);
         house.setHostId(hostId);
         Integer houseId = houseService.insertHouse(house);
         String path = "comp9900/public/host/" + hostId + "/" + houseId + "/";
+        HousePicUrls housePicUrls = new HousePicUrls();
+        housePicUrls.setHouseId(houseId);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage1(), true, path);
+        housePicUrls.setPicUrl(path + houseRO.getImage1().getOriginalFilename());
+        houseService.insertHouseImage(housePicUrls);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage2(), true, path);
+        housePicUrls.setPicUrl(path + houseRO.getImage2().getOriginalFilename());
+        houseService.insertHouseImage(housePicUrls);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage3(), true, path);
+        housePicUrls.setPicUrl(path + houseRO.getImage3().getOriginalFilename());
+        houseService.insertHouseImage(housePicUrls);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage4(), true, path);
+        housePicUrls.setPicUrl(path + houseRO.getImage4().getOriginalFilename());
+        houseService.insertHouseImage(housePicUrls);
         simpleAwsS3Service.uploadFileToS3Bucket(houseRO.getImage5(), true, path);
-//        String fullPath = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/" + path + userInfoRO.getPicture().getOriginalFilename();
-//        client.setPicUrl(fullPath);
-//        List<House> houseList = houseService.listHouseList(limit, offset, city);
+        housePicUrls.setPicUrl(path + houseRO.getImage5().getOriginalFilename());
+        houseService.insertHouseImage(housePicUrls);
         return CommonReturnType.create(null, "get success");
     }
 }
