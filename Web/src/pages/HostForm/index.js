@@ -156,7 +156,7 @@ class HostForm extends Component {
             bodyFormData.set(`image${index + 1}`, val);
         })
         let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NjBfaG9zdCIsImV4cCI6MTU2NTg2MTY3MH0.B4l6EmBEfjNaWTGNfg9ezJV2szWtsx-Gc11Ph44ur1izseaD6uZx6F_ugMYzvNdaQqVYediuUi0AWf8BQPvRlA"
-        axios.post('http://localhost:8080/comp9900/house', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
+        axios.post('http://13.211.203.224/comp9900/house', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
             .then(res=>{
                 console.log(res.data)
                 if (res.status === 200 && res.data.code === 1) {
