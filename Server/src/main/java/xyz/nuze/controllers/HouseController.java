@@ -144,7 +144,7 @@ public class HouseController extends BaseController {
         BeanUtils.copyProperties(houseRO, house);
         house.setHostId(hostId);
         Integer houseId = houseService.insertHouse(house);
-        String buckPrefix = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/"
+        String buckPrefix = "https://michael-ecommerce.s3-ap-southeast-2.amazonaws.com/";
         String path = "comp9900/public/host/" + hostId + "/" + houseId + "/";
         HousePicUrls housePicUrls = new HousePicUrls();
         housePicUrls.setHouseId(houseId);
