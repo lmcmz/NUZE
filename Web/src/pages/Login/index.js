@@ -75,8 +75,6 @@ class LoginAlert extends Component {
         }
     }
 
-
-
     Login() {
         console.log("login")
         let username = this.state.username
@@ -91,10 +89,6 @@ class LoginAlert extends Component {
         })
     }
 
-    componentDidUpdate() {
-
-    }
-
     render() {
         return (
             <BackgroundBox bg="#fff" boxShadow='0 0 16px rgba(96, 179, 219, .5)'>
@@ -107,10 +101,10 @@ class LoginAlert extends Component {
                 </LogoBox> 
                 
                 <Box width={0.8} py={1} m="0 auto">
-                    <Text py={2} fontSize="15px">Email</Text>
+                    <Text py={2} fontSize="15px">Username</Text>
                     <DestinationInput
                         onChange={v=>this.handleChange('username',v)}
-                        type="text" name="destination" placeholder="Email address"></DestinationInput>
+                        type="text" name="destination" placeholder="Username or email"></DestinationInput>
                 </Box>
                 <Box width={0.8} py={1}  m="0 auto">
                     <Text py={2} fontSize="15px">Password</Text>

@@ -4,6 +4,7 @@ import { LOGOUT } from "./constants";
 import { ERROR_MSG } from "./constants";
 
 function loginSuccess(data) {
+    console.log(data)
     return {type:LOGIN_SUCCESS, payload:data}
 }
 

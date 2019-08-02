@@ -117,8 +117,14 @@ class BookCard extends Component {
         
         const web3 = new Web3(Web3.givenProvider);
         var firstAcc = ""
+<<<<<<< Updated upstream
         var sender = web3.eth.getAccounts().then(e =>{
             firstAcc=e[0];
+=======
+        var sender = web3.eth.getAccounts().then(e =>{ 
+            firstAcc=e[0]; 
+            console.log(firstAcc)
+>>>>>>> Stashed changes
             this.sendTransaction(firstAcc)
         })
         console.log(this.props.data)

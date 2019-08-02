@@ -101,6 +101,7 @@ class EditProfile extends Component {
     }
 
     render() {
+        var names = this.props.user.clientName.split(" ")
         return (
             <Box>
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='600' color='#555555'> 
@@ -119,13 +120,13 @@ class EditProfile extends Component {
                             <Title fontSize="17px"> First Name </Title>
                             <Input
                                 onChange={v=>this.handleChange('firstName',v)}
-                                type="text" name="firstName" placeholder="First Name"></Input>
+                                type="text" name="firstName" placeholder="First Name">{names[0]}</Input>
                         </Flex>
                         <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
                             <Title fontSize="17px"> Last Name </Title>
                             <Input
                                 onChange={v=>this.handleChange('lastName',v)}
-                                type="text" name="LastName" placeholder="Last Name"></Input>
+                                type="text" name="LastName" placeholder="Last Name">{names[1]}</Input>
                         </Flex>
                         <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
                             <Title fontSize="17px">Detail</Title>
@@ -163,8 +164,8 @@ class EditProfile extends Component {
                             <Title fontSize="17px"> Work Email </Title>
                             <Input type="text" name="firstName" placeholder="Work Email"></Input>
                         </Flex>
-                        <button onClick={() => this.updateUserInfo()}>Submit</button>
                     </InfoCard>
+                    <Button bg="#60B3DB" width="150px" mt="30px" styled={{cursor:'pointer'}} onClick={() => this.updateUserInfo()}>Submit</Button>
                 </Box>
             </Box>
         )
