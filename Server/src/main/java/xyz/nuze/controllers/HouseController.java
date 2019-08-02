@@ -47,11 +47,13 @@ public class HouseController extends BaseController {
     @GetMapping("")
     @ApiOperation(value = "get house info" ,  notes="get house info")
     public CommonReturnType getHouseInfoList(
+        @ApiParam @RequestParam(value = "price", required = false) Integer price,
+        @ApiParam @RequestParam(value = "guests", required = false) Integer guests,
         @ApiParam @RequestParam(value = "city", defaultValue = "Sydney") String city,
         @ApiParam @RequestParam(value = "offset", defaultValue = "0") Integer offset,
         @ApiParam @RequestParam(value = "limit", defaultValue = "10") Integer limit) throws BusinessException {
 
-        List<House> houseList = houseService.listHouseList(limit, offset, city);
+        List<House> houseList = houseService.listHouseList(limit, offset, city, price, guests);
         return CommonReturnType.create(houseList, "get success");
     }
 

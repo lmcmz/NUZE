@@ -14,6 +14,7 @@ import xyz.nuze.model.*;
 import xyz.nuze.services.HouseService;
 import xyz.nuze.services.model.HouseInfo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +39,8 @@ public class HouseServiceImp implements HouseService {
     HousePicUrlsMapper housePicUrlsMapper;
 
     @Override
-    public List<House> listHouseList(Integer limit, Integer offset, String city) throws BusinessException {
-        List<House> houses = houseMapper.getHouseList(limit, offset, city);
+    public List<House> listHouseList(Integer limit, Integer offset, String city, Integer price, Integer guest) throws BusinessException {
+        List<House> houses = houseMapper.getHouseList(limit, offset, city, price, guest);
         return houses;
     }
 

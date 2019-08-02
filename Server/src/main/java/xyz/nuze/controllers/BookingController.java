@@ -1,9 +1,11 @@
 package xyz.nuze.controllers;
 
+import com.amazonaws.services.dynamodbv2.xspec.B;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import xyz.nuze.controllers.viewObject.BookingVO;
 import xyz.nuze.error.BusinessException;
 import xyz.nuze.error.EmBusinessError;
 import xyz.nuze.model.Booking;
@@ -13,6 +15,8 @@ import xyz.nuze.services.HouseService;
 import xyz.nuze.utils.JWT.SecurityUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +43,17 @@ public class BookingController extends BaseController {
             throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
         }
         List<Booking> bookings = houseService.getAllBookings(clientId);
-        return CommonReturnType.create(bookings, "get success");
+        BookingVO bookingVO = new BookingVO();
+        bookingVO.setBookings(new ArrayList<>());
+        bookingVO.setPreBookings(new ArrayList<>());
+        Date now = new Date();
+        for(Booking booking: bookings) {
+            if (booking.getCheckOut().getTime() <= now.getTime()) {
+                bookingVO.getPreBookings().add(booking);
+            } else {
+                bookingVO.getBookings().add(booking);
+            }
+        }
+        return CommonReturnType.create(bookingVO, "get success");
     }
 }

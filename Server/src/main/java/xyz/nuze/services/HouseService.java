@@ -8,6 +8,7 @@ import xyz.nuze.model.HousePicUrls;
 import xyz.nuze.model.HouseReview;
 import xyz.nuze.services.model.HouseInfo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 
 @Mapper
 public interface HouseService {
-    List<House> listHouseList(Integer limit, Integer offset, String city) throws BusinessException;
+    List<House> listHouseList(Integer limit, Integer offset, String city, Integer price, Integer guest) throws BusinessException;
     List<HouseReview> listHouseReviews(Integer limit, Integer offset, Integer houseId) throws BusinessException;
     void createHouseReview(Integer clientId, Integer hostId, Integer houseId, String review) throws BusinessException;
     House getHouseById(Integer houseId) throws BusinessException;
