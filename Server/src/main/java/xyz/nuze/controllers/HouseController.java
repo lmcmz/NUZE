@@ -24,6 +24,7 @@ import xyz.nuze.utils.JWT.SecurityUtils;
 import xyz.nuze.utils.JWT.SimpleAwsS3Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -110,6 +111,8 @@ public class HouseController extends BaseController {
         if (house == null) {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
+        Integer NumOfDate = (int) Math.ceil((bookingRO.getCheckOut() - bookingRO.getCheckIn()) / (1000*3600*24));
+
         Booking booking = new Booking();
         BeanUtils.copyProperties(bookingRO, booking);
         booking.setCheckIn(new Date(bookingRO.getCheckIn()));
@@ -117,6 +120,7 @@ public class HouseController extends BaseController {
         booking.setHouseId(houseId);
         booking.setHostId(house.getHostId());
         booking.setClientId(clientId);
+        booking.setPrice(house.getPrice().multiply(new BigDecimal(NumOfDate)));
         houseService.booking(booking);
         return CommonReturnType.create("Create successful");
     }

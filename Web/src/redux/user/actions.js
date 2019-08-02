@@ -37,7 +37,6 @@ export function userLogin(username, password, userGroup) {
                                 let userInfo = res.data.data
                                 userInfo.jwt = jwt
                                 dispatch(loginSuccess(userInfo))
-
                             } else {
                                 // dispatch(errorMsg(res.data.error))
                             }

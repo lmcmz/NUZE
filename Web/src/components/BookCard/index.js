@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios'
 import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled, { keyframes } from 'styled-components';
 import {Link, withRouter} from 'react-router-dom'
@@ -9,6 +10,8 @@ import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Web3 from 'web3';
+import {userLogin} from "../../redux/user/actions";
+import connect from "react-redux/es/connect/connect";
 
 const anime = keyframes`
   0% {
@@ -49,13 +52,14 @@ const SearchButton = styled.button`
     }
 `
 
-export default class BookCard extends Component {
+class BookCard extends Component {
 
     constructor(props){
         super(props);
         this.state = {
             startDate: null,
             endDate:null,
+            guests:0
         };
     }
 
@@ -87,6 +91,13 @@ export default class BookCard extends Component {
         return items
     }
 
+    handleChange(key, e) {
+        console.log(e)
+        this.setState({
+            [key]: e.value
+        })
+    }
+
     sendTransaction = (acc) => {
         console.log(acc)
         const web3 = new Web3(Web3.givenProvider);
@@ -106,10 +117,28 @@ export default class BookCard extends Component {
         
         const web3 = new Web3(Web3.givenProvider);
         var firstAcc = ""
-        var sender = web3.eth.getAccounts().then(e =>{ 
-            firstAcc=e[0]; 
+        var sender = web3.eth.getAccounts().then(e =>{
+            firstAcc=e[0];
             this.sendTransaction(firstAcc)
         })
+        console.log(this.props.data)
+        let houseId = this.props.data.houseId
+        let adults = this.state.guests
+        let checkIn = this.state.startDate.toDate().getTime()
+        let checkOut = this.state.endDate.toDate().getTime()
+        let data = {adults, checkIn, checkOut}
+        console.log(data)
+        let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
+        axios.post(`http://localhost:8080/comp9900/house/${houseId}/book`, data, { headers: { 'Authorization': jwt, 'Content-Type':'application/json'}})
+            .then(res=>{
+                if (res.status === 200 && res.data.code === 1) {
+                    // success
+                    // this.renderSwitch(this.state.selectedId)
+                    console.log(res.data)
+                } else {
+                    console.log('error')
+                }
+            })
     }
 
     render() {
@@ -157,7 +186,8 @@ export default class BookCard extends Component {
                         <Flex flexDirection='column' width={1} textAlign='left' alignItems='flex-start'>
                             <Text fontSize={1} color='grey' lineHeight={3}>Guest</Text>
                             <Flex width={1}>
-                            <Dropdown className="dropdownWrapper-deatil" 
+                            <Dropdown className="dropdownWrapper-deatil"
+                                      onChange={v=>this.handleChange('guests',v)}
                         controlClassName='dropdown'
                         arrowClassName='dropdownArrow'
                         menuClassName='dropdownMenu'
@@ -175,3 +205,8 @@ export default class BookCard extends Component {
         )
     }
 }
+const mapStateToProps = (state)=>({
+    user:state.user
+})
+const actionCreators = { userLogin };
+export default connect(mapStateToProps, actionCreators)(BookCard)
