@@ -104,12 +104,14 @@ class Search extends Component {
                     //     return
                     // }
                     offset = this.state.offset + this.state.limit
-                    console.log(res.data.data)
+                    console.log(firstProperty)
                     this.setState({
                         houseList: propertyList,
                         offset: offset,
-                        center: {lat: firstProperty.lat, 
-                            lng: firstProperty.lng}
+                        center: {
+                            lat: firstProperty.lat, 
+                            lng: firstProperty.lng
+                        }
                     })
                 } else {
                     console.log('error')
@@ -174,7 +176,8 @@ class Search extends Component {
                                 styles: customMapStyle,
                             }}
                         bootstrapURLKeys={{ key: "AIzaSyDLeo51fXjH1cJmOtmNjfDR29mxKOMMsKk"}}
-                        center={this.state.center}
+                        center={{lat: this.state.center.lat,
+                                lng: this.state.center.lng}}
                         defaultZoom={this.state.zoom}
                         onChildClick={this.onChildClickCallback}
                         >
