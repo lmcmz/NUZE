@@ -104,10 +104,7 @@ public class HouseServiceImp implements HouseService {
 
     @Override
     public List<Booking> getAllBookings(Integer clientId) throws BusinessException {
-        BookingExample bookingExample = new BookingExample();
-        BookingExample.Criteria criteria = bookingExample.createCriteria();
-        criteria.andClientIdEqualTo(clientId);
-        List<Booking> bookings = bookingMapper.selectByExample(bookingExample);
+        List<Booking> bookings = bookingMapper.getUserBookings(clientId);
         return bookings;
     }
 

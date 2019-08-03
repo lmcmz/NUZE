@@ -93,4 +93,6 @@ public interface BookingMapper {
      * @mbg.generated Fri Aug 02 21:04:25 AEST 2019
      */
     int updateByPrimaryKey(Booking record);
+
+    List<Booking> getUserBookings(@Param("clientId") Integer clientId);
 }

@@ -129,6 +129,37 @@ public class Booking {
      *
      * @mbg.generated Fri Aug 02 21:04:25 AEST 2019
      */
+
+    private String picUrl;
+
+    private Integer reviewsCount;
+
+    private String brifeInfor;
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public Integer getReviewsCount() {
+        return reviewsCount;
+    }
+
+    public void setReviewsCount(Integer reviewsCount) {
+        this.reviewsCount = reviewsCount;
+    }
+
+    public String getBrifeInfor() {
+        return brifeInfor;
+    }
+
+    public void setBrifeInfor(String brifeInfor) {
+        this.brifeInfor = brifeInfor;
+    }
+
     public Integer getId() {
         return id;
     }
