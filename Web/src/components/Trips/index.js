@@ -19,7 +19,7 @@ export default class TripList extends Component {
 
     componentWillMount() {
         let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
-        axios.get('http://localhost:8080/comp9900/booking', { headers: { Authorization: jwt } })
+        axios.get('http://13.211.203.224/comp9900/booking', { headers: { Authorization: jwt } })
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
