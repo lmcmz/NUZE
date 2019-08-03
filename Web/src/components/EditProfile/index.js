@@ -54,9 +54,6 @@ const DescInput = styled.textarea`
 
 
 class EditProfile extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
 
     constructor(props) {
         super(props);
@@ -101,7 +98,8 @@ class EditProfile extends Component {
     }
 
     render() {
-        var names = this.props.user.clientName.split(" ")
+        var name = this.props.user.clientName.split(" ")
+        console.log(this.props.user)
         return (
             <Box>
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='600' color='#555555'> 
@@ -120,19 +118,19 @@ class EditProfile extends Component {
                             <Title fontSize="17px"> First Name </Title>
                             <Input
                                 onChange={v=>this.handleChange('firstName',v)}
-                                type="text" name="firstName" placeholder="First Name">{names[0]}</Input>
+                                type="text" name="firstName" defaultValue={name[0]} placeholder="First Name"></Input>
                         </Flex>
                         <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
                             <Title fontSize="17px"> Last Name </Title>
                             <Input
                                 onChange={v=>this.handleChange('lastName',v)}
-                                type="text" name="LastName" placeholder="Last Name">{names[1]}</Input>
+                                type="text" text={name[1]} name="LastName" defaultValue={name[1]} placeholder="Last Name"></Input>
                         </Flex>
                         <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
                             <Title fontSize="17px">Detail</Title>
                             <Input
                                 onChange={v=>this.handleChange('detail',v)}
-                                type="text" name="firstName" placeholder="Detail"></Input>
+                                type="text" name="firstName" placeholder="Detail" defaultValue={this.props.user.details}></Input>
                         </Flex>
                         {/*<Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">*/}
                             {/*<Title fontSize="17px"> Where do you live </Title>*/}
@@ -142,7 +140,7 @@ class EditProfile extends Component {
                             <Title fontSize="17px"> SelfInfo </Title>
                             <DescInput
                                 onChange={v=>this.handleChange('selfInfo',v)}
-                                type="text" name="firstName" placeholder="SelfInfo"></DescInput>
+                                type="text" name="firstName" placeholder="SelfInfo" defaultValue={this.props.user.selfIntro} ></DescInput>
                         </Flex>
                     </InfoCard>
                     <InfoCard  
@@ -165,7 +163,7 @@ class EditProfile extends Component {
                             <Input type="text" name="firstName" placeholder="Work Email"></Input>
                         </Flex>
                     </InfoCard>
-                    <Button bg="#60B3DB" width="150px" mt="30px" styled={{cursor:'pointer'}} onClick={() => this.updateUserInfo()}>Submit</Button>
+                    <Button bg="#60B3DB" width="150px" mt="30px" mb="50px" styled={{cursor:'pointer'}} onClick={() => this.updateUserInfo()}>Submit</Button>
                 </Box>
             </Box>
         )
