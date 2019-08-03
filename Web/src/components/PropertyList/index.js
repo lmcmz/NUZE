@@ -22,6 +22,7 @@ export default class PropertyList extends Component {
     };
 
     render() {
+        console.log(this.props.data)
         return (
             <Box>
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='500' color='#555555'> 

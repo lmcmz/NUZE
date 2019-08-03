@@ -136,6 +136,16 @@ public class Booking {
 
     private String brifeInfor;
 
+    private Integer starRating;
+
+    public Integer getStarRating() {
+        return starRating;
+    }
+
+    public void setStarRating(Integer starRating) {
+        this.starRating = starRating;
+    }
+
     public String getPicUrl() {
         return picUrl;
     }

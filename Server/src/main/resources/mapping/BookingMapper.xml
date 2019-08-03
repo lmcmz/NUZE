@@ -43,6 +43,7 @@
     <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
     <result column="brife_infor" jdbcType="VARCHAR" property="brifeInfor" />
     <result column="reviews_count" jdbcType="INTEGER" property="reviewsCount" />
+    <result column="star_rating" jdbcType="REAL" property="starRating" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -141,7 +142,7 @@
     </if>
   </select>
   <select id="getUserBookings" parameterType="java.lang.Integer" resultMap="bookingMap">
-    select b.*, h.reviews_count, p.pic_url
+    select b.*, h.reviews_count,h.star_rating, p.pic_url
     from booking b, house h, house_pic_urls p
     where b.client_id = #{clientId}
     and b.house_id = h.house_id
