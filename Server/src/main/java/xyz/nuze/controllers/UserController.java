@@ -160,7 +160,7 @@ public class UserController extends BaseController {
     @PostMapping("/info")
     public CommonReturnType updateUserInfo(HttpServletRequest request,
                                            @ModelAttribute UserInfoRO userInfoRO) throws BusinessException {
-        Integer clientId = SecurityUtils.getUserIdFromToken(request, "client");
+       Integer clientId = SecurityUtils.getUserIdFromToken(request, "client");
         Integer hostId = SecurityUtils.getUserIdFromToken(request, "host");
         if (clientId == null && hostId == null) {
             throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);

@@ -51,19 +51,15 @@ export function userLogin(username, password, userGroup) {
 }
 
 export function getUserInfo(JWT) {
-    console.log(JWT)
     //TODO get user info
     return dispatch=>{
         axios.get('http://13.211.203.224/comp9900/users', { headers: { Authorization: JWT } })
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
-                    // success
-                    // console.log('login')
-                    return res.data
-                    // dispatch(loginSuccess(res.data))
+                    dispatch(loginSuccess(res.data.data))
 
                 } else {
-                    // dispatch(errorMsg(res.data.error))
+                    dispatch(errorMsg(res.data.error))
                 }
             })
     }

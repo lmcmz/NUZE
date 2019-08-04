@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Box, Button, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
-import {userLogin} from "../../redux/user/actions";
+import {userLogin, getUserInfo} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
 import Simplert from 'react-simplert'
 import ImageUploader from 'react-images-upload';
@@ -72,7 +72,7 @@ class EditProfile extends Component {
             selfInfo:'rerere',
             showAlert: false,
             showError: false,
-            pictures: null
+            picture: null
         }
     }
 
@@ -80,23 +80,27 @@ class EditProfile extends Component {
         let name = this.state.lastName + ' ' + this.state.firstName
         let details = this.state.detail
         let selfInfo = this.state.selfInfo
+        let picture = this.state.picture? this.state.picture[0] : null
         let bodyFormData = new FormData();
         bodyFormData.set('name', name);
         bodyFormData.set('details', details);
         bodyFormData.set('selfInfo', selfInfo);
+        if (picture)
+        bodyFormData.set('picture', picture);
+
 
         let jwt = this.props.user.jwt
-        axios.post('http://13.211.203.224/comp9900/users/info', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
+        axios.post('http://localhost:8080/comp9900/users/info', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
             .then(res=>{
-                console.log(res.data)
                 if (res.status === 200 && res.data.code === 1) {
                     // success
-                    console.log('login')
-                    console.log(res.data)
                     // return res.data
                     this.setState({
                         showAlert: true
                     })
+                    setTimeout(() => {
+                        this.props.getUserInfo(jwt)
+                    },1000)
                 } else {
                     // dispatch(errorMsg(res.data.error))
                     this.setState({
@@ -114,7 +118,6 @@ class EditProfile extends Component {
     }
 
     onDrop(pictureFiles, pictureDataURLs) {
-        console.log(this.state.picture)
         this.setState({
             picture: pictureFiles,
         });
@@ -122,7 +125,6 @@ class EditProfile extends Component {
 
     render() {
         var name = this.props.user.clientName.split(" ")
-        console.log(this.props.user)
         return (
             <Box>
                 <Simplert 
@@ -223,5 +225,5 @@ class EditProfile extends Component {
 const mapStateToProps = (state)=>({
     user:state.user
 })
-const actionCreators = { userLogin };
+const actionCreators = { userLogin, getUserInfo };
 export default connect(mapStateToProps, actionCreators)(EditProfile)
