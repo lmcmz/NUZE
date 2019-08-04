@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import {userLogin} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
 import Simplert from 'react-simplert'
+import ImageUploader from 'react-images-upload';
 
 const InfoCard = styled(Card)({
     width: "700px",
@@ -17,6 +18,12 @@ const Title = styled(Text)({
     fontSize:"17px",
     textAlign:"center",
     width: "100px;"
+})
+
+const Avatar = styled(Image)({
+    height: "100px",
+    width: "100px",
+    borderRadius: "50px",
 })
 
 const Input = styled.input`
@@ -57,6 +64,7 @@ class EditProfile extends Component {
 
     constructor(props) {
         super(props);
+        this.onDrop = this.onDrop.bind(this);
         this.state = {
             firstName:'aaaa',
             lastName:'bbbb',
@@ -64,6 +72,7 @@ class EditProfile extends Component {
             selfInfo:'rerere',
             showAlert: false,
             showError: false,
+            pictures: null
         }
     }
 
@@ -104,6 +113,13 @@ class EditProfile extends Component {
         })
     }
 
+    onDrop(pictureFiles, pictureDataURLs) {
+        console.log(this.state.picture)
+        this.setState({
+            picture: pictureFiles,
+        });
+    }
+
     render() {
         var name = this.props.user.clientName.split(" ")
         console.log(this.props.user)
@@ -135,6 +151,19 @@ class EditProfile extends Component {
                         <Flex bg="#60B3DB" py="20px" borderRadius="10px">
                             <Text pl="50px" fontSize="18px" color="white" fontWeight="600"> Required </Text>
                         </Flex>
+
+                        <Flex pl="50px" py="15px" textAlign="center" >
+                            <Avatar src={this.props.user.picUrl} />
+                            <ImageUploader
+                                withIcon={false}
+                                buttonText='Choose images'
+                                onChange={this.onDrop}
+                                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                maxFileSize={5242880}
+                                withPreview={true}
+                            />
+                        </Flex>
+
                         <Flex py="15px" textAlign="center"  alignItems="center" justifyContent="center">
                             <Title fontSize="17px"> First Name </Title>
                             <Input
