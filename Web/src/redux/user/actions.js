@@ -44,7 +44,7 @@ export function userLogin(username, password, userGroup) {
                         })
 
                 } else {
-                    dispatch(errorMsg(res.data.error))
+                    dispatch(errorMsg('Invalid username or password'))
                 }
             })
     }
