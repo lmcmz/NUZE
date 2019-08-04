@@ -208,12 +208,14 @@ class BookCard extends Component {
                             <Text fontSize={1} color='grey' lineHeight={3}>Guest</Text>
                             <Flex width={1}>
                             <Dropdown className="dropdownWrapper-deatil"
-                                      onChange={v=>this.handleChange('guests',v)}
+                                        value={this.state.guests+ ""}
+                                        onChange={v=>this.handleChange('guests',v)}
                                         controlClassName='dropdown'
                                         arrowClassName='dropdownArrow'
                                         menuClassName='dropdownMenu'
                                         options={options} 
-                                        placeholder="Guest" 
+                                        placeholder="Guest"
+                                        defaultOption={1}
                             />
                             </Flex>
                         </Flex>

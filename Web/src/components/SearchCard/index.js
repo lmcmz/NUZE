@@ -92,34 +92,6 @@ const SearchBox = styled(Box)({
     width: "550px",
 })
 
-const cityList = [
-    "Sydney",
-    "Newcastle",
-    "Wollongong",
-    "CentralCoast",
-    "Albury",
-    "Armidale",
-    "Bathurst",
-    "BrokenHill",
-    "CityofLakeMacquarie",
-    "CoffsHarbour‎",
-    "Dubbo",
-    "Goulburn",
-    "Grafton",
-    "Griffith",
-    "Lithgow",
-    "Maitland",
-    "Parramatta",
-    "Penrith",
-    "BotanyBay",
-    "Queanbeyan",
-    "CityofShoalhaven‎",
-    "Tamworth",
-    "Taree",
-    "TweedHeads",
-    "WaggaWagga"
-    ]
-
 export class SearchCard extends Component {
     constructor(props) {
         super(props)
