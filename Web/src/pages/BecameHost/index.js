@@ -125,11 +125,7 @@ class BecameHost extends Component {
             price: 1300,
         }
     }
-
-    handleSearch = () => {
-        window.location.assign('/hostForm');
-    }
-
+    
     handleChange = (key, e) => {
         this.setState({
             [key]: e.value
@@ -273,7 +269,9 @@ class BecameHost extends Component {
                         <PriceText>
                             <CountUp prefix="$ " end={this.state.price} />    
                         </PriceText>per month</Text>
-                        <SearchButton onClick={this.handleSearch} > Get start </SearchButton>
+                        <Link to="/hostForm">
+                            <SearchButton > Get start </SearchButton>
+                        </Link>
                     </HostCard>
                 </Container>
                 <Footer />

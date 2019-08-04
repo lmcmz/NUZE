@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Box, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled, { keyframes } from 'styled-components';
-import {Link, withRouter} from 'react-router-dom'
+import {Link, withRouter, Redirect} from 'react-router-dom'
 import { DateRangePicker, DayPickerRangeController } from 'react-dates';
 import Dropdown from 'react-dropdown';
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
@@ -63,7 +63,8 @@ class BookCard extends Component {
             guests:1,
             showAlert: false,
             showError: false,
-            errorMessage: "MetaMask not install"
+            errorMessage: "MetaMask not install",
+            paymentComplete: false
         };
     }
 
@@ -157,7 +158,7 @@ class BookCard extends Component {
                     // this.renderSwitch(this.state.selectedId)
                     console.log(res.data)
                     this.setState({
-                        showAlert: true
+                        showAlert: true,
                     })
                 } else {
                     console.log('error')
@@ -166,7 +167,9 @@ class BookCard extends Component {
     }
 
     handleRedirect() {
-        window.location.assign('/profile');
+        this.setState({
+            paymentComplete: true
+        })
     }
 
     render() {
@@ -178,6 +181,7 @@ class BookCard extends Component {
 
         return (
             <div>
+                {this.state.paymentComplete? <Redirect to={"/profile"}/> : null}
             <Simplert 
                 showSimplert={ this.state.showAlert }
                 type="success"

@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import moment from 'moment';
+import {Link, withRouter} from 'react-router-dom'
 
 const ColorText = styled.span`
     align-self: flex-end;
@@ -112,11 +113,6 @@ export class SearchCard extends Component {
         });
       }
 
-      handleSearch = () => {
-        // window.location.assign('/search');
-        window.location.assign('/search?query='+this.state.query);
-      }
-
       handleTextChange = (e) => {
           console.log(e.target.value)
           this.setState({
@@ -201,7 +197,9 @@ export class SearchCard extends Component {
                     <Box pt={4} pb={4} >
                         {/* <Box bg='red' height='50px'> Serach</Box>
                      */}
-                        <SearchButton onClick={this.handleSearch}> <FontAwesomeIcon icon={faSearch} size='xs'/>  Search </SearchButton>
+                     <Link to={"/search?query=" + this.state.query}>
+                        <SearchButton> <FontAwesomeIcon icon={faSearch} size='xs'/>  Search </SearchButton>
+                    </Link>
                     </Box>
                     
                     </Box>
