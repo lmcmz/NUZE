@@ -69,6 +69,12 @@ export function getUserInfo(JWT) {
     }
 }
 
+export function logout() {
+    return dispatch=>{
+        dispatch({type:LOGOUT})
+    }
+}
+
 export function userRegister(username, password) {
     return dispatch=>{
         axios.post('http://13.211.203.224/comp9900/users', {username, password, type: 0})

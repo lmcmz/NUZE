@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {Link, Redirect} from 'react-router-dom'
 import { Box, Button, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
 import Header from '../../components/Header';
@@ -10,6 +11,8 @@ import FavouriteList from '../../components/Favourite';
 import ReviewList from '../../components/ReviewList';
 import Footer from '../../components/Footer';
 import { returnStatement } from '@babel/types';
+import {logout} from "../../redux/user/actions";
+import connect from "react-redux/es/connect/connect";
 
 const randomImage = () => {
     return "https://source.unsplash.com/random?sig="+ Math.floor(Math.random() * Math.floor(1000)) +"/720x1280";
@@ -34,7 +37,7 @@ const MenuItem = styled(Box)({
     paddingRight:"30px",
 })
 
-export default class Profile extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -84,6 +87,7 @@ export default class Profile extends Component {
         console.log(id)
 
         if (id == 4) {
+            this.props.logout()
             console.log("------log out----")
             return
         }
@@ -116,6 +120,7 @@ export default class Profile extends Component {
     render() {
         return (
             <div>
+                {!this.props.user.isAuth ? <Redirect to={'/'}></Redirect> : null}
                 <Header />
                 <Container pt="90px">
                     <Box width={0.2} pt="80px" style={{textAlign:"end"}}>
@@ -136,3 +141,9 @@ export default class Profile extends Component {
         )
     }
 }
+
+const mapStateToProps = (state)=>({
+    user:state.user
+})
+const actionCreators = { logout };
+export default connect(mapStateToProps, actionCreators)(Profile)

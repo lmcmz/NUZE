@@ -22,7 +22,6 @@ export default (state = defaultState, action) => {
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                // ...action.payload,
                 ...action.payload,
                 isAuth: true,
                 errorMsg: '',
@@ -35,3 +34,4 @@ export default (state = defaultState, action) => {
             return state
     }
 }
+
