@@ -7,6 +7,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import PropertyCard from '../../components/PropertyList/PropertyCard'
 import { DateRangePicker, DayPickerRangeController } from 'react-dates';
+import {Redirect} from 'react-router-dom'
 import { faBed, faBath, faWifi, faParking, faUtensils, faTshirt} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReviewCard from "../../components/Review";
@@ -17,6 +18,7 @@ import axios from 'axios'
 import GoogleMapReact from 'google-map-react';
 import MapDot from '../../components/MapDot';
 import BookCard from '../../components/BookCard';
+import queryString from "query-string";
 
 const GalleryBox = styled(Box)({
     display: "block",
@@ -73,9 +75,17 @@ const MapWarpper=styled(Box)({
 
 
 class DetailPage extends Component {
+
+
     componentDidMount() {
         this.getHouseInfo()
         this.getReviewInfo(0)
+    }
+
+    handleChange(key, e) {
+        this.setState({
+            [key]: e.target.value
+        })
     }
 
     getHouseInfo() {
@@ -148,8 +158,15 @@ class DetailPage extends Component {
             center: {
                 lat: -33.86515,
                 lng: 151.1919
-            }
+            },
+            searchCity:''
         };
+    }
+
+    changeSearchCity(e){
+        this.setState({
+            searchCity:e.target.value
+        })
     }
 
     render() {
@@ -185,7 +202,7 @@ class DetailPage extends Component {
 
         return (
             <div>
-                <SearchHeader />
+                <SearchHeader changeSearchCity = {this.changeSearchCity.bind(this)} searchCity = {this.state.searchCity}/>
                     <GalleryBox pt="90px">
                         <GalleryGrid>
                             <GalleryContainer width={1/2} mr="2px">

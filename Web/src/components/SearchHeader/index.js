@@ -106,8 +106,15 @@ class SearchHeader extends React.Component {
                 <Flex px={50}>
                 <Flex width={1/2}>
                     <Link className='logo' to="/"><img src={require('../../resource/image/logo-only.svg')} width="35" /></Link> 
-                    <DestinationInput type="text" name="destination" placeholder="Sydney" onChange={this.props.changeSearchCity}></DestinationInput>
-                    <SearchButton onClick={() => this.props.search()}><FontAwesomeIcon icon={faSearch} size='xs'/></SearchButton>
+                    <DestinationInput type="text" name="destination" placeholder={this.props.searchCity} onChange={this.props.changeSearchCity}></DestinationInput>
+                    {this.props.search ?
+                        <SearchButton onClick={() => this.props.search ? this.props.search() : this.props.searchInDetail()}><FontAwesomeIcon icon={faSearch} size='xs'/></SearchButton>
+                        :(<Link to={'/search?query=' + this.props.searchCity} >
+                            <SearchButton><FontAwesomeIcon icon={faSearch} size='xs'/></SearchButton>
+                        </Link>)
+                        // : null
+
+                    }
                 </Flex>
                 <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
                     {/* <Link className='link link0' to="/">Join us</Link> */}

@@ -213,7 +213,7 @@ class Search extends Component {
         // console.log('PROPS: ', this.props);
         return (
             <div>
-            <SearchHeader search={this.filterSearch.bind(this)} changeSearchCity={this.changeSearchCity.bind(this)}/>
+            <SearchHeader search={this.filterSearch.bind(this)} searchCity={this.state.searchCity} changeSearchCity={this.changeSearchCity.bind(this)}/>
             <FilterBar mapCheck={e => this.mapToggled(e)} searchPrice={this.state.searchPrice} searchGuests={this.state.searchGuest} changePrice={this.changePrice.bind(this)} changeGuest={this.changeGuest.bind(this)}/>
             {this.state.toggle ? (<Box>
                 <Text pl={50} py={20} textAlign='left' fontSize='25px' fontWeight='500' color='#555555'> 
