@@ -5,7 +5,7 @@ import { Box, Button, Card, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
 import {userLogin} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
-
+import Simplert from 'react-simplert'
 
 const InfoCard = styled(Card)({
     width: "700px",
@@ -74,7 +74,6 @@ class EditProfile extends Component {
         bodyFormData.set('details', details);
         bodyFormData.set('selfInfo', selfInfo);
 
-
         let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
         axios.post('http://13.211.203.224/comp9900/users/info', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
             .then(res=>{
@@ -102,6 +101,14 @@ class EditProfile extends Component {
         console.log(this.props.user)
         return (
             <Box>
+                <Simplert 
+                showSimplert={ this.state.showAlert }
+                type="success"
+                title="Book Success"
+                message="Redirect to your trip page"
+                onClose={this.handleRedirect.bind(this)}
+                />
+                
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='600' color='#555555'> 
                     My Profile
                 </Text>

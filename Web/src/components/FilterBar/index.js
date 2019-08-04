@@ -18,7 +18,7 @@ const FilterBarDiv = styled.div`
     padding-top: 90px;
     padding-left: 40px;
     padding-right: 40px;
-    height: 60px;
+    /* height: 60px; */
     /* vertical-align: baseline; */
     border-bottom: 0.5px solid #eee;
     display: flex;
@@ -89,7 +89,7 @@ class FilterBar extends Component {
                         <Slider defaultValue={this.state.guest} min={1} max={5} handle={handle} onAfterChange={(v) => this.props.changeGuest(v)}/>
                     </RangeContainer>
                 </Flex>
-                <Flex width={1/3} pr='100px' justifyContent='flex-end' alignItems='center'>
+                <Flex width={1/3} justifyContent='flex-end' alignItems='center'>
                     <Text fontSize='13px' pr='5px'>Map View</Text>
                     <label >
                         <Toggle

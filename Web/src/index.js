@@ -11,18 +11,22 @@ import Profile from './pages/Profile';
 import BecameHost from './pages/BecameHost';
 import HostForm from './pages/HostForm';
 import CollectionPage from './pages/Collection'
+import Login from './pages/Login'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import store from './redux'
+import { OCAlertsProvider } from '@opuscapita/react-alerts';
 
 // const store = createStore(rootReducer)
 
 ReactDOM.render(
     <BrowserRouter>
+    <OCAlertsProvider />
     <Provider store={store}>
         <Switch>
             <Route exact path='/' component={Home}></Route>
+            <Route path='/login' component={Login}></Route>
             <Route path='/search' component={Search}></Route>
             <Route path='/house/:id' component={Detail}></Route>
             <Route path='/profile' component={Profile}></Route>

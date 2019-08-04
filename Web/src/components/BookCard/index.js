@@ -13,6 +13,7 @@ import Web3 from 'web3';
 import {userLogin} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
 import moment from 'moment';
+import Simplert from 'react-simplert'
 
 const anime = keyframes`
   0% {
@@ -59,10 +60,10 @@ class BookCard extends Component {
         this.state = {
             startDate: moment(new Date()),
             endDate: moment(new Date()).add(1, 'days'),
-            guests:0
+            guests:1,
+            showAlert: false,
         };
     }
-
 
     starRendering = () => {
 
@@ -105,11 +106,12 @@ class BookCard extends Component {
         var receiver = "0x56519083C3cfeAE833B93a93c843C993bE1D74EA"  
         web3.eth.sendTransaction({to:receiver,
             from: acc, 
-            value:web3.utils.toWei("0.5", "ether")})
+            value:web3.utils.toWei("0.01", "ether")})
         .then(function (error, res) {
-            console.log(error);
-            console.log(res);
-        })
+            console.log('error', error);
+            console.log('BBBB', res);
+            this.sendBookRequest()
+        }.bind(this))
     }
 
     handleBook = () => {
@@ -122,6 +124,9 @@ class BookCard extends Component {
             console.log(firstAcc)
             this.sendTransaction(firstAcc)
         })
+    }
+
+    sendBookRequest() {
         console.log(this.props.data)
         let houseId = this.props.data.houseId
         let adults = this.state.guests
@@ -130,16 +135,23 @@ class BookCard extends Component {
         let data = {adults, checkIn, checkOut}
         console.log(data)
         let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
-        axios.post(`http://localhost:8080/comp9900/house/${houseId}/book`, data, { headers: { 'Authorization': jwt, 'Content-Type':'application/json'}})
+        axios.post(`http://13.211.203.224/comp9900/house/${houseId}/book`, data, { headers: { 'Authorization': jwt, 'Content-Type':'application/json'}})
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
                     // this.renderSwitch(this.state.selectedId)
                     console.log(res.data)
+                    this.setState({
+                        showAlert: true
+                    })
                 } else {
                     console.log('error')
                 }
             })
+    }
+
+    handleRedirect() {
+        window.location.assign('/profile');
     }
 
     render() {
@@ -152,6 +164,14 @@ class BookCard extends Component {
 
         return (
             <div>
+            <Simplert 
+                showSimplert={ this.state.showAlert }
+                type="success"
+                title="Book Success"
+                message="Redirect to your trip page"
+                onClose={this.handleRedirect.bind(this)}
+                />
+
                 <Card border="1px solid #eee" p={3} borderRadius={10}>
                     <Flex>
                         <Text fontSize="30px" fontWeight="500">${this.props.data.price} <span fontSize="5px" fontWeight="200"> total</span> </Text>  
@@ -189,12 +209,11 @@ class BookCard extends Component {
                             <Flex width={1}>
                             <Dropdown className="dropdownWrapper-deatil"
                                       onChange={v=>this.handleChange('guests',v)}
-                        controlClassName='dropdown'
-                        arrowClassName='dropdownArrow'
-                        menuClassName='dropdownMenu'
-                        options={options} 
-                        defaultOption={defaultOption}
-                        placeholder="Guest" 
+                                        controlClassName='dropdown'
+                                        arrowClassName='dropdownArrow'
+                                        menuClassName='dropdownMenu'
+                                        options={options} 
+                                        placeholder="Guest" 
                             />
                             </Flex>
                         </Flex>

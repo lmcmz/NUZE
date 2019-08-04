@@ -6,13 +6,13 @@ import { faStar, faStarHalfAlt, faArrowRight, faArrowCircleRight } from "@fortaw
 import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import {Link, withRouter} from 'react-router-dom'
 
-const PropertyImage = styled(Image)({
-    width: '250px !important',
-    height: '150px',
-    objectFit: 'cover',
-    borderRadius: '3px',
-    backgroundColor: '#eee',
-})
+const PImage = styled.img`
+    width: 230px !important;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 3px;
+    background-color: #eee;
+`
 
 const Container = styled(Flex)({
     border: "1px solid #e5e5e5",
@@ -94,7 +94,7 @@ export default class ListCard extends Component {
 
             <Box>
                 <Link to={`/house/${this.props.data.houseId}`}>
-                    <PropertyImage borderRadius={3} src={this.props.data.picUrl} />
+                    <PImage borderRadius={3} src={this.props.data.picUrl} />
                 </Link>
             </Box>
             

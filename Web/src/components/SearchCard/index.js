@@ -215,12 +215,11 @@ export class SearchCard extends Component {
                                     menuClassName='dropdownMenu'
                                     options={options} 
                                     placeholder="Rooms" 
-                                     />
+                                />
                                 <Dropdown className="dropdownWrapper" 
                                     controlClassName='dropdown'
                                     arrowClassName='dropdownArrow'
                                     menuClassName='dropdownMenu'
-                                    
                                     options={options}
                                     placeholder="Guest" />
                             </Flex>

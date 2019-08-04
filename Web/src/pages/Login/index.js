@@ -112,8 +112,10 @@ class LoginAlert extends Component {
                     <CloseButton onClick={this.props.close} ><FontAwesomeIcon icon={faTimes} size='2x'/></CloseButton>
                 </Flex>
                 <LogoBox m="0 auto" justifyContent="center">
+                    <Link to="/">
                     <img src={require('../../resource/image/logo-only.svg')} width="50" />
                     {/* <Text pl={3} textAlign="center" fontSize="40px" fontWeight="400" fontFamily="Avenir Next">Sign in</Text> */}
+                    </Link>
                 </LogoBox> 
                 
                 <Box width={0.8} py={1} m="0 auto">
