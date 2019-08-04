@@ -74,7 +74,7 @@ class EditProfile extends Component {
         bodyFormData.set('details', details);
         bodyFormData.set('selfInfo', selfInfo);
 
-        let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
+        let jwt = this.props.user.jwt
         axios.post('http://13.211.203.224/comp9900/users/info', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
             .then(res=>{
                 console.log(res.data)

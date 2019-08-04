@@ -6,6 +6,8 @@ import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import {userLogin} from "../../redux/user/actions";
+import connect from "react-redux/es/connect/connect";
 
 const PropertyImage = styled(Image)({
     height: '80px',
@@ -34,7 +36,7 @@ const DescInput = styled.textarea`
     }
 `
 
-export default class ReviewInputCard extends Component {
+class ReviewInputCard extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -49,7 +51,7 @@ export default class ReviewInputCard extends Component {
         let review = this.state.review
         let houseId = this.props.data.houseId
         let id = this.props.data.id
-        let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
+        let jwt = this.props.user.jwt
         axios.post(`http://13.211.203.224/comp9900/house/${houseId}/review`, {id, review}, { headers: { 'Authorization': jwt, 'Content-Type':'application/json'}})
             .then(res=>{
                 console.log(res.data)
@@ -100,3 +102,7 @@ export default class ReviewInputCard extends Component {
         )
     }
 }
+const mapStateToProps = (state)=>({
+    user:state.user
+})
+export default connect(mapStateToProps, null)(ReviewInputCard)

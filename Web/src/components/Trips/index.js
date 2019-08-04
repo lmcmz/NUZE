@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Box, Button, Card, Image, Heading, Text, Flex } from 'rebass';
 import PropertyList from '../../components/PropertyList';
+import {userLogin} from "../../redux/user/actions";
+import connect from "react-redux/es/connect/connect";
 
-export default class TripList extends Component {
+class TripList extends Component {
     static propTypes = {
         prop: PropTypes
     }
@@ -18,7 +20,7 @@ export default class TripList extends Component {
     }
 
     componentWillMount() {
-        let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
+        let jwt = this.props.user.jwt
         axios.get('http://13.211.203.224/comp9900/booking', { headers: { Authorization: jwt } })
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
@@ -54,3 +56,9 @@ export default class TripList extends Component {
         )
     }
 }
+
+const mapStateToProps = (state)=>({
+    user:state.user
+})
+const actionCreators = { userLogin };
+export default connect(mapStateToProps, actionCreators)(TripList)

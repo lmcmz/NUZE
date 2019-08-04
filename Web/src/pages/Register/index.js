@@ -75,7 +75,19 @@ class RegisterAlert extends Component {
         }
     }
 
+    handleLogin(){
+        this.setState({
+            isLogin:true
+        })
+        return this.props.close ? this.props.close() :null
+    }
 
+    shouldComponentUpdate(nextProps, nextState){
+        if (this.state.isLogin && nextState.isLogin && nextState.isLogin == this.state.isLogin) {
+            return false
+        }
+        return true
+    }
 
     Register() {
         console.log("login")
@@ -94,6 +106,7 @@ class RegisterAlert extends Component {
     render() {
         return (
             <BackgroundBox bg="#fff" boxShadow='0 0 16px rgba(96, 179, 219, .5)'>
+                {this.props.user.isAuth && !this.state.is? this.handleLogin():null}
                 <Flex justifyContent="flex-end">
                     <CloseButton onClick={this.props.close} ><FontAwesomeIcon icon={faTimes} size='2x'/></CloseButton>
                 </Flex>
