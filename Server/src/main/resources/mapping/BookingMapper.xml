@@ -148,6 +148,7 @@
     and b.house_id = h.house_id
     and p.house_id = b.house_id
     group by b.id
+    order by b.id desc
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
