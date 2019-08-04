@@ -7,6 +7,11 @@ import "react-toggle/style.css"
 import './FilterBar.css'
 import {toggle} from '../../redux/actions';
 import { connect } from 'react-redux';
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import Tooltip from 'rc-tooltip';
+
+const Handle = Slider.Handle;
 
 const FilterBarDiv = styled.div`
     width: 100%;
@@ -28,10 +33,31 @@ const FilterButton = styled(Button)({
     outline: 'none',
     cursor: 'pointer',
     fontSize: '13px',
+    width: '120px',
+})
+
+const RangeContainer = styled(Box)({
+    width: "160px",
 })
 
 // const MapToggle = styled(Flex)({
 // })
+
+const handle = (props) => {
+    const { value, dragging, index, ...restProps } = props;
+    return (
+      <Tooltip
+        prefixCls="rc-slider-tooltip"
+        overlay={value}
+        visible={dragging}
+        placement="top"
+        key={index}
+        zIndex="10000"
+      >
+        <Handle value={value} {...restProps} />
+      </Tooltip>
+    );
+  };
 
 class FilterBar extends Component {
     constructor(props) {
@@ -39,6 +65,8 @@ class FilterBar extends Component {
         this.state = {
             value: true,
             defaultChecked: true,
+            price: 100,
+            guest: 2,
         }
     }
 
@@ -48,14 +76,22 @@ class FilterBar extends Component {
         this.props.dispatch(toggle(e.target.checked));
     }
 
+    changePrice = (e) => {
+        console.log(e.value)
+    }
+
     render() {
         return (
             <FilterBarDiv>
-                <Flex width={2/3}>
-                    <FilterButton>Date</FilterButton>
-                    <FilterButton>Price</FilterButton>
-                    <FilterButton>Guest</FilterButton>
-                    <FilterButton>Distance</FilterButton>
+                <Flex alignItems="center" width={2/3}>
+                    <FilterButton>Price: ${this.state.price}</FilterButton>
+                    <RangeContainer>
+                        <Slider defaultValue={this.state.price} min={0} max={500} handle={handle} onChange={this.changePrice.bind(this)} />
+                    </RangeContainer>
+                    <FilterButton>Guest: {this.state.guest}</FilterButton>
+                    <RangeContainer>
+                        <Slider defaultValue={this.state.guest} min={1} max={5} handle={handle}/>
+                    </RangeContainer>
                 </Flex>
                 <Flex width={1/3} pr='100px' justifyContent='flex-end' alignItems='center'>
                     <Text fontSize='13px' pr='5px'>Map View</Text>

@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Web3 from 'web3';
 import {userLogin} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
+import moment from 'moment';
 
 const anime = keyframes`
   0% {
@@ -57,8 +58,8 @@ class BookCard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            startDate: null,
-            endDate:null,
+            startDate: moment(new Date()),
+            endDate: moment(new Date()).add(1, 'days'),
             guests:0
         };
     }

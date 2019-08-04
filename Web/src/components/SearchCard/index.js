@@ -9,7 +9,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-
+import moment from 'moment';
 
 const ColorText = styled.span`
     align-self: flex-end;
@@ -125,8 +125,8 @@ export class SearchCard extends Component {
         super(props)
         this.state = {
             query: 'Sydney',
-            startDate: null,
-            endDate:null,
+            startDate: moment(new Date()),
+            endDate: moment(new Date()).add(1, 'days'),
             focusedInput: null,
         }
       }

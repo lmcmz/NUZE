@@ -78,7 +78,6 @@ export default class ReviewInputCard extends Component {
         const items = [];
         Array(5).fill().map((_, ) => 
             items.push(
-                
                 <FontAwesomeIcon color="#FFD000" icon={emStar} size='1x'/>
             )
         )

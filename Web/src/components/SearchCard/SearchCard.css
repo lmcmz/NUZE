@@ -1,24 +1,27 @@
 .CalendarDay__selected_span {
-    background: #82e0aa; 
+    background: #60B3DB; 
     color: white; 
-    border: 1px solid #60B3DB;
+    border: 1px solid #fff;
   }
   
 
   .CalendarDay__selected {
     background: #60B3DB;
     color: white;
+    border: 1px solid #fff;
   }
   
 
   .CalendarDay__selected:hover {
     background: #60B3DB;
     color: white;
+    border: 1px solid #fff;
   }
   
   .CalendarDay__hovered_span:hover,
   .CalendarDay__hovered_span {
     background: rgba(94, 179, 219, 0.5);
+    border: 1px solid #fff;
   }
 
   .DateRangePickerInput_calendarIcon{

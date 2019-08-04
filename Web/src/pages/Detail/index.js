@@ -75,12 +75,10 @@ const MapWarpper=styled(Box)({
 class DetailPage extends Component {
     componentDidMount() {
         this.getHouseInfo()
-        this.getReviewInfo()
+        this.getReviewInfo(0)
     }
 
     getHouseInfo() {
-        //TODO get user info
-
         const { id } = this.props.match.params
         axios.get(`http://13.211.203.224/comp9900/house/${id}`)
             .then(res=>{
@@ -92,13 +90,14 @@ class DetailPage extends Component {
                     let location = this.state.center
                     location.lat = res.data.data.lat
                     location.lng = res.data.data.lng
+                    console.log(res.data.data.reviewsCount)
 
-                    console.log(location)
-
+                    let pageCount = Math.ceil(res.data.data.reviewsCount/10)
                     this.setState({
                         info: res.data.data,
                         images: res.data.data.imageList,
-                        center: location
+                        center: location,
+                        pageCount: pageCount
                     })
                 } else {
                     console.log('error')
@@ -106,14 +105,24 @@ class DetailPage extends Component {
             })
     }
 
-    getReviewInfo() {
+    handlePageChange(pageNumber) {
+        // this.setState({activePage: pageNumber});
+        console.log(pageNumber.selected)
+        this.getReviewInfo(pageNumber.selected)
+    }
+
+    getReviewInfo(pageNumber) {
         //TODO get user info
 
+        const offset = this.state.limit * pageNumber
+        const limit = this.state.limit 
+
         const { id } = this.props.match.params
-        axios.get(`http://13.211.203.224/comp9900/house/${id}/review`)
+        axios.get(`http://13.211.203.224/comp9900/house/${id}/review?offset=${offset}&limit=${limit}`)
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
+                    console.log(res.data.data)
                     this.setState({
                         review: res.data.data
                     })
@@ -126,27 +135,21 @@ class DetailPage extends Component {
     constructor(props){
         super(props);
         this.state = {
+            offset: 1,
+            limit: 10,
             info: {},
             review:[],
-            pageCount: 2,
-            activePage: 5,
+            pageCount: 1,
+            activePage: 1,
             images: [],
             photoIndex: 0,
             isOpen: false,
-            startDate: null,
-            endDate:null,
             focusedInput: null,
             center: {
                 lat: -33.86515,
                 lng: 151.1919
             }
         };
-    }
-
-    
-    handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
-        this.setState({activePage: pageNumber});
     }
 
     render() {
@@ -335,7 +338,7 @@ class DetailPage extends Component {
                                     pageCount={this.state.pageCount}
                                     marginPagesDisplayed={2}
                                     pageRangeDisplayed={5}
-                                    onPageChange={this.handlePageChange}
+                                    onPageChange={this.handlePageChange.bind(this)}
                                     containerClassName={'pagination'}
                                     subContainerClassName={'pages pagination'}
                                     activeClassName={'active'}
