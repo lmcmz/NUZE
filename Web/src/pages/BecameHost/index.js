@@ -7,6 +7,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Dropdown from 'react-dropdown';
 import connect from "react-redux/es/connect/connect";
+import CountUp from 'react-countup';
 
 const anime = keyframes`
   0% {
@@ -120,7 +121,8 @@ class BecameHost extends Component {
         super(props);
         this.state = {
             city: "Sydney",
-            guest: "1"
+            guest: "1",
+            price: 1300,
         }
     }
 
@@ -131,6 +133,81 @@ class BecameHost extends Component {
     handleChange = (key, e) => {
         this.setState({
             [key]: e.value
+        })
+
+        const cityList = [
+            "Sydney",
+            "Newcastle",
+            "Wollongong",
+            "CentralCoast",
+            "Albury",
+            "Armidale",
+            "Bathurst",
+            "BrokenHill",
+            "CityofLakeMacquarie",
+            "CoffsHarbour‎",
+            "Dubbo",
+            "Goulburn",
+            "Grafton",
+            "Griffith",
+            "Lithgow",
+            "Maitland",
+            "Parramatta",
+            "Penrith",
+            "BotanyBay",
+            "Queanbeyan",
+            "CityofShoalhaven‎",
+            "Tamworth",
+            "Taree",
+            "TweedHeads",
+            "WaggaWagga"
+            ]
+
+        const cityPrice = [
+            1300,
+            1000,
+            1200,
+            1000,
+            800,
+            800,
+            750,
+            720,
+            850,
+            900,
+            600,
+            900,
+            600,
+            700,
+            890,
+            900,
+            1000,
+            1100,
+            1300,
+            900,
+            1000,
+            650,
+            600,
+            500,
+            600
+        ]
+
+        let cityName = this.state.city
+        if (key == 'city') {
+            cityName = e.value
+        }
+
+        let guestCount = this.state.guest
+        if (key == 'guest') {
+            guestCount = e.value
+        }
+
+        const index = cityList.findIndex(e => e == cityName);
+        console.log('index', index)
+        console.log('city_price', cityPrice[index])
+        console.log('guest', this.state.guest)
+        let price = cityPrice[index] * guestCount
+        this.setState({
+            price: price
         })
     }
 
@@ -192,7 +269,10 @@ class BecameHost extends Component {
                                     value={this.state.guest}
                                     onChange={v=>this.handleChange('guest',v)}
                         />
-                        <Text pt="10px" pb="20px" fontSize="35px" fontWeight="600" color="#444444"> <PriceText>$1210</PriceText> per month</Text>
+                        <Text pt="10px" pb="20px" fontSize="35px" fontWeight="600" color="#444444"> 
+                        <PriceText>
+                            <CountUp prefix="$ " end={this.state.price} />    
+                        </PriceText>per month</Text>
                         <SearchButton onClick={this.handleSearch} > Get start </SearchButton>
                     </HostCard>
                 </Container>

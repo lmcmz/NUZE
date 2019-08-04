@@ -17,6 +17,7 @@
     "rc-slider": "^8.6.13",
     "react": "^16.8.6",
     "react-alert": "^5.5.0",
+    "react-countup": "^4.2.1",
     "react-dates": "^20.2.3",
     "react-dom": "^16.8.6",
     "react-dropdown": "^1.6.4",
