@@ -62,6 +62,8 @@ class BookCard extends Component {
             endDate: moment(new Date()).add(1, 'days'),
             guests:1,
             showAlert: false,
+            showError: false,
+            errorMessage: "MetaMask not install"
         };
     }
 
@@ -115,12 +117,25 @@ class BookCard extends Component {
     }
 
     handleBook = () => {
+
+        const web3 = new Web3(Web3.givenProvider);
+        if (web3.currentProvider === null) {
+            this.setState({
+                showError: true
+            })
+            return
+        }
         console.log("-------Web3---------")
         
-        const web3 = new Web3(Web3.givenProvider);
         var firstAcc = ""
         var sender = web3.eth.getAccounts().then(e =>{ 
-            firstAcc=e[0]; 
+            firstAcc=e[0];
+            if (firstAcc === "") {
+                this.setState({
+                    showError: true, 
+                    errorMessage: "Fail to get Addess"
+                })
+            }
             console.log(firstAcc)
             this.sendTransaction(firstAcc)
         })
@@ -170,6 +185,13 @@ class BookCard extends Component {
                 title="Book Success"
                 message="Redirect to your trip page"
                 onClose={this.handleRedirect.bind(this)}
+                />
+
+                <Simplert 
+                showSimplert={ this.state.showError }
+                type="error"
+                title={this.state.errorMessage}
+                message="You need MetaMask to complete your order"
                 />
 
                 <Card border="1px solid #eee" p={3} borderRadius={10}>
