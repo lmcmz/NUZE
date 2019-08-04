@@ -82,11 +82,11 @@ class FilterBar extends Component {
                 <Flex alignItems="center" width={2/3}>
                     <FilterButton>Price: ${this.props.searchPrice}</FilterButton>
                     <RangeContainer>
-                        <Slider defaultValue={this.state.price} min={0} max={500} handle={handle} onChange={(v) => this.props.changePrice(v)} />
+                        <Slider defaultValue={this.state.price} min={0} max={500} handle={handle} onAfterChange={(v) => this.props.changePrice(v)} />
                     </RangeContainer>
                     <FilterButton>Guest: {this.props.searchGuests}</FilterButton>
                     <RangeContainer>
-                        <Slider defaultValue={this.state.guest} min={1} max={5} handle={handle} onChange={(v) => this.props.changeGuest(v)}/>
+                        <Slider defaultValue={this.state.guest} min={1} max={5} handle={handle} onAfterChange={(v) => this.props.changeGuest(v)}/>
                     </RangeContainer>
                 </Flex>
                 <Flex width={1/3} pr='100px' justifyContent='flex-end' alignItems='center'>
