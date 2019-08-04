@@ -8,7 +8,7 @@ import {Link, withRouter} from 'react-router-dom'
 
 const ImagePreview = styled(Image)({
     height: "150px",
-    width: "250px",
+    width: "230px",
     backgroundColor: "lightgrey",
     borderRadius: '3px'
 })
