@@ -140,7 +140,7 @@ public class HouseController extends BaseController {
                                       @ModelAttribute HouseRO houseRO) throws BusinessException {
 
 
-        Integer hostId = SecurityUtils.getUserIdFromToken(request, "host");
+        Integer hostId = SecurityUtils.getUserIdFromToken(request, "client");
         if ( hostId == null) {
             throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
         }
