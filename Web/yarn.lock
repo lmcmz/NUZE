@@ -1169,6 +1169,31 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
+"@opuscapita/oc-cm-common-styles@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/@opuscapita/oc-cm-common-styles/download/@opuscapita/oc-cm-common-styles-3.0.0.tgz#c05a25d569d4f22296a56bf0dc9e3871f2f7b99a"
+  integrity sha1-wFol1WnU8iKWpWvw3J44cfL3uZo=
+  dependencies:
+    bootstrap-sass "3.3.7"
+
+"@opuscapita/react-alerts@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.npm.taobao.org/@opuscapita/react-alerts/download/@opuscapita/react-alerts-3.0.6.tgz#b5f375e6c48019fae7349e55dc9ca4f780d55dce"
+  integrity sha1-tfN15sSAGfrnNJ5V3Jyk94DVXc4=
+  dependencies:
+    "@opuscapita/oc-cm-common-styles" "3.0.0"
+    "@opuscapita/react-icons" "4.0.4"
+    react-immutable-proptypes "2.1.0"
+    react-redux "5.1.1"
+    redux "4.0.1"
+    redux-thunk "2.3.0"
+    uuid "3.3.2"
+
+"@opuscapita/react-icons@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.npm.taobao.org/@opuscapita/react-icons/download/@opuscapita/react-icons-4.0.4.tgz#0f846a6cb51e8a063f1c1168baf78d59240d2263"
+  integrity sha1-D4RqbLUeigY/HBFouveNWSQNImM=
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
@@ -2241,6 +2266,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+
+bootstrap-sass@3.3.7:
+  version "3.3.7"
+  resolved "https://registry.npm.taobao.org/bootstrap-sass/download/bootstrap-sass-3.3.7.tgz#6596c7ab40f6637393323ab0bc80d064fc630498"
+  integrity sha1-ZZbHq0D2Y3OTMjqwvIDQZPxjBJg=
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -9111,6 +9141,11 @@ react-images-upload@^1.2.7:
     react "^16.2.0"
     react-flip-move "^3.0.1"
 
+react-immutable-proptypes@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/react-immutable-proptypes/download/react-immutable-proptypes-2.1.0.tgz#023d6f39bb15c97c071e9e60d00d136eac5fa0b4"
+  integrity sha1-Aj1vObsVyXwHHp5g0A0TbqxfoLQ=
+
 react-infinite-scroller@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.2.4.tgz#f67eaec4940a4ce6417bebdd6e3433bfc38826e9"
@@ -9169,6 +9204,19 @@ react-portal@^4.1.5:
   integrity sha512-Zf+vGQ/VEAb5XAy+muKEn48yhdCNYPZaB1BWg1xc8sAZWD8pXTgPtQT4ihBdmWzsfCq8p8/kqf0GWydSBqc+Eg==
   dependencies:
     prop-types "^15.5.8"
+
+react-redux@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.npm.taobao.org/react-redux/download/react-redux-5.1.1.tgz#88e368682c7fa80e34e055cd7ac56f5936b0f52f"
+  integrity sha1-iONoaCx/qA404FXNesVvWTaw9S8=
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    hoist-non-react-statics "^3.1.0"
+    invariant "^2.2.4"
+    loose-envify "^1.1.0"
+    prop-types "^15.6.1"
+    react-is "^16.6.0"
+    react-lifecycles-compat "^3.0.0"
 
 react-redux@^7.1.0:
   version "7.1.0"
@@ -9443,10 +9491,18 @@ redux-devtools@^3.5.0:
     prop-types "^15.5.7"
     redux-devtools-instrument "^1.9.0"
 
-redux-thunk@^2.3.0:
+redux-thunk@2.3.0, redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha1-UcLBmhhe1Rh6qpotCLZm0NZGdiI=
+
+redux@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/redux/download/redux-4.0.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fredux%2Fdownload%2Fredux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
+  integrity sha1-Q2yubMQPvkcnaJ18j65EgI8b/vU=
+  dependencies:
+    loose-envify "^1.4.0"
+    symbol-observable "^1.2.0"
 
 redux@^4.0.4:
   version "4.0.4"

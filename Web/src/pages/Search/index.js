@@ -276,7 +276,7 @@ class Search extends Component {
     }
 }
   
-  const mapStateToProps = state => ({
+const mapStateToProps = state => ({
     toggle: state.toggle
   });
 

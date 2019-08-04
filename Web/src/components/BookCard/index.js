@@ -220,8 +220,13 @@ class BookCard extends Component {
                             </Flex>
                         </Flex>
                     </Box>
-
-                    <SearchButton onClick={this.handleBook}> Book </SearchButton>
+                    {this.props.user.isAuth ?
+                        <SearchButton onClick={this.handleBook}> Book </SearchButton>
+                    :
+                        <Link to={'/login'}>
+                            <SearchButton> Book </SearchButton>
+                        </Link>
+                    }
                 </Card>
             </div>
         )

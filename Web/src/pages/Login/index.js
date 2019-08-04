@@ -4,7 +4,7 @@ import { Box, Card, Button, Image, Heading, Text, Flex } from 'rebass';
 import styled from 'styled-components'
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {userLogin} from '../../redux/user/actions'
 
@@ -94,7 +94,7 @@ class LoginAlert extends Component {
         this.setState({
             isLogin:true
         })
-        this.props.close()
+        return this.props.close ? this.props.close() :null
     }
     shouldComponentUpdate(nextProps, nextState){
         if (this.state.isLogin && nextState.isLogin && nextState.isLogin == this.state.isLogin) {
@@ -107,6 +107,7 @@ class LoginAlert extends Component {
     render() {
         return (
             <BackgroundBox bg="#fff" boxShadow='0 0 16px rgba(96, 179, 219, .5)'>
+                {this.props.user.isAuth ? <Redirect to={'/'}></Redirect> : null}
                 {this.props.user.isAuth && !this.state.is? this.handleLogin():null}
                 <Flex justifyContent="flex-end">
                     <CloseButton onClick={this.props.close} ><FontAwesomeIcon icon={faTimes} size='2x'/></CloseButton>

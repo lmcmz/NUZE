@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {Link, Redirect} from 'react-router-dom'
 import { Box, Card, Button, Image, Heading, Text, Flex } from 'rebass';
 import styled, {keyframes} from 'styled-components'
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Dropdown from 'react-dropdown';
+import connect from "react-redux/es/connect/connect";
 
 const anime = keyframes`
   0% {
@@ -113,7 +115,7 @@ const Input = styled.input`
     }
 `
 
-export default class BecameHost extends Component {
+class BecameHost extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -164,6 +166,7 @@ export default class BecameHost extends Component {
 
         return (
             <div>
+                {!this.props.user.isAuth ? <Redirect to={'/login'}></Redirect> : null}
                 <Header />
                 <Container>
                     <HostCard boxShadow='0 0 16px rgba(0, 0, 0, .25)' p="30px">
@@ -198,3 +201,10 @@ export default class BecameHost extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    user: state.user
+});
+
+
+export default connect(mapStateToProps, null)(BecameHost);
