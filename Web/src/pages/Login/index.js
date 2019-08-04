@@ -9,7 +9,7 @@ import {connect} from 'react-redux'
 import {userLogin} from '../../redux/user/actions'
 
 const BackgroundBox = styled(Card)({
-    height:"460px",
+    minHeight:"460px",
     width:"600px",
     margin: "0 auto",
     borderRadius: "10px",
@@ -131,7 +131,7 @@ class LoginAlert extends Component {
                         onChange={v=>this.handleChange('password',v)}
                         type="password" name="destination" placeholder="Password"></DestinationInput>
                 </Box>
-                {this.props.user.errorMsg !== '' ? <Text  py={2} fontSize="15px">{this.props.user.errorMsg}</Text> : null}
+                {this.props.user.errorMsg !== '' ? <Text color="#FF6565" textAlign="center" py={2} fontSize="15px">{this.props.user.errorMsg}</Text> : null}
                 <Box width={0.8} pt={4} m="0 auto">
                     <LoginButton onClick={() => this.Login()} bg="#60B3DB" alignSelf="center" justifyContent="center">Sign in</LoginButton>
                 </Box>
