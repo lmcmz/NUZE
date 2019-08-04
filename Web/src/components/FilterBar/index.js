@@ -76,21 +76,17 @@ class FilterBar extends Component {
         this.props.dispatch(toggle(e.target.checked));
     }
 
-    changePrice = (e) => {
-        console.log(e.value)
-    }
-
     render() {
         return (
             <FilterBarDiv>
                 <Flex alignItems="center" width={2/3}>
-                    <FilterButton>Price: ${this.state.price}</FilterButton>
+                    <FilterButton>Price: ${this.props.searchPrice}</FilterButton>
                     <RangeContainer>
-                        <Slider defaultValue={this.state.price} min={0} max={500} handle={handle} onChange={this.changePrice.bind(this)} />
+                        <Slider defaultValue={this.state.price} min={0} max={500} handle={handle} onChange={(v) => this.props.changePrice(v)} />
                     </RangeContainer>
-                    <FilterButton>Guest: {this.state.guest}</FilterButton>
+                    <FilterButton>Guest: {this.props.searchGuests}</FilterButton>
                     <RangeContainer>
-                        <Slider defaultValue={this.state.guest} min={1} max={5} handle={handle}/>
+                        <Slider defaultValue={this.state.guest} min={1} max={5} handle={handle} onChange={(v) => this.props.changeGuest(v)}/>
                     </RangeContainer>
                 </Flex>
                 <Flex width={1/3} pr='100px' justifyContent='flex-end' alignItems='center'>

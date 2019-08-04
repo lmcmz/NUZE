@@ -60,8 +60,26 @@ class Search extends Component {
                 lat: -33.86515,
                 lng: 151.1919
               },
-            zoom: 14
+            zoom: 14,
+            searchPrice:100,
+            searchGuest:2,
+            searchCity:'Sydney'
         }
+    }
+    changePrice(e){
+        this.setState({
+            searchPrice:e
+        })
+    }
+    changeGuest(e){
+        this.setState({
+            searchGuest:e
+        })
+    }
+    changeSearchCity(e){
+        this.setState({
+            searchCity:e.target.value
+        })
     }
 
     componentDidMount() {
@@ -100,9 +118,6 @@ class Search extends Component {
                         ({...x, isShow: false})
                     )
                     let firstProperty = res.data.data[0]
-                    // if (!firstProperty) {
-                    //     return
-                    // }
                     offset = this.state.offset + this.state.limit
                     console.log(firstProperty)
                     this.setState({
@@ -117,6 +132,36 @@ class Search extends Component {
                     console.log('error')
                 }
         })
+    }
+
+    filterSearch() {
+        const values = queryString.parse(this.props.location.search)
+        const query = this.state.searchCity
+        const limit = this.state.limit
+        var offset = this.state.offset
+        let price = this.state.searchPrice
+        let guest = this.state.searchGuest
+        axios.get(`http://13.211.203.224/comp9900/house?city=${query}&limit=${limit}&price=${price}&guests=${guest}`)
+            .then(res=>{
+                if (res.status === 200 && res.data.code === 1) {
+                    // success
+                    let propertyList = res.data.data.map((x,i) =>
+                        ({...x, isShow: false})
+                    )
+                    let firstProperty = res.data.data[0]
+                    console.log(firstProperty)
+                    this.setState({
+                        houseList: propertyList,
+                        offset: offset,
+                        center: {
+                            lat: firstProperty.lat,
+                            lng: firstProperty.lng
+                        }
+                    })
+                } else {
+                    console.log('error')
+                }
+            })
     }
 
     mapToggled = (e) => {
@@ -148,12 +193,14 @@ class Search extends Component {
         });
     }
 
+
+
     render() {
         // console.log('PROPS: ', this.props);
         return (
             <div>
-            <SearchHeader />
-            <FilterBar mapCheck={e => this.mapToggled(e)}/>
+            <SearchHeader search={this.filterSearch.bind(this)} changeSearchCity={this.changeSearchCity.bind(this)}/>
+            <FilterBar mapCheck={e => this.mapToggled(e)} searchPrice={this.state.searchPrice} searchGuests={this.state.searchGuest} changePrice={this.changePrice.bind(this)} changeGuest={this.changeGuest.bind(this)}/>
             {this.state.toggle ? (<Box>
                 <Text pl={50} py={20} textAlign='left' fontSize='25px' fontWeight='500' color='#555555'> 
                     300+ Results

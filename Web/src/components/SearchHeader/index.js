@@ -106,8 +106,8 @@ class SearchHeader extends React.Component {
                 <Flex px={50}>
                 <Flex width={1/2}>
                     <Link className='logo' to="/"><img src={require('../../resource/image/logo-only.svg')} width="35" /></Link> 
-                    <DestinationInput type="text" name="destination" placeholder="Sydney"></DestinationInput>
-                    <SearchButton><FontAwesomeIcon icon={faSearch} size='xs'/></SearchButton>
+                    <DestinationInput type="text" name="destination" placeholder="Sydney" onChange={this.props.changeSearchCity}></DestinationInput>
+                    <SearchButton onClick={() => this.props.search()}><FontAwesomeIcon icon={faSearch} size='xs'/></SearchButton>
                 </Flex>
                 <Flex width={1/2} alignItems='end' justifyContent='flex-end'>
                     {/* <Link className='link link0' to="/">Join us</Link> */}
