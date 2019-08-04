@@ -71,7 +71,8 @@ class LoginAlert extends Component {
         super(props);
         this.state = {
             username:'',
-            password:''
+            password:'',
+            isLogin:false
         }
     }
 
@@ -89,9 +90,24 @@ class LoginAlert extends Component {
         })
     }
 
+    handleLogin(){
+        this.setState({
+            isLogin:true
+        })
+        this.props.close()
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        if (this.state.isLogin && nextState.isLogin && nextState.isLogin == this.state.isLogin) {
+            return false
+        }
+        return true
+    }
+
+
     render() {
         return (
             <BackgroundBox bg="#fff" boxShadow='0 0 16px rgba(96, 179, 219, .5)'>
+                {this.props.user.isAuth && !this.state.is? this.handleLogin():null}
                 <Flex justifyContent="flex-end">
                     <CloseButton onClick={this.props.close} ><FontAwesomeIcon icon={faTimes} size='2x'/></CloseButton>
                 </Flex>
