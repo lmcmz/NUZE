@@ -160,10 +160,10 @@
     where
     city = #{city, jdbcType=VARCHAR}
     <if test="price != null">
-      and h.price &lt; #{price}
+      and h.price &lt;= #{price}
     </if>
     <if test="guests != null">
-      and h.guest_capacity &gt; #{guests}
+      and h.guest_capacity &gt;= #{guests}
     </if>
     group by h.house_id
     limit #{offset}, #{limit}
