@@ -5,6 +5,7 @@ import styled, { keyframes } from 'styled-components';
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 
 const PropertyImage = styled(Image)({
     height: '80px',
@@ -37,10 +38,41 @@ export default class ReviewInputCard extends Component {
     constructor(props){
         super(props);
         this.state = {
+            review:''
         };
     }
 
+    submit(){
+        console.log('submit')
+        console.log(this.state.review)
+        console.log(this.props.data)
+        let review = this.state.review
+        let houseId = this.props.data.houseId
+        let id = this.props.data.id
+        let jwt = "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4sQVVUSF9XUklURSIsInN1YiI6IjU3NTBfY2xpZW50IiwiZXhwIjoxNTY1MTc0ODEzfQ.oG4SGXqsUgxXE3iDXv0zACk09INNXmiucnmA9t_0ZaK14Oo73KflzZcrFyp9X1odKmabNk-drhvZlq53RPX5Rg"
+        axios.post(`http://localhost:8080/comp9900/house/${houseId}/review`, {id, review}, { headers: { 'Authorization': jwt, 'Content-Type':'application/json'}})
+            .then(res=>{
+                console.log(res.data)
+                if (res.status === 200 && res.data.code === 1) {
+                    // success
+                    console.log('login')
+                    console.log(res.data)
+                    // return res.data
+                } else {
+                    // dispatch(errorMsg(res.data.error))
+                }
+            })
+    }
+
+    handleChange(key, e) {
+        this.setState({
+            [key]: e.target.value
+        })
+    }
+
     render() {
+        console.log('-----review---')
+        console.log(this.props.data)
         console.log(this.props.data.starRating)
 
         const items = [];
@@ -60,8 +92,8 @@ export default class ReviewInputCard extends Component {
                     <Flex flexDirection="column">
                         <Text>{this.props.data.brifeInfor}  {items}
                         </Text>
-                        <DescInput placeholder="Write your review" />
-                        <Button mt={30} width="150px" bg="#60B3DB" >Submit</Button>
+                        <DescInput placeholder="Write your review" onChange={(v) => this.handleChange('review', v)}/>
+                        <Button mt={30} width="150px" bg="#60B3DB" onClick={() => this.submit()}>Submit</Button>
                     </Flex>
                 </Flex>
                 

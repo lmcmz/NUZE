@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @CreatyBy Michael
@@ -81,8 +82,9 @@ public class HouseController extends BaseController {
     @ApiOperation(value = "submit house review" ,  notes="submit house review")
     public CommonReturnType HouseReview(HttpServletRequest request,
             @PathVariable("houseId") Integer houseId,
-            @ApiParam @RequestParam(value = "review", defaultValue = "") String review) throws BusinessException{
-
+                                        @RequestBody  Map<String, String> body) throws BusinessException{
+        String review = body.get("review");
+        Integer bookingId = Integer.parseInt(body.get("id"));
         Integer clientId = SecurityUtils.getUserIdFromToken(request, "client");
         if (clientId == null) {
             throw new BusinessException(EmBusinessError.INVALID_JWT_TOKEN);
@@ -97,6 +99,11 @@ public class HouseController extends BaseController {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
         houseService.createHouseReview(clientId, house.getHouseId(), houseId, review);
+
+        Booking booking = new Booking();
+        booking.setId(bookingId);
+        booking.setIsreview(1);
+        houseService.updateReviewState(booking);
         return CommonReturnType.create("Create successful");
     }
     @PostMapping("{houseId}/book")

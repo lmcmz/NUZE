@@ -28,4 +28,5 @@ public interface HouseService {
     List<Booking> getAllBookings(Integer clientId) throws BusinessException;
     Integer insertHouse(House house) throws BusinessException;
     void insertHouseImage(HousePicUrls housePicUrls) throws BusinessException;
+    void updateReviewState(Booking booking) throws BusinessException;
 }

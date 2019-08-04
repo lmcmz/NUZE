@@ -142,7 +142,7 @@
     </if>
   </select>
   <select id="getUserBookings" parameterType="java.lang.Integer" resultMap="bookingMap">
-    select b.*, h.reviews_count,h.star_rating, p.pic_url
+    select b.*, h.reviews_count,h.star_rating,h.brife_infor, p.pic_url
     from booking b, house h, house_pic_urls p
     where b.client_id = #{clientId}
     and b.house_id = h.house_id

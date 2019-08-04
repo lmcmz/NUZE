@@ -124,4 +124,12 @@ public class HouseServiceImp implements HouseService {
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
     }
+
+    @Override
+    public void updateReviewState(Booking booking) throws BusinessException {
+        int result = bookingMapper.updateByPrimaryKeySelective(booking);
+        if (result != 1) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+    }
 }
