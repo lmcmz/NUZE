@@ -63,7 +63,7 @@ class Search extends Component {
             zoom: 14,
             searchPrice:100,
             searchGuest:2,
-            searchCity:'Sydney'
+            searchCity: document.location.href.match(/query=(\w+)$/)[1]
         }
     }
     changePrice(e){
