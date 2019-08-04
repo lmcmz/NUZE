@@ -13,7 +13,8 @@ export default class ReviewList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            trip:[],
+            waitForReview:[],
+            historyReview:[],
         }
     }
     componentWillMount() {
@@ -25,11 +26,9 @@ export default class ReviewList extends Component {
                     console.log('get booking success')
                     console.log(this)
                     console.log(res.data.data.bookings)
-                    console.log(res.data.data.preBookings)
-                    let trip = [...res.data.data.bookings, ...res.data.data.preBookings]
-                    console.log(trip)
                     this.setState({
-                        trip:trip
+                        waitForReview: res.data.data.bookings,
+                        historyReview: res.data.data.preBookings
                     })
                 } else {
                     // dispatch(errorMsg(res.data.error))
@@ -38,25 +37,26 @@ export default class ReviewList extends Component {
     }
 
     render() {
-        console.log("update")
-        console.log(this.state.trip)
         return (
             <div>
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='600' color='#555555'> 
                     Waiting For Review
                 </Text>
 
-                {this.state.trip.map((x, i) =>{
+                {this.state.waitForReview.map((x, i) =>{
                     return x.isreview ? null : <ReviewInputCard data={x} />
-                }
-
-                )}
+                })}
 
 
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='600' color='#555555'> 
                     History Reviews
                 </Text>
-                    <PropertyList data={this.props.data.slice(8, 12)}></PropertyList>
+{/* 
+                {this.state.historyReview.map((x, i) =>{
+                    return x.isreview ?  : null
+                })} */}
+
+                <PropertyList data={this.state.historyReview}></PropertyList>
 
             </div>
         )

@@ -114,9 +114,23 @@ class Search extends Component {
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success
+
                     let propertyList = res.data.data.map((x,i) =>
                         ({...x, isShow: false})
                     )
+
+                    if (offset == 0 ) {
+                        console.log('ADADDAADD')
+                        propertyList = propertyList.map((x,i) => {
+                            if (i < 2) {
+                                x['isAD'] = true
+                            }
+                            return x
+                        })
+                    }
+
+                    console.log(propertyList)
+
                     let firstProperty = res.data.data[0]
                     offset = this.state.offset + this.state.limit
                     console.log(firstProperty)
@@ -203,7 +217,7 @@ class Search extends Component {
             <FilterBar mapCheck={e => this.mapToggled(e)} searchPrice={this.state.searchPrice} searchGuests={this.state.searchGuest} changePrice={this.changePrice.bind(this)} changeGuest={this.changeGuest.bind(this)}/>
             {this.state.toggle ? (<Box>
                 <Text pl={50} py={20} textAlign='left' fontSize='25px' fontWeight='500' color='#555555'> 
-                    300+ Results
+                    {this.state.cityInfo} Results
                 </Text>
                 <GridBox w={1} m='0 auto'>
                     {this.state.houseList.map((x, i) =>

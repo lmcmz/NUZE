@@ -54,7 +54,6 @@ const SearchButton = styled.button`
 `
 
 class BookCard extends Component {
-
     constructor(props){
         super(props);
         this.state = {

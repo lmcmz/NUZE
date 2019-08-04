@@ -7,7 +7,7 @@ import { faStar as emStar } from "@fortawesome/free-regular-svg-icons";
 import {Link, withRouter} from 'react-router-dom'
 
 const PropertyImage = styled(Image)({
-    width: '250px',
+    width: '250px !important',
     height: '150px',
     objectFit: 'cover',
     borderRadius: '3px',
@@ -17,11 +17,32 @@ const PropertyImage = styled(Image)({
 const Container = styled(Flex)({
     border: "1px solid #e5e5e5",
     borderRadius:"3px",
+    position: 'relative',
+    overflow: 'hidden',
+    minHeight: '160px'
 })
 
 const PropertyLocationText = styled(Text)({
     textTransform: 'uppercase',
 })
+
+const ADBackground = styled.div`
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: block;
+    position:absolute;
+    right: -15px;
+    top: -15px;
+    background-color: #FF6565;
+`
+
+const ADText  = styled.text`
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: white;
+`
 
 const ReviewCountText = styled.span`
     padding-left: 5px;
@@ -59,6 +80,17 @@ export default class ListCard extends Component {
             <Container
             p={1}
             my={3}>
+
+
+            {
+                this.props.data.isAD ? 
+                <div>
+                    <ADBackground /> 
+                    <ADText>AD</ADText> 
+                </div>
+                : null
+            }
+ 
 
             <Box>
                 <Link to={`/house/${this.props.data.houseId}`}>

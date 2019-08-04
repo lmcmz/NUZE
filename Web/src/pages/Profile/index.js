@@ -42,10 +42,10 @@ export default class Profile extends Component {
             limit: 16,
             offset: 0,
             menuList:[
-                {id: 1, text: "Trip", isSelected: false},
+                {id: 1, text: "Trip", isSelected: true},
                 {id: 2, text: "Edit Profile", isSelected: false},
-                {id: 3, text: "Review", isSelected: true},
-                {id: 4, text: "Favourite", isSelected: false},
+                {id: 3, text: "Review", isSelected: false},
+                // {id: 4, text: "Favourite", isSelected: false},
             ]
         }
     }
@@ -100,8 +100,8 @@ export default class Profile extends Component {
             return <EditProfile />;
           case "3":
             return <ReviewList data={this.state.houseList}/>;
-          case "4":
-            return <FavouriteList data={this.state.houseList}/>;
+        //   case "4":
+        //     return <FavouriteList data={this.state.houseList}/>;
         }
       }
       
