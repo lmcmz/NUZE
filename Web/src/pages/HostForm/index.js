@@ -76,12 +76,13 @@ class HostForm extends Component {
             city:'',
             brifeInfor:'',
             description:'',
-            bedrooms:0,
-            bathrooms:0,
-            beds:0,
+            bedrooms:'Bedroom',
+            bathrooms:'Bathroom',
+            beds:'Beds',
             previewAmenities:'',
             spaceType:'',
-            price:0
+            price:0,
+            guestCapacity:'Guest Count'
         };
     }
 
@@ -215,6 +216,7 @@ class HostForm extends Component {
                         <Box py={30}>
                             <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> House Type </Text>
                             <Dropdown className="dropdownWrapper"
+                                      value={this.state.spaceType}
                                       onChange={v=>this.handleDropDown('spaceType',v)}
                                       controlClassName='dropdown'
                                       arrowClassName='dropdownArrow'
@@ -226,6 +228,7 @@ class HostForm extends Component {
                         <Box py={30}>
                             <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> How many guest can your place accommodate? </Text>
                             <Dropdown className="dropdownWrapper"
+                                      value={this.state.guestCapacity + ""}
                                       onChange={v=>this.handleDropDown('guestCapacity',v)}
                                       controlClassName='dropdown'
                                       arrowClassName='dropdownArrow'
@@ -238,6 +241,7 @@ class HostForm extends Component {
                         <Box py={30}>
                             <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> How many bedrooms? </Text>
                             <Dropdown className="dropdownWrapper"
+                                      value={this.state.bedrooms + ""}
                                       onChange={v=>this.handleDropDown('bedrooms',v)}
                                       controlClassName='dropdown'
                                       arrowClassName='dropdownArrow'
@@ -251,6 +255,7 @@ class HostForm extends Component {
                         <Box py={30}>
                             <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> How many beds? </Text>
                             <Dropdown className="dropdownWrapper"
+                                      value={this.state.beds + ""}
                                       onChange={v=>this.handleDropDown('beds',v)}
                                       controlClassName='dropdown'
                                       arrowClassName='dropdownArrow'
@@ -264,6 +269,7 @@ class HostForm extends Component {
                         <Box py={30}>
                             <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> How many bathrooms? </Text>
                             <Dropdown className="dropdownWrapper"
+                                      value={this.state.bathrooms + ""}
                                       onChange={v=>this.handleDropDown('bathrooms',v)}
                                       controlClassName='dropdown'
                                       arrowClassName='dropdownArrow'
