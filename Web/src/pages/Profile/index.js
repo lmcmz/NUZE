@@ -9,6 +9,7 @@ import EditProfile from '../../components/EditProfile';
 import FavouriteList from '../../components/Favourite';
 import ReviewList from '../../components/ReviewList';
 import Footer from '../../components/Footer';
+import { returnStatement } from '@babel/types';
 
 const randomImage = () => {
     return "https://source.unsplash.com/random?sig="+ Math.floor(Math.random() * Math.floor(1000)) +"/720x1280";
@@ -45,7 +46,7 @@ export default class Profile extends Component {
                 {id: 1, text: "Trip", isSelected: true},
                 {id: 2, text: "Edit Profile", isSelected: false},
                 {id: 3, text: "Review", isSelected: false},
-                // {id: 4, text: "Favourite", isSelected: false},
+                {id: 4, text: "Logout", isSelected: false},
             ]
         }
     }
@@ -81,6 +82,12 @@ export default class Profile extends Component {
     handleMenu = e => {
         const id = e.target.id
         console.log(id)
+
+        if (id == 4) {
+            console.log("------log out----")
+            return
+        }
+
         let menu = this.state.menuList
         menu.map(x => {
             x.isSelected = x.id == id
@@ -100,8 +107,8 @@ export default class Profile extends Component {
             return <EditProfile />;
           case "3":
             return <ReviewList data={this.state.houseList}/>;
-        //   case "4":
-        //     return <FavouriteList data={this.state.houseList}/>;
+          case "4":
+            return "Logout";
         }
       }
       
@@ -112,9 +119,13 @@ export default class Profile extends Component {
                 <Header />
                 <Container pt="90px">
                     <Box width={0.2} pt="80px" style={{textAlign:"end"}}>
-                        {this.state.menuList.map(x => 
-                            <MenuItem id={x.id} onClick={this.handleMenu} color={x.isSelected ? "#60B3DB" : "#444444"}>{x.text}</MenuItem>
-                        )}
+                        {this.state.menuList.map(x => {
+                            if (x.id === 4) {
+                                return <MenuItem id={x.id} onClick={this.handleMenu} color="#FF6565">{x.text}</MenuItem>    
+                            } else {
+                                return <MenuItem id={x.id} onClick={this.handleMenu} color={x.isSelected ? "#60B3DB" : "#444444"}>{x.text}</MenuItem>
+                            }
+                        })}
                     </Box>
                     <Box width={0.8}>
                         {this.renderSwitch(this.state.selectedId)}

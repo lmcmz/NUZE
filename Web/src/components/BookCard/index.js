@@ -172,7 +172,6 @@ class BookCard extends Component {
     render() {
         var moment = require('moment');
         const options = [1,2,3,4]
-        const defaultOption = 1
 
         var web3 = new Web3(Web3.givenProvider || "ws://localhost:8546");
         console.log(web3)

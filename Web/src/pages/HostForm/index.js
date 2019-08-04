@@ -13,6 +13,7 @@ import {userLogin} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
 import axios from "axios";
 // import customMapStyle from '../../resource/map-style/style';
+import Simplert from 'react-simplert'
 
 const Container = styled(Flex)({
     width: "100%",
@@ -82,7 +83,9 @@ class HostForm extends Component {
             previewAmenities:'',
             spaceType:'',
             price:0,
-            guestCapacity:'Guest Count'
+            guestCapacity:'Guest Count',
+            showAlert: false,
+            showError: false,
         };
     }
 
@@ -165,8 +168,14 @@ class HostForm extends Component {
                     console.log('success')
                     console.log(res.data)
                     // return res.data
+                    this.setState({
+                        showAlert: true
+                    })
                 } else {
                     // dispatch(errorMsg(res.data.error))
+                    this.setState({
+                        showError: true
+                    })
                 }
             })
         console.log(data)
@@ -180,6 +189,20 @@ class HostForm extends Component {
 
         return (
             <div>
+                <Simplert 
+                showSimplert={ this.state.showAlert }
+                type="success"
+                title="Upload Suceess"
+                message="Your property have been placed"
+                />
+
+                <Simplert 
+                showSimplert={ this.state.showError }
+                type="error"
+                title="Error"
+                message="Error occurred"
+                />
+
                 <Header />
                 <Container pt="90px">
 
@@ -189,15 +212,18 @@ class HostForm extends Component {
                             What kind of place are you listing?
                         </Text>
 
-                        <Box pt={30} pb={10}>
+                        <Card pt={30} pb={10}>
                             <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> Where is you place ? </Text>
                             <DestinationInput
                                 onChange={v=>this.handleChange('city',v)}
-                                type="text" name="firstName" placeholder="City"></DestinationInput>
+                                type="text" name="firstName" placeholder="City">
+                            </DestinationInput>
 
-                            <DestinationInput style={{marginTop: "25px"}} onChange={this.handleTextChange.bind(this)} type="text" name="destination" placeholder="Street"></DestinationInput>
-                        </Box>.
-
+                            <DestinationInput style={{marginTop: "25px", display: 'block'}} 
+                                onChange={this.handleTextChange.bind(this)} 
+                                type="text" name="destination" placeholder="Street">
+                            </DestinationInput>
+                        </Card>
 
                         <Box py={30}>
                             <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> Brife Introduction </Text>

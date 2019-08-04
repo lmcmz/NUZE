@@ -61,7 +61,9 @@ class EditProfile extends Component {
             firstName:'aaaa',
             lastName:'bbbb',
             detail:'deee',
-            selfInfo:'rerere'
+            selfInfo:'rerere',
+            showAlert: false,
+            showError: false,
         }
     }
 
@@ -83,8 +85,14 @@ class EditProfile extends Component {
                     console.log('login')
                     console.log(res.data)
                     // return res.data
+                    this.setState({
+                        showAlert: true
+                    })
                 } else {
                     // dispatch(errorMsg(res.data.error))
+                    this.setState({
+                        showError: true
+                    })
                 }
             })
 
@@ -104,9 +112,15 @@ class EditProfile extends Component {
                 <Simplert 
                 showSimplert={ this.state.showAlert }
                 type="success"
-                title="Book Success"
-                message="Redirect to your trip page"
-                onClose={this.handleRedirect.bind(this)}
+                title="Update Suceess"
+                message="Your detail have been updated"
+                />
+
+                <Simplert 
+                showSimplert={ this.state.showError }
+                type="error"
+                title="Error"
+                message="Update Info Failed"
                 />
                 
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='600' color='#555555'> 
