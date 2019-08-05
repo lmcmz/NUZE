@@ -221,7 +221,7 @@ class BookCard extends Component {
 
                 <Card border="1px solid #eee" p={3} borderRadius={10}>
                     <Flex>
-                        <Text fontSize="30px" fontWeight="500">${this.props.data.price} <span fontSize="5px" fontWeight="200"> total</span> </Text>  
+                        <Text fontSize="30px" fontWeight="500">${this.props.data.price} <span fontSize="5px" fontWeight="200"> per night</span> </Text>  
                         <Flex alignItems="center">
                             <Text color="#FFD000">
                                 {this.starRendering()}
