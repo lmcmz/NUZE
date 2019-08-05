@@ -36,6 +36,7 @@ export default class CollectionPage extends Component {
     componentDidMount() {
         this.getHouseInfo()
         this.getCityInfo()
+        window.scrollTo(0, 0)
     }
 
     getCityInfo() {

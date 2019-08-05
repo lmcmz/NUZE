@@ -24,6 +24,8 @@ const Avatar = styled(Image)({
     height: "100px",
     width: "100px",
     borderRadius: "50px",
+    objectFit: 'cover',
+    border: '1px solid #e5e5e5'
 })
 
 const Input = styled.input`

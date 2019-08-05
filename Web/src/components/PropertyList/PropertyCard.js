@@ -71,6 +71,15 @@ class PropertyCard extends Component {
         )
 
 
+        let locationLabel = this.props.data.neighborhood ? this.props.data.neighborhood : null;
+        if (locationLabel) {
+            locationLabel += ", "
+            locationLabel += this.props.data.city
+        } else {
+            locationLabel = this.props.data.city
+        }
+        
+
         return (
             <Property>
                 <Card
@@ -86,7 +95,8 @@ class PropertyCard extends Component {
                     
                     <Box py={2}>
                         <PropertyLocationText color='grey' fontSize='15px' fontWeight='500' textAlign='left'> 
-                            {this.props.data.neighborhood}, {this.props.data.city} 
+                            {/* {this.props.data.neighborhood}, {this.props.data.city}  */}
+                            {locationLabel}
                         </PropertyLocationText>
                     <Heading className='PropertyH3' as='h3' color='#000' textAlign='left'>
                         

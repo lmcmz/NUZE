@@ -64,6 +64,10 @@ const MapWarpper=styled(Box)({
 
 class HostForm extends Component {
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
+
     constructor(props){
         super(props);
         this.onDrop = this.onDrop.bind(this);
@@ -314,7 +318,8 @@ class HostForm extends Component {
                         </Box>
 
                         <Box py={30}>
-                            <Text fontSize='20px' fontWeight='600' color='#555555' pb="20px"> Uploads Photos</Text>
+                            <Text fontSize='20px' fontWeight='600' color='#555555' pb="5px"> Uploads Photos</Text>
+                            <Text fontSize='13px' fontWeight='600' color='#FF6565' pb="20px"> Require Minimal 5 Photos</Text>
                             <ImageUploader
                                 withIcon={true}
                                 buttonText='Choose images'

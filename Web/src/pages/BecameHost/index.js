@@ -96,6 +96,7 @@ const PriceText = styled.span`
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     text-align: right;
+    width: '200px';
 `
 
 const Input = styled.input`
@@ -124,6 +125,10 @@ class BecameHost extends Component {
             guest: "1",
             price: 1300,
         }
+    }
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
     }
     
     handleChange = (key, e) => {
@@ -266,9 +271,11 @@ class BecameHost extends Component {
                                     onChange={v=>this.handleChange('guest',v)}
                         />
                         <Text pt="10px" pb="20px" fontSize="35px" fontWeight="600" color="#444444"> 
-                        <PriceText>
+                        <PriceText >
                             <CountUp prefix="$ " end={this.state.price} />    
-                        </PriceText>per month</Text>
+                        </PriceText>
+                        per month
+                        </Text>
                         <Link to="/hostForm">
                             <SearchButton > Get start </SearchButton>
                         </Link>

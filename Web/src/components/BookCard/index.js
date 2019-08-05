@@ -14,6 +14,8 @@ import {userLogin} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
 import moment from 'moment';
 import Simplert from 'react-simplert'
+import Modal from 'react-modal';
+import LoadingAlert from '../../pages/Loading';
 
 const anime = keyframes`
   0% {
@@ -64,9 +66,21 @@ class BookCard extends Component {
             showAlert: false,
             showError: false,
             errorMessage: "MetaMask not install",
-            paymentComplete: false
+            paymentComplete: false,
+            showLoading: false,
         };
+
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
     }
+
+    handleOpenModal () {
+        this.setState({ showLoading: true, });
+      }
+      
+      handleCloseModal () {
+        this.setState({ showLoading: false });
+      }
 
     starRendering = () => {
 
@@ -106,6 +120,8 @@ class BookCard extends Component {
         console.log(acc)
         const web3 = new Web3(Web3.givenProvider);
 
+        this.handleOpenModal()
+
         var receiver = "0x56519083C3cfeAE833B93a93c843C993bE1D74EA"  
         web3.eth.sendTransaction({to:receiver,
             from: acc, 
@@ -114,6 +130,10 @@ class BookCard extends Component {
             console.log('error', error);
             console.log('BBBB', res);
             this.sendBookRequest()
+            this.handleCloseModal()
+        }.bind(this))
+        .catch(function() {
+            this.handleCloseModal()
         }.bind(this))
     }
 
@@ -131,11 +151,13 @@ class BookCard extends Component {
         var firstAcc = ""
         var sender = web3.eth.getAccounts().then(e =>{ 
             firstAcc=e[0];
-            if (firstAcc === "") {
+            console.log('ACC', firstAcc)
+            if (!firstAcc) {
                 this.setState({
                     showError: true, 
                     errorMessage: "Fail to get Addess"
                 })
+                return
             }
             console.log(firstAcc)
             this.sendTransaction(firstAcc)
@@ -253,6 +275,36 @@ class BookCard extends Component {
                         </Link>
                     }
                 </Card>
+
+                <Modal 
+                closeTimeoutMS={200}
+                isOpen={this.state.showLoading}
+                contentLabel="Minimal Modal Example"
+                style={{
+                    overlay: {
+                  // position: 'fixed',
+                  // top: 0,
+                  // left: 0,
+                  // right: 0,
+                  // bottom: 0,
+                  // backgroundColor: 'rgba(255, 255, 255, 0.75)',
+                  zIndex: 10000,
+                },
+                content: {
+                  alignItems: 'center',
+                  position: 'absolute',
+                  border: 'none',
+                  background: 'none',
+                  overflow: 'auto',
+                  WebkitOverflowScrolling: 'touch',
+                  display: 'flex'
+                  // outline: 'none',
+                  // padding: '20px'
+                }
+              }}
+            >
+                <LoadingAlert close={this.handleCloseModal}></LoadingAlert>
+            </Modal>
             </div>
         )
     }

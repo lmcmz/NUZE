@@ -69,7 +69,7 @@ class Header extends React.Component {
                 <Link className='link link1' to="/becomeHost">Become a Host</Link>
                   {this.props.user.isAuth
                   ? <Link to="/profile">
-                    <img src={this.props.user.picUrl} style={{ width: '35px', borderRadius:'50%' }} alt=""/>
+                    <img src={this.props.user.picUrl} style={{ width: '35px', height:'35px', border:'1px solid #e5e5e5' ,borderRadius:'50%', objectFit: 'cover' }} alt=""/>
                   </Link>
                   : <div>
                           <Link className='link link2' onClick={this.handleOpenModal.bind(this, false)}>Register</Link>

@@ -80,6 +80,7 @@ class DetailPage extends Component {
     componentDidMount() {
         this.getHouseInfo()
         this.getReviewInfo(0)
+        window.scrollTo(0, 0)
     }
 
     handleChange(key, e) {

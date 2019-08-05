@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import {userLogin} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
+import {Link, withRouter, Redirect} from 'react-router-dom'
+import Simplert from 'react-simplert'
 
 const PropertyImage = styled(Image)({
     height: '80px',
@@ -40,7 +42,9 @@ class ReviewInputCard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            review:''
+            review:'',
+            redirect: false,
+            showAlert: false
         };
     }
 
@@ -57,9 +61,11 @@ class ReviewInputCard extends Component {
                 console.log(res.data)
                 if (res.status === 200 && res.data.code === 1) {
                     // success
-                    console.log('login')
                     console.log(res.data)
                     // return res.data
+                    this.setState({
+                        showAlert: true,
+                    })
                 } else {
                     // dispatch(errorMsg(res.data.error))
                 }
@@ -72,11 +78,13 @@ class ReviewInputCard extends Component {
         })
     }
 
-    render() {
-        console.log('-----review---')
-        console.log(this.props.data)
-        console.log(this.props.data.starRating)
+    handleRedirect() {
+        this.setState({ 
+            redirect: true
+        })
+    }
 
+    render() {
         const items = [];
         Array(5).fill().map((_, ) => 
             items.push(
@@ -85,6 +93,16 @@ class ReviewInputCard extends Component {
         )
 
         return (
+            <div>
+                {this.state.redirect? <Redirect to={`/house/${this.props.data.houseId}`}/> : null}
+            <Simplert 
+                showSimplert={ this.state.showAlert }
+                type="success"
+                title="Review Success"
+                message="Your review have been submit successfully"
+                onClose={this.handleRedirect.bind(this)}
+            />
+
             <Card width={0.8} py={20} my={20} borderRadius="10px" m="0 auto" border="1px solid #eee">
                 <Flex>
                     <Flex>
@@ -99,6 +117,7 @@ class ReviewInputCard extends Component {
                 </Flex>
                 
             </Card>
+            </div>
         )
     }
 }

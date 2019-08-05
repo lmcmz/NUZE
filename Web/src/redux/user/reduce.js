@@ -5,16 +5,16 @@ import { ERROR_MSG } from "./constants";
 const defaultState = {
     isAuth:false,
     errorMsg:'',
-    username:'test123',
-    role:'12121',
-    email:'dhsj',
-    address:'1212',
+    username:'',
+    role:'',
+    email:'',
+    address:'',
     jwt:'',
-    userId:'1231',
-    clientName:'AAA BBB',
-    details:'ndsaj',
+    userId:'',
+    clientName:'',
+    details:'',
     picUrl:'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png',
-    selfIntro:'121',
+    selfIntro:'',
     joinInyear:''
 }
 export default (state = defaultState, action) => {

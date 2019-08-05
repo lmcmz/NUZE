@@ -24,8 +24,8 @@ export default class Footer extends Component {
             <Flex className='Footer' pt='20px' flexDirection='column' justifyContent='center'>
                 <Flex width={4/5} alignSelf='center'>
                     <Box width={1/2}>
-                        <Flex flexDirection='column' mx='120px'>
-                            <Image src={require('../../resource/image/logo-only.svg')} width='40px'/>
+                        <Flex flexDirection='row' mx='120px'>
+                            <Image mr="30px" src={require('../../resource/image/logo-only.svg')} width='40px'/>
                             {/* <Text fontSize='20px' fontWeight='600' textAlign='left'>Contratc us</Text> */}
                             <Flex py='20px'>
                                 <Text fontSize='15px' fontFamily='' color="#858585" textAlign='left'> NUZE is not for profit. All property is sourced from the Internet. 
