@@ -43,5 +43,19 @@
 - Start connecting API to NUZE
 - And building user profile pages
 
+# Week8 🤫
+
+- Create host page and add review
+- Fix bug of losing state
+
+# Week9 💻
+
+- User can modify their data
+- Add city collection
+
+# Week10 📷
+
+- Testing 
+- Prepare to demo
 
 
