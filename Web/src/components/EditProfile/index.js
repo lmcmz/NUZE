@@ -88,9 +88,8 @@ class EditProfile extends Component {
         if (picture)
         bodyFormData.set('picture', picture);
 
-
         let jwt = this.props.user.jwt
-        axios.post('http://localhost:8080/comp9900/users/info', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
+        axios.post('http://13.211.203.224/comp9900/users/info', bodyFormData, { headers: { 'Authorization': jwt, 'Content-Type':'multipart/form-data'}})
             .then(res=>{
                 if (res.status === 200 && res.data.code === 1) {
                     // success

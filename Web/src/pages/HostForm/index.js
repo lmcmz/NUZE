@@ -126,7 +126,7 @@ class HostForm extends Component {
         })
     }
 
-    submit(){
+    submit() {
         console.log('submit')
         let lat = this.state.center.lat
         let lng = this.state.center.lng

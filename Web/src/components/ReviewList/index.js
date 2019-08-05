@@ -53,7 +53,7 @@ class ReviewList extends Component {
                 <Text pl={160} py={20} textAlign='left' fontSize='30px' fontWeight='600' color='#555555'> 
                     History Reviews
                 </Text>
-{/* 
+                {/* 
                 {this.state.historyReview.map((x, i) =>{
                     return x.isreview ?  : null
                 })} */}
