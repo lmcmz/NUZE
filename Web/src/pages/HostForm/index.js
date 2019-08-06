@@ -12,6 +12,7 @@ import ImageUploader from 'react-images-upload';
 import {userLogin} from "../../redux/user/actions";
 import connect from "react-redux/es/connect/connect";
 import axios from "axios";
+import {Link, withRouter, Redirect} from 'react-router-dom'
 // import customMapStyle from '../../resource/map-style/style';
 import Simplert from 'react-simplert'
 
@@ -90,6 +91,7 @@ class HostForm extends Component {
             guestCapacity:'Guest Count',
             showAlert: false,
             showError: false,
+            uploadComplete: false
         };
     }
 
@@ -185,6 +187,13 @@ class HostForm extends Component {
         console.log(data)
     }
 
+    handleRedirect() {
+        this.setState({
+            uploadComplete: true
+        })
+    }
+
+
     render() {
         const houseType = ["Entire Place", "Individual Room"]
         const guestCount = [1,2,3,4,5,6]
@@ -193,11 +202,13 @@ class HostForm extends Component {
 
         return (
             <div>
+                {this.state.uploadComplete? <Redirect to={`/search?query=${this.state.city}`}/> : null}
                 <Simplert 
                 showSimplert={ this.state.showAlert }
                 type="success"
                 title="Upload Suceess"
                 message="Your property have been placed"
+                onClose={this.handleRedirect.bind(this)}
                 />
 
                 <Simplert 
@@ -337,10 +348,17 @@ class HostForm extends Component {
                                 type="text" name="destination" placeholder="Price"></DestinationInput>
                         </Box>
 
+                        <Box py={10}>
+                            <p>
+                            <input type="checkbox" id="cbox2" />
+                            <label for="cbox2" style={{fontSize:'20px', fontWeight:'600', color:'#555555', paddingVertical:"20px", userSelect:"none" }}> Promote as  <span style={{color:"#FF6565"}}>AD</span></label>
+                            {/* <label for="cbox2"> */}
+                            </p>
+                        </Box>
+
                         <Box py={30}>
                             <Button bg="#60B3DB" fontSize="25px" onClick={() => this.submit()}> Submit </Button>
                         </Box>
-
 
                     </Flex>
 
@@ -361,7 +379,6 @@ class HostForm extends Component {
                             </GoogleMapReact>
                         </MapWarpper>
                     </Flex>
-
                 </Container>
                 <Footer />
             </div>

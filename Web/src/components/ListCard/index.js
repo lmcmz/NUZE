@@ -76,6 +76,15 @@ export default class ListCard extends Component {
             items.push(<FontAwesomeIcon icon={emStar} size='s'/>)
         )
 
+        let locationLabel = this.props.data.neighborhood ? this.props.data.neighborhood : null;
+        if (locationLabel) {
+            locationLabel += ", "
+            locationLabel += this.props.data.city
+        } else {
+            locationLabel = this.props.data.city
+        }
+        
+
         return (
             <Container
             p={1}
@@ -103,7 +112,7 @@ export default class ListCard extends Component {
                     {this.props.data.brifeInfor}
                 </Text>
                 <PropertyLocationText py={1} color='grey' fontSize='15px' fontWeight='800' textAlign='left'> 
-                    {this.props.data.neighborhood}, {this.props.data.city} 
+                    {locationLabel} 
                 </PropertyLocationText>
                 <Text fontSize={0} py={1} color='#000' textAlign='left'>
                     {this.props.data.spaceType}

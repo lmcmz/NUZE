@@ -221,13 +221,16 @@ class BookCard extends Component {
 
                 <Card border="1px solid #eee" p={3} borderRadius={10}>
                     <Flex>
-                        <Text fontSize="30px" fontWeight="500">${this.props.data.price} <span fontSize="5px" fontWeight="200"> per night</span> </Text>  
+                        <Text fontSize="30px" xfontWeight="500">${this.props.data.price} <span fontSize="5px" fontWeight="200"> per night</span> </Text>  
                         <Flex alignItems="center">
                             <Text color="#FFD000">
                                 {this.starRendering()}
                             </Text>
                             {/* <Text alignSelf="center" pl="3px" fontSize="25px" color="#FFD000" fontWeight="500">{this.state.info.starRating}</Text> */}
                         </Flex>  
+                    </Flex>
+                    <Flex bg="#FF6565" px="10px" py="3px" mt="10px" width="195px" style={{borderRadius:"8px",}}>
+                        <Text color="#fff" fontWeight="600">{`Price For Student: $ ${Math.floor(this.props.data.price * 0.9)}`}</Text>
                     </Flex>
                     <Box pt={2} pb={2} >
                     <Flex flexDirection='column' textAlign='left' alignItems='flex-start'>
