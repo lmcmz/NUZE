@@ -68,10 +68,10 @@ class EditProfile extends Component {
         super(props);
         this.onDrop = this.onDrop.bind(this);
         this.state = {
-            firstName:'aaaa',
-            lastName:'bbbb',
-            detail:'deee',
-            selfInfo:'rerere',
+            firstName:'',
+            lastName:'',
+            detail: '',
+            selfInfo: '',
             showAlert: false,
             showError: false,
             picture: null
