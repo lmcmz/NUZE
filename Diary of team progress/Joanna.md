@@ -40,12 +40,32 @@ Week 4
 
 Week 5
 
-  1. fix bugs of to grab all cities data from Airbnb in NSW
-  2. discuss with group member who work on API about database and change database design
-  3. finish build MySQL database
-  4. use python to write .sql file insert all data 
+  1. crab data for client & host profile
+  2. change database design
   
 ------------------------------------------------------------------------------------------------------------------------------
  
+Week 6
 
+  1. change propertys' reviews data
+  2. create new database based on new design
+  3. discuss with group member about crab data methods and how to deal with the data
+  
+------------------------------------------------------------------------------------------------------------------------------
+  
+ Week 7
+
+  1. add all data in Sydney and central coast
+  2. discuss about project report
+  
+------------------------------------------------------------------------------------------------------------------------------
  
+ Week 8
+
+  1. disucuss details about database with group memeber who work on API.
+  2. finish all data
+  
+------------------------------------------------------------------------------------------------------------------------------
+  
+  
+
