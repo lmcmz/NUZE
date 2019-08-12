@@ -7,7 +7,7 @@
 
 **Official website: [http://nuze.xyz](http://nuze.xyz)**
 
-## 👻 Team Progress
+## 🏄 Team Progress
 
 1. The [Trello Board](https://trello.com/b/GltF0JUS) can be found in this link.
 2. Our weekly report is updated under the dairy folder.
