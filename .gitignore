@@ -37,3 +37,4 @@ Web/\.idea/
 /Web/build
 /Web/build.zip
 /Web/test.py
+/ peers.txt
