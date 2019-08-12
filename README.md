@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.com/AlphaWallet/alpha-wallet-ios.svg?branch=master)](https://travis-ci.com/AlphaWallet/alpha-wallet-ios.svg?branch=master)
 [![License](https://img.shields.io/badge/license-GPL3-green.svg?style=flat)](https://github.com/fastlane/fastlane/blob/master/LICENSE)
 
-# [NUZE](http://nuze.xyz) - Support Crypto Payment Airbnb
+# 💻 [NUZE](http://nuze.xyz) - Support Crypto Payment Airbnb
 
-Official website: [http://nuze.xyz](http://nuze.xyz)
+**Official website: [http://nuze.xyz](http://nuze.xyz)**
 
 ## 👻 Team Progress
 
