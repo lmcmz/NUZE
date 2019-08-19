@@ -19,6 +19,7 @@
 ## 🍕 Snapshot
 
 ![snapshot](./Image/shot1.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flmcmz%2FNUZE.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flmcmz%2FNUZE?ref=badge_shield)
 
 ![snapshot](./Image/shot2.png)
 
@@ -28,3 +29,7 @@
 - [Joannazhx](https://github.com/Joannazhx)
 - [meilixiaozhang](http://github.com/meilixiaozhang)
 - [Michael](http://github.com/MichaelH-au)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flmcmz%2FNUZE.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Flmcmz%2FNUZE?ref=badge_large)
